@@ -1,0 +1,21 @@
+---
+description: Caching & Invalidation — SSG/ISR, tags, fetch cache, keys
+globs: ["app/**/*.{ts,tsx}", "src/**/*.{ts,tsx}"]
+alwaysApply: true
+---
+
+- **세그먼트 기본값**: 필요 시 `export const revalidate = 300` 지정. 실시간성은 `dynamic = "force-dynamic"`.
+- **태그 무효화**: 쓰기/웹훅/백오피스에서 `revalidateTag("<domain>")` 사용. 페이지 갱신은 `revalidatePath`.
+- **fetch 캐시 전략**: `force-cache`(기본), `no-store`, `next: { revalidate, tags }`를 활용.
+- **RSC 로더 캐시**: `unstable_cache`로 감싸 태그/TTL을 명시하고, 키는 입력 파라미터 기반으로 구성.
+- **키/태그 중앙화**: `src/shared/cache/keys.ts`에 상수화.
+- **서드파티 호출**: 공통 HTTP 래퍼에 타임아웃/리트라이/로깅/헤더를 표준화.
+
+Do:
+
+- 캐시 영향 범위를 태그로 설계하고, 무효화 호출 지점을 명확히 문서화.
+- 빌드 시 대량 SSG는 params를 청크로 나누고, 런타임 재검증 정책을 병행.
+
+Don't:
+
+- 랜덤 문자열 키, 무태그 호출, 중복 fetch를 남발하지 않습니다.

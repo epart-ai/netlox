@@ -1,0 +1,22 @@
+---
+description: App Router — Routing/Layout patterns (Groups, Parallel/Intercepting, Streaming)
+globs: ["app/**/*.{ts,tsx}", "src/app/**/*.{ts,tsx}"]
+alwaysApply: true
+---
+
+- **Route Groups**로 영역 레이아웃을 분리: 루트 `app/(marketing)`, `app/(shell)`, `app/(admin)`.
+- **Parallel/Intercepting Routes**로 모달/시트 구현: `app/@modal/(.)item/[id]/page.tsx`.
+- **에러 복구 UX**: 각 세그먼트에 `error.tsx`, `not-found.tsx`를 배치.
+- **스트리밍/서스펜스**: 상위 레벨에서 `loading.tsx`와 `<Suspense>`로 스켈레톤 제공.
+- **정적 생성 최적화**: 대량 SSG는 `generateStaticParams` + Segment Config 사용.
+- **Provider 배치**: 전역 Provider는 루트 레이아웃(또는 `app/providers.tsx`)에, 영역 전용은 해당 `(group)/layout.tsx`에.
+- **세그먼트 재검증**: 필요 시 세그먼트별 `export const revalidate = <seconds>` 지정.
+
+Do:
+
+- 페이지 책임을 레이아웃 계층에 분산하고, 모달은 인터셉팅 라우트로 구성합니다.
+- 대량 정적 경로는 `generateStaticParams`와 캐시 정책을 명확히 합니다.
+
+Don't:
+
+- 모든 기능을 단일 레이아웃에 몰아넣지 않습니다.

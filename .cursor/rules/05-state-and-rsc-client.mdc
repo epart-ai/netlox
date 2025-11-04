@@ -1,0 +1,20 @@
+---
+description: State & Client boundaries — RSC-first with minimal client state
+globs: ["app/**/*.{ts,tsx}", "src/**/*.{ts,tsx}"]
+alwaysApply: true
+---
+
+- **RSC‑First 데이터 전달**: 서버에서 데이터를 준비해 props로 전달. 클라이언트는 상호작용 전용.
+- **클라이언트 상태 최소화**: 폼/임시 UI/로컬 인터랙션은 Zustand/Context로, 비즈니스 상태는 서버 사실상 소스로.
+- **스트리밍/서스펜스**: 리스트/상세 등 핵심 패널을 `<Suspense>`+`loading.tsx`로 단계적 렌더링.
+- **"use client" 최소화**: 필요한 컴포넌트/프로바이더 경계에만 선언.
+- **중복 호출 방지**: 클라이언트에서 서버 데이터 재호출 대신 캐시/props 재사용.
+
+Do:
+
+- 클라이언트 전용 라이브러리(차트/맵/Devtools)는 동적 임포트로 분리하고 SSR 비활성화.
+- 전역 Provider는 루트 레이아웃에, 영역 Provider는 해당 `(group)/layout`에 둡니다.
+
+Don't:
+
+- 서버 전용 모듈을 클라이언트에서 임포트하거나, 클라이언트 상태에 서버 진실소스를 복제하지 않습니다.

@@ -1,0 +1,25 @@
+---
+description: Next.js 14 App Router Best Practices — Architecture Principles
+globs: ["app/**/*.{ts,tsx,js,jsx}", "src/**/*.{ts,tsx,js,jsx}"]
+alwaysApply: true
+---
+
+- **App Router‑Native, RSC‑First**: 기본은 서버 컴포넌트. 필요한 곳에만 `"use client"`를 선언합니다.
+- **얇은 라우팅 계층 + 도메인 계층 분리**: 라우팅/레이아웃/스트리밍은 루트 `app/`에, FSD의 app 레이어(비즈니스 오케스트레이션)는 `src/app/`에 둡니다. 페이지/프로세스 도메인은 `src/{pages,processes}`를 사용합니다.
+- **단방향 의존**: `shared → entities → features → widgets → (pages|processes|app) → app-router`만 허용. 역의존 금지.
+- **경계 명시**: 클라이언트 컴포넌트가 서버 전용 모듈(DB, `use server`)을 임포트하지 않도록 분리. 필요 시 `server-only` 활용.
+- **데이터 경로 단순화**: `Server Action/Route Handler → Service(entities/features) → UI`를 우선합니다.
+- **Cache‑First**: SSG/ISR, `fetch` 캐시 전략, `revalidateTag` 태그 무효화를 표준으로.
+- **콜로케이션**: 라우트와 가까운 곳에 로더/서버액션/스키마/쿼리 키를 둡니다.
+- **보안/운영을 기본값으로**: 환경변수 스키마 검증, 보안 헤더, 로깅/트레이싱/메트릭 기본 적용.
+
+Do:
+
+- 서버에서 데이터를 준비하고, 클라이언트에는 최소 상태/상호작용만 둡니다.
+- 라우트 그룹으로 영역을 나누고(예: `app/(marketing)`), 각 세그먼트에 `loading|error|not-found`를 둡니다.
+- 캐시 키/태그는 중앙 관리하고 변경 지점에서 태그 무효화를 호출합니다.
+
+Don't:
+
+- 클라이언트에서 서버 전용 코드를 임포트하거나, 상위 계층이 하위 계층에 의존하지 않도록 합니다.
+- 캐시 무효화 없이 데이터를 갱신하거나, 라우트에 과도한 비즈니스 로직을 두지 않습니다.

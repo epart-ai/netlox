@@ -1,0 +1,19 @@
+---
+description: AuthN/Z — middleware guard, server-first checks, NextAuth patterns
+globs: ["app/**/*.{ts,tsx}", "src/**/*.{ts,tsx}"]
+alwaysApply: true
+---
+
+- **미들웨어 가드**: `middleware.ts`에서 세션/쿠키를 읽어 퍼블릭/시큐어 라우트 분기.
+- **서버 선체크**: Server Action/Route Handler에서 역할/권한을 먼저 검증(`assert*`).
+- **세션 사용**: 서버에서 `getServerSession`으로 세션 확인 후 UI에 전달.
+- **리다이렉트/에러**: 보호는 서버에서 처리. 클라이언트는 보조 표기만.
+- **비신뢰 입력**: 클라이언트 입력은 항상 검증/정규화.
+
+Do:
+
+- 민감 데이터/작업은 서버에서만 실행하고, 로깅/감사 필드를 포함합니다.
+
+Don't:
+
+- 클라이언트 로직만으로 접근 제어를 구현하지 않습니다.

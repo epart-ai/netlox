@@ -1,0 +1,19 @@
+---
+description: Performance & Bundling — images, fonts, streaming, code-splitting
+globs: ["**/*.{ts,tsx}", "**/*.{js,jsx}"]
+alwaysApply: true
+---
+
+- **이미지**: `next/image` + CDN + LQIP. 크리티컬 이미지는 우선 로딩.
+- **번들 최소화**: `"use client"` 경계를 최소화하고, 무거운 라이브러리는 동적 임포트.
+- **폰트**: `next/font`로 서브셋/프리로드 구성, FOUT 최소화.
+- **데이터 스트리밍**: `<Suspense>` + `loading.tsx`로 TTFB/INP 개선.
+- **Devtools/차트**: 개발/비크리티컬 도구는 `dynamic(..., { ssr: false })`로 지연 로드.
+
+Do:
+
+- 라우트 상단에서 필요 데이터만 선로드하고 나머지는 서스펜스로 분리.
+
+Don't:
+
+- 대형 서드파티 라이브러리를 전역에 즉시 로드하지 않습니다.

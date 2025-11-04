@@ -1,0 +1,19 @@
+---
+description: Ops, Observability & Security — env schema, errors, OTEL, headers
+globs: ["**/*.{ts,tsx}"]
+alwaysApply: true
+---
+
+- **환경 스키마**: Zod 기반 런타임 검증(`src/shared/env.ts`)과 안전한 접근 패턴을 강제.
+- **에러 표준화**: HTTP/도메인 에러 매핑 유틸을 중앙화(예: `shared/http/errors.ts`).
+- **옵저버빌리티**: OTEL 초기화, 요청 ID/트레이스 컨텍스트 전파, 주요 경로 메트릭 수집.
+- **보안 헤더**: `next.config.mjs`에서 CSP/HSTS/XFO/CTO/Permissions-Policy 설정.
+- **비밀관리**: 시크릿은 환경변수/비밀관리 도구에 저장, 클라이언트 노출 금지.
+
+Do:
+
+- 서버 액션/외부 통신에 구조화 로깅과 트레이스 ID를 포함합니다.
+
+Don't:
+
+- 미검증 환경 변수 사용, 민감 정보 로그 출력, 에러 포맷 혼재를 허용하지 않습니다.
