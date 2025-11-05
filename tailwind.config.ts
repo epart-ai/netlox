@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import type { CSSRuleObject, PluginAPI } from "tailwindcss/types/config";
+
 import colors from "./src/app/theme/colors";
 import typography from "./src/app/theme/typography";
 
@@ -132,7 +133,7 @@ function typographyPlugin(api: PluginAPI) {
 				color?: string;
 			};
 			if (v.fontFamily && v.fontSize) {
-				const className = path ? `${path}_${key}` : key;
+				const className = path ? `${path}-${key}` : key;
 				typographyComponents[`.${className}`] = {
 					fontFamily: v.fontFamily,
 					fontSize: v.fontSize,
@@ -251,11 +252,25 @@ function wrapperComponentPlugin(api: PluginAPI) {
 			width: "100%",
 			marginLeft: "auto",
 			marginRight: "auto",
-			maxWidth: "72.916vw",
-			"@media (max-width: 1400px)": {
-				paddingLeft: "5vw",
-				paddingRight: "5vw",
+			paddingLeft: "5vw",
+			paddingRight: "5vw",
+			"@media (min-width: 1400px)": {
+				maxWidth: "72.916vw",
+				paddingLeft: "0",
+				paddingRight: "0",
 			},
+		},
+	});
+}
+
+// 배경 블러 클래스(.bg-blur) 플러그인 추가
+function bgBlurPlugin(api: PluginAPI) {
+	const { addComponents } = api;
+	addComponents({
+		".bg-blur": {
+			background: "#02061780",
+			backdropFilter: "blur(10px) brightness(100%)",
+			WebkitBackdropFilter: "blur(10px) brightness(100%)",
 		},
 	});
 }
@@ -285,7 +300,21 @@ const config = {
 			colors: { ...buildThemeColors() },
 			borderRadius: { md: "0.25rem" },
 			boxShadow: {
-				"elevation-1": "0 4px 4px #00000040",
+				"1": "4px 4px 4px #00000040",
+				"2": "8px 8px 8px #00000040",
+				"3": "12px 12px 12px #00000040",
+				"4": "16px 16px 16px #00000040",
+				"5": "20px 20px 20px #00000040",
+				"x-1": "4px 0 4px #00000040",
+				"x-2": "8px 0 8px #00000040",
+				"x-3": "12px 0 12px #00000040",
+				"x-4": "16px 0 16px #00000040",
+				"x-5": "20px 0 20px #00000040",
+				"y-1": "0 4px 4px #00000040",
+				"y-2": "0 8px 8px #00000040",
+				"y-3": "0 12px 12px #00000040",
+				"y-4": "0 16px 16px #00000040",
+				"y-5": "0 2px #00000040",
 			},
 			keyframes: {
 				"accordion-down": {
@@ -323,6 +352,7 @@ const config = {
 		positionUtilitiesPlugin,
 		rotate3dPlugin,
 		wrapperComponentPlugin,
+		bgBlurPlugin,
 	],
 } satisfies Config;
 

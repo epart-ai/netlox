@@ -1,7 +1,10 @@
-import "@/app/globals.css";
-import { Footer } from "@/widgets/footer";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+
+import "@/app/globals.css";
+import { Footer } from "@/widgets/footer";
+import { Header } from "@/widgets/header";
+
 import { AppProviders } from "./providers";
 
 const geistSans = localFont({
@@ -31,6 +34,7 @@ export default function RootLayout({
 				className={`${geistSans.variable} ${geistMono.variable} bg-default antialiased`}
 			>
 				<AppProviders>
+					<Header />
 					{children}
 					<Footer />
 				</AppProviders>
