@@ -1,0 +1,36 @@
+{
+	// 기본 포맷터: Prettier
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+
+	// 저장 시 포맷팅 활성화
+	"editor.formatOnSave": true,
+
+	// 저장 시 액션: Prettier가 import도 정렬
+	"editor.codeActionsOnSave": {
+		"source.fixAll.biome": "explicit"
+	},
+
+	// 언어별 포맷터 설정
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	// Biome 설정: 린터로만 사용
+	"biome.enabled": true,
+	"biome.lspBin": ""
+}
