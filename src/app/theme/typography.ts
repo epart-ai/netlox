@@ -1,105 +1,100 @@
 // 타이포그래피 객체 먼저 정의
-
 import darkColor from "./colors";
 
 const typography = {
 	subTitle: {
-		pc: {
-			fontFamily: "Outfit",
+		"18": {
+			fontFamily: "Outfit Variable",
 			fontSize: "18px",
 			fontWeight: "700",
 			color: darkColor.subTitle,
 		},
-		tablet: {
-			fontFamily: "Outfit",
+		"16": {
+			fontFamily: "Outfit Variable",
 			fontSize: "16px",
 			fontWeight: "700",
 			color: darkColor.subTitle,
 		},
-		mobile: {
-			fontFamily: "Outfit",
+		"14": {
+			fontFamily: "Outfit Variable",
 			fontSize: "14px",
 			fontWeight: "700",
 			color: darkColor.subTitle,
 		},
 	},
 	title: {
-		pc: {
-			fontFamily: "Outfit",
-			fontSize: "44px",
-			fontWeight: "700",
-			color: darkColor.title,
-		},
-		tablet: {
-			fontFamily: "Outfit",
-			fontSize: "36px",
-			fontWeight: "700",
-			color: darkColor.title,
-		},
-		mobile: {
-			fontFamily: "Outfit",
-			fontSize: "24px",
-			fontWeight: "700",
-			color: darkColor.subTitle,
-		},
-	},
-	paragraph: {
-		pc: {
-			fontFamily: "Outfit",
-			fontSize: "18px",
-			fontWeight: "400",
-			color: darkColor.paragraph,
-		},
-		tablet: {
-			fontFamily: "Outfit",
-			fontSize: "16px",
-			fontWeight: "400",
-			color: darkColor.paragraph,
-		},
-		mobile: {
-			fontFamily: "Outfit",
-			fontSize: "14px",
-			fontWeight: "400",
-			color: darkColor.paragraph,
-		},
-	},
-	ptbTitle: {
-		pc: {
-			fontFamily: "Outfit",
+		"80": {
+			fontFamily: "Outfit Variable",
 			fontSize: "60px",
 			fontWeight: "700",
 			color: darkColor.title,
 		},
-		tablet: {
-			fontFamily: "Outfit",
+		"60": {
+			fontFamily: "Outfit Variable",
+			fontSize: "60px",
+			fontWeight: "700",
+			color: darkColor.title,
+		},
+		"44": {
+			fontFamily: "Outfit Variable",
+			fontSize: "44px",
+			fontWeight: "700",
+			color: darkColor.title,
+		},
+		"40": {
+			fontFamily: "Outfit Variable",
 			fontSize: "40px",
 			fontWeight: "700",
 			color: darkColor.title,
 		},
-		mobile: {
-			fontFamily: "Outfit",
+		"36": {
+			fontFamily: "Outfit Variable",
+			fontSize: "36px",
+			fontWeight: "700",
+			color: darkColor.title,
+		},
+		"28": {
+			fontFamily: "Outfit Variable",
 			fontSize: "28px",
 			fontWeight: "700",
 			color: darkColor.title,
 		},
+		"24": {
+			fontFamily: "Outfit Variable",
+			fontSize: "24px",
+			fontWeight: "700",
+			color: darkColor.title,
+		},
 	},
-	ptbParagraph: {
-		pc: {
-			fontFamily: "Outfit",
+	paragraph: {
+		"24": {
+			fontFamily: "Outfit Variable",
+			fontSize: "24px",
+			fontWeight: "400",
+			color: darkColor.paragraph,
+		},
+		"20": {
+			fontFamily: "Outfit Variable",
 			fontSize: "20px",
 			fontWeight: "400",
 			color: darkColor.paragraph,
 		},
-		tablet: {
-			fontFamily: "Outfit",
+		"18": {
+			fontFamily: "Outfit Variable",
+			fontSize: "18px",
+			fontWeight: "400",
+			color: darkColor.paragraph,
+		},
+		"16": {
+			fontFamily: "Outfit Variable",
 			fontSize: "16px",
 			fontWeight: "400",
 			color: darkColor.paragraph,
 		},
-		mobile: {
-			fontFamily: "Outfit",
+		"14": {
+			fontFamily: "Outfit Variable",
 			fontSize: "14px",
-			fontWeight: "700",
+			fontWeight: "400",
 			color: darkColor.paragraph,
 		},
 	},

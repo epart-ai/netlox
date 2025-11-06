@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Footer = () => {
+export const Footer = () => {
 	const footerSections = [
 		{
 			title: "PRODUCT",
@@ -40,7 +40,7 @@ const Footer = () => {
 							width={180}
 							height={20}
 						/>
-						<p className="paragraph_mobile">
+						<p className="paragraph-14">
 							The eBPF-powered load balancer <br />
 							for cloud-native workloads.
 						</p>
@@ -52,14 +52,14 @@ const Footer = () => {
 									key={section.title}
 									className="flex flex-col gap-4 text-center sm:w-1/2 md:w-1/3 lg:w-auto"
 								>
-									<strong className="subTitle_tablet mb-2 text-accent">
+									<strong className="subTitle-16 mb-2 text-accent">
 										{section.title}
 									</strong>
 									{section.links.map((link, index) => (
 										<a
 											key={index}
 											href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
-											className="paragraph_tablet"
+											className="paragraph-16"
 										>
 											{link}
 										</a>
@@ -71,12 +71,10 @@ const Footer = () => {
 				</div>
 			</div>
 			<div className="border-t-[1px] border-border p-3.5 text-center">
-				<p className="paragraph_mobile">
+				<p className="paragraph-14">
 					Copyright © 2025 NetLOX. All rights reserved.
 				</p>
 			</div>
 		</footer>
 	);
 };
-
-export default Footer;

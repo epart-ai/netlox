@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui";
 
-const Header = () => {
+export const Header = () => {
 	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
 	// Lock body scroll when mobile nav is open (mobile only)
@@ -138,5 +138,3 @@ const Header = () => {
 		</header>
 	);
 };
-
-export default Header;

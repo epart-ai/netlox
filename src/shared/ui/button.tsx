@@ -17,18 +17,18 @@ const buttonVariants = cva(
 				text: "!text-paragraph hover:text-title",
 			},
 			size: {
-				sm: "h-9 px-4 subTitle_mobile",
-				md: "h-10 px-5 subTitle_tablet",
-				lg: "h-11 px-6 subTitle_pc",
+				sm: "h-9 px-4 subTitle-14",
+				md: "h-10 px-5 subTitle-16",
+				lg: "h-11 px-6 subTitle-18",
 			},
 			sm: {
-				true: "h-9 px-4 subTitle_mobile",
+				true: "h-9 px-4 subTitle-14",
 			},
 			md: {
-				true: "md:h-10 md:px-5 md:subTitle_tablet ",
+				true: "md:h-10 md:px-5 md:subTitle-16 ",
 			},
 			lg: {
-				true: "lg:h-11 lg:px-6 lg:subTitle_pc",
+				true: "lg:h-11 lg:px-6 lg:subTitle-18",
 			},
 		},
 		defaultVariants: {

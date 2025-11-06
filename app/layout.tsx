@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
+import "@fontsource-variable/outfit";
+
 import "@/app/globals.css";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
