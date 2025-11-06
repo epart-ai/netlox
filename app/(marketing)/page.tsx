@@ -1,3 +1,9 @@
+import { MainHero } from "@/pages/main";
+
 export default function Home() {
-	return <div>Home</div>;
+	return (
+		<div>
+			<MainHero />
+		</div>
+	);
 }

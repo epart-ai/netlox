@@ -25,7 +25,7 @@ const typography = {
 	title: {
 		"80": {
 			fontFamily: "Outfit Variable",
-			fontSize: "60px",
+			fontSize: "80px",
 			fontWeight: "700",
 			color: darkColor.title,
 		},

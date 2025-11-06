@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "@fontsource-variable/outfit";
 
 import "@/app/globals.css";
+import { CookieAgree } from "@/widgets/cookie-agree";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 
@@ -39,6 +40,7 @@ export default function RootLayout({
 					<Header />
 					{children}
 					<Footer />
+					<CookieAgree />
 				</AppProviders>
 			</body>
 		</html>

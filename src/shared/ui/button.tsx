@@ -23,16 +23,22 @@ const buttonVariants = cva(
 			},
 			sm: {
 				true: "h-9 px-4 subTitle-14",
+				false: "",
 			},
 			md: {
 				true: "md:h-10 md:px-5 md:subTitle-16 ",
+				false: "",
 			},
 			lg: {
 				true: "lg:h-11 lg:px-6 lg:subTitle-18",
+				false: "",
 			},
 		},
 		defaultVariants: {
 			variant: "primary",
+			sm: true,
+			md: true,
+			lg: true,
 		},
 	},
 );

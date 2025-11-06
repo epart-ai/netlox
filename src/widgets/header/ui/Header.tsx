@@ -37,7 +37,7 @@ export const Header = () => {
 	];
 
 	return (
-		<header className={cn("shadow-y-1 fixed top-0 z-50 w-full")}>
+		<header className={cn("fixed top-0 z-50 w-full shadow-y-1")}>
 			<div className={cn("bg-blur relative z-10 border-b border-border")}>
 				<div className="wrapper">
 					<div
@@ -89,7 +89,7 @@ export const Header = () => {
 			<div
 				aria-label="Mobile navigation wrapper"
 				className={cn(
-					"shadow-x-1 bg-blur absolute flex h-[calc(100vh-theme(height.15)-1px)] w-[60vw] max-w-[320px] transform flex-col justify-between border-r-[1px] border-border py-10 transition-transform duration-300 ease-out",
+					"bg-blur absolute flex h-[calc(100vh-theme(height.15))] w-[60vw] max-w-[320px] transform flex-col justify-between border-r-[1px] border-border py-10 shadow-x-1 transition-transform duration-300 ease-out",
 					"lg:pointer-events-none lg:static lg:z-20 lg:h-auto lg:w-full lg:max-w-none lg:transform-none lg:border-none lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none lg:backdrop-brightness-100 lg:absolute-center lg:[-webkit-backdrop-filter:none]",
 
 					isMobileNavOpen ? "translate-x-0" : "-translate-x-[calc(100vw+5vw)]",
@@ -114,8 +114,7 @@ export const Header = () => {
 					<div className="flex flex-wrap items-center justify-center lg:pointer-events-auto lg:justify-end">
 						<Button
 							variant="text"
-							sm={true}
-							md={true}
+							lg={false}
 							className="paragraph-16 font-medium"
 							type="button"
 							aria-label="Login to your account"
@@ -124,9 +123,6 @@ export const Header = () => {
 						</Button>
 						<Button
 							variant="primary"
-							sm={true}
-							md={true}
-							lg={true}
 							type="button"
 							aria-label="Sign up for an account"
 						>
