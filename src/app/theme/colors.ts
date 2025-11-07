@@ -1,30 +1,23 @@
 const colors = {
-	title: "#ffffff",
-	paragraph: "#ffffffbf",
-	border: "#ffffff40",
-	accent: "#2563eb",
-	subTitle: "#60a5fa",
-	default: "#020617",
-	icon: "#2563eb40",
+	white: "#ffffff",
+	black: "#000000",
 	green: {
-		default: "#09bc4b",
-		sub: "#4ce183",
-		bg: "#09bc4b26",
+		"20": "#4ce183",
+		"60": "#09bc4b",
 	},
 	blue: {
-		default: "#2563eb",
-		sub: "#60a5fa",
-		bg: "#2563eb26",
+		"10": "#1d42d8",
+		"20": "#2563eb",
+		"60": "#60a5fa",
+		"100": "#020617",
 	},
 	purple: {
-		default: "#8434f5",
-		sub: "#c297ff",
-		bg: "#8434f526",
+		"20": "#c297ff",
+		"60": "#8434f5",
 	},
 	orange: {
-		default: "#ff9319",
-		sub: "#FFC548",
-		bg: "#ff931926",
+		"20": "#FFC548",
+		"60": "#ff9319",
 	},
 };
 

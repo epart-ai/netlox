@@ -38,7 +38,7 @@ export const Header = () => {
 
 	return (
 		<header className={cn("fixed top-0 z-50 w-full shadow-y-1")}>
-			<div className={cn("bg-blur relative z-10 border-b border-border")}>
+			<div className={cn("bg-blur relative z-10 border-b border-white/25")}>
 				<div className="wrapper">
 					<div
 						className={cn(
@@ -54,21 +54,21 @@ export const Header = () => {
 						>
 							<span
 								className={cn(
-									"transform-origin-center pointer-events-none absolute left-0 top-1/2 h-[1px] w-full -translate-y-2 bg-paragraph",
+									"transform-origin-center pointer-events-none absolute left-0 top-1/2 h-[1px] w-full -translate-y-2 bg-white/75",
 									"lg:transform-none",
 									isMobileNavOpen ? "translate-y-0 rotate-45" : "",
 								)}
 							></span>
 							<span
 								className={cn(
-									"pointer-events-none absolute left-0 top-1/2 h-[1px] w-full bg-paragraph",
+									"pointer-events-none absolute left-0 top-1/2 h-[1px] w-full bg-white/75",
 									"lg:opacity-100",
 									isMobileNavOpen ? "opacity-0" : "opacity-100",
 								)}
 							></span>
 							<span
 								className={cn(
-									"transform-origin-center pointer-events-none absolute left-0 top-1/2 h-[1px] w-full translate-y-2 bg-paragraph",
+									"transform-origin-center pointer-events-none absolute left-0 top-1/2 h-[1px] w-full translate-y-2 bg-white/75",
 									"lg:transform-none",
 									isMobileNavOpen ? "!translate-y-0 -rotate-45" : "",
 								)}
@@ -78,7 +78,7 @@ export const Header = () => {
 							<Image
 								className="h-auto w-[120px] lg:w-[140px] lg:w-[180px]"
 								alt="Logo"
-								src="/images/logo.svg"
+								src="/images/common/logo.svg"
 								width={120}
 								height={20}
 							/>
@@ -89,7 +89,7 @@ export const Header = () => {
 			<div
 				aria-label="Mobile navigation wrapper"
 				className={cn(
-					"bg-blur absolute flex h-[calc(100vh-theme(height.15))] w-[60vw] max-w-[320px] transform flex-col justify-between border-r-[1px] border-border py-10 shadow-x-1 transition-transform duration-300 ease-out",
+					"bg-blur absolute flex h-[calc(100vh-theme(height.15))] w-[60vw] max-w-[320px] transform flex-col justify-between border-r-[1px] border-white/25 py-10 shadow-x-1 transition-transform duration-300 ease-out",
 					"lg:pointer-events-none lg:static lg:z-20 lg:h-auto lg:w-full lg:max-w-none lg:transform-none lg:border-none lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none lg:backdrop-brightness-100 lg:absolute-center lg:[-webkit-backdrop-filter:none]",
 
 					isMobileNavOpen ? "translate-x-0" : "-translate-x-[calc(100vw+5vw)]",

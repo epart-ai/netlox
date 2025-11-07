@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import "@fontsource-variable/outfit";
 
 import "@/app/globals.css";
-import { CookieAgree } from "@/widgets/cookie-agree";
+import { CookieAgree } from "@/features/cookie-agree";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 
@@ -34,7 +34,7 @@ export default function RootLayout({
 	return (
 		<html lang="ko">
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} bg-default antialiased`}
+				className={`${geistSans.variable} ${geistMono.variable} bg-blue-100 antialiased`}
 			>
 				<AppProviders>
 					<Header />

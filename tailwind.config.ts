@@ -1,5 +1,10 @@
 import type { Config } from "tailwindcss";
-import type { CSSRuleObject, PluginAPI } from "tailwindcss/types/config";
+import type {
+	CSSRuleObject,
+	PluginAPI,
+	RecursiveKeyValuePair,
+	ResolvableTo,
+} from "tailwindcss/types/config";
 
 import colors from "./src/app/theme/colors";
 import typography from "./src/app/theme/typography";
@@ -92,31 +97,60 @@ function processObject(
 	});
 }
 
-// 색상 테마 구성
-type RecursiveStringRecord = { [key: string]: string | RecursiveStringRecord };
+// HEX -> "r g b" (space-separated) 변환 유틸
+function hexToRgbTriplet(hex: string): string | null {
+	const normalized = hex.trim().replace(/^#/, "");
+	const isShort = normalized.length === 3;
+	const isLong = normalized.length === 6;
+	if (!isShort && !isLong) return null;
+	const expand = (c: string) => (isShort ? c + c : c);
+	const r = parseInt(expand(normalized.substring(0, isShort ? 1 : 2)), 16);
+	const g = parseInt(
+		expand(normalized.substring(isShort ? 1 : 2, isShort ? 2 : 4)),
+		16,
+	);
+	const b = parseInt(
+		expand(normalized.substring(isShort ? 2 : 4, isShort ? 3 : 6)),
+		16,
+	);
+	if (Number.isNaN(r) || Number.isNaN(g) || Number.isNaN(b)) return null;
+	return `${r} ${g} ${b}`;
+}
 
-function buildThemeColors(): RecursiveStringRecord {
-	const mappedColors: RecursiveStringRecord = {};
+// opacityValue(0~100)을 지원하는 컬러 빌더
+function withOpacity(variableRgbName: string) {
+	return ({ opacityValue }: { opacityValue?: string }) => {
+		if (opacityValue === undefined) {
+			return `rgb(var(${variableRgbName}))`;
+		}
+		return `rgb(var(${variableRgbName}) / ${opacityValue})`;
+	};
+}
+
+function buildThemeColors(): ResolvableTo<
+	RecursiveKeyValuePair<string, string>
+> {
+	const mappedColors: Record<string, unknown> = {};
 
 	processObject(colors as Record<string, unknown>, {
 		onLeaf: (path, key, value) => {
 			if (typeof value === "string") {
-				let target: RecursiveStringRecord = mappedColors;
+				let target = mappedColors as Record<string, unknown>;
 				if (path) {
 					const pathParts = path.split("-");
 					for (const part of pathParts) {
-						const next = (target[part] as RecursiveStringRecord) || {};
-						target[part] = next as RecursiveStringRecord;
+						const next = (target[part] as Record<string, unknown>) || {};
+						target[part] = next as Record<string, unknown>;
 						target = next;
 					}
 				}
 				const varPath = path ? `${path}-${key}` : key;
-				target[key] = `var(--color-${varPath})`;
+				target[key] = withOpacity(`--color-${varPath}-rgb`);
 			}
 		},
 	});
 
-	return mappedColors;
+	return mappedColors as ResolvableTo<RecursiveKeyValuePair<string, string>>;
 }
 
 // 타이포그래피 플러그인
@@ -162,6 +196,11 @@ function colorVariablesPlugin(api: PluginAPI) {
 			if (typeof value === "string") {
 				const varName = path ? `--color-${path}-${key}` : `--color-${key}`;
 				colorVars[varName] = value;
+				// RGB 삼원값 변수도 함께 주입 (opacity 슬래시 문법 지원)
+				const rgbTriplet = hexToRgbTriplet(value);
+				if (rgbTriplet) {
+					colorVars[`${varName}-rgb`] = rgbTriplet;
+				}
 			}
 		},
 	});
@@ -297,7 +336,7 @@ const config = {
 				generateNegativeScale(theme, "spacing"),
 			// wrapper는 플러그인에서 .wrapper 클래스로 제공
 			maxWidth: { 440: "440px" },
-			colors: { ...buildThemeColors() },
+			colors: buildThemeColors(),
 			borderRadius: { md: "0.25rem" },
 			boxShadow: {
 				"1": "4px 4px 4px #00000040",

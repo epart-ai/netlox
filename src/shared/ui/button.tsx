@@ -6,15 +6,16 @@ import { type VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/shared/lib/utils";
 
 const buttonVariants = cva(
-	"inline-flex items-center relative justify-center gap-2 whitespace-nowrap rounded-lg text-title focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:after:content-[''] hover:after:absolute hover:after:inset-0 hover:after:w-full hover:after:h-full hover:after:rounded-lg hover:after:pointer-events-none hover:shadow-none hover:after:bg-[#00000026]",
+	"inline-flex items-center relative justify-center gap-2 whitespace-nowrap rounded-lg text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:after:content-[''] hover:after:absolute hover:after:inset-0 hover:after:w-full hover:after:h-full hover:after:rounded-lg hover:after:pointer-events-none hover:shadow-none hover:after:bg-[#00000026]",
 	{
 		variants: {
 			variant: {
-				primary: "bg-accent !text-title",
+				primary: "bg-blue-20 !text-white",
 				secondary:
-					"border border-border bg-[linear-gradient(to_bottom,_#ffffff40,_#ffffff0d)] !text-title",
-				outline: "border border-border !text-title",
-				text: "!text-paragraph hover:text-title",
+					"border border-white/25 !text-white to-white/5 from-white/25 bg-gradient-to-b backdrop-blur-[6px]",
+				outline: "border border-white/25 !text-white",
+				text: "!text-white/75 hover:text-white",
+				white: "bg-white !text-blue-20",
 			},
 			size: {
 				sm: "h-9 px-4 subTitle-14",
@@ -66,4 +67,25 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = "Button";
 
-export { Button, buttonVariants };
+interface ButtonBoxProps extends React.HTMLAttributes<HTMLDivElement> {
+	asChild?: boolean;
+}
+
+const ButtonBox = React.forwardRef<HTMLDivElement, ButtonBoxProps>(
+	({ className, asChild = false, ...props }, ref) => {
+		const Comp = asChild ? Slot : "div";
+		return (
+			<Comp
+				className={cn(
+					"flex flex-col justify-center gap-2.5 md:flex-row",
+					className,
+				)}
+				ref={ref}
+				{...props}
+			/>
+		);
+	},
+);
+ButtonBox.displayName = "ButtonBox";
+
+export { Button, ButtonBox, buttonVariants };
