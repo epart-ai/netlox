@@ -1,9 +1,10 @@
-import { MainHero } from "@/pages/main";
+import { MainHero, MainReport } from "@/pages/main";
 
 export default function Home() {
 	return (
 		<div>
 			<MainHero />
+			<MainReport />
 		</div>
 	);
 }

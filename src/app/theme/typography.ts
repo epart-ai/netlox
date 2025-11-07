@@ -77,6 +77,12 @@ const typography = {
 			fontWeight: "700",
 			color: darkColor.white,
 		},
+		"14": {
+			fontFamily: "Outfit Variable",
+			fontSize: "14px",
+			fontWeight: "700",
+			color: darkColor.white,
+		},
 	},
 	paragraph: {
 		"24": {
