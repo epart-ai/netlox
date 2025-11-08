@@ -1,4 +1,5 @@
 export { Button, ButtonBox } from "./button";
+export { Separator } from "./separator";
 export {
 	Table,
 	TableBody,
