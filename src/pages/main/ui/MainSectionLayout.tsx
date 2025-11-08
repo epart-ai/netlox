@@ -8,6 +8,7 @@ interface Props {
 	subTitle?: ReactNode;
 	title?: ReactNode;
 	description?: ReactNode;
+	bgImage?: ReactNode;
 }
 
 export const MainSectionLayout = ({
@@ -16,14 +17,16 @@ export const MainSectionLayout = ({
 	subTitle,
 	title,
 	description,
+	bgImage,
 }: Props) => {
 	return (
 		<div
 			className={cn(
-				"flex items-center justify-center py-10 lg:h-[100vh]",
+				"md:py-25 relative flex items-center justify-center py-15 lg:h-[100vh]",
 				className,
 			)}
 		>
+			{bgImage && bgImage}
 			<div className="wrapper">
 				<div className="mb-10 text-center lg:mb-20">
 					{subTitle && (
