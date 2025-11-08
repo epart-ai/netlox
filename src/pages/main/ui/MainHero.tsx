@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-import { Button, ButtonBox } from "@/shared/ui";
+import { Button, ButtonBox, Separator } from "@/shared/ui/shadcn";
 
 export const MainHero = () => {
 	const trustedBy = [
@@ -42,7 +42,7 @@ export const MainHero = () => {
 					<div className="flex h-full w-full flex-col items-center justify-center gap-7">
 						<h1 className="title-40 text-center md:title-60 lg:title-80">
 							10× Faster Load Balancer
-							<span className="text-blue-20 block">Than MetalLB</span>
+							<span className="block text-blue-20">Than MetalLB</span>
 						</h1>
 						<p className="paragraph-16 text-center md:paragraph-20 lg:paragraph-24">
 							eBPF-powered, independently benchmarked, and trusted by Fortune
@@ -61,7 +61,11 @@ export const MainHero = () => {
 								{trustedBy.map((item, index) => (
 									<Fragment key={item.name}>
 										{index > 0 && (
-											<div className="hidden h-2 w-[1px] bg-white/50 md:block" />
+											<Separator
+												orientation="vertical"
+												opacity="50"
+												className="hidden h-2 md:block"
+											/>
 										)}
 										<dd className="">{item.name}</dd>
 									</Fragment>

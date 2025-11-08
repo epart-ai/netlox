@@ -25,7 +25,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "./Table";
+} from "../shadcn/table";
 
 interface Props<TData, TValue> {
 	data: ReadonlyArray<TData>;
@@ -71,10 +71,7 @@ export function DataTable<TData = unknown, TValue = unknown>({
 
 	return (
 		<div
-			className={cn(
-				"relative w-full overflow-x-auto rounded-lg border border-white/25 bg-gradient-to-b from-white/10 to-white/0 backdrop-blur-lg lg:rounded-2xl",
-				className,
-			)}
+			className={cn("glass-surface relative w-full overflow-x-auto", className)}
 		>
 			<Table className={tableClassName}>
 				<TableHeader>

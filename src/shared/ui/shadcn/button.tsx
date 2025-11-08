@@ -77,7 +77,7 @@ const ButtonBox = React.forwardRef<HTMLDivElement, ButtonBoxProps>(
 		return (
 			<Comp
 				className={cn(
-					"flex flex-col justify-center gap-2.5 md:flex-row",
+					"flex flex-col items-center justify-center gap-2.5 md:flex-row",
 					className,
 				)}
 				ref={ref}

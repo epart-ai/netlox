@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { cn } from "@/shared/lib/utils";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/shadcn";
 
 export const Header = () => {
 	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);

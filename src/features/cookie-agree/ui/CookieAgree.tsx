@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import { cn } from "@/shared/lib/utils";
-import { Button } from "@/shared/ui";
+import { Button } from "@/shared/ui/shadcn";
 
 export const CookieAgree = () => {
 	const [isAccepted, setIsAccepted] = useState(false);
@@ -28,7 +28,14 @@ export const CookieAgree = () => {
 							.
 						</p>
 					</div>
-					<Button variant="primary" onClick={() => setIsAccepted(true)}>
+					<Button
+						variant="primary"
+						onClick={() => {
+							console.log("clcik");
+
+							setIsAccepted(true);
+						}}
+					>
 						Accept
 					</Button>
 				</div>

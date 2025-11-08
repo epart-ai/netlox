@@ -1,5 +1,4 @@
-export { Button, ButtonBox } from "./Button";
-export { DataTable } from "./DataTable";
+export { Button, ButtonBox } from "./button";
 export {
 	Table,
 	TableBody,
@@ -9,4 +8,4 @@ export {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "./Table";
+} from "./table";

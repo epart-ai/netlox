@@ -3,7 +3,8 @@
 import type { ColumnDef } from "@tanstack/react-table";
 
 import { MainSectionLayout } from "@/pages/main/ui/MainSectionLayout";
-import { Button, ButtonBox, DataTable } from "@/shared/ui";
+import { DataTable } from "@/shared/ui/display";
+import { Button, ButtonBox } from "@/shared/ui/shadcn";
 
 export const MainReport = () => {
 	const columns: ColumnDef<Record<string, unknown>, unknown>[] = [

@@ -34,7 +34,7 @@ export default function RootLayout({
 	return (
 		<html lang="ko">
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} bg-blue-100 antialiased`}
+				className={`${geistSans.variable} ${geistMono.variable} bg-blue-100 leading-[normal] text-white antialiased`}
 			>
 				<AppProviders>
 					<Header />

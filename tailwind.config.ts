@@ -163,6 +163,7 @@ function typographyPlugin(api: PluginAPI) {
 			const v = value as {
 				fontFamily?: string;
 				fontSize?: string;
+				lineHeight?: string;
 				fontWeight?: string;
 				color?: string;
 			};
@@ -171,6 +172,7 @@ function typographyPlugin(api: PluginAPI) {
 				typographyComponents[`.${className}`] = {
 					fontFamily: v.fontFamily,
 					fontSize: v.fontSize,
+					lineHeight: v.lineHeight,
 					fontWeight: v.fontWeight,
 					color: v.color,
 				} as unknown as CSSRuleObject;
@@ -303,13 +305,25 @@ function wrapperComponentPlugin(api: PluginAPI) {
 }
 
 // 배경 블러 클래스(.bg-blur) 플러그인 추가
-function bgBlurPlugin(api: PluginAPI) {
-	const { addComponents } = api;
+function bgPlugin(api: PluginAPI) {
+	const { addComponents, theme } = api;
 	addComponents({
 		".bg-blur": {
 			background: "#02061780",
 			backdropFilter: "blur(10px) brightness(100%)",
-			WebkitBackdropFilter: "blur(10px) brightness(100%)",
+		},
+		".glass-surface": {
+			borderWidth: "1px",
+			borderColor: "rgb(255 255 255 / 0.25)",
+			borderRadius: theme("borderRadius.lg") as string,
+			backgroundImage:
+				"linear-gradient(to bottom, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0))",
+			backdropFilter: "blur(12px)",
+		},
+		"@screen lg": {
+			".glass-surface": {
+				borderRadius: theme("borderRadius.2xl") as string,
+			},
 		},
 	});
 }
@@ -391,7 +405,7 @@ const config = {
 		positionUtilitiesPlugin,
 		rotate3dPlugin,
 		wrapperComponentPlugin,
-		bgBlurPlugin,
+		bgPlugin,
 	],
 } satisfies Config;
 
