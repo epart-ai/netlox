@@ -22,7 +22,7 @@ export const MainSectionLayout = ({
 	return (
 		<div
 			className={cn(
-				"md:py-25 relative flex items-center justify-center py-15 lg:h-[100vh]",
+				"md:py-25 relative flex items-center justify-center py-15 lg:h-[100vh] lg:py-0",
 				className,
 			)}
 		>
