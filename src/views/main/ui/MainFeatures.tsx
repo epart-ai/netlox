@@ -34,7 +34,8 @@ export const MainFeatures = () => {
 			description="From raw eBPF performance to enterprise-grade reliability and specialized protocols."
 			bgImage={
 				<BackgroundImage
-					className="opacity-35 mix-blend-normal"
+					opacity="35"
+					className="mix-blend-normal"
 					src="/images/main/bg_features.jpg"
 				/>
 			}

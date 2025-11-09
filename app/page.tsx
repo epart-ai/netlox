@@ -1,5 +1,4 @@
 import {
-	MainBanner,
 	MainFeatures,
 	MainHero,
 	MainModel,
@@ -9,13 +8,12 @@ import {
 
 export default function Home() {
 	return (
-		<div>
+		<>
 			<MainHero />
 			<MainReport />
 			<MainFeatures />
 			<MainModel />
 			<MainSuccess />
-			<MainBanner />
-		</div>
+		</>
 	);
 }

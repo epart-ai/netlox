@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { cn } from "@/shared/lib/utils";
@@ -28,12 +29,12 @@ export const Header = () => {
 	}, [isMobileNavOpen]);
 
 	const navItems = [
-		{ label: "Product", href: "#product" },
-		{ label: "Solutions", href: "#solutions" },
-		{ label: "Technology", href: "#technology" },
-		{ label: "Trust", href: "#trust" },
-		{ label: "Business", href: "#business" },
-		{ label: "Resource", href: "#resource" },
+		{ label: "Product", href: "/products" },
+		{ label: "Solutions", href: "/solutions" },
+		{ label: "Technology", href: "/technology" },
+		{ label: "Trust", href: "/trust" },
+		{ label: "Business", href: "/business" },
+		{ label: "Resource", href: "/resource" },
 	];
 
 	return (
@@ -42,11 +43,11 @@ export const Header = () => {
 				<div className="wrapper">
 					<div
 						className={cn(
-							"relative flex h-15 items-center justify-center lg:h-20 lg:justify-between",
+							"h-header relative flex items-center justify-center lg:justify-between",
 						)}
 					>
 						<button
-							className="absolute left-0 top-5 h-4 w-5 lg:hidden"
+							className="h-4 w-5 absolute-center-left lg:hidden"
 							type="button"
 							aria-label="Open mobile navigation"
 							aria-expanded={isMobileNavOpen}
@@ -74,23 +75,26 @@ export const Header = () => {
 								)}
 							></span>
 						</button>
-						<a className="relative z-20" href="/" aria-label="Go to homepage">
-							<Image
-								className="h-auto w-[120px] lg:w-[140px] lg:w-[180px]"
-								alt="Logo"
-								src="/images/common/logo.svg"
-								width={120}
-								height={20}
-							/>
-						</a>
+						<h1>
+							<a className="relative z-20" href="/" aria-label="Go to homepage">
+								<Image
+									className="h-auto w-[120px] md:w-[150px] lg:w-[180px]"
+									alt="Logo"
+									src="/images/common/logo.svg"
+									width={120}
+									height={20}
+								/>
+							</a>
+							<span className="hidden">NetLOX</span>
+						</h1>
 					</div>
 				</div>
 			</div>
 			<div
 				aria-label="Mobile navigation wrapper"
 				className={cn(
-					"bg-blur absolute flex h-[calc(100vh-theme(height.15))] w-[60vw] max-w-[320px] transform flex-col justify-between border-r-[1px] border-white/25 py-10 shadow-x-1 transition-transform duration-300 ease-out",
-					"lg:pointer-events-none lg:static lg:z-20 lg:h-auto lg:w-full lg:max-w-none lg:transform-none lg:border-none lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none lg:backdrop-brightness-100 lg:absolute-center lg:[-webkit-backdrop-filter:none]",
+					"bg-blur absolute flex h-[calc(100vh-var(--header-h))] w-[60vw] max-w-[320px] transform flex-col justify-between border-r-[1px] border-white/25 py-10 shadow-x-1 transition-transform duration-300 ease-out",
+					"lg:pointer-events-none lg:static lg:z-20 lg:h-auto lg:w-full lg:max-w-none lg:transform-none lg:border-none lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none lg:backdrop-brightness-100 lg:absolute-center lg:[backdrop-filter:none]",
 
 					isMobileNavOpen ? "translate-x-0" : "-translate-x-[calc(100vw+5vw)]",
 				)}
@@ -104,14 +108,14 @@ export const Header = () => {
 						<ul className="flex flex-col items-center gap-8 lg:flex-row">
 							{navItems.map((item) => (
 								<li key={item.label}>
-									<a href={item.href} className="paragraph-18 font-medium">
+									<Link href={item.href} className="paragraph-18 font-medium">
 										{item.label}
-									</a>
+									</Link>
 								</li>
 							))}
 						</ul>
 					</nav>
-					<div className="flex flex-wrap items-center justify-center lg:pointer-events-auto lg:justify-end">
+					<div className="flex flex-wrap items-center justify-center lg:pointer-events-auto lg:ml-auto">
 						<Button
 							variant="text"
 							lg={false}

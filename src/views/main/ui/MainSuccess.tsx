@@ -32,8 +32,8 @@ export const MainSuccess = () => {
 			title="Trusted by Fortune 500s"
 			bgImage={
 				<BackgroundImage
-					className="opacity-100 mix-blend-overlay"
-					src="/images/main/bg_success.png"
+					className="mix-blend-overlay"
+					src="/images/main/bg_content.png"
 				/>
 			}
 		>

@@ -15,7 +15,7 @@ export const MainHero = () => {
 		},
 	];
 	return (
-		<div className="relative">
+		<section className="relative">
 			<video
 				playsInline={true}
 				className="h-[100vh] w-full object-cover"
@@ -38,12 +38,12 @@ export const MainHero = () => {
 				/>
 			</video>
 			<div className="h-full w-full bg-[linear-gradient(180deg,rgba(2,6,23,0.00)_0%,#020617_100%)] absolute-center">
-				<div className="wrapper h-full">
+				<div className="pt-header wrapper h-full">
 					<div className="flex h-full w-full flex-col items-center justify-center gap-7">
-						<h1 className="title-40 text-center md:title-60 lg:title-80">
+						<h2 className="title-40 text-center md:title-60 lg:title-80">
 							10× Faster Load Balancer
 							<span className="block text-blue-20">Than MetalLB</span>
-						</h1>
+						</h2>
 						<p className="paragraph-16 text-center md:paragraph-20 lg:paragraph-24">
 							eBPF-powered, independently benchmarked, and trusted by Fortune
 							<br />
@@ -75,6 +75,6 @@ export const MainHero = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 };

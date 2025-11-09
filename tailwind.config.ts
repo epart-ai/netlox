@@ -333,14 +333,20 @@ const config = {
 	darkMode: "class",
 	theme: {
 		extend: {
-			spacing: generateSpacingScale({
-				baseUnit: 0.25,
-				maxValue: 24,
-				decimalPoints: [0.5],
-				pixelBase: 16,
-				includePixelComments: false,
-				outputUnit: "px",
-			}),
+			spacing: {
+				...generateSpacingScale({
+					baseUnit: 0.25,
+					maxValue: 24,
+					decimalPoints: [0.5],
+					pixelBase: 16,
+					includePixelComments: false,
+					outputUnit: "px",
+				}),
+				header: "var(--header-h)",
+			},
+			height: {
+				header: "var(--header-h)",
+			},
 			margin: ({
 				theme,
 			}: {
@@ -396,6 +402,11 @@ const config = {
 				"y-180": "rotateY(180deg)",
 				"y-90": "rotateY(90deg)",
 				"y-45": "rotateY(45deg)",
+			},
+			header: {
+				sm: "60px",
+				md: "70px",
+				lg: "80px",
 			},
 		},
 	},

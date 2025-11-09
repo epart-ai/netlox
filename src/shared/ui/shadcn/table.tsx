@@ -59,7 +59,7 @@ const TableRow = React.forwardRef<
 		ref={ref}
 		role="row"
 		className={cn(
-			"data-[state=selected]:bg-muted relative flex border-b border-white/10 after:absolute after:bottom-0 after:left-0 after:right-0 after:top-1 after:rounded-lg after:bg-blue-600/25 after:opacity-0 after:transition-opacity after:duration-300 after:ease-out [.table-body_&:hover]:after:opacity-100",
+			"data-[state=selected]:bg-muted relative flex border-b border-white/10 after:absolute after:bottom-1 after:left-0 after:right-0 after:top-1 after:rounded-lg after:bg-blue-600/25 after:opacity-0 after:transition-opacity after:duration-300 after:ease-out [.table-body_&:hover]:after:opacity-100",
 			className,
 		)}
 		{...props}
@@ -78,7 +78,7 @@ const TableHead = React.forwardRef<HTMLDivElement, HeaderDivProps>(
 			ref={ref}
 			role={scope === "row" ? "rowheader" : "columnheader"}
 			className={cn(
-				"py-3 text-left font-medium lg:py-4.5 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+				"px-1.5 py-3 text-left font-medium lg:px-3 lg:py-4.5 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
 
 				className,
 			)}
@@ -96,7 +96,7 @@ const TableCell = React.forwardRef<HTMLDivElement, CellDivProps>(
 			ref={ref}
 			role="cell"
 			className={cn(
-				"whitespace-nowrap py-3 font-medium lg:py-4.5 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+				"whitespace-nowrap px-1.5 py-2 font-medium lg:px-3 lg:py-3.5 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
 				className,
 			)}
 			{...props}
