@@ -1,17 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	// Use default page extensions for both App Router and Pages Router
-	pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-	experimental: {
-		turbo: {
-			rules: {
-				"*.svg": {
-					loaders: ["@svgr/webpack"],
-					as: "*.js",
-				},
-			},
-		},
-	},
 	async headers() {
 		const isProd = process.env.NODE_ENV === "production";
 		const scriptSrc = ["'self'", "'unsafe-inline'"];
