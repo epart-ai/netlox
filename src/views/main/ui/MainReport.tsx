@@ -2,9 +2,10 @@
 
 import type { ColumnDef } from "@tanstack/react-table";
 
-import { MainSectionLayout } from "@/pages/main/ui/MainSectionLayout";
 import { DataTable } from "@/shared/ui/display";
 import { Button, ButtonBox } from "@/shared/ui/shadcn";
+
+import { MainSectionLayout } from "./MainSectionLayout";
 
 export const MainReport = () => {
 	const columns: ColumnDef<Record<string, unknown>, unknown>[] = [

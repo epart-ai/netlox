@@ -5,7 +5,7 @@ import {
 	MainModel,
 	MainReport,
 	MainSuccess,
-} from "@/pages/main";
+} from "@/views/main";
 
 export default function Home() {
 	return (

@@ -5,8 +5,8 @@ alwaysApply: true
 ---
 
 - **App Router‑Native, RSC‑First**: 기본은 서버 컴포넌트. 필요한 곳에만 `"use client"`를 선언합니다.
-- **얇은 라우팅 계층 + 도메인 계층 분리**: 라우팅/레이아웃/스트리밍은 루트 `app/`에, FSD의 app 레이어(비즈니스 오케스트레이션)는 `src/app/`에 둡니다. 페이지/프로세스 도메인은 `src/{pages,processes}`를 사용합니다.
-- **단방향 의존**: `shared → entities → features → widgets → (pages|processes|app) → app-router`만 허용. 역의존 금지.
+- **얇은 라우팅 계층 + 도메인 계층 분리**: 라우팅/레이아웃/스트리밍은 루트 `app/`에, FSD의 app 레이어(비즈니스 오케스트레이션)는 `src/app/`에 둡니다. 페이지/프로세스 도메인은 `src/{views,processes}`를 사용합니다.
+- **단방향 의존**: `shared → entities → features → widgets → (views|processes|app) → app-router`만 허용. 역의존 금지.
 - **경계 명시**: 클라이언트 컴포넌트가 서버 전용 모듈(DB, `use server`)을 임포트하지 않도록 분리. 필요 시 `server-only` 활용.
 - **데이터 경로 단순화**: `Server Action/Route Handler → Service(entities/features) → UI`를 우선합니다.
 - **Cache‑First**: SSG/ISR, `fetch` 캐시 전략, `revalidateTag` 태그 무효화를 표준으로.

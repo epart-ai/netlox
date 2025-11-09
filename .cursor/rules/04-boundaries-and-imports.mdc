@@ -4,7 +4,7 @@ globs: ["**/*.{ts,tsx,js,jsx}"]
 alwaysApply: true
 ---
 
-- **의존 방향 고정**: `shared → entities → features → widgets → (pages|processes|app) → app-router`만 허용. 역의존 금지.
+- **의존 방향 고정**: `shared → entities → features → widgets → (views|processes|app) → app-router`만 허용. 역의존 금지.
 - **서버/클라이언트 분리**: 클라이언트 컴포넌트가 서버 전용 모듈(DB, `server-only`, `use server`)을 임포트 금지.
 - **규칙 강제**: `eslint-plugin-boundaries`, `server-only`로 경계를 도구적으로 강제.
 - **경로 별칭**: `@/*` 사용, 도메인 경계 넘어선 상대 경로 임포트 지양.

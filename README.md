@@ -12,7 +12,7 @@ src/
   features/                # 사용자 시나리오 단위의 기능 조합
   widgets/                 # 페이지에 배치되는 자족 컴포넌트 블록
   processes/               # 복합 프로세스(선택)
-  pages/                   # 장면/페이지 조립(선택, App Router와 병행)
+  views/                   # 장면/페이지 조립(선택, App Router와 병행)
   app/                     # FSD app layer(비즈니스 오케스트레이션; 라우팅 금지)
 ```
 
@@ -20,7 +20,7 @@ src/
 
 ### Dependency Direction (one‑way)
 
-`shared → entities → features → widgets → (pages|processes|app) → app-router`
+`shared → entities → features → widgets → (views|processes|app) → app-router`
 
 - 상위는 하위에만 의존 가능. 역의존 금지
 - 클라이언트 컴포넌트에서 서버 전용 모듈 임포트 금지 (`server-only`, `use server`)

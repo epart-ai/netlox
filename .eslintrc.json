@@ -1,66 +1,66 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"],
-  "plugins": ["boundaries"],
-  "settings": {
-    "boundaries/elements": [
-      { "type": "shared", "pattern": "src/shared/**" },
-      { "type": "entities", "pattern": "src/entities/**" },
-      { "type": "features", "pattern": "src/features/**" },
-      { "type": "widgets", "pattern": "src/widgets/**" },
-      { "type": "pages", "pattern": "src/pages/**" },
-      { "type": "processes", "pattern": "src/processes/**" },
-      { "type": "app", "pattern": "src/app/**" },
-      { "type": "app-router", "pattern": "app/**" }
-    ]
-  },
-  "rules": {
-    "boundaries/element-types": [
-      2,
-      {
-        "default": "disallow",
-        "rules": [
-          { "from": "shared", "allow": ["shared"] },
-          { "from": "entities", "allow": ["shared", "entities"] },
-          { "from": "features", "allow": ["shared", "entities", "features"] },
-          {
-            "from": "widgets",
-            "allow": ["shared", "entities", "features", "widgets"]
-          },
-          {
-            "from": "pages",
-            "allow": ["shared", "entities", "features", "widgets", "pages"]
-          },
-          {
-            "from": "processes",
-            "allow": ["shared", "entities", "features", "widgets", "processes"]
-          },
-          {
-            "from": "app",
-            "allow": [
-              "shared",
-              "entities",
-              "features",
-              "widgets",
-              "pages",
-              "processes",
-              "app"
-            ]
-          },
-          {
-            "from": "app-router",
-            "allow": [
-              "shared",
-              "entities",
-              "features",
-              "widgets",
-              "pages",
-              "processes",
-              "app",
-              "app-router"
-            ]
-          }
-        ]
-      }
-    ]
-  }
+	"extends": ["next/core-web-vitals", "next/typescript"],
+	"plugins": ["boundaries"],
+	"settings": {
+		"boundaries/elements": [
+			{ "type": "shared", "pattern": "src/shared/**" },
+			{ "type": "entities", "pattern": "src/entities/**" },
+			{ "type": "features", "pattern": "src/features/**" },
+			{ "type": "widgets", "pattern": "src/widgets/**" },
+			{ "type": "views", "pattern": "src/views/**" },
+			{ "type": "processes", "pattern": "src/processes/**" },
+			{ "type": "app", "pattern": "src/app/**" },
+			{ "type": "app-router", "pattern": "app/**" }
+		]
+	},
+	"rules": {
+		"boundaries/element-types": [
+			2,
+			{
+				"default": "disallow",
+				"rules": [
+					{ "from": "shared", "allow": ["shared"] },
+					{ "from": "entities", "allow": ["shared", "entities"] },
+					{ "from": "features", "allow": ["shared", "entities", "features"] },
+					{
+						"from": "widgets",
+						"allow": ["shared", "entities", "features", "widgets"]
+					},
+					{
+						"from": "views",
+						"allow": ["shared", "entities", "features", "widgets", "views"]
+					},
+					{
+						"from": "processes",
+						"allow": ["shared", "entities", "features", "widgets", "processes"]
+					},
+					{
+						"from": "app",
+						"allow": [
+							"shared",
+							"entities",
+							"features",
+							"widgets",
+							"views",
+							"processes",
+							"app"
+						]
+					},
+					{
+						"from": "app-router",
+						"allow": [
+							"shared",
+							"entities",
+							"features",
+							"widgets",
+							"views",
+							"processes",
+							"app",
+							"app-router"
+						]
+					}
+				]
+			}
+		]
+	}
 }

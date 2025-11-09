@@ -1,6 +1,7 @@
-import { MainSectionLayout } from "@/pages/main/ui/MainSectionLayout";
 import { BackgroundImage, DataCard, DataList } from "@/shared/ui/display";
 import { Button, ButtonBox } from "@/shared/ui/shadcn";
+
+import { MainSectionLayout } from "./MainSectionLayout";
 
 export const MainFeatures = () => {
 	const data = [

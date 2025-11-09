@@ -1,7 +1,8 @@
 "use client";
 
-import { MainSectionLayout } from "@/pages/main/ui/MainSectionLayout";
 import { DataCard } from "@/shared/ui/display";
+
+import { MainSectionLayout } from "./MainSectionLayout";
 
 export const MainModel = () => {
 	const data = [

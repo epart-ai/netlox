@@ -1,8 +1,9 @@
 import { Fragment } from "react";
 
-import { MainSectionLayout } from "@/pages/main/ui/MainSectionLayout";
 import { BackgroundImage } from "@/shared/ui/display";
 import { Button, ButtonBox, Separator } from "@/shared/ui/shadcn";
+
+import { MainSectionLayout } from "./MainSectionLayout";
 
 export const MainSuccess = () => {
 	const data = [
