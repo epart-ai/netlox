@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+	// Use default page extensions for both App Router and Pages Router
+	pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
 	experimental: {
 		turbo: {
 			rules: {
