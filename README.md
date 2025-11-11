@@ -50,3 +50,16 @@ npm run start    # 프로덕션 실행
 npm run lint     # ESLint
 npm run format   # Biome format
 ```
+
+## Supabase 연동
+
+- 필수 패키지: `@supabase/supabase-js`, `@supabase/ssr`
+- 환경 변수:
+  - `NEXT_PUBLIC_SUPABASE_URL`
+  - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+  - `SUPABASE_SERVICE_ROLE_KEY` (선택, 서버 전용)
+- 클라이언트/서버 유틸:
+  - 클라이언트: `createSupabaseBrowserClient()` (`src/shared/supabase/browser-client.ts`)
+  - 서버: `createSupabaseServerClient()` (`src/shared/supabase/server-client.ts`)
+  - Provider & 훅: `SupabaseProvider`, `useSupabaseClient()` (`src/shared/supabase/provider.tsx`)
+- 전역 Provider 구조: `app/providers.tsx`에서 `SupabaseProvider`와 `QueryProvider`가 중첩되어 동작합니다.

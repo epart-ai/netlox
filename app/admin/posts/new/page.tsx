@@ -1,0 +1,172 @@
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
+import { requireAdmin } from '@/shared/admin/admin'
+import { boardsService } from '@/shared/board/boards'
+import type { Board } from '@/shared/board/types/board'
+import { createClient } from '@/shared/supabase/client'
+import { useRouter } from 'next/navigation'
+
+export const dynamic = 'force-dynamic'
+
+export default function AdminPostNewPage() {
+  const [allowed, setAllowed] = useState<boolean | null>(null)
+  const [boards, setBoards] = useState<Board[]>([])
+  const [board, setBoard] = useState('')
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [files, setFiles] = useState<File[]>([])
+  const fileInputRef = useRef<HTMLInputElement | null>(null)
+  const router = useRouter()
+
+  useEffect(() => {
+    (async () => {
+      const result = await requireAdmin()
+      if (!result.ok) {
+        window.location.replace('/admin/login')
+        return
+      }
+      setAllowed(true)
+      const list = await boardsService.listAll()
+      setBoards(list)
+      if (list.length) setBoard(list[0].slug)
+    })()
+  }, [])
+
+  const authHeader = async (): Promise<Record<string, string>> => {
+    const supabase = createClient()
+    const { data: { session } } = await supabase.auth.getSession()
+    return session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {}
+  }
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (!title.trim() || !content.trim() || !board) {
+      setError('필수 항목을 입력하세요.')
+      return
+    }
+    try {
+      setLoading(true)
+      setError('')
+      const authHeaders = await authHeader()
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+        ...authHeaders
+      }
+      const response = await fetch('/api/admin/posts', { method: 'POST', headers, body: JSON.stringify({ title: title.trim(), content: content.trim(), board_slug: board }) })
+      const result = await response.json()
+      if (!response.ok) throw new Error(result.error || '생성 실패')
+      if (files.length > 0) {
+        const createdId: string | undefined = result.post?.id
+        if (!createdId) throw new Error('생성된 게시글 ID를 확인할 수 없습니다.')
+        const supabase = createClient()
+        const uploads: { file_url: string; file_name?: string; file_size?: number; mime_type?: string }[] = []
+        for (const file of files) {
+          const path = `${createdId}/${Date.now()}_${encodeURIComponent(file.name)}`
+          const { error: upErr } = await supabase.storage.from('attachments').upload(path, file, {
+            cacheControl: '3600',
+            upsert: false,
+            contentType: file.type || undefined
+          })
+          if (upErr) throw new Error(`파일 업로드 실패 (${file.name}): ${upErr.message}`)
+          const { data } = supabase.storage.from('attachments').getPublicUrl(path)
+          uploads.push({ file_url: data.publicUrl, file_name: file.name, file_size: file.size, mime_type: file.type || undefined })
+        }
+        const attachmentRes = await fetch('/api/admin/attachments', {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({ postId: createdId, files: uploads })
+        })
+        const attachmentJson = await attachmentRes.json()
+        if (!attachmentRes.ok) throw new Error(attachmentJson.error || '첨부 파일 저장 실패')
+      }
+      router.push('/admin/posts')
+    } catch (err) {
+      const message = err instanceof Error ? err.message : '알 수 없는 오류가 발생했습니다.'
+      setError(message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  if (allowed !== true) {
+    return (
+      <div className="max-w-5xl mx-auto px-6 py-16">
+        <p className="text-slate-300">로딩 중...</p>
+      </div>
+    )
+  }
+
+  return (
+    <div className="max-w-5xl mx-auto px-6 py-8">
+        <div className="bg-slate-900 shadow rounded-lg border border-slate-800 p-6">
+          <h1 className="text-2xl font-bold text-white mb-6">새 글 작성</h1>
+          {error && <p className="mb-4 text-sm text-red-400">{error}</p>}
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="post-board" className="block text-sm text-slate-300 mb-2">보드</label>
+                <select id="post-board" value={board} onChange={(e) => setBoard(e.target.value)} className="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded px-3 py-2">
+                  {boards.map((b) => (
+                    <option key={b.slug} value={b.slug}>{b.name}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div>
+              <label htmlFor="post-files" className="block text-sm text-slate-300 mb-2">첨부파일 {(() => {
+                const b = boards.find(x => x.slug === board)
+                return b ? `(최대 ${b.max_attachments}개)` : ''
+              })()}</label>
+              <input
+                id="post-files"
+                ref={fileInputRef}
+                type="file"
+                multiple
+                onChange={(e) => {
+                  const selected = Array.from(e.target.files || [])
+                  const limit = boards.find(x => x.slug === board)?.max_attachments ?? 5
+                  setFiles(prev => {
+                    const combined = [...prev, ...selected]
+                    return combined.slice(0, limit)
+                  })
+                  if (fileInputRef.current) fileInputRef.current.value = ''
+                }}
+                className="hidden"
+              />
+              <div className="flex items-center gap-3">
+                <button type="button" onClick={() => fileInputRef.current?.click()} className="px-3 py-2 border border-slate-700 rounded text-sm text-slate-200">파일 추가</button>
+                <span className="text-sm text-slate-400">선택됨: {files.length}개</span>
+              </div>
+              {files.length > 0 && (
+                <ul className="mt-2 text-sm text-slate-400 list-disc pl-5">
+                  {files.map((f, i) => (
+                    <li key={i} className="flex items-center justify-between">
+                      <span className="truncate mr-3">{f.name}</span>
+                      <button type="button" className="text-red-400 text-xs" onClick={() => setFiles(prev => prev.filter((_, idx) => idx !== i))}>제거</button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <div>
+              <label htmlFor="post-title" className="block text-sm text-slate-300 mb-2">제목</label>
+              <input id="post-title" value={title} onChange={(e) => setTitle(e.target.value)} className="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded px-3 py-2" placeholder="제목" />
+            </div>
+            <div>
+              <label htmlFor="post-content" className="block text-sm text-slate-300 mb-2">내용</label>
+              <textarea id="post-content" value={content} onChange={(e) => setContent(e.target.value)} rows={12} className="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded px-3 py-2" placeholder="내용" />
+            </div>
+            <div className="flex justify-end gap-3">
+              <button type="button" onClick={() => router.back()} className="px-4 py-2 border border-slate-700 text-slate-200 rounded">취소</button>
+              <button type="submit" disabled={loading || files.length > ((boards.find(x => x.slug === board)?.max_attachments) ?? 5)} className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded disabled:opacity-50">{loading ? '작성 중...' : '작성하기'}</button>
+            </div>
+          </form>
+        </div>
+    </div>
+  )
+}
+
+

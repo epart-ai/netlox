@@ -8,15 +8,15 @@ import { CookieAgree } from "@/features/cookie-agree";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 
-import { AppProviders } from "./providers";
+import { AppProviders } from "../providers";
 
 const geistSans = localFont({
-	src: "../public/fonts/GeistVF.woff",
+	src: "../../public/fonts/GeistVF.woff",
 	variable: "--font-geist-sans",
 	weight: "100 900",
 });
 const geistMono = localFont({
-	src: "../public/fonts/GeistMonoVF.woff",
+	src: "../../public/fonts/GeistMonoVF.woff",
 	variable: "--font-geist-mono",
 	weight: "100 900",
 });
