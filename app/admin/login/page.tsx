@@ -1,8 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import AdminHeader from '@/widgets/admin/AdminHeader'
-import AdminFooter from '@/widgets/admin/AdminFooter'
 import { createClient } from '@/shared/supabase/client'
 import { isAdminUser } from '@/shared/admin/admin'
 import { useRouter } from 'next/navigation'
@@ -43,7 +41,6 @@ export default function AdminLoginPage() {
 
   return (
     <div className="min-h-screen bg-slate-950">
-      <AdminHeader />
       <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="bg-slate-900 border border-slate-800 rounded-lg p-6">
           <h1 className="text-2xl font-bold text-white mb-6">관리자 로그인</h1>
@@ -81,7 +78,6 @@ export default function AdminLoginPage() {
           </form>
         </div>
       </div>
-      <AdminFooter />
     </div>
   )
 }
