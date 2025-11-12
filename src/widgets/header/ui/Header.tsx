@@ -2,15 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/shadcn";
 
 export const Header = () => {
 	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+	const pathname = usePathname();
+	const prevPathRef = useRef(pathname);
 
-	// Lock body scroll when mobile nav is open (mobile only)
 	useEffect(() => {
 		const isDesktop = () =>
 			typeof window !== "undefined" &&
@@ -28,6 +30,13 @@ export const Header = () => {
 		};
 	}, [isMobileNavOpen]);
 
+	useEffect(() => {
+		if (prevPathRef.current !== pathname) {
+			if (isMobileNavOpen) setIsMobileNavOpen(false);
+			prevPathRef.current = pathname;
+		}
+	}, [pathname, isMobileNavOpen]);
+
 	const navItems = [
 		{ label: "Product", href: "/products" },
 		{ label: "Solutions", href: "/solutions" },
@@ -43,7 +52,7 @@ export const Header = () => {
 				<div className="wrapper">
 					<div
 						className={cn(
-							"h-header relative flex items-center justify-center lg:justify-between",
+							"relative flex h-header items-center justify-center lg:justify-between",
 						)}
 					>
 						<button
@@ -91,7 +100,6 @@ export const Header = () => {
 				</div>
 			</div>
 			<div
-				aria-label="Mobile navigation wrapper"
 				className={cn(
 					"bg-blur absolute flex h-[calc(100vh-var(--header-h))] w-[60vw] max-w-[320px] transform flex-col justify-between border-r-[1px] border-white/25 py-10 shadow-x-1 transition-transform duration-300 ease-out",
 					"lg:pointer-events-none lg:static lg:z-20 lg:h-auto lg:w-full lg:max-w-none lg:transform-none lg:border-none lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none lg:backdrop-brightness-100 lg:absolute-center lg:[backdrop-filter:none]",

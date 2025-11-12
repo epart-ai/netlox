@@ -1,6 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
+import type { ReactNode } from "react";
 
+import { type VariantProps, cva } from "class-variance-authority";
+
+import { cn } from "@/shared/lib/utils";
+import { TextLink } from "@/shared/ui/navigation";
 import {
 	Card,
 	CardContent,
@@ -10,40 +14,90 @@ import {
 	CardTitle,
 } from "@/shared/ui/shadcn/card";
 
-type Card = {
+const dataCardVariant = cva("", {
+	variants: {
+		colors: {
+			blue: "[&_.iconBox]:bg-blue-20/25",
+			green: "[&_.iconBox]:bg-green-10/15",
+			purple: "[&_.iconBox]:bg-purple-10/15",
+			orange: "[&_.iconBox]:bg-orange-10/15",
+		},
+		enableHover: {
+			true: "",
+			false: "",
+		},
+	},
+	compoundVariants: [
+		{
+			colors: "blue",
+			enableHover: true,
+			class:
+				"[&_.cardItem:hover]:border-blue-20 [&_.cardItem:hover]:shadow-[0_0_40px_0_rgb(var(--color-blue-10-rgb)/0.25)] [&_.cardItem:hover_.iconBox]:bg-blue-20",
+		},
+		{
+			colors: "green",
+			enableHover: true,
+			class:
+				"[&_.cardItem:hover]:border-green-20 [&_.cardItem:hover]:shadow-[0_0_40px_0_rgb(var(--color-green-10-rgb)/0.25)] [&_.cardItem:hover_.iconBox]:bg-green-10",
+		},
+		{
+			colors: "purple",
+			enableHover: true,
+			class:
+				"[&_.cardItem:hover]:border-purple-20 [&_.cardItem:hover]:shadow-[0_0_40px_0_rgb(var(--color-purple-10-rgb)/0.25)] [&_.cardItem:hover_.iconBox]:bg-purple-20",
+		},
+		{
+			colors: "orange",
+			enableHover: true,
+			class:
+				"[&_.cardItem:hover]:border-orange-20 [&_.cardItem:hover]:shadow-[0_0_40px_0_rgb(var(--color-orange-10-rgb)/0.25)] [&_.cardItem:hover_.iconBox]:bg-orange-20",
+		},
+	],
+});
+
+type Item = {
 	title: string;
-	description: string;
+	description: ReactNode;
 	image?: string;
 	link?: {
 		label: string;
 		url: string;
 	};
-	footer?: React.ReactNode;
+	footer?: ReactNode;
 };
-
-interface Link {
-	label: string;
-	url: string;
-}
-
-interface Props {
-	data: Card[];
+interface Props extends VariantProps<typeof dataCardVariant> {
+	data: Item[];
 	className?: string;
+	colors?: "blue" | "green" | "purple" | "orange";
+	enableHover?: boolean;
 }
 
-export const DataCard = ({ data, className }: Props) => {
+export const DataCard = ({
+	data,
+	className,
+	colors,
+	enableHover = false,
+}: Props) => {
 	return (
-		<CardList className={className}>
+		<CardList
+			className={cn(dataCardVariant({ colors, enableHover }), className)}
+		>
 			{data.map((item) => (
-				<Card key={item.title}>
+				<Card key={item.title} className="cardItem">
 					<CardContent>
 						{item.image && (
-							<div className="flex h-15 w-15 items-center justify-center rounded-2xl bg-blue-20/25 backdrop-blur-md lg:h-20 lg:w-20">
+							<div className="iconBox flex h-15 w-15 items-center justify-center rounded-2xl backdrop-blur-md md:h-20 md:w-20">
 								<Image
 									src={item.image}
 									alt={item.title}
 									width={44}
 									height={44}
+									className={cn(
+										"iconImage h-8 w-8 md:h-10 md:w-10 lg:h-11 lg:w-11",
+										enableHover &&
+											"[.cardItem:hover_&]:brightness-0 [.cardItem:hover_&]:invert [.cardItem:hover_&]:filter",
+									)}
+									priority={true}
 								/>
 							</div>
 						)}
@@ -52,18 +106,12 @@ export const DataCard = ({ data, className }: Props) => {
 							<CardDescription>{item.description}</CardDescription>
 						</div>
 						{item.link && (
-							<Link
+							<TextLink
 								href={item.link.url}
-								className="subTitle-14 inline-flex w-fit items-center gap-2 md:gap-3"
-							>
-								{item.link.label}
-								<Image
-									src="/images/common/icon_arrow_blue.svg"
-									alt="arrow-right"
-									width={5}
-									height={8}
-								/>
-							</Link>
+								label={item.link.label}
+								colors={colors}
+								className="mt-2"
+							/>
 						)}
 					</CardContent>
 					{item.footer && <CardFooter>{item.footer}</CardFooter>}

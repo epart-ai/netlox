@@ -4,9 +4,10 @@ import localFont from "next/font/local";
 import "@fontsource-variable/outfit";
 
 import "@/app/globals.css";
-import { AppProviders } from "../providers";
 import AdminFooter from "@/widgets/admin/AdminFooter";
 import AdminHeader from "@/widgets/admin/AdminHeader";
+
+import { AppProviders } from "../providers";
 
 const geistSans = localFont({
 	src: "../../public/fonts/GeistVF.woff",

@@ -336,7 +336,7 @@ const config = {
 			spacing: {
 				...generateSpacingScale({
 					baseUnit: 0.25,
-					maxValue: 24,
+					maxValue: 40,
 					decimalPoints: [0.5],
 					pixelBase: 16,
 					includePixelComments: false,

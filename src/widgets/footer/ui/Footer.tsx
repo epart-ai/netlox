@@ -34,7 +34,7 @@ export const Footer = () => {
 	return (
 		<>
 			<div className="bg-gradient-to-b from-blue-100/15 to-blue-20/15">
-				<div className="wrapper py-15 lg:py-40">
+				<div className="wrapper py-15 md:py-25 lg:py-40">
 					<div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-b from-blue-10 to-blue-20 px-4 py-10 lg:py-20">
 						<BackgroundImage
 							opacity="50"
@@ -85,9 +85,9 @@ export const Footer = () => {
 										<strong className="subTitle-16 mb-2 text-blue-20">
 											{section.title}
 										</strong>
-										{section.links.map((link, index) => (
+										{section.links.map((link) => (
 											<a
-												key={index}
+												key={`${section.title}-${link}`}
 												href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
 												className="paragraph-16"
 											>

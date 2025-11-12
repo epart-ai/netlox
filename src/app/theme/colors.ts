@@ -2,6 +2,7 @@ const colors = {
 	white: "#ffffff",
 	black: "#000000",
 	green: {
+		"10": "#09bc4b",
 		"20": "#4ce183",
 		"60": "#09bc4b",
 	},

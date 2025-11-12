@@ -34,7 +34,7 @@ export const MainModel = () => {
 			title="Choose Your Deployment Model"
 			description="Deploy NetLOX anywhere, from on-premise bare metal and Kubernetes clusters to a fully managed SaaS on AWS."
 		>
-			<DataCard data={data} />
+			<DataCard data={data} colors="blue" />
 		</MainSectionLayout>
 	);
 };

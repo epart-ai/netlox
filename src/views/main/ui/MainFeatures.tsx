@@ -40,7 +40,7 @@ export const MainFeatures = () => {
 				/>
 			}
 		>
-			<DataCard data={data} />
+			<DataCard data={data} colors="blue" />
 			<ButtonBox className="mt-20">
 				<Button variant="primary">Explore All Features</Button>
 			</ButtonBox>

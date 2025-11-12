@@ -38,7 +38,7 @@ export const MainHero = () => {
 				/>
 			</video>
 			<div className="h-full w-full bg-[linear-gradient(180deg,rgba(2,6,23,0.00)_0%,#020617_100%)] absolute-center">
-				<div className="pt-header wrapper h-full">
+				<div className="wrapper h-full pt-header">
 					<div className="flex h-full w-full flex-col items-center justify-center gap-7">
 						<h2 className="title-40 text-center md:title-60 lg:title-80">
 							10× Faster Load Balancer

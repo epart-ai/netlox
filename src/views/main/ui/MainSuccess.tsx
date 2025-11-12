@@ -33,13 +33,13 @@ export const MainSuccess = () => {
 			bgImage={
 				<BackgroundImage
 					className="mix-blend-overlay"
-					src="/images/main/bg_content.png"
+					src="/images/common/bg_content.png"
 				/>
 			}
 		>
 			<div className="flex flex-col items-stretch gap-6 md:flex-row lg:gap-12.5">
 				{data.map((item, index) => (
-					<Fragment key={index}>
+					<Fragment key={item.title}>
 						{index !== 0 && (
 							<Separator
 								opacity="25"
