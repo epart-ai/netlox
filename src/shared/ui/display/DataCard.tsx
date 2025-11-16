@@ -17,8 +17,8 @@ import {
 const dataCardVariant = cva("", {
 	variants: {
 		colors: {
-			blue: "[&_.iconBox]:bg-blue-20/25",
-			green: "[&_.iconBox]:bg-green-10/15",
+			blue: "[&_.iconBox]:bg-blue-60/25",
+			green: "[&_.iconBox]:bg-green-60/15",
 			purple: "[&_.iconBox]:bg-purple-10/15",
 			orange: "[&_.iconBox]:bg-orange-10/15",
 		},
@@ -32,25 +32,25 @@ const dataCardVariant = cva("", {
 			colors: "blue",
 			enableHover: true,
 			class:
-				"[&_.cardItem:hover]:border-blue-20 [&_.cardItem:hover]:shadow-[0_0_40px_0_rgb(var(--color-blue-10-rgb)/0.25)] [&_.cardItem:hover_.iconBox]:bg-blue-20",
+				"[&_.cardItem:hover]:border-blue-60 [&_.cardItem:hover]:shadow-[0_0_40px_0_rgb(var(--color-blue-60-rgb)/0.25)] [&_.cardItem:hover_.iconBox]:bg-blue-60",
 		},
 		{
 			colors: "green",
 			enableHover: true,
 			class:
-				"[&_.cardItem:hover]:border-green-20 [&_.cardItem:hover]:shadow-[0_0_40px_0_rgb(var(--color-green-10-rgb)/0.25)] [&_.cardItem:hover_.iconBox]:bg-green-10",
+				"[&_.cardItem:hover]:border-green-60 [&_.cardItem:hover]:shadow-[0_0_40px_0_rgb(var(--color-green-60-rgb)/0.25)] [&_.cardItem:hover_.iconBox]:bg-green-60",
 		},
 		{
 			colors: "purple",
 			enableHover: true,
 			class:
-				"[&_.cardItem:hover]:border-purple-20 [&_.cardItem:hover]:shadow-[0_0_40px_0_rgb(var(--color-purple-10-rgb)/0.25)] [&_.cardItem:hover_.iconBox]:bg-purple-20",
+				"[&_.cardItem:hover]:border-purple-60 [&_.cardItem:hover]:shadow-[0_0_40px_0_rgb(var(--color-purple-60-rgb)/0.25)] [&_.cardItem:hover_.iconBox]:bg-purple-60",
 		},
 		{
 			colors: "orange",
 			enableHover: true,
 			class:
-				"[&_.cardItem:hover]:border-orange-20 [&_.cardItem:hover]:shadow-[0_0_40px_0_rgb(var(--color-orange-10-rgb)/0.25)] [&_.cardItem:hover_.iconBox]:bg-orange-20",
+				"[&_.cardItem:hover]:border-orange-60 [&_.cardItem:hover]:shadow-[0_0_40px_0_rgb(var(--color-orange-60-rgb)/0.25)] [&_.cardItem:hover_.iconBox]:bg-orange-60",
 		},
 	],
 });

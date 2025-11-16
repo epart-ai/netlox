@@ -59,7 +59,7 @@ const TableRow = React.forwardRef<
 		ref={ref}
 		role="row"
 		className={cn(
-			"data-[state=selected]:bg-muted relative flex border-b border-white/10 after:absolute after:bottom-1 after:left-0 after:right-0 after:top-1 after:rounded-lg after:bg-blue-600/25 after:opacity-0 after:transition-opacity after:duration-300 after:ease-out [.table-body_&:hover]:after:opacity-100",
+			"data-[state=selected]:bg-muted relative flex border-b border-white/10 after:absolute after:bottom-1 after:left-0 after:right-0 after:top-1 after:rounded-lg after:bg-blue-100/25 after:opacity-0 after:transition-opacity after:duration-300 after:ease-out [.table-body_&:hover]:after:opacity-100",
 			className,
 		)}
 		{...props}

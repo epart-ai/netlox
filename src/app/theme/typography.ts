@@ -7,19 +7,19 @@ const typography = {
 			fontFamily: "Outfit Variable",
 			fontSize: "18px",
 			fontWeight: "700",
-			color: darkColor.blue["60"],
+			color: darkColor.blue["20"],
 		},
 		"16": {
 			fontFamily: "Outfit Variable",
 			fontSize: "16px",
 			fontWeight: "700",
-			color: darkColor.blue["60"],
+			color: darkColor.blue["20"],
 		},
 		"14": {
 			fontFamily: "Outfit Variable",
 			fontSize: "14px",
 			fontWeight: "700",
-			color: darkColor.blue["60"],
+			color: darkColor.blue["20"],
 		},
 	},
 	title: {

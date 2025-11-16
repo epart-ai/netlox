@@ -42,7 +42,7 @@ export const MainHero = () => {
 					<div className="flex h-full w-full flex-col items-center justify-center gap-7">
 						<h2 className="title-40 text-center md:title-60 lg:title-80">
 							10× Faster Load Balancer
-							<span className="block text-blue-20">Than MetalLB</span>
+							<span className="block text-blue-60">Than MetalLB</span>
 						</h2>
 						<p className="paragraph-16 text-center md:paragraph-20 lg:paragraph-24">
 							eBPF-powered, independently benchmarked, and trusted by Fortune

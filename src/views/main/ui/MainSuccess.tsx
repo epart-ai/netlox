@@ -48,7 +48,7 @@ export const MainSuccess = () => {
 							/>
 						)}
 						<div>
-							<strong className="title-44 text-blue-20 lg:title-60">
+							<strong className="title-44 text-blue-60 lg:title-60">
 								{item.subTitle}
 							</strong>
 							<h3 className="title-20 mt-6 lg:title-24 lg:mt-9">

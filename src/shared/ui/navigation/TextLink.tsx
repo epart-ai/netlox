@@ -9,7 +9,7 @@ const linkVariant = cva(
 	{
 		variants: {
 			colors: {
-				blue: "text-blue-60 [&_path]:fill-blue-60",
+				blue: "text-blue-20 [&_path]:fill-blue-20",
 				green: "text-green-60 [&_path]:fill-green-60",
 				purple: "text-purple-60 [&_path]:fill-purple-60",
 				orange: "text-orange-60 [&_path]:fill-orange-60",

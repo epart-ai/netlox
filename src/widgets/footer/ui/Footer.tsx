@@ -33,9 +33,9 @@ export const Footer = () => {
 
 	return (
 		<>
-			<div className="bg-gradient-to-b from-blue-100/15 to-blue-20/15">
+			<div className="bg-gradient-to-b from-blue-100/15 to-blue-60/15">
 				<div className="wrapper py-15 md:py-25 lg:py-40">
-					<div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-b from-blue-10 to-blue-20 px-4 py-10 lg:py-20">
+					<div className="from-blue-40 relative flex w-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-b to-blue-60 px-4 py-10 lg:py-20">
 						<BackgroundImage
 							opacity="50"
 							className="z-0 mix-blend-multiply"
@@ -82,7 +82,7 @@ export const Footer = () => {
 										key={section.title}
 										className="flex flex-col gap-4 text-center sm:w-1/2 md:w-1/3 lg:w-auto"
 									>
-										<strong className="subTitle-16 mb-2 text-blue-20">
+										<strong className="subTitle-16 mb-2 text-blue-60">
 											{section.title}
 										</strong>
 										{section.links.map((link) => (

@@ -330,6 +330,12 @@ function bgPlugin(api: PluginAPI) {
 
 const config = {
 	content: ["./app/**/*.{js,ts,jsx,tsx,mdx}", "./src/**/*.{js,jsx,ts,tsx}"],
+	safelist: [
+		// allow dynamic theme color classes via string interpolation
+		{ pattern: /bg-(green|blue|purple|orange)-(10|20|60|100)/ },
+		{ pattern: /text-(green|blue|purple|orange)-(10|20|60|100)/ },
+		{ pattern: /border-(green|blue|purple|orange)-(10|20|60|100)/ },
+	],
 	darkMode: "class",
 	theme: {
 		extend: {

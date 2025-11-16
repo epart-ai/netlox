@@ -22,7 +22,7 @@ export const CookieAgree = () => {
 							This website uses cookies to ensure you get the best experience.
 							<br className="hidden md:block" /> {""}
 							By continuing to use our site, you agree to our {""}
-							<a href="/cookie-policy" className="text-blue-20/75 underline">
+							<a href="/cookie-policy" className="text-blue-60/75 underline">
 								Cookie Policy
 							</a>
 							.
