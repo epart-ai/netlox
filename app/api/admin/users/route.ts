@@ -45,8 +45,10 @@ export async function POST(request: Request) {
 	try {
 		const body: UpdateRolePayload = await request.json()
 		const { userId, role } = body
-		if (!userId || !role) return NextResponse.json({ error: 'Invalid payload' }, { status: 400 })
-		const { data, error } = await admin.auth.admin.updateUserById(userId, { app_metadata: { role } })
+		if (!userId || role === undefined) return NextResponse.json({ error: 'Invalid payload' }, { status: 400 })
+		// 빈 문자열은 일반 사용자(역할 없음)로 처리 - null로 저장
+		const roleValue = role === '' ? null : role
+		const { data, error } = await admin.auth.admin.updateUserById(userId, { app_metadata: { role: roleValue } })
 		if (error) return NextResponse.json({ error: error.message }, { status: 400 })
 		return NextResponse.json({ ok: true, user: data.user ?? data })
 	} catch (err) {

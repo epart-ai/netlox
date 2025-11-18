@@ -33,6 +33,7 @@ export default function AdminHeader() {
           <Link href="/admin/users" className="hover:text-white">사용자관리</Link>
           <Link href="/admin/boards" className="hover:text-white">게시판(Slug)관리</Link>
           <Link href="/admin/posts" className="hover:text-white">게시판(글)관리</Link>
+          <Link href="/admin/settings" className="hover:text-white">이메일설정</Link>
           <button
             onClick={handleLogout}
             disabled={loading}

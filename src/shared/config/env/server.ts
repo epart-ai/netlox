@@ -8,7 +8,15 @@ const serverEnvSchema = z.object({
 	SMTP_PORT: z.string().min(1).optional(),
 	SMTP_USER: z.string().min(1).optional(),
 	SMTP_PASS: z.string().min(1).optional(),
-	CONTACT_RECIPIENT_EMAIL: z.string().email().optional(),
+	CONTACT_RECIPIENT_EMAIL: z
+		.string()
+		.optional()
+		.transform((val) => {
+			if (!val) return undefined;
+			// 쉼표로 구분된 이메일 주소들을 배열로 변환
+			return val.split(",").map((email) => email.trim()).filter(Boolean);
+		})
+		.pipe(z.array(z.string().email()).optional()),
 	CONTACT_FROM_EMAIL: z.string().email().optional(),
 	SMTP_SECURE: z.enum(["true", "false"]).optional(),
 });
