@@ -4,6 +4,7 @@ import { Slot } from "@radix-ui/react-slot";
 import { type VariantProps, cva } from "class-variance-authority";
 
 import { cn } from "@/shared/lib/utils";
+import { Spinner } from "@/shared/ui/shadcn/spinner";
 
 const buttonVariants = cva(
 	"inline-flex items-center relative justify-center gap-2 whitespace-nowrap rounded-lg !text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none  [&_svg]:shrink-0 hover:after:content-[''] hover:after:absolute hover:after:inset-0 hover:after:w-full hover:after:h-full hover:after:rounded-lg hover:after:pointer-events-none hover:shadow-none hover:after:bg-[#00000026]",
@@ -16,6 +17,7 @@ const buttonVariants = cva(
 				outline: "border border-white/25",
 				text: "!text-white/75 hover:text-white",
 				white: "bg-white !text-blue-60",
+				icon: "!p-1 rounded-full !h-auto ",
 			},
 			size: {
 				sm: "h-9 px-4 subTitle-14",
@@ -47,11 +49,22 @@ export interface ButtonProps
 	extends React.ButtonHTMLAttributes<HTMLButtonElement>,
 		VariantProps<typeof buttonVariants> {
 	asChild?: boolean;
+	isLoading?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 	(
-		{ className, variant, size, sm, md, lg, asChild = false, ...props },
+		{
+			className,
+			variant,
+			size,
+			sm,
+			md,
+			lg,
+			asChild = false,
+			isLoading = false,
+			...props
+		},
 		ref,
 	) => {
 		const Comp = asChild ? Slot : "button";
@@ -60,7 +73,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 				className={cn(buttonVariants({ variant, size, sm, md, lg, className }))}
 				ref={ref}
 				{...props}
-			/>
+			>
+				{isLoading ? <Spinner /> : props.children}
+			</Comp>
 		);
 	},
 );

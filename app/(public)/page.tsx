@@ -6,7 +6,7 @@ import {
 	MainSuccess,
 } from "@/views/main";
 
-export default function Home() {
+export default function MainPage() {
 	return (
 		<>
 			<MainHero />

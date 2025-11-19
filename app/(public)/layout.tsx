@@ -16,8 +16,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children,
+	dialog,
 }: Readonly<{
 	children: React.ReactNode;
+	dialog: React.ReactNode;
 }>) {
 	return (
 		<html lang="ko" suppressHydrationWarning>
@@ -30,6 +32,7 @@ export default function RootLayout({
 					{children}
 					<Footer />
 					<CookieAgree />
+					{dialog}
 				</AppProviders>
 			</body>
 		</html>
