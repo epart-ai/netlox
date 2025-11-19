@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { requireAdmin } from '@/shared/admin/admin';
 import { createClient } from '@/shared/supabase/client';
 
 export const dynamic = 'force-dynamic';
@@ -19,7 +18,6 @@ type AdminUser = {
 const PER_PAGE = 20;
 
 export default function AdminUsersPage() {
-	const [authorized, setAuthorized] = useState<boolean | null>(null);
 	const [users, setUsers] = useState<AdminUser[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState('');
@@ -62,21 +60,12 @@ export default function AdminUsersPage() {
 	);
 
 	useEffect(() => {
-		(async () => {
-			const result = await requireAdmin();
-			if (!result.ok) {
-				window.location.replace('/admin/login');
-				return;
-			}
-			setAuthorized(true);
-			await loadUsers(1, '');
-		})();
+		loadUsers(1, '');
 	}, [loadUsers]);
 
 	useEffect(() => {
-		if (!authorized) return;
 		loadUsers(page, query);
-	}, [authorized, loadUsers, page, query]);
+	}, [loadUsers, page, query]);
 
 	const handleSearch = () => {
 		setPage(1);
@@ -135,14 +124,6 @@ export default function AdminUsersPage() {
 			)),
 		[page, totalPages],
 	);
-
-	if (authorized !== true) {
-		return (
-			<div className="max-w-7xl mx-auto px-6 py-16 text-slate-300">
-				접근 권한을 확인하는 중입니다...
-			</div>
-		);
-	}
 
 	return (
 		<div className="max-w-7xl mx-auto px-6 py-8">

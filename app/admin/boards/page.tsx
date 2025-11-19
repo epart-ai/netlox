@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from 'react'
 
 import { boardsService } from '@/shared/board/boards'
 import type { Board } from '@/shared/board/types/board'
-import { requireAdmin } from '@/shared/admin/admin'
 
 export const dynamic = 'force-dynamic'
 
@@ -32,14 +31,7 @@ export default function AdminBoardsPage() {
   }, [])
 
   useEffect(() => {
-    (async () => {
-      const result = await requireAdmin()
-      if (!result.ok) {
-        window.location.replace('/admin/login')
-        return
-      }
-      load()
-    })()
+    load()
   }, [load])
 
   const handleCreate = async (event: React.FormEvent<HTMLFormElement>) => {

@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { useCallback, useEffect, useState } from 'react'
 
-import { requireAdmin } from '@/shared/admin/admin'
 import { attachmentsService } from '@/shared/board/attachments'
 import { boardService } from '@/shared/board/board'
 import type { Attachment, Post } from '@/shared/board/types/board'
@@ -12,7 +11,6 @@ export const dynamic = 'force-dynamic'
 
 export default function AdminPostDetailPage({ params }: { params: { id: string } }) {
   const postId = params.id
-  const [authorized, setAuthorized] = useState<boolean | null>(null)
   const [post, setPost] = useState<Post | null>(null)
   const [attachments, setAttachments] = useState<Attachment[]>([])
   const [loading, setLoading] = useState(true)
@@ -41,24 +39,8 @@ export default function AdminPostDetailPage({ params }: { params: { id: string }
   }, [postId])
 
   useEffect(() => {
-    (async () => {
-      const result = await requireAdmin()
-      if (!result.ok) {
-        window.location.replace('/admin/login')
-        return
-      }
-      setAuthorized(true)
-      await loadPost()
-    })()
+    loadPost()
   }, [loadPost])
-
-  if (authorized !== true) {
-    return (
-      <div className="max-w-5xl mx-auto px-6 py-16 text-slate-300">
-        로딩 중...
-      </div>
-    )
-  }
 
   const contentLines =
     post?.content?.split('\n').map((line, index) => ({

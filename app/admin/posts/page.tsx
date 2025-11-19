@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 
-import { requireAdmin } from '@/shared/admin/admin'
 import { boardService } from '@/shared/board/board'
 import { boardsService } from '@/shared/board/boards'
 import type { Board, Post } from '@/shared/board/types/board'
@@ -14,7 +13,6 @@ export const dynamic = 'force-dynamic'
 const PER_PAGE = 20
 
 export default function AdminPostsPage() {
-  const [authorized, setAuthorized] = useState<boolean | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [posts, setPosts] = useState<Post[]>([])
@@ -48,21 +46,12 @@ export default function AdminPostsPage() {
   }, [])
 
   useEffect(() => {
-    (async () => {
-      const result = await requireAdmin()
-      if (!result.ok) {
-        window.location.replace('/admin/login')
-        return
-      }
-      setAuthorized(true)
-      await Promise.all([loadBoards(), loadPosts(1, '')])
-    })()
+    Promise.all([loadBoards(), loadPosts(1, '')])
   }, [loadBoards, loadPosts])
 
   useEffect(() => {
-    if (!authorized) return
     loadPosts(page, board)
-  }, [authorized, board, page, loadPosts])
+  }, [board, page, loadPosts])
 
   const handleDelete = async (postId: string) => {
     if (!confirm('삭제하시겠습니까?')) return
@@ -91,14 +80,6 @@ export default function AdminPostsPage() {
       )),
     [boards],
   )
-
-  if (authorized !== true) {
-    return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <p className="text-slate-300">접근 권한을 확인하는 중입니다...</p>
-      </div>
-    )
-  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -1,7 +1,7 @@
+import nodemailer from "nodemailer";
 import "server-only";
 
-import nodemailer from "nodemailer";
-
+import { getEmailSettings } from "@/shared/config/email-settings";
 import { serverEnv } from "@/shared/config/env/server";
 
 import { type ContactFormValues } from "../model/contact-form-schema";
@@ -11,12 +11,60 @@ type MailEnvConfig = {
 	port: number;
 	user: string;
 	pass: string;
-	to: string;
+	to: string | string[];
 	from: string;
 	secure: boolean;
 };
 
-function getMailConfig(): MailEnvConfig {
+async function getMailConfig(): Promise<MailEnvConfig> {
+	// 1. DB 설정을 먼저 확인
+	const dbSettings = await getEmailSettings();
+
+	if (dbSettings) {
+		const {
+			smtp_host,
+			smtp_port,
+			smtp_user,
+			smtp_pass,
+			contact_recipient_email,
+			contact_from_email,
+			smtp_secure,
+		} = dbSettings;
+
+		if (
+			smtp_host &&
+			smtp_port &&
+			smtp_user &&
+			smtp_pass &&
+			contact_recipient_email
+		) {
+			const port = Number.parseInt(smtp_port, 10);
+
+			if (Number.isNaN(port)) {
+				throw new Error("SMTP_PORT가 올바른 숫자가 아닙니다.");
+			}
+
+			const secure = smtp_secure ? smtp_secure === "true" : port === 465;
+
+			// 쉼표로 구분된 이메일 주소들을 배열로 변환
+			const recipientEmails = contact_recipient_email
+				.split(",")
+				.map((email) => email.trim())
+				.filter(Boolean);
+
+			return {
+				host: smtp_host,
+				port,
+				user: smtp_user,
+				pass: smtp_pass,
+				to: recipientEmails.length === 1 ? recipientEmails[0] : recipientEmails,
+				from: contact_from_email || smtp_user,
+				secure,
+			};
+		}
+	}
+
+	// 2. DB 설정이 없으면 환경변수를 fallback으로 사용
 	const {
 		SMTP_HOST,
 		SMTP_PORT,
@@ -27,8 +75,17 @@ function getMailConfig(): MailEnvConfig {
 		SMTP_SECURE,
 	} = serverEnv;
 
-	if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !CONTACT_RECIPIENT_EMAIL) {
-		throw new Error("메일 발송 환경변수가 설정되지 않았습니다.");
+	if (
+		!SMTP_HOST ||
+		!SMTP_PORT ||
+		!SMTP_USER ||
+		!SMTP_PASS ||
+		!CONTACT_RECIPIENT_EMAIL ||
+		CONTACT_RECIPIENT_EMAIL.length === 0
+	) {
+		throw new Error(
+			"메일 발송 설정이 없습니다. 관리자 페이지에서 이메일 설정을 확인하세요.",
+		);
 	}
 
 	const port = Number.parseInt(SMTP_PORT, 10);
@@ -44,14 +101,19 @@ function getMailConfig(): MailEnvConfig {
 		port,
 		user: SMTP_USER,
 		pass: SMTP_PASS,
-		to: CONTACT_RECIPIENT_EMAIL,
+		// nodemailer는 배열을 지원하므로 배열을 그대로 전달
+		// 단일 이메일인 경우 배열의 첫 번째 요소만 사용
+		to:
+			CONTACT_RECIPIENT_EMAIL.length === 1
+				? CONTACT_RECIPIENT_EMAIL[0]
+				: CONTACT_RECIPIENT_EMAIL,
 		from: CONTACT_FROM_EMAIL || SMTP_USER,
 		secure,
 	};
 }
 
-function createTransport() {
-	const config = getMailConfig();
+async function createTransport() {
+	const config = await getMailConfig();
 
 	const transporter = nodemailer.createTransport({
 		host: config.host,
@@ -145,7 +207,7 @@ function buildMailContent(values: ContactFormValues) {
 }
 
 export async function sendContactEmail(values: ContactFormValues) {
-	const { transporter, config } = createTransport();
+	const { transporter, config } = await createTransport();
 	const { subject, text, html } = buildMailContent(values);
 
 	await transporter.sendMail({
@@ -157,4 +219,3 @@ export async function sendContactEmail(values: ContactFormValues) {
 		html,
 	});
 }
-

@@ -9,8 +9,14 @@ export function middleware(request: NextRequest) {
 
   // Allow public routes
   if (publicRoutes.some((route) => pathname.startsWith(route))) {
-    return NextResponse.next();
+    const response = NextResponse.next();
+    response.headers.set("x-pathname", pathname);
+    return response;
   }
+
+  // Add pathname to headers for server components
+  const response = NextResponse.next();
+  response.headers.set("x-pathname", pathname);
 
   // For protected routes, you can add session checks here
   // Example: Check for session token in cookies
@@ -19,7 +25,7 @@ export function middleware(request: NextRequest) {
   //   return NextResponse.redirect(new URL("/", request.url));
   // }
 
-  return NextResponse.next();
+  return response;
 }
 
 export const config = {

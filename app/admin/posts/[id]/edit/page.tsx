@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 
-import { requireAdmin } from '@/shared/admin/admin'
 import { attachmentsService } from '@/shared/board/attachments'
 import { boardService } from '@/shared/board/board'
 import { boardsService } from '@/shared/board/boards'
@@ -23,7 +22,6 @@ export default function AdminPostEditPage() {
 	const postId = params.id as string
 	const router = useRouter()
 
-	const [authorized, setAuthorized] = useState<boolean | null>(null)
 	const [boards, setBoards] = useState<Board[]>([])
 	const [form, setForm] = useState<FormState>({ boardSlug: '', title: '', content: '' })
 	const [existingAttachments, setExistingAttachments] = useState<Attachment[]>([])
@@ -68,15 +66,7 @@ export default function AdminPostEditPage() {
 	}, [postId])
 
 	useEffect(() => {
-		;(async () => {
-			const result = await requireAdmin()
-			if (!result.ok) {
-				window.location.replace('/admin/login')
-				return
-			}
-			setAuthorized(true)
-			await loadData()
-		})()
+		loadData()
 	}, [loadData])
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -226,14 +216,6 @@ export default function AdminPostEditPage() {
 			)),
 		[boards],
 	)
-
-	if (authorized !== true) {
-		return (
-			<div className="max-w-5xl mx-auto px-6 py-16 text-slate-300">
-				접근 권한을 확인하는 중입니다...
-			</div>
-		)
-	}
 
 	const selectedBoard = boards.find((item) => item.slug === form.boardSlug)
 	const maxAttachments = selectedBoard?.max_attachments ?? 5

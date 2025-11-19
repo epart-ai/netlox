@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { requireAdmin } from '@/shared/admin/admin'
 import { boardsService } from '@/shared/board/boards'
 import type { Board } from '@/shared/board/types/board'
 import { createClient } from '@/shared/supabase/client'
@@ -10,7 +9,6 @@ import { useRouter } from 'next/navigation'
 export const dynamic = 'force-dynamic'
 
 export default function AdminPostNewPage() {
-  const [allowed, setAllowed] = useState<boolean | null>(null)
   const [boards, setBoards] = useState<Board[]>([])
   const [board, setBoard] = useState('')
   const [title, setTitle] = useState('')
@@ -23,12 +21,6 @@ export default function AdminPostNewPage() {
 
   useEffect(() => {
     (async () => {
-      const result = await requireAdmin()
-      if (!result.ok) {
-        window.location.replace('/admin/login')
-        return
-      }
-      setAllowed(true)
       const list = await boardsService.listAll()
       setBoards(list)
       if (list.length) setBoard(list[0].slug)
@@ -89,14 +81,6 @@ export default function AdminPostNewPage() {
     } finally {
       setLoading(false)
     }
-  }
-
-  if (allowed !== true) {
-    return (
-      <div className="max-w-5xl mx-auto px-6 py-16">
-        <p className="text-slate-300">로딩 중...</p>
-      </div>
-    )
   }
 
   return (
