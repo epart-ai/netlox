@@ -10,6 +10,7 @@ import {
 	CardContent,
 	CardDescription,
 	CardFooter,
+	CardHeader,
 	CardList,
 	CardTitle,
 } from "@/shared/ui/shadcn/card";
@@ -83,17 +84,17 @@ export const DataCard = ({
 			className={cn(dataCardVariant({ colors, enableHover }), className)}
 		>
 			{data.map((item) => (
-				<Card key={item.title} className="cardItem">
+				<Card key={item.title} variant="glass" className="cardItem">
 					<CardContent>
 						{item.image && (
-							<div className="iconBox flex h-15 w-15 items-center justify-center rounded-2xl backdrop-blur-md md:h-20 md:w-20">
+							<div className="iconBox flex size-15 items-center justify-center rounded-2xl p-3.5 backdrop-blur-md md:size-20 md:p-5 lg:p-4.5">
 								<Image
 									src={item.image}
 									alt={item.title}
 									width={44}
 									height={44}
 									className={cn(
-										"iconImage h-8 w-8 md:h-10 md:w-10 lg:h-11 lg:w-11",
+										"iconImage size-full",
 										enableHover &&
 											"[.cardItem:hover_&]:brightness-0 [.cardItem:hover_&]:invert [.cardItem:hover_&]:filter",
 									)}
@@ -101,16 +102,17 @@ export const DataCard = ({
 								/>
 							</div>
 						)}
-						<div className="flex flex-col gap-2 md:gap-3 lg:gap-4">
+						<CardHeader>
 							<CardTitle>{item.title}</CardTitle>
 							<CardDescription>{item.description}</CardDescription>
-						</div>
+						</CardHeader>
 						{item.link && (
 							<TextLink
 								href={item.link.url}
 								label={item.link.label}
 								colors={colors}
 								className="mt-2"
+								icon="show"
 							/>
 						)}
 					</CardContent>

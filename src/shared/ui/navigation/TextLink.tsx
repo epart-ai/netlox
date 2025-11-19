@@ -1,32 +1,68 @@
-import Link from "next/link";
+import Link, { type LinkProps } from "next/link";
+import type React from "react";
 
 import { type VariantProps, cva } from "class-variance-authority";
 
 import { cn } from "@/shared/lib/utils";
 
-const linkVariant = cva(
-	"subTitle-14 inline-flex w-fit items-center gap-2 md:gap-3",
-	{
-		variants: {
-			colors: {
-				blue: "text-blue-20 [&_path]:fill-blue-20",
-				green: "text-green-60 [&_path]:fill-green-60",
-				purple: "text-purple-60 [&_path]:fill-purple-60",
-				orange: "text-orange-60 [&_path]:fill-orange-60",
-			},
+const linkVariant = cva("inline-flex w-fit items-center gap-2 md:gap-3", {
+	variants: {
+		colors: {
+			blue: "text-blue-20 [&_path]:fill-blue-20",
+			green: "text-green-60 [&_path]:fill-green-60",
+			purple: "text-purple-60 [&_path]:fill-purple-60",
+			orange: "text-orange-60 [&_path]:fill-orange-60",
+		},
+		size: {
+			sm: "paragraph-14",
+			md: "paragraph-16",
+			lg: "paragraph-18",
+		},
+		iconAlign: {
+			left: "flex-row-reverse [&_svg]:rotate-180",
+			right: "",
+		},
+		icon: {
+			show: "",
+			hide: "[&_svg]:hidden",
 		},
 	},
-);
+	defaultVariants: {
+		colors: "blue",
+		size: "sm",
+		iconAlign: "right",
+		icon: "hide",
+	},
+});
 
-interface Props extends VariantProps<typeof linkVariant> {
-	href: string;
+type AnchorLikeProps = Omit<
+	React.AnchorHTMLAttributes<HTMLAnchorElement>,
+	keyof LinkProps<string>
+>;
+
+interface Props
+	extends VariantProps<typeof linkVariant>,
+		LinkProps<string>,
+		AnchorLikeProps {
 	label: string;
-	className: string;
+	className?: string;
 }
 
-export const TextLink = ({ href, label, colors, className }: Props) => {
+export const TextLink = ({
+	href,
+	label,
+	colors,
+	iconAlign,
+	icon,
+	className,
+	...props
+}: Props) => {
 	return (
-		<Link href={href} className={cn(linkVariant({ colors }), className)}>
+		<Link
+			{...props}
+			href={href}
+			className={cn(linkVariant({ colors, iconAlign, icon }), className)}
+		>
 			{label}
 			<svg
 				xmlns="http://www.w3.org/2000/svg"

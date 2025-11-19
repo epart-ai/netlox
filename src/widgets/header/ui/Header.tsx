@@ -5,13 +5,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import { ROUTES } from "@/shared/config";
 import { cn } from "@/shared/lib/utils";
+import { useSupabaseClient } from "@/shared/supabase";
 import { Button } from "@/shared/ui/shadcn";
+
+import { HeaderAuth } from "./HeaderAuth";
 
 export const Header = () => {
 	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 	const pathname = usePathname();
 	const prevPathRef = useRef(pathname);
+	const supabase = useSupabaseClient();
+	const [userEmail, setUserEmail] = useState<string | null>(null);
 
 	useEffect(() => {
 		const isDesktop = () =>
@@ -36,6 +42,29 @@ export const Header = () => {
 			prevPathRef.current = pathname;
 		}
 	}, [pathname, isMobileNavOpen]);
+
+	// 인증 상태 구독: 로그인/로그아웃 시 Header가 즉시 반영되도록
+	useEffect(() => {
+		let isMounted = true;
+
+		// 초기 사용자 정보 로드
+		supabase.auth.getUser().then(({ data }) => {
+			if (!isMounted) return;
+			setUserEmail(data.user?.email ?? null);
+		});
+
+		// 상태 변경 구독
+		const {
+			data: { subscription },
+		} = supabase.auth.onAuthStateChange((_event, session) => {
+			setUserEmail(session?.user?.email ?? null);
+		});
+
+		return () => {
+			isMounted = false;
+			subscription.unsubscribe();
+		};
+	}, [supabase]);
 
 	const navItems = [
 		{ label: "Product", href: "/products" },
@@ -124,21 +153,15 @@ export const Header = () => {
 						</ul>
 					</nav>
 					<div className="flex flex-wrap items-center justify-center lg:pointer-events-auto lg:ml-auto">
+						<HeaderAuth userEmail={userEmail} />
+
 						<Button
-							variant="text"
-							lg={false}
-							className="paragraph-16 font-medium"
-							type="button"
-							aria-label="Login to your account"
-						>
-							Login
-						</Button>
-						<Button
+							asChild
 							variant="primary"
 							type="button"
 							aria-label="Sign up for an account"
 						>
-							<span className="">Sign Up</span>
+							<Link href={ROUTES.USER_SIGNUP}>Sign Up</Link>
 						</Button>
 					</div>
 				</div>

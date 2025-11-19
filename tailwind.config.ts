@@ -361,7 +361,7 @@ const config = {
 			inset: ({ theme }: { theme: (path: string) => Record<string, string> }) =>
 				generateNegativeScale(theme, "spacing"),
 			// wrapper는 플러그인에서 .wrapper 클래스로 제공
-			maxWidth: { 440: "440px" },
+			maxWidth: { 480: "480px" },
 			colors: buildThemeColors(),
 			borderRadius: { md: "0.25rem" },
 			boxShadow: {

@@ -11,8 +11,8 @@ interface Props {
 export const DataList = ({ data, className }: Props) => {
 	return (
 		<ul className={cn("flex flex-col gap-1.5 md:gap-2", className)}>
-			{data.map((item, index) => (
-				<li key={index} className="flex items-center gap-1.5">
+			{data.map((item) => (
+				<li key={item} className="flex items-center gap-1.5">
 					<div className="flex items-center justify-center rounded-full bg-blue-60 p-1">
 						<Image
 							src="/images/common/icon_check_white.svg"

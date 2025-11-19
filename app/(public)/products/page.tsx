@@ -12,7 +12,7 @@ import {
 	ProductsSaas,
 } from "@/views/products";
 
-export default function Page() {
+export default function ProductsPage() {
 	return (
 		<>
 			<section className="overflow-hidden">
