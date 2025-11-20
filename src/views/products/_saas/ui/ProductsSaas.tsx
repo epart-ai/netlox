@@ -2,7 +2,7 @@ import { cn } from "@/shared/lib/utils";
 import { DataCard } from "@/shared/ui/display";
 import { Button } from "@/shared/ui/shadcn";
 
-import { ProductsCarousel } from "./ProductsCarousel";
+import { ProductsCarousel } from "../../ui/ProductsCarousel";
 
 export const ProductsSaas = () => {
 	const themeColor = "orange";
