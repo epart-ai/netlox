@@ -11,9 +11,9 @@ export const ROUTES = {
 	PRODUCTS_PREMIUM: "/products/premium",
 	PRODUCTS_SAAS: "/products/saas",
 
-	SOLUTIONS_AI_LLM: "/solutions/ai-llm	",
+	SOLUTIONS_AI_LLM: "/solutions/ai-llm",
 	SOLUTIONS_KUBERNETES: "/solutions/kubernetes",
-	SOLUTIONS_5G_TELCO: "/solutions/5g-telco",
+	SOLUTIONS_TELCO_5G: "/solutions/telco-5g",
 	SOLUTIONS_EDGE_COMPUTING: "/solutions/edge-computing",
 
 	TECHNOLOGY_FEATURES: "/technology/features",

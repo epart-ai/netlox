@@ -8,30 +8,30 @@ export default function ProductsLayout({
 }>) {
 	const tabs = [
 		{
-			label: "Open Source",
-			value: "openSource",
-			href: ROUTES.PRODUCTS_OPEN_SOURCE,
+			label: "AI LLM",
+			value: "aiLlm",
+			href: ROUTES.SOLUTIONS_AI_LLM,
 		},
 		{
-			label: "Enterprise",
-			value: "enterprise",
-			href: ROUTES.PRODUCTS_ENTERPRISE,
+			label: "Kubernetes",
+			value: "kubernetes",
+			href: ROUTES.SOLUTIONS_KUBERNETES,
 		},
 		{
-			label: "Premium",
-			value: "premium",
-			href: ROUTES.PRODUCTS_PREMIUM,
+			label: "5G&Telco",
+			value: "telco5g",
+			href: ROUTES.SOLUTIONS_TELCO_5G,
 		},
 		{
-			label: "SaaS",
-			value: "saas",
-			href: ROUTES.PRODUCTS_SAAS,
+			label: "Edge Computing",
+			value: "edgeComputing",
+			href: ROUTES.SOLUTIONS_EDGE_COMPUTING,
 		},
 	];
 	return (
 		<>
 			<SubPageHero
-				title="NetLOX Products"
+				title="NetLOX Solutions"
 				description="From open-source community editions to 24/7 supported enterprise-grade deployments, NetLOX provides the right solution for your scale."
 				image="/images/products/bg_hero.jpg"
 			/>

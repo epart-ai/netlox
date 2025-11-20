@@ -1,6 +1,6 @@
 import { ContactForm } from "@/features/contact";
 
-export function ContactPage() {
+export const BusinessContact = () => {
 	return (
 		<section className="mx-auto w-full max-w-5xl px-6 py-16 text-white">
 			<div className="mb-12 text-center">
@@ -12,5 +12,4 @@ export function ContactPage() {
 			<ContactForm />
 		</section>
 	);
-}
-
+};

@@ -1,0 +1,1 @@
+export { ResourceNews } from "./ResourceNews";

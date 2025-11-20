@@ -1,37 +1,27 @@
 import { ROUTES } from "@/shared/config/routes";
 import { SubPageHero, SubPageTabs } from "@/shared/ui/display";
 
-export default function ProductsLayout({
+export default function TechnologyLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
 	const tabs = [
 		{
-			label: "Open Source",
-			value: "openSource",
-			href: ROUTES.PRODUCTS_OPEN_SOURCE,
+			label: "Features",
+			value: "features",
+			href: ROUTES.TECHNOLOGY_FEATURES,
 		},
 		{
-			label: "Enterprise",
-			value: "enterprise",
-			href: ROUTES.PRODUCTS_ENTERPRISE,
-		},
-		{
-			label: "Premium",
-			value: "premium",
-			href: ROUTES.PRODUCTS_PREMIUM,
-		},
-		{
-			label: "SaaS",
-			value: "saas",
-			href: ROUTES.PRODUCTS_SAAS,
+			label: "Performance",
+			value: "performance",
+			href: ROUTES.TECHNOLOGY_PERFORMANCE,
 		},
 	];
 	return (
 		<>
 			<SubPageHero
-				title="NetLOX Products"
+				title="NetLOX Technology"
 				description="From open-source community editions to 24/7 supported enterprise-grade deployments, NetLOX provides the right solution for your scale."
 				image="/images/products/bg_hero.jpg"
 			/>
@@ -41,3 +31,4 @@ export default function ProductsLayout({
 		</>
 	);
 }
+
