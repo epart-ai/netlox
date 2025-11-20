@@ -67,12 +67,12 @@ export const Header = () => {
 	}, [supabase]);
 
 	const navItems = [
-		{ label: "Product", href: "/products" },
-		{ label: "Solutions", href: "/solutions" },
-		{ label: "Technology", href: "/technology" },
-		{ label: "Trust", href: "/trust" },
-		{ label: "Business", href: "/business" },
-		{ label: "Resource", href: "/resource" },
+		{ label: "Product", href: ROUTES.PRODUCTS_OPEN_SOURCE },
+		{ label: "Solutions", href: ROUTES.SOLUTIONS_AI_LLM },
+		{ label: "Technology", href: ROUTES.TECHNOLOGY_FEATURES },
+		{ label: "Trust", href: ROUTES.TRUST_SUCCESS_STORY },
+		{ label: "Business", href: ROUTES.BUSINESS_PRICING },
+		{ label: "Resource", href: ROUTES.RESOURCE_DOCUMENTATION },
 	];
 
 	return (
