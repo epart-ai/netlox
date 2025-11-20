@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { Tabs, TabsList, TabsTrigger } from "@/shared/ui/shadcn/tabs";
 
@@ -15,8 +18,12 @@ interface Props {
 }
 
 export const SubPageTabs = ({ tabs, image, children }: Props) => {
+	const pathname = usePathname();
+	const defaultTab =
+		tabs.find((tab) => tab.href === pathname)?.value ?? tabs[0].value;
+
 	return (
-		<Tabs defaultValue={tabs[0].value} className="">
+		<Tabs defaultValue={defaultTab} className="">
 			<TabsList>
 				<div className="wrapper">
 					{tabs.map((tab) => (

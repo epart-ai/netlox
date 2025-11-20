@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-import { contactFormSchema } from "@/features/contact";
-import { sendContactEmail } from "@/features/contact/server/send-contact-email";
+import { contactFormSchema } from "@/views/business/_contact/model";
+import { sendContactEmail } from "@/views/business/_contact/server";
 
 export const runtime = "nodejs";
 
@@ -11,7 +11,8 @@ export async function POST(request: Request) {
 		const parsed = contactFormSchema.safeParse(payload);
 
 		if (!parsed.success) {
-			const message = parsed.error.issues[0]?.message ?? "입력값을 확인해 주세요.";
+			const message =
+				parsed.error.issues[0]?.message ?? "입력값을 확인해 주세요.";
 			return NextResponse.json(
 				{ success: false, error: message },
 				{
@@ -33,4 +34,3 @@ export async function POST(request: Request) {
 		);
 	}
 }
-

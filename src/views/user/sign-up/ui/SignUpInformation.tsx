@@ -37,23 +37,25 @@ export const SignUpInformation = () => {
 			</div>
 			<div className="mt-20">
 				<h4 className="title-24 lg:title-40">Join the NetLOX Platform</h4>
-				{data.map((item) => (
-					<div key={item.title} className="mt-10 flex items-center gap-8">
-						<div className="flex size-15 shrink-0 items-center justify-center rounded-md bg-blue-20/15 p-3.5">
-							<Image
-								src={item.image}
-								alt={item.title}
-								width={32}
-								height={32}
-								className="size-full"
-							/>
+				<div className="mt-10 space-y-8">
+					{data.map((item) => (
+						<div key={item.title} className="flex items-center gap-8">
+							<div className="flex size-15 shrink-0 items-center justify-center rounded-md bg-blue-20/15 p-3.5">
+								<Image
+									src={item.image}
+									alt={item.title}
+									width={32}
+									height={32}
+									className="size-full"
+								/>
+							</div>
+							<div className="space-y-2">
+								<h4 className="title-16">{item.title}</h4>
+								<p className="paragraph-14">{item.description}</p>
+							</div>
 						</div>
-						<div className="space-y-2">
-							<h4 className="title-16">{item.title}</h4>
-							<p className="paragraph-14">{item.description}</p>
-						</div>
-					</div>
-				))}
+					))}
+				</div>
 			</div>
 		</div>
 	);

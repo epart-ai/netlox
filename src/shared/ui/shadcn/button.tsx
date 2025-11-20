@@ -22,7 +22,7 @@ const buttonVariants = cva(
 			size: {
 				sm: "h-9 px-4 subTitle-14",
 				md: "h-10 px-5 subTitle-16",
-				lg: "h-11 px-6 subTitle-18",
+				lg: "h-12 px-6 subTitle-18",
 			},
 			sm: {
 				true: "h-9 px-4 subTitle-14",
@@ -33,7 +33,7 @@ const buttonVariants = cva(
 				false: "",
 			},
 			lg: {
-				true: "lg:h-11 lg:px-6 lg:subTitle-18",
+				true: "lg:h-12 lg:px-6 lg:subTitle-18",
 				false: "",
 			},
 		},

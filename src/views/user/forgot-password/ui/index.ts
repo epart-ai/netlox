@@ -1,2 +1,1 @@
-export { ForgotPasswordPanel } from "./ForgotPasswordPanel";
-
+export { ForgotPasswordForm } from "./ForgotPasswordForm";
