@@ -160,6 +160,7 @@ export const Header = () => {
 							variant="primary"
 							type="button"
 							aria-label="Sign up for an account"
+							lg={false}
 						>
 							<Link href={ROUTES.USER_SIGNUP}>Sign Up</Link>
 						</Button>

@@ -6,6 +6,7 @@ interface Props extends React.ComponentProps<typeof Input> {
 	label: string;
 	labelSlot?: ReactNode;
 	helperText?: string;
+	error?: string;
 }
 
 export const FormInput = ({
@@ -14,6 +15,7 @@ export const FormInput = ({
 	helperText,
 	name,
 	type = "text",
+	error,
 	...props
 }: Props) => {
 	return (
@@ -24,6 +26,7 @@ export const FormInput = ({
 			</div>
 			<Input {...props} id={name} name={name} type={type} />
 			{helperText && <p className="paragraph-14 text-blue-20">{helperText}</p>}
+			{error && <p className="text-red-20 paragraph-14">{error}</p>}
 		</div>
 	);
 };

@@ -1,2 +1,2 @@
+export { SignUpForm } from "./SignUpForm";
 export { SignUpInformation } from "./SignUpInformation";
-export { SignUpPanel } from "./SignUpPanel";

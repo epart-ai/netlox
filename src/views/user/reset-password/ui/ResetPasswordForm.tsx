@@ -22,7 +22,7 @@ type ViewState =
 	| { status: "no-session" }
 	| { status: "error"; message: string };
 
-export const ResetPasswordPanel = () => {
+export const ResetPasswordForm = () => {
 	const router = useRouter();
 	const [state, setState] = useState<ViewState>({ status: "loading" });
 	const [password, setPassword] = useState("");

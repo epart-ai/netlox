@@ -1,1 +1,2 @@
-export { BusinessContact } from "./BusinessContact";
+export { BusinessContactForm } from "./BusinessContactForm";
+export { BusinessContactInformation } from "./BusinessContactInformation";

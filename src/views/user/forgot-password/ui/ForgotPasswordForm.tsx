@@ -16,7 +16,7 @@ import {
 import { requestPasswordReset } from "../api/forgotPassword.api";
 import { ForgotPasswordSuccess } from "./ForgotPasswordSuccess";
 
-export function ForgotPasswordPanel() {
+export function ForgotPasswordForm() {
 	const [email, setEmail] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);

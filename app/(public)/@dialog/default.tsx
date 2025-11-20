@@ -3,8 +3,8 @@
 import { useSearchParams } from "next/navigation";
 
 import { RouteDialog } from "@/shared/ui/overlays";
-import { ForgotPasswordPanel } from "@/views/user/forgot-password/ui";
-import { LoginPanel } from "@/views/user/login/ui";
+import { ForgotPasswordForm } from "@/views/user/forgot-password/ui";
+import { LoginForm } from "@/views/user/login/ui";
 
 export default function DialogSlotDefault() {
 	const searchParams = useSearchParams();
@@ -16,13 +16,13 @@ export default function DialogSlotDefault() {
 		case "login":
 			return (
 				<RouteDialog>
-					<LoginPanel />
+					<LoginForm />
 				</RouteDialog>
 			);
 		case "forgot-password":
 			return (
 				<RouteDialog>
-					<ForgotPasswordPanel />
+					<ForgotPasswordForm />
 				</RouteDialog>
 			);
 		default:

@@ -21,7 +21,7 @@ const PROFILE_FIELDS: Array<{
 	{ key: "companyname", label: "Company Name *" },
 ];
 
-export const SignUpPanel = () => {
+export const SignUpForm = () => {
 	const router = useRouter();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -119,9 +119,7 @@ export const SignUpPanel = () => {
 					disabled={loading}
 					required
 				/>
-
 				{error && <p className="text-sm text-red-400">{error}</p>}
-
 				<FormCheckbox
 					label={
 						<>

@@ -10,7 +10,7 @@ import { CardContent, CardHeader, CardTitle } from "@/shared/ui/shadcn/card";
 
 import { signInWithEmail } from "../api/login.api";
 
-export function LoginPanel() {
+export function LoginForm() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState(false);
