@@ -13,14 +13,20 @@ type BoardPost = {
 
 export const dynamic = "force-dynamic";
 
-async function fetchBoardPosts(): Promise<BoardPost[]> {
+async function fetchBoardPosts(slug?: string): Promise<BoardPost[]> {
 	const supabase = createSupabaseServerClient();
 
-	const { data: posts, error } = await supabase
+	let query = supabase
 		.from("posts")
 		.select("id, title, created_at, etc1")
 		.order("created_at", { ascending: false })
 		.limit(30);
+
+	if (slug) {
+		query = query.eq("board_slug", slug);
+	}
+
+	const { data: posts, error } = await query;
 
 	if (error) {
 		throw new Error(`게시글 목록을 불러오지 못했습니다: ${error.message}`);
@@ -39,7 +45,9 @@ async function fetchBoardPosts(): Promise<BoardPost[]> {
 		.order("created_at", { ascending: true });
 
 	if (attachmentsError) {
-		throw new Error(`첨부 파일을 불러오지 못했습니다: ${attachmentsError.message}`);
+		throw new Error(
+			`첨부 파일을 불러오지 못했습니다: ${attachmentsError.message}`,
+		);
 	}
 
 	const firstImageMap = new Map<string, string>();
@@ -79,7 +87,9 @@ export default async function BoardPage() {
 		<div className="mx-auto w-full max-w-6xl px-6 py-10">
 			<header className="mb-8 space-y-2">
 				<h1 className="text-3xl font-bold text-white">게시판</h1>
-				<p className="text-sm text-slate-400">등록된 게시글을 확인하고 링크로 이동할 수 있습니다.</p>
+				<p className="text-sm text-slate-400">
+					등록된 게시글을 확인하고 링크로 이동할 수 있습니다.
+				</p>
 			</header>
 
 			{posts.length === 0 ? (
@@ -108,8 +118,12 @@ export default async function BoardPage() {
 									)}
 								</div>
 								<div className="flex flex-1 flex-col gap-3 p-5">
-									<h2 className="text-lg font-semibold text-white line-clamp-2">{post.title}</h2>
-									<p className="text-xs text-slate-400">{formatDate(post.created_at)}</p>
+									<h2 className="line-clamp-2 text-lg font-semibold text-white">
+										{post.title}
+									</h2>
+									<p className="text-xs text-slate-400">
+										{formatDate(post.created_at)}
+									</p>
 									<p className="mt-auto text-xs text-blue-400">
 										{post.etc1 ? "링크 열기" : "연결된 링크가 없습니다"}
 									</p>
@@ -122,7 +136,11 @@ export default async function BoardPage() {
 						return (
 							<li key={post.id}>
 								{post.etc1 ? (
-									<Link href={linkHref} target="_blank" rel="noopener noreferrer">
+									<Link
+										href={linkHref}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
 										{cardContent}
 									</Link>
 								) : (
@@ -136,5 +154,3 @@ export default async function BoardPage() {
 		</div>
 	);
 }
-
-

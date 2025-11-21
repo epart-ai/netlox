@@ -7,6 +7,8 @@ type CreateBoardPayload = {
 	description?: string | null;
 	is_active?: boolean;
 	max_attachments?: number;
+	use_pagination?: boolean;
+	posts_per_page?: number;
 };
 
 export const boardsService = {
@@ -53,6 +55,8 @@ export const boardsService = {
 				description: board.description ?? null,
 				is_active: board.is_active ?? true,
 				max_attachments: board.max_attachments ?? 5,
+				use_pagination: board.use_pagination ?? false,
+				posts_per_page: board.posts_per_page ?? 10,
 			})
 			.select()
 			.single()

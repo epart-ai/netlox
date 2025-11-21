@@ -7,6 +7,7 @@ type PatchBody = Partial<{
 	title: string;
 	content: string;
 	board_slug: string;
+	etc1?: string | null;
 	updated_at: string;
 }>;
 
@@ -24,6 +25,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
 		if (typeof body.title === 'string') updates.title = body.title
 		if (typeof body.content === 'string') updates.content = body.content
 		if (typeof body.board_slug === 'string') updates.board_slug = body.board_slug
+		if (body.etc1 !== undefined) updates.etc1 = body.etc1
 		if (Object.keys(updates).length === 0) return NextResponse.json({ error: 'No updates' }, { status: 400 })
 		updates.updated_at = new Date().toISOString()
 		const { data, error } = await admin.from('posts').update(updates).eq('id', id).select().single()
