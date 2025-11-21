@@ -1,5 +1,9 @@
 import { ResourceNews } from "@/views/resource/_news/ui";
 
-export default function ResourceNewsPage() {
-	return <ResourceNews />;
+type PageProps = {
+	searchParams?: { page?: string };
+};
+
+export default function ResourceNewsPage({ searchParams }: PageProps) {
+	return <ResourceNews searchParams={searchParams} />;
 }

@@ -15,6 +15,7 @@ type FormState = {
 	boardSlug: string
 	title: string
 	content: string
+	etc1: string
 }
 
 export default function AdminPostEditPage() {
@@ -23,7 +24,7 @@ export default function AdminPostEditPage() {
 	const router = useRouter()
 
 	const [boards, setBoards] = useState<Board[]>([])
-	const [form, setForm] = useState<FormState>({ boardSlug: '', title: '', content: '' })
+	const [form, setForm] = useState<FormState>({ boardSlug: '', title: '', content: '', etc1: '' })
 	const [existingAttachments, setExistingAttachments] = useState<Attachment[]>([])
 	const [files, setFiles] = useState<File[]>([])
 	const [loading, setLoading] = useState(false)
@@ -56,6 +57,7 @@ export default function AdminPostEditPage() {
 				boardSlug: post.board_slug,
 				title: post.title,
 				content: post.content,
+				etc1: post.etc1 || '',
 			})
 
 			setExistingAttachments(attachments)
@@ -92,6 +94,7 @@ export default function AdminPostEditPage() {
 					title: form.title.trim(),
 					content: form.content.trim(),
 					board_slug: form.boardSlug,
+					etc1: form.etc1.trim() || null,
 				}),
 			})
 			const result = await response.json()
@@ -278,6 +281,17 @@ export default function AdminPostEditPage() {
 							className="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded px-3 py-2"
 							placeholder="내용"
 						/>
+					</div>
+					<div>
+						<label className="block text-sm text-slate-300 mb-2">링크 (선택사항)</label>
+						<input
+							type="url"
+							value={form.etc1}
+							onChange={(event) => setForm((prev) => ({ ...prev, etc1: event.target.value }))}
+							className="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded px-3 py-2"
+							placeholder="https://example.com"
+						/>
+						<p className="mt-1 text-xs text-slate-400">게시글에 연결할 링크를 입력하세요.</p>
 					</div>
 
 					{existingAttachments.length > 0 && (
