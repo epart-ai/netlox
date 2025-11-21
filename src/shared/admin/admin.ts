@@ -14,16 +14,20 @@ export function isAdminEmail(email?: string | null): boolean {
 	return admins.includes(email.toLowerCase());
 }
 
-type AdminLikeUser = {
-	email?: string | null;
-	app_metadata?: Record<string, unknown>;
-} | null | undefined;
+type AdminLikeUser =
+	| {
+			email?: string | null;
+			app_metadata?: Record<string, unknown>;
+	  }
+	| null
+	| undefined;
 
 export function isAdminUser(user: AdminLikeUser): boolean {
 	if (!user) return false;
 	const byEmail = isAdminEmail(user.email ?? null);
 	const appMetadata = user.app_metadata as Record<string, unknown> | undefined;
-	const byRole = typeof appMetadata?.role === "string" && appMetadata.role === "admin";
+	const byRole =
+		typeof appMetadata?.role === "string" && appMetadata.role === "admin";
 	return byEmail || byRole;
 }
 
@@ -39,5 +43,3 @@ export async function requireAdmin(): Promise<{
 	if (!isAdminUser(user)) return { ok: false, reason: "not_authorized" };
 	return { ok: true };
 }
-
-

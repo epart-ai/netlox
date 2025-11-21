@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { ROUTES } from "@/shared/config";
 import { cn } from "@/shared/lib/utils";
-import { Button } from "@/shared/ui/shadcn";
+import { Button } from "@/shared/ui/shadcn/button";
 
 export const CookieAgree = () => {
 	const [isAccepted, setIsAccepted] = useState(false);

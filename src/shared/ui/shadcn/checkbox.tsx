@@ -3,34 +3,19 @@
 import * as React from "react";
 
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
-import { type VariantProps, cva } from "class-variance-authority";
 
-import { cn } from "@/shared/lib/utils";
-
-const checkboxVariants = cva(
-	"border-primary focus-visible:ring-ring peer grid shrink-0 place-content-center rounded-md border border-white/50 shadow focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-none data-[state=checked]:bg-blue-60 [&_svg]:size-2",
-	{
-		variants: {
-			size: {
-				sm: "h-3.5 w-3.5",
-				md: "h-4 w-4",
-				lg: "h-5 w-5",
-			},
-		},
-		defaultVariants: {
-			size: "sm",
-		},
-	},
-);
+import { cn } from "../../lib/utils";
 
 const Checkbox = React.forwardRef<
 	React.ElementRef<typeof CheckboxPrimitive.Root>,
-	React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> &
-		VariantProps<typeof checkboxVariants>
->(({ className, size, ...props }, ref) => (
+	React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
+>(({ className, ...props }, ref) => (
 	<CheckboxPrimitive.Root
 		ref={ref}
-		className={cn(checkboxVariants({ size }), className)}
+		className={cn(
+			"border-primary focus-visible:ring-ring peer grid h-3.5 w-3.5 shrink-0 place-content-center rounded-md border border-white/50 shadow focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-none data-[state=checked]:bg-blue-60 [&_svg]:size-2",
+			className,
+		)}
 		{...props}
 	>
 		<CheckboxPrimitive.Indicator

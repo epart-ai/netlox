@@ -11,9 +11,11 @@ const parsedPublicEnv = publicEnvSchema.safeParse({
 });
 
 if (!parsedPublicEnv.success) {
-	console.error("공개 환경변수 검증 실패", parsedPublicEnv.error.flatten().fieldErrors);
+	console.error(
+		"공개 환경변수 검증 실패",
+		parsedPublicEnv.error.flatten().fieldErrors,
+	);
 	throw new Error("NEXT_PUBLIC_SUPABASE_* 환경변수를 확인하세요.");
 }
 
 export const publicEnv = parsedPublicEnv.data;
-

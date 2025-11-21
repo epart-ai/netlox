@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { createClient } from '@/shared/supabase/client';
+import { createClient } from "@/shared/supabase/client";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 type AdminUser = {
 	id: string;
@@ -20,8 +20,8 @@ const PER_PAGE = 20;
 export default function AdminUsersPage() {
 	const [users, setUsers] = useState<AdminUser[]>([]);
 	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState('');
-	const [query, setQuery] = useState('');
+	const [error, setError] = useState("");
+	const [query, setQuery] = useState("");
 	const [page, setPage] = useState(1);
 	const [total, setTotal] = useState(0);
 
@@ -30,14 +30,16 @@ export default function AdminUsersPage() {
 		const {
 			data: { session },
 		} = await supabase.auth.getSession();
-		return session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {};
+		return session?.access_token
+			? { Authorization: `Bearer ${session.access_token}` }
+			: {};
 	}, []);
 
 	const loadUsers = useCallback(
 		async (nextPage: number, keyword: string) => {
 			try {
 				setLoading(true);
-				setError('');
+				setError("");
 				const headers = await authHeader();
 				const response = await fetch(
 					`/api/admin/users?page=${nextPage}&perPage=${PER_PAGE}&query=${encodeURIComponent(keyword)}`,
@@ -45,12 +47,15 @@ export default function AdminUsersPage() {
 				);
 				const result = await response.json();
 				if (!response.ok) {
-					throw new Error(result.error || '불러오기 실패');
+					throw new Error(result.error || "불러오기 실패");
 				}
 				setUsers(result.users ?? []);
 				setTotal(result.total ?? 0);
 			} catch (err) {
-				const message = err instanceof Error ? err.message : '사용자 목록을 불러오지 못했습니다.';
+				const message =
+					err instanceof Error
+						? err.message
+						: "사용자 목록을 불러오지 못했습니다.";
 				setError(message);
 			} finally {
 				setLoading(false);
@@ -60,7 +65,7 @@ export default function AdminUsersPage() {
 	);
 
 	useEffect(() => {
-		loadUsers(1, '');
+		loadUsers(1, "");
 	}, [loadUsers]);
 
 	useEffect(() => {
@@ -75,33 +80,38 @@ export default function AdminUsersPage() {
 	const updateRole = async (userId: string, role: string) => {
 		try {
 			const headers = {
-				'Content-Type': 'application/json',
+				"Content-Type": "application/json",
 				...(await authHeader()),
 			};
-			const response = await fetch('/api/admin/users', {
-				method: 'POST',
+			const response = await fetch("/api/admin/users", {
+				method: "POST",
 				headers,
 				body: JSON.stringify({ userId, role }),
 			});
 			const result = await response.json();
-			if (!response.ok) throw new Error(result.error || '권한 변경 실패');
+			if (!response.ok) throw new Error(result.error || "권한 변경 실패");
 			loadUsers(page, query);
 		} catch (err) {
-			const message = err instanceof Error ? err.message : '권한 변경에 실패했습니다.';
+			const message =
+				err instanceof Error ? err.message : "권한 변경에 실패했습니다.";
 			alert(message);
 		}
 	};
 
 	const deleteUser = async (userId: string) => {
-		if (!confirm('이 사용자를 삭제하시겠습니까?')) return;
+		if (!confirm("이 사용자를 삭제하시겠습니까?")) return;
 		try {
 			const headers = await authHeader();
-			const response = await fetch(`/api/admin/users/${userId}`, { method: 'DELETE', headers });
+			const response = await fetch(`/api/admin/users/${userId}`, {
+				method: "DELETE",
+				headers,
+			});
 			const result = await response.json();
-			if (!response.ok) throw new Error(result.error || '삭제 실패');
+			if (!response.ok) throw new Error(result.error || "삭제 실패");
 			loadUsers(page, query);
 		} catch (err) {
-			const message = err instanceof Error ? err.message : '삭제에 실패했습니다.';
+			const message =
+				err instanceof Error ? err.message : "삭제에 실패했습니다.";
 			alert(message);
 		}
 	};
@@ -110,27 +120,29 @@ export default function AdminUsersPage() {
 
 	const paginationButtons = useMemo(
 		() =>
-			Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNumber) => (
-				<button
-					type="button"
-					key={pageNumber}
-					onClick={() => setPage(pageNumber)}
-					className={`px-3 py-1 border border-slate-700 text-slate-200 rounded ${
-						pageNumber === page ? 'bg-blue-600 text-white' : ''
-					}`}
-				>
-					{pageNumber}
-				</button>
-			)),
+			Array.from({ length: totalPages }, (_, index) => index + 1).map(
+				(pageNumber) => (
+					<button
+						type="button"
+						key={pageNumber}
+						onClick={() => setPage(pageNumber)}
+						className={`rounded border border-slate-700 px-3 py-1 text-slate-200 ${
+							pageNumber === page ? "bg-blue-600 text-white" : ""
+						}`}
+					>
+						{pageNumber}
+					</button>
+				),
+			),
 		[page, totalPages],
 	);
 
 	return (
-		<div className="max-w-7xl mx-auto px-6 py-8">
-			<div className="bg-slate-900 shadow rounded-lg border border-slate-800 p-6">
-				<h1 className="text-2xl font-bold text-white mb-6">사용자 관리</h1>
+		<div className="mx-auto max-w-7xl px-6 py-8">
+			<div className="rounded-lg border border-slate-800 bg-slate-900 p-6 shadow">
+				<h1 className="mb-6 text-2xl font-bold text-white">사용자 관리</h1>
 
-				<div className="flex items-center gap-3 mb-6">
+				<div className="mb-6 flex items-center gap-3">
 					<input
 						value={query}
 						onChange={(event) => setQuery(event.target.value)}
@@ -155,20 +167,32 @@ export default function AdminUsersPage() {
 						<table className="min-w-full divide-y divide-slate-800">
 							<thead className="bg-slate-800/60">
 								<tr>
-									<th className="px-4 py-2 text-left text-xs font-semibold uppercase text-slate-200">이메일</th>
-									<th className="px-4 py-2 text-left text-xs font-semibold uppercase text-slate-200">역할</th>
-									<th className="px-4 py-2 text-left text-xs font-semibold uppercase text-slate-200">생성일</th>
-									<th className="px-4 py-2 text-left text-xs font-semibold uppercase text-slate-200">관리</th>
+									<th className="px-4 py-2 text-left text-xs font-semibold uppercase text-slate-200">
+										이메일
+									</th>
+									<th className="px-4 py-2 text-left text-xs font-semibold uppercase text-slate-200">
+										역할
+									</th>
+									<th className="px-4 py-2 text-left text-xs font-semibold uppercase text-slate-200">
+										생성일
+									</th>
+									<th className="px-4 py-2 text-left text-xs font-semibold uppercase text-slate-200">
+										관리
+									</th>
 								</tr>
 							</thead>
 							<tbody className="divide-y divide-slate-800">
 								{users.map((user) => (
 									<tr key={user.id} className="hover:bg-slate-800/40">
-										<td className="px-4 py-2 text-sm text-slate-200">{user.email}</td>
+										<td className="px-4 py-2 text-sm text-slate-200">
+											{user.email}
+										</td>
 										<td className="px-4 py-2 text-sm">
 											<select
-												value={user.app_metadata?.role ?? ''}
-												onChange={(event) => updateRole(user.id, event.target.value)}
+												value={user.app_metadata?.role ?? ""}
+												onChange={(event) =>
+													updateRole(user.id, event.target.value)
+												}
 												className="rounded border border-slate-700 bg-slate-800 px-2 py-1 text-slate-100"
 											>
 												<option value="">일반</option>
@@ -176,7 +200,7 @@ export default function AdminUsersPage() {
 											</select>
 										</td>
 										<td className="px-4 py-2 text-sm text-slate-300">
-											{new Date(user.created_at).toLocaleString('ko-KR')}
+											{new Date(user.created_at).toLocaleString("ko-KR")}
 										</td>
 										<td className="px-4 py-2 text-sm">
 											<button
@@ -191,7 +215,10 @@ export default function AdminUsersPage() {
 								))}
 								{users.length === 0 && (
 									<tr>
-										<td colSpan={4} className="px-4 py-8 text-center text-slate-400">
+										<td
+											colSpan={4}
+											className="px-4 py-8 text-center text-slate-400"
+										>
 											검색 결과가 없습니다.
 										</td>
 									</tr>
@@ -226,4 +253,3 @@ export default function AdminUsersPage() {
 		</div>
 	);
 }
-

@@ -2,8 +2,10 @@ import * as React from "react";
 
 import { type VariantProps, cva } from "class-variance-authority";
 
-import { cn } from "@/shared/lib/utils";
-import { Separator } from "@/shared/ui/shadcn/separator";
+import { cardContentSpace } from "@/shared/styles/snippets";
+
+import { cn } from "../../lib/utils";
+import { Separator } from "./separator";
 
 const CardList = React.forwardRef<
 	HTMLDivElement,
@@ -72,11 +74,7 @@ const CardContent = React.forwardRef<
 	HTMLDivElement,
 	React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-	<div
-		ref={ref}
-		className={cn("space-y-4 md:space-y-6 lg:space-y-8", className)}
-		{...props}
-	/>
+	<div ref={ref} className={cn(cardContentSpace, className)} {...props} />
 ));
 CardContent.displayName = "CardContent";
 

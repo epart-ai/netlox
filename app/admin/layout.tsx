@@ -1,15 +1,14 @@
-import "server-only";
-
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
 import "@fontsource-variable/outfit";
+import "server-only";
 
 import "@/app/globals.css";
-import AdminLayoutClient from "./layout-client";
+import { createSupabaseServerClient } from "@/shared/supabase/server";
 
 import { AppProviders } from "../providers";
-import { createSupabaseServerClient } from "@/shared/supabase/server";
+import AdminLayoutClient from "./layout-client";
 
 const geistSans = localFont({
 	src: "../../public/fonts/GeistVF.woff",

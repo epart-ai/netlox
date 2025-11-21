@@ -18,7 +18,7 @@ import {
 const dataCardVariant = cva("", {
 	variants: {
 		colors: {
-			blue: "[&_.iconBox]:bg-blue-60/25",
+			blue: "[&_.iconBox]:bg-blue-40/ 25",
 			green: "[&_.iconBox]:bg-green-60/15",
 			purple: "[&_.iconBox]:bg-purple-10/15",
 			orange: "[&_.iconBox]:bg-orange-10/15",
@@ -33,7 +33,7 @@ const dataCardVariant = cva("", {
 			colors: "blue",
 			enableHover: true,
 			class:
-				"[&_.cardItem:hover]:border-blue-60 [&_.cardItem:hover]:shadow-[0_0_40px_0_rgb(var(--color-blue-60-rgb)/0.25)] [&_.cardItem:hover_.iconBox]:bg-blue-60",
+				"[&_.cardItem:hover]:border-blue-40 [&_.cardItem:hover]:shadow-[0_0_40px_0_rgb(var(--color-blue-60-rgb)/0.25)] [&_.cardItem:hover_.iconBox]:bg-blue-60",
 		},
 		{
 			colors: "green",

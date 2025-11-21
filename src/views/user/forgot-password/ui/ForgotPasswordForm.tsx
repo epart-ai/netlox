@@ -1,9 +1,13 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useForm } from "react-hook-form";
+
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { DIALOGS } from "@/shared/config";
-import { FormInput } from "@/shared/ui/form";
+import { cn } from "@/shared/lib/utils";
+import { cardContentSpace } from "@/shared/styles/snippets";
 import { TextLink } from "@/shared/ui/navigation";
 import { Button } from "@/shared/ui/shadcn/button";
 import {
@@ -12,44 +16,70 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/shared/ui/shadcn/card";
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "@/shared/ui/shadcn/form";
+import { Input } from "@/shared/ui/shadcn/input";
 
-import { requestPasswordReset } from "../api/forgotPassword.api";
+import {
+	type ForgotPasswordData,
+	useForgotPasswordMutation,
+} from "../model/forgot-password.mutation";
+import {
+	type ForgotPasswordFormValues,
+	forgotPasswordFormDefaultValues,
+	forgotPasswordFormSchema,
+	toForgotPasswordPayload,
+} from "../model/forgot-password.schema";
 import { ForgotPasswordSuccess } from "./ForgotPasswordSuccess";
 
 export function ForgotPasswordForm() {
-	const [email, setEmail] = useState("");
-	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const [isSuccess, setIsSuccess] = useState(false);
 
-	const isSubmitDisabled = useMemo(() => loading || !email, [email, loading]);
+	const form = useForm<ForgotPasswordFormValues>({
+		mode: "onBlur",
+		resolver: zodResolver(forgotPasswordFormSchema),
+		defaultValues: forgotPasswordFormDefaultValues,
+	});
 
-	const handleSubmit = async () => {
-		setError(null);
+	const {
+		control,
+		handleSubmit,
+		formState: { isSubmitting },
+	} = form;
 
-		if (!email) {
-			setError("이메일을 입력하세요.");
-			return;
-		}
-
-		try {
-			setLoading(true);
-			const redirectTo =
-				typeof window !== "undefined"
-					? `${window.location.origin}/user/reset-password`
-					: undefined;
-
-			await requestPasswordReset(email, { redirectTo });
+	const { mutate: forgotMutate, isPending } = useForgotPasswordMutation({
+		onSuccess: (_data: ForgotPasswordData) => {
+			console.log("🚀 ~ ForgotPasswordForm ~ _data:", _data);
 			setIsSuccess(true);
-		} catch (err) {
+		},
+		onError: (err: Error) => {
 			const message =
 				err instanceof Error
 					? err.message
 					: "비밀번호 재설정 메일 발송에 실패했습니다.";
 			setError(message);
-		} finally {
-			setLoading(false);
-		}
+		},
+	});
+
+	const isLoading = isSubmitting || isPending;
+	const isSubmitDisabled = useMemo(() => isLoading, [isLoading]);
+
+	const onSubmit = (values: ForgotPasswordFormValues) => {
+		setError(null);
+
+		const redirectTo =
+			typeof window !== "undefined"
+				? `${window.location.origin}/user/reset-password`
+				: undefined;
+		const payload = toForgotPasswordPayload(values);
+		forgotMutate({ ...payload, redirectTo });
 	};
 
 	return (
@@ -58,37 +88,52 @@ export function ForgotPasswordForm() {
 				<ForgotPasswordSuccess />
 			) : (
 				<>
-					<CardHeader>
+					<CardHeader className="text-center">
 						<CardTitle>Reset your password</CardTitle>
 						<CardDescription>
 							Enter the email associated with your account, and we&apos;ll send
 							a password reset link.
 						</CardDescription>
 					</CardHeader>
-					<div className="space-y-4">
-						<FormInput
-							label="Business Email *"
-							type="email"
-							value={email}
-							onChange={(event) => setEmail(event.target.value)}
-							autoComplete="email"
-							disabled={loading}
-						/>
-
-						{error && <p className="text-sm text-red-400">{error}</p>}
-					</div>
-
-					<Button
-						disabled={isSubmitDisabled}
-						className="w-full rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
-						onClick={handleSubmit}
-						isLoading={loading}
-					>
-						Send Reset Link
-					</Button>
+					<Form {...form}>
+						<form
+							onSubmit={handleSubmit(onSubmit)}
+							className={cn("", cardContentSpace)}
+						>
+							<div className="space-y-4">
+								<FormField
+									name="email"
+									control={control}
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Business Email *</FormLabel>
+											<FormControl>
+												<Input
+													{...field}
+													type="email"
+													autoComplete="email"
+													disabled={isLoading}
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+							</div>
+							{error && <p className="text-sm text-red-400">{error}</p>}
+							<Button
+								type="submit"
+								disabled={isSubmitDisabled}
+								variant="primary"
+								className="w-full"
+								isLoading={isLoading}
+							>
+								Send Reset Link
+							</Button>
+						</form>
+					</Form>
 				</>
 			)}
-
 			<div className="text-center">
 				<TextLink
 					href={{ query: { dialog: DIALOGS.LOGIN } }}

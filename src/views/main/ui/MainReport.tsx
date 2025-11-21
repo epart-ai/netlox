@@ -3,7 +3,7 @@
 import type { ColumnDef } from "@tanstack/react-table";
 
 import { DataTable } from "@/shared/ui/display";
-import { Button, ButtonBox } from "@/shared/ui/shadcn";
+import { Button, ButtonBox } from "@/shared/ui/shadcn/button";
 
 import { MainSectionLayout } from "./MainSectionLayout";
 

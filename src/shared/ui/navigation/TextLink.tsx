@@ -46,6 +46,7 @@ interface Props
 		AnchorLikeProps {
 	label: string;
 	className?: string;
+	underline?: boolean;
 }
 
 export const TextLink = ({
@@ -55,13 +56,18 @@ export const TextLink = ({
 	iconAlign,
 	icon,
 	className,
+	underline,
 	...props
 }: Props) => {
 	return (
 		<Link
 			{...props}
 			href={href}
-			className={cn(linkVariant({ colors, iconAlign, icon }), className)}
+			className={cn(
+				linkVariant({ colors, iconAlign, icon }),
+				underline && "underline underline-offset-2",
+				className,
+			)}
 		>
 			{label}
 			<svg

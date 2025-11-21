@@ -1,79 +1,77 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { DIALOGS, ROUTES } from "@/shared/config";
-import { FormCheckbox, FormInput } from "@/shared/ui/form";
+import { cn } from "@/shared/lib/utils";
+import { cardContentSpace } from "@/shared/styles/snippets";
 import { TextLink } from "@/shared/ui/navigation";
-import { Button } from "@/shared/ui/shadcn";
+import { Button } from "@/shared/ui/shadcn/button";
 import { CardContent, CardHeader, CardTitle } from "@/shared/ui/shadcn/card";
+import { Checkbox } from "@/shared/ui/shadcn/checkbox";
+import {
+	Form,
+	FormControl,
+	FormDescription,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "@/shared/ui/shadcn/form";
+import { Input } from "@/shared/ui/shadcn/input";
 
-import type { ProfileInput } from "../../profile/model";
-import { signUpWithProfile } from "../api/signUp.api";
-
-const PROFILE_FIELDS: Array<{
-	key: keyof ProfileInput;
-	label: string;
-	placeholder?: string;
-}> = [
-	{ key: "fullname", label: "Full Name *" },
-	{ key: "companyname", label: "Company Name *" },
-];
+import {
+	type SignUpWithProfileData,
+	useSignUpWithProfileMutation,
+} from "../model/sign-up.mutation";
+import {
+	type SignUpFormValues,
+	signUpFormDefaultValues,
+	signUpFormSchema,
+} from "../model/sign-up.schema";
 
 export const SignUpForm = () => {
 	const router = useRouter();
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [confirmPassword, setConfirmPassword] = useState("");
-	const [profile, setProfile] = useState<ProfileInput>({});
-	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 
-	const isSubmitDisabled = useMemo(() => {
-		return (
-			loading ||
-			!email ||
-			password.length < 6 ||
-			confirmPassword.length < 6 ||
-			password !== confirmPassword
-		);
-	}, [email, loading, password, confirmPassword]);
+	const form = useForm<SignUpFormValues>({
+		mode: "onBlur",
+		resolver: zodResolver(signUpFormSchema),
+		defaultValues: signUpFormDefaultValues,
+	});
 
-	const handleProfileChange = (key: keyof ProfileInput, value: string) => {
-		setProfile((prev) => ({
-			...prev,
-			[key]: value || undefined,
-		}));
-	};
+	const {
+		control,
+		handleSubmit,
+		formState: { isSubmitting },
+	} = form;
 
-	const handleSubmit = async () => {
-		setError(null);
-
-		if (!email || !password) {
-			setError("이메일과 비밀번호를 모두 입력하세요.");
-			return;
-		}
-
-		router.push(ROUTES.USER_SIGNUP_SUCCESS);
-		try {
-			setLoading(true);
-			const { user } = await signUpWithProfile({
-				email,
-				password,
-				profile,
-			});
-
-			if (!user) {
-				throw new Error("회원 가입이 정상적으로 완료되지 않았습니다.");
+	const { mutate: signUpMutate, isPending } = useSignUpWithProfileMutation({
+		onSuccess: (data: SignUpWithProfileData) => {
+			if (!data.user) {
+				setError("회원 가입이 정상적으로 완료되지 않았습니다.");
+				return;
 			}
-		} catch (err) {
+
+			router.push(ROUTES.USER_SIGNUP_SUCCESS);
+		},
+		onError: (err: Error) => {
 			const message =
 				err instanceof Error ? err.message : "회원 가입에 실패했습니다.";
 			setError(message);
-		} finally {
-			setLoading(false);
-		}
+		},
+	});
+
+	const isLoading = isSubmitting || isPending;
+
+	const onSubmit = (values: SignUpFormValues) => {
+		setError(null);
+
+		signUpMutate(values);
 	};
 
 	return (
@@ -81,70 +79,133 @@ export const SignUpForm = () => {
 			<CardHeader>
 				<CardTitle>Create your account</CardTitle>
 			</CardHeader>
-			<div className="space-y-4">
-				<div className="grid grid-cols-2 gap-4">
-					{PROFILE_FIELDS.map(({ key, label }) => (
-						<FormInput
-							key={key}
-							label={label}
-							value={(profile[key] as string) ?? ""}
-							onChange={(event) => handleProfileChange(key, event.target.value)}
-							disabled={loading}
-							required
-						/>
-					))}
-				</div>
-				<FormInput
-					label="Business Email *"
-					type="email"
-					value={email}
-					onChange={(event) => setEmail(event.target.value)}
-					disabled={loading}
-					required
-				/>
-				<FormInput
-					label="New password *"
-					type="password"
-					value={password}
-					onChange={(event) => setPassword(event.target.value)}
-					helperText="Must be at least 8 characters and include a number."
-					disabled={loading}
-					required
-				/>
-				<FormInput
-					label="Confirm password *"
-					type="password"
-					value={confirmPassword}
-					onChange={(event) => setConfirmPassword(event.target.value)}
-					disabled={loading}
-					required
-				/>
-				{error && <p className="text-sm text-red-400">{error}</p>}
-				<FormCheckbox
-					label={
-						<>
-							I agree to our{" "}
-							<TextLink href={"#"} label="Terms and Conditions" /> and{" "}
-							<TextLink href={"#"} label="Privacy Policy" />
-						</>
-					}
-					name="terms"
-					size="sm"
-				/>
-			</div>
-			<p className="paragraph-14 text-center">
-				A verification link will be sent to your email.
-			</p>
 
-			<Button
-				variant="primary"
-				className="w-full"
-				disabled={isSubmitDisabled}
-				isLoading={loading}
-				onClick={handleSubmit}
-			>
-				Create Account
-			</Button>
+			<Form {...form}>
+				<form
+					onSubmit={handleSubmit(onSubmit)}
+					className={cn("", cardContentSpace)}
+				>
+					<div className="space-y-4">
+						<div className="grid grid-cols-2 gap-4">
+							<FormField
+								name="profile.fullname"
+								control={control}
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Full Name *</FormLabel>
+										<FormControl>
+											<Input
+												{...field}
+												disabled={isLoading}
+												placeholder="Full Name"
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<FormField
+								name="profile.companyname"
+								control={control}
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Company Name *</FormLabel>
+										<FormControl>
+											<Input {...field} disabled={isLoading} />
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+						</div>
+						<FormField
+							name="email"
+							control={control}
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>Business Email *</FormLabel>
+									<FormControl>
+										<Input {...field} disabled={isLoading} />
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						<FormField
+							name="password"
+							control={control}
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>Password *</FormLabel>
+									<FormControl>
+										<Input {...field} disabled={isLoading} />
+									</FormControl>
+									<FormDescription>
+										Must be at least 8 characters and include a number.
+									</FormDescription>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						<FormField
+							name="confirmPassword"
+							control={control}
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>Confirm password *</FormLabel>
+									<FormControl>
+										<Input {...field} disabled={isLoading} />
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+
+						<FormField
+							name="terms"
+							control={control}
+							render={({ field }) => (
+								<FormItem>
+									<div className="flex items-center gap-3">
+										<FormControl>
+											<Checkbox
+												checked={!!field.value}
+												onCheckedChange={(v) => field.onChange(!!v)}
+											/>
+										</FormControl>
+										<FormLabel applyErrorStyle>
+											I agree to our{" "}
+											<TextLink
+												href={"#"}
+												label="Terms and Conditions"
+												underline
+											/>{" "}
+											and{" "}
+											<TextLink href={"#"} label="Privacy Policy" underline />
+										</FormLabel>
+									</div>
+								</FormItem>
+							)}
+						/>
+					</div>
+					<p className="paragraph-14 text-center">
+						A verification link will be sent to your email.
+					</p>
+
+					{error && <p className="text-sm text-red-400">{error}</p>}
+
+					<Button
+						variant="primary"
+						className="w-full"
+						type="submit"
+						disabled={isLoading}
+						isLoading={isLoading}
+					>
+						Create Account
+					</Button>
+				</form>
+			</Form>
+
 			<div className="text-center">
 				<p className="paragraph-14 space-x-2">
 					<span>Already have an account?</span>

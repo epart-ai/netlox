@@ -5,7 +5,7 @@ import * as React from "react";
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
 import { type VariantProps, cva } from "class-variance-authority";
 
-import { cn } from "@/shared/lib/utils";
+import { cn } from "../../lib/utils";
 
 const separatorVariants = cva("bg-white", {
 	variants: {

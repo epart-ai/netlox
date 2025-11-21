@@ -1,6 +1,6 @@
 import { cn } from "@/shared/lib/utils";
 import { DataCard } from "@/shared/ui/display";
-import { Button } from "@/shared/ui/shadcn";
+import { Button } from "@/shared/ui/shadcn/button";
 import { ProductsCarousel } from "@/views/products/ui/ProductsCarousel";
 
 export const ProductsOpenSource = () => {
