@@ -104,6 +104,7 @@ export default function AdminPostEditPage() {
 					title: form.title.trim(),
 					content: form.content.trim(),
 					board_slug: form.boardSlug,
+					etc1: form.etc1.trim() || null,
 				}),
 			});
 			const result = await response.json();

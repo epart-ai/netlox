@@ -43,6 +43,8 @@ export interface Board {
 	description?: string | null;
 	is_active: boolean;
 	max_attachments: number;
+	use_pagination?: boolean;
+	posts_per_page?: number;
 	created_at: string;
 }
 

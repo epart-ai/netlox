@@ -1,5 +1,9 @@
 import { ResourceBlog } from "@/views/resource/_blog/ui";
 
-export default function BusinessPricingPage() {
-	return <ResourceBlog />;
+type PageProps = {
+	searchParams?: { page?: string };
+};
+
+export default function BusinessPricingPage({ searchParams }: PageProps) {
+	return <ResourceBlog searchParams={searchParams} />;
 }

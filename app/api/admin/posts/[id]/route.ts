@@ -8,6 +8,7 @@ type PatchBody = Partial<{
 	title: string;
 	content: string;
 	board_slug: string;
+	etc1?: string | null;
 	updated_at: string;
 }>;
 
