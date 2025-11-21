@@ -35,7 +35,7 @@ async function fetchBoardPosts(
 ): Promise<{ posts: BoardPost[]; total: number }> {
 	const supabase = createSupabaseServerClient();
 
-	let query = supabase
+	const query = supabase
 		.from("posts")
 		.select("id, title, created_at, etc1", { count: "exact" })
 		.eq("board_slug", slug)
