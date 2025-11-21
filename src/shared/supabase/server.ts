@@ -1,8 +1,8 @@
-import "server-only";
-
-import { createServerClient, type CookieOptions } from "@supabase/ssr";
-import type { SupabaseClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
+
+import { type CookieOptions, createServerClient } from "@supabase/ssr";
+import type { SupabaseClient } from "@supabase/supabase-js";
+import "server-only";
 
 import { publicEnv } from "@/shared/config/env/public";
 
@@ -35,4 +35,3 @@ export const createSupabaseServerClient = (): SupabaseClient => {
 		},
 	);
 };
-

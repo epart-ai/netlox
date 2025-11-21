@@ -55,4 +55,3 @@ export interface Attachment {
 	mime_type?: string | null;
 	created_at: string;
 }
-  

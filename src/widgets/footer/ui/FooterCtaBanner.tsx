@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 
 import { isPathnameMatched } from "@/shared/lib/utils";
 import { BackgroundImage } from "@/shared/ui/display";
-import { Button, ButtonBox } from "@/shared/ui/shadcn";
+import { Button, ButtonBox } from "@/shared/ui/shadcn/button";
 
 import { hiddenCtaPaths } from "../model/ctaVisibility";
 
@@ -15,9 +15,9 @@ export const FooterCtaBanner = () => {
 	}
 
 	return (
-		<div className="bg-gradient-to-b from-blue-100/15 to-blue-60/15">
+		<div className="to-blue-40/ 15 bg-gradient-to-b from-blue-100/15">
 			<div className="wrapper py-15 md:py-25 lg:py-40">
-				<div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-b from-blue-40 to-blue-60 px-4 py-10 lg:py-20">
+				<div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-b from-blue-60 to-blue-40 px-4 py-10 lg:py-20">
 					<BackgroundImage
 						opacity="50"
 						className="z-0 mix-blend-multiply"

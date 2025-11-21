@@ -37,7 +37,9 @@ export default function AdminSettingsPage() {
 		const {
 			data: { session },
 		} = await supabase.auth.getSession();
-		return session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {};
+		return session?.access_token
+			? { Authorization: `Bearer ${session.access_token}` }
+			: {};
 	}, []);
 
 	const loadSettings = useCallback(async () => {
@@ -56,7 +58,8 @@ export default function AdminSettingsPage() {
 				setSettings(result.settings);
 			}
 		} catch (err) {
-			const message = err instanceof Error ? err.message : "설정을 불러오지 못했습니다.";
+			const message =
+				err instanceof Error ? err.message : "설정을 불러오지 못했습니다.";
 			setError(message);
 		} finally {
 			setLoading(false);
@@ -94,7 +97,8 @@ export default function AdminSettingsPage() {
 			setSuccess(true);
 			setTimeout(() => setSuccess(false), 3000);
 		} catch (err) {
-			const message = err instanceof Error ? err.message : "설정 저장에 실패했습니다.";
+			const message =
+				err instanceof Error ? err.message : "설정 저장에 실패했습니다.";
 			setError(message);
 		} finally {
 			setSaving(false);
@@ -102,22 +106,22 @@ export default function AdminSettingsPage() {
 	};
 
 	return (
-		<div className="max-w-4xl mx-auto px-6 py-8">
-			<div className="bg-slate-900 shadow rounded-lg border border-slate-800 p-6">
-				<h1 className="text-2xl font-bold text-white mb-6">이메일 설정</h1>
+		<div className="mx-auto max-w-4xl px-6 py-8">
+			<div className="rounded-lg border border-slate-800 bg-slate-900 p-6 shadow">
+				<h1 className="mb-6 text-2xl font-bold text-white">이메일 설정</h1>
 
 				{loading ? (
 					<p className="text-slate-300">불러오는 중...</p>
 				) : (
 					<form onSubmit={handleSubmit} className="space-y-6">
 						{error && (
-							<div className="p-4 bg-red-900/30 border border-red-700 rounded text-red-300">
+							<div className="rounded border border-red-700 bg-red-900/30 p-4 text-red-300">
 								{error}
 							</div>
 						)}
 
 						{success && (
-							<div className="p-4 bg-green-900/30 border border-green-700 rounded text-green-300">
+							<div className="rounded border border-green-700 bg-green-900/30 p-4 text-green-300">
 								설정이 저장되었습니다.
 							</div>
 						)}
@@ -126,7 +130,7 @@ export default function AdminSettingsPage() {
 							<div>
 								<label
 									htmlFor="smtp_host"
-									className="block text-sm font-medium text-slate-200 mb-2"
+									className="mb-2 block text-sm font-medium text-slate-200"
 								>
 									SMTP Host
 								</label>
@@ -145,7 +149,7 @@ export default function AdminSettingsPage() {
 							<div>
 								<label
 									htmlFor="smtp_port"
-									className="block text-sm font-medium text-slate-200 mb-2"
+									className="mb-2 block text-sm font-medium text-slate-200"
 								>
 									SMTP Port
 								</label>
@@ -164,7 +168,7 @@ export default function AdminSettingsPage() {
 							<div>
 								<label
 									htmlFor="smtp_user"
-									className="block text-sm font-medium text-slate-200 mb-2"
+									className="mb-2 block text-sm font-medium text-slate-200"
 								>
 									SMTP User
 								</label>
@@ -183,7 +187,7 @@ export default function AdminSettingsPage() {
 							<div>
 								<label
 									htmlFor="smtp_pass"
-									className="block text-sm font-medium text-slate-200 mb-2"
+									className="mb-2 block text-sm font-medium text-slate-200"
 								>
 									SMTP Password
 								</label>
@@ -205,7 +209,7 @@ export default function AdminSettingsPage() {
 							<div>
 								<label
 									htmlFor="contact_recipient_email"
-									className="block text-sm font-medium text-slate-200 mb-2"
+									className="mb-2 block text-sm font-medium text-slate-200"
 								>
 									수신 이메일 (Recipient Email)
 								</label>
@@ -230,7 +234,7 @@ export default function AdminSettingsPage() {
 							<div>
 								<label
 									htmlFor="contact_from_email"
-									className="block text-sm font-medium text-slate-200 mb-2"
+									className="mb-2 block text-sm font-medium text-slate-200"
 								>
 									발신자 이메일 (From Email)
 								</label>
@@ -239,7 +243,10 @@ export default function AdminSettingsPage() {
 									type="email"
 									value={settings.contact_from_email || ""}
 									onChange={(e) =>
-										setSettings({ ...settings, contact_from_email: e.target.value })
+										setSettings({
+											...settings,
+											contact_from_email: e.target.value,
+										})
 									}
 									placeholder="from@example.com (선택사항, 미설정 시 SMTP User 사용)"
 									className="w-full rounded border border-slate-700 bg-slate-800 px-3 py-2 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -249,7 +256,7 @@ export default function AdminSettingsPage() {
 							<div>
 								<label
 									htmlFor="smtp_secure"
-									className="block text-sm font-medium text-slate-200 mb-2"
+									className="mb-2 block text-sm font-medium text-slate-200"
 								>
 									SMTP Secure
 								</label>
@@ -268,19 +275,19 @@ export default function AdminSettingsPage() {
 							</div>
 						</div>
 
-						<div className="flex justify-end gap-3 pt-4 border-t border-slate-800">
+						<div className="flex justify-end gap-3 border-t border-slate-800 pt-4">
 							<button
 								type="button"
 								onClick={loadSettings}
 								disabled={loading || saving}
-								className="px-4 py-2 text-slate-300 border border-slate-700 rounded hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed"
+								className="rounded border border-slate-700 px-4 py-2 text-slate-300 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
 							>
 								취소
 							</button>
 							<button
 								type="submit"
 								disabled={loading || saving}
-								className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+								className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
 							>
 								{saving ? "저장 중..." : "저장"}
 							</button>

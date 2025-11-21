@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 
-import { ensureAdminFromBearer } from "../_lib/auth";
 import {
+	type EmailSettingsInput,
 	getEmailSettings,
 	upsertEmailSettings,
-	type EmailSettingsInput,
 } from "@/shared/config/email-settings";
+
+import { ensureAdminFromBearer } from "../_lib/auth";
 
 export async function GET(request: Request) {
 	const auth = await ensureAdminFromBearer(request);

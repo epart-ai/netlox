@@ -18,9 +18,13 @@ function normalizeAdminEmails(value: string | undefined | null): string[] {
 		.filter(Boolean);
 }
 
-export async function ensureAdminFromBearer(request: Request): Promise<EnsureAdminResult> {
+export async function ensureAdminFromBearer(
+	request: Request,
+): Promise<EnsureAdminResult> {
 	const authHeader = request.headers.get("authorization") ?? "";
-	const token = authHeader.toLowerCase().startsWith("bearer ") ? authHeader.slice(7) : "";
+	const token = authHeader.toLowerCase().startsWith("bearer ")
+		? authHeader.slice(7)
+		: "";
 
 	if (!token) {
 		return { ok: false };
@@ -56,7 +60,9 @@ export async function ensureAdminFromBearer(request: Request): Promise<EnsureAdm
 	}
 
 	const admins = normalizeAdminEmails(process.env.NEXT_PUBLIC_ADMIN_EMAILS);
-	const byEmail = user.email ? admins.includes(user.email.toLowerCase()) : false;
+	const byEmail = user.email
+		? admins.includes(user.email.toLowerCase())
+		: false;
 	const byRole = user.app_metadata?.role === "admin";
 
 	if (!byEmail && !byRole) {
@@ -65,5 +71,3 @@ export async function ensureAdminFromBearer(request: Request): Promise<EnsureAdm
 
 	return { ok: true, token, user };
 }
-
-

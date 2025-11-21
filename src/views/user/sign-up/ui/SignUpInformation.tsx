@@ -1,5 +1,8 @@
 import Image from "next/image";
 
+import { cn } from "@/shared/lib/utils";
+import { cardContentSpace } from "@/shared/styles/snippets";
+
 export const SignUpInformation = () => {
 	const data = [
 		{
@@ -37,7 +40,7 @@ export const SignUpInformation = () => {
 			</div>
 			<div className="mt-20">
 				<h4 className="title-24 lg:title-40">Join the NetLOX Platform</h4>
-				<div className="mt-10 space-y-8">
+				<div className={cn("mt-10", cardContentSpace)}>
 					{data.map((item) => (
 						<div key={item.title} className="flex items-center gap-8">
 							<div className="flex size-15 shrink-0 items-center justify-center rounded-md bg-blue-20/15 p-3.5">

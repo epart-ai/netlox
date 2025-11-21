@@ -13,7 +13,7 @@ import {
 export function ForgotPasswordSuccess() {
 	return (
 		<CardContent>
-			<div className="mx-auto flex size-20 items-center justify-center rounded-full bg-blue-60/50 p-4.5">
+			<div className="bg-blue-40/ 50 mx-auto flex size-20 items-center justify-center rounded-full p-4.5">
 				<Image
 					src="/images/common/icon_check_white.svg"
 					alt="Check Icon"

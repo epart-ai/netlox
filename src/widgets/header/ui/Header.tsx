@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { ROUTES } from "@/shared/config";
 import { cn } from "@/shared/lib/utils";
 import { useSupabaseClient } from "@/shared/supabase";
-import { Button } from "@/shared/ui/shadcn";
+import { Button } from "@/shared/ui/shadcn/button";
 
 import { HeaderAuth } from "./HeaderAuth";
 

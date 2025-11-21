@@ -51,7 +51,9 @@ export async function getEmailSettings(): Promise<EmailSettings | null> {
 /**
  * Email 설정을 저장/업데이트합니다. (단일 레코드만 유지)
  */
-export async function upsertEmailSettings(input: EmailSettingsInput): Promise<EmailSettings> {
+export async function upsertEmailSettings(
+	input: EmailSettingsInput,
+): Promise<EmailSettings> {
 	const supabase = createSupabaseServiceClient();
 
 	// 기존 레코드 확인

@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 
-import { Button, ButtonBox, Separator } from "@/shared/ui/shadcn";
+import { Button, ButtonBox } from "@/shared/ui/shadcn/button";
+import { Separator } from "@/shared/ui/shadcn/separator";
 
 export const MainHero = () => {
 	const trustedBy = [

@@ -28,7 +28,9 @@ type AttachmentRecord = {
 	created_at: string;
 };
 
-async function fetchPost(id: string): Promise<{ post: PostRecord; attachments: AttachmentRecord[] } | null> {
+async function fetchPost(
+	id: string,
+): Promise<{ post: PostRecord; attachments: AttachmentRecord[] } | null> {
 	const client = createSupabaseServiceClient();
 
 	const { data: postData, error: postError } = await client
@@ -54,7 +56,9 @@ async function fetchPost(id: string): Promise<{ post: PostRecord; attachments: A
 		.order("created_at", { ascending: true });
 
 	if (attachmentsError) {
-		throw new Error(`첨부 파일 정보를 불러오지 못했습니다: ${attachmentsError.message}`);
+		throw new Error(
+			`첨부 파일 정보를 불러오지 못했습니다: ${attachmentsError.message}`,
+		);
 	}
 
 	return {
@@ -77,7 +81,11 @@ function formatDate(value: string) {
 	}
 }
 
-export default async function PostDetailPage({ params }: { params: { id: string } }) {
+export default async function PostDetailPage({
+	params,
+}: {
+	params: { id: string };
+}) {
 	const result = await fetchPost(params.id);
 
 	if (!result) {
@@ -113,7 +121,10 @@ export default async function PostDetailPage({ params }: { params: { id: string 
 				<section className="rounded-xl border border-slate-800 bg-slate-900/60 p-6 shadow-lg">
 					{contentLines.length > 0 ? (
 						contentLines.map((line) => (
-							<p key={line.id} className="whitespace-pre-wrap leading-7 text-slate-100">
+							<p
+								key={line.id}
+								className="whitespace-pre-wrap leading-7 text-slate-100"
+							>
 								{line.value}
 							</p>
 						))
@@ -156,5 +167,3 @@ export default async function PostDetailPage({ params }: { params: { id: string 
 		</div>
 	);
 }
-
-

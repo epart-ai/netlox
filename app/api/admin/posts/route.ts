@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+
 import { createClient } from "@supabase/supabase-js";
 
 import { ensureAdminFromBearer } from "../_lib/auth";
@@ -34,7 +35,10 @@ export async function POST(request: Request) {
 		const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 		if (!supabaseUrl || !anonKey) {
-			return NextResponse.json({ error: "Server not configured" }, { status: 500 });
+			return NextResponse.json(
+				{ error: "Server not configured" },
+				{ status: 500 },
+			);
 		}
 
 		const client = createClient(supabaseUrl, anonKey, {
@@ -64,7 +68,11 @@ export async function POST(request: Request) {
 			views: 0,
 		};
 
-		const { data, error } = await client.from("posts").insert(insertPayload).select("*").single();
+		const { data, error } = await client
+			.from("posts")
+			.insert(insertPayload)
+			.select("*")
+			.single();
 
 		if (error) {
 			return NextResponse.json({ error: error.message }, { status: 400 });

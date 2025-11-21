@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect } from "react";
 
 import { cn } from "@/shared/lib/utils";
-import { Button } from "@/shared/ui/shadcn";
+import { Button } from "@/shared/ui/shadcn/button";
 import { Card } from "@/shared/ui/shadcn/card";
 
 interface Props {
@@ -50,10 +50,7 @@ export const RouteDialog = ({ children, className }: Props) => {
 	};
 	return (
 		<div
-			className={cn(
-				"fixed inset-0 z-[100] flex size-full items-center justify-center bg-black/60",
-				className,
-			)}
+			className={cn("fixed inset-0 z-[100] size-full bg-black/60", className)}
 			role="dialog"
 			aria-modal="true"
 		>
@@ -63,22 +60,24 @@ export const RouteDialog = ({ children, className }: Props) => {
 				aria-label="Close modal"
 				onClick={handleBackdropClick}
 			/>
-			<Card className="max-w-480 w-full">
-				<Button
-					variant="icon"
-					aria-label="Close modal"
-					className="absolute right-5 top-5"
-					onClick={closeDialog}
-				>
-					<Image
-						src="/images/common/icon_close_thin_white.svg"
-						alt="Close"
-						width={16}
-						height={16}
-					/>
-				</Button>
-				{children}
-			</Card>
+			<div className="wrapper flex h-full items-center justify-center">
+				<Card className="w-full max-w-480">
+					<Button
+						variant="icon"
+						aria-label="Close modal"
+						className="absolute right-5 top-5"
+						onClick={closeDialog}
+					>
+						<Image
+							src="/images/common/icon_close_thin_white.svg"
+							alt="Close"
+							width={16}
+							height={16}
+						/>
+					</Button>
+					{children}
+				</Card>
+			</div>
 		</div>
 	);
 };

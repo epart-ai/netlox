@@ -86,7 +86,7 @@ export const DataCarousel = ({
 								className={cn(
 									"h-1.5 w-1.5 rounded-full lg:h-2.5 lg:w-2.5",
 									current === index + 1
-										? "w-3.5 bg-blue-60 lg:w-6"
+										? "w-3.5 bg-blue-40 lg:w-6"
 										: "bg-white/50",
 								)}
 							/>

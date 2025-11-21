@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+
 import { createClient } from "@supabase/supabase-js";
 
 import { ensureAdminFromBearer } from "../_lib/auth";
@@ -26,7 +27,10 @@ export async function POST(request: Request) {
 	const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 	if (!supabaseUrl || !serviceRoleKey) {
-		return NextResponse.json({ error: "Server not configured" }, { status: 500 });
+		return NextResponse.json(
+			{ error: "Server not configured" },
+			{ status: 500 },
+		);
 	}
 
 	try {
@@ -35,7 +39,10 @@ export async function POST(request: Request) {
 		const files = Array.isArray(body.files) ? body.files : [];
 
 		if (!postId || files.length === 0) {
-			return NextResponse.json({ error: "Missing post or files" }, { status: 400 });
+			return NextResponse.json(
+				{ error: "Missing post or files" },
+				{ status: 400 },
+			);
 		}
 
 		const payload = files.map((file) => ({
@@ -54,7 +61,10 @@ export async function POST(request: Request) {
 			},
 		});
 
-		const { data, error } = await client.from("attachments").insert(payload).select("*");
+		const { data, error } = await client
+			.from("attachments")
+			.insert(payload)
+			.select("*");
 
 		if (error) {
 			return NextResponse.json({ error: error.message }, { status: 400 });
@@ -66,5 +76,3 @@ export async function POST(request: Request) {
 		return NextResponse.json({ error: message }, { status: 500 });
 	}
 }
-
-

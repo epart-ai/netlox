@@ -2,11 +2,10 @@ import type { User } from "@supabase/supabase-js";
 
 import { createClient } from "@/shared/supabase";
 
-import { PROFILE_TABLE, type ProfileInput } from "../../profile/model";
+import { PROFILE_TABLE, ProfileInput } from "../../profile/model";
+import type { SignUpPayload } from "../model/sign-up.schema";
 
-type Payload = {
-	email: string;
-	password: string;
+type Payload = SignUpPayload & {
 	profile?: ProfileInput;
 };
 

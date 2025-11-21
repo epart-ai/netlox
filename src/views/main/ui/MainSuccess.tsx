@@ -1,7 +1,8 @@
 import { Fragment } from "react";
 
 import { BackgroundImage } from "@/shared/ui/display";
-import { Button, ButtonBox, Separator } from "@/shared/ui/shadcn";
+import { Button, ButtonBox } from "@/shared/ui/shadcn/button";
+import { Separator } from "@/shared/ui/shadcn/separator";
 
 import { MainSectionLayout } from "./MainSectionLayout";
 
@@ -48,7 +49,7 @@ export const MainSuccess = () => {
 							/>
 						)}
 						<div>
-							<strong className="title-44 text-blue-60 lg:title-60">
+							<strong className="title-44 text-blue-40 lg:title-60">
 								{item.subTitle}
 							</strong>
 							<h3 className="title-20 mt-6 lg:title-24 lg:mt-9">

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { cn } from "@/shared/lib/utils";
+import { cardContentSpace } from "@/shared/styles/snippets";
 import { DataList } from "@/shared/ui/display";
 
 export const BusinessContactInformation = () => {
@@ -55,7 +57,7 @@ export const BusinessContactInformation = () => {
 			</div>
 			<div className="mt-20 space-y-10">
 				<h4 className="title-24 lg:title-40">Why work with NetLOX?</h4>
-				<div className="mt-10 space-y-8">
+				<div className={cn("mt-10", cardContentSpace)}>
 					{data.map((item) => (
 						<div key={item.title} className="flex items-center gap-8">
 							<div className="flex size-15 shrink-0 items-center justify-center rounded-md bg-blue-20/15 p-3.5">

@@ -1,6 +1,5 @@
-import "server-only";
-
 import { createClient } from "@supabase/supabase-js";
+import "server-only";
 
 import { publicEnv } from "@/shared/config/env/public";
 import { serverEnv } from "@/shared/config/env/server";
@@ -19,5 +18,3 @@ export function createSupabaseServiceClient() {
 		},
 	});
 }
-
-
