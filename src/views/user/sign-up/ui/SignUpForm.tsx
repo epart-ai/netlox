@@ -7,11 +7,15 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { DIALOGS, ROUTES } from "@/shared/config";
-import { cn } from "@/shared/lib/utils";
-import { cardContentSpace } from "@/shared/styles/snippets";
+import { errorTextSm, gridTwoCol } from "@/shared/styles/snippets";
 import { TextLink } from "@/shared/ui/navigation";
 import { Button } from "@/shared/ui/shadcn/button";
-import { CardContent, CardHeader, CardTitle } from "@/shared/ui/shadcn/card";
+import {
+	CardContent,
+	CardHeader,
+	CardTitle,
+	CardWrapper,
+} from "@/shared/ui/shadcn/card";
 import { Checkbox } from "@/shared/ui/shadcn/checkbox";
 import {
 	Form,
@@ -75,18 +79,15 @@ export const SignUpForm = () => {
 	};
 
 	return (
-		<CardContent>
-			<CardHeader>
-				<CardTitle>Create your account</CardTitle>
-			</CardHeader>
+		<Form {...form}>
+			<form onSubmit={handleSubmit(onSubmit)}>
+				<CardWrapper>
+					<CardHeader>
+						<CardTitle>Create your account</CardTitle>
+					</CardHeader>
 
-			<Form {...form}>
-				<form
-					onSubmit={handleSubmit(onSubmit)}
-					className={cn("", cardContentSpace)}
-				>
-					<div className="space-y-4">
-						<div className="grid grid-cols-2 gap-4">
+					<CardContent>
+						<div className={gridTwoCol}>
 							<FormField
 								name="profile.fullname"
 								control={control}
@@ -187,12 +188,12 @@ export const SignUpForm = () => {
 								</FormItem>
 							)}
 						/>
-					</div>
+					</CardContent>
 					<p className="paragraph-14 text-center">
 						A verification link will be sent to your email.
 					</p>
 
-					{error && <p className="text-sm text-red-400">{error}</p>}
+					{error && <p className={errorTextSm}>{error}</p>}
 
 					<Button
 						variant="primary"
@@ -203,19 +204,18 @@ export const SignUpForm = () => {
 					>
 						Create Account
 					</Button>
-				</form>
-			</Form>
-
-			<div className="text-center">
-				<p className="paragraph-14 space-x-2">
-					<span>Already have an account?</span>
-					<TextLink
-						href={{ query: { dialog: DIALOGS.LOGIN } }}
-						label="Log In"
-						scroll={false}
-					/>
-				</p>
-			</div>
-		</CardContent>
+					<div className="text-center">
+						<p className="paragraph-14 space-x-2">
+							<span>Already have an account?</span>
+							<TextLink
+								href={{ query: { dialog: DIALOGS.LOGIN } }}
+								label="Log In"
+								scroll={false}
+							/>
+						</p>
+					</div>
+				</CardWrapper>
+			</form>
+		</Form>
 	);
 };

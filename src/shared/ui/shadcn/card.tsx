@@ -2,27 +2,67 @@ import * as React from "react";
 
 import { type VariantProps, cva } from "class-variance-authority";
 
-import { cardContentSpace } from "@/shared/styles/snippets";
+import { Separator } from "@/shared/ui/shadcn/separator";
 
 import { cn } from "../../lib/utils";
-import { Separator } from "./separator";
+
+const cardListVariants = cva(
+	"grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-10",
+	{
+		variants: {
+			colors: {
+				blue: "[&_.iconBox]:bg-blue-40/ 25",
+				green: "[&_.iconBox]:bg-green-60/15",
+				purple: "[&_.iconBox]:bg-purple-10/15",
+				orange: "[&_.iconBox]:bg-orange-10/15",
+			},
+			enableHover: {
+				true: "",
+				false: "",
+			},
+		},
+		compoundVariants: [
+			{
+				colors: "blue",
+				enableHover: true,
+				class:
+					"[&_.card:hover]:border-blue-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-blue-60-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-blue-60",
+			},
+			{
+				colors: "green",
+				enableHover: true,
+				class:
+					"[&_.card:hover]:border-green-60 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-green-60-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-green-60",
+			},
+			{
+				colors: "purple",
+				enableHover: true,
+				class:
+					"[&_.card:hover]:border-purple-60 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-purple-60-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-purple-60",
+			},
+			{
+				colors: "orange",
+				enableHover: true,
+				class:
+					"[&_.card:hover]:border-orange-60 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-orange-60-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-orange-60",
+			},
+		],
+	},
+);
 
 const CardList = React.forwardRef<
 	HTMLDivElement,
-	React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+	React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof cardListVariants>
+>(({ className, colors, enableHover, ...props }, ref) => (
 	<div
 		ref={ref}
-		className={cn(
-			"grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-10",
-			className,
-		)}
+		className={cn(cardListVariants({ colors, enableHover }), className)}
 		{...props}
 	/>
 ));
 CardList.displayName = "CardList";
 
-const cardVariants = cva("relative p-4 md:p-6 lg:p-8", {
+const cardVariants = cva("card relative p-4 md:p-6 lg:p-8 overflow-hidden", {
 	variants: {
 		variant: {
 			default: "bg-blue-100 border border-white/25 rounded-lg lg:rounded-2xl",
@@ -45,6 +85,18 @@ const Card = React.forwardRef<
 	/>
 ));
 Card.displayName = "Card";
+
+const CardWrapper = React.forwardRef<
+	HTMLDivElement,
+	React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof cardVariants>
+>(({ className, ...props }, ref) => (
+	<div
+		ref={ref}
+		className={cn("space-y-4 md:space-y-6 lg:space-y-8", className)}
+		{...props}
+	/>
+));
+CardWrapper.displayName = "CardWrapper";
 
 const CardHeader = React.forwardRef<
 	HTMLDivElement,
@@ -74,7 +126,11 @@ const CardContent = React.forwardRef<
 	HTMLDivElement,
 	React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-	<div ref={ref} className={cn(cardContentSpace, className)} {...props} />
+	<div
+		ref={ref}
+		className={cn("space-y-2 md:space-y-3 lg:space-y-4", className)}
+		{...props}
+	/>
 ));
 CardContent.displayName = "CardContent";
 
@@ -91,14 +147,20 @@ const CardDescription = React.forwardRef<
 CardDescription.displayName = "CardDescription";
 const CardFooter = React.forwardRef<
 	HTMLDivElement,
-	React.HTMLAttributes<HTMLDivElement>
->(({ className, children, ...props }, ref) => (
-	<>
-		<Separator className="mt-5" />
-		<div ref={ref} className={cn("pt-5", className)} {...props}>
+	React.HTMLAttributes<HTMLDivElement> & {
+		separator?: boolean;
+	}
+>(({ className, children, separator, ...props }, ref) => (
+	<div className="pt-1">
+		{separator && <Separator className="mb-3 md:mb-4 lg:mb-5" />}
+		<div
+			ref={ref}
+			className={cn("paragraph-12 !text-white/50 md:paragraph-14", className)}
+			{...props}
+		>
 			{children}
 		</div>
-	</>
+	</div>
 ));
 
 CardFooter.displayName = "CardFooter";
@@ -111,4 +173,5 @@ export {
 	CardHeader,
 	CardList,
 	CardTitle,
+	CardWrapper,
 };

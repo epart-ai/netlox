@@ -1,7 +1,8 @@
 import Image from "next/image";
 
 import { cn } from "@/shared/lib/utils";
-import { cardContentSpace } from "@/shared/styles/snippets";
+import { cardWrapperSpace, iconBadgeLarge } from "@/shared/styles/snippets";
+import { PageHead } from "@/views/_shared/ui/PageHead";
 
 export const SignUpInformation = () => {
 	const data = [
@@ -26,24 +27,24 @@ export const SignUpInformation = () => {
 	];
 	return (
 		<div>
-			<div className="">
-				<strong className="title-16 text-blue-20 lg:title-18">
-					Create Account
-				</strong>
-				<h3 className="title-36 mt-1.5 lg:title-44 lg:mt-3">
-					Join the NetLOX Platform
-				</h3>
-				<p className="paragraph-16 mt-4 lg:paragraph-18 lg:mt-8">
-					Create an account to request your enterprise demo, access technical
-					resources, and get support from our expert team.
-				</p>
-			</div>
+			<PageHead
+				eyebrow="Create Account"
+				title="Join the NetLOX Platform"
+				description={
+					<>
+						Create an account to request your enterprise demo, access technical
+						resources, and get support from our expert team.
+					</>
+				}
+				align="left"
+				theme="blue"
+			/>
 			<div className="mt-20">
 				<h4 className="title-24 lg:title-40">Join the NetLOX Platform</h4>
-				<div className={cn("mt-10", cardContentSpace)}>
+				<div className={cn("mt-10", cardWrapperSpace)}>
 					{data.map((item) => (
 						<div key={item.title} className="flex items-center gap-8">
-							<div className="flex size-15 shrink-0 items-center justify-center rounded-md bg-blue-20/15 p-3.5">
+							<div className={iconBadgeLarge}>
 								<Image
 									src={item.image}
 									alt={item.title}

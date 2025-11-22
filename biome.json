@@ -1,12 +1,13 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.3.2/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.3.5/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
 		"useIgnoreFile": true
 	},
 	"files": {
-		"ignoreUnknown": false
+		"ignoreUnknown": false,
+		"includes": ["**/*", "!**/.vscode"]
 	},
 	"formatter": {
 		"enabled": false
@@ -15,7 +16,8 @@
 		"enabled": true,
 		"rules": {
 			"recommended": true,
-			"react": {
+			"suspicious": {
+				"noUnknownAtRules": "off",
 				"noArrayIndexKey": "off"
 			}
 		}

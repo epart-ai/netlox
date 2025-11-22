@@ -6,8 +6,7 @@ import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { cn } from "@/shared/lib/utils";
-import { cardContentSpace } from "@/shared/styles/snippets";
+import { successTextSm } from "@/shared/styles/snippets";
 import { TextLink } from "@/shared/ui/navigation";
 import { Button } from "@/shared/ui/shadcn/button";
 import {
@@ -15,6 +14,7 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
+	CardWrapper,
 } from "@/shared/ui/shadcn/card";
 import {
 	Form,
@@ -124,19 +124,18 @@ export const ResetPasswordForm = () => {
 	}
 
 	return (
-		<CardContent>
-			<CardHeader>
-				<CardTitle>Set a new password</CardTitle>
-			</CardHeader>
-			<Form {...form}>
-				<form
-					onSubmit={handleSubmit(({ password }) => {
-						setFeedback(null);
-						resetMutate({ password });
-					})}
-					className={cn("", cardContentSpace)}
-				>
-					<div className="space-y-4">
+		<Form {...form}>
+			<form
+				onSubmit={handleSubmit(({ password }) => {
+					setFeedback(null);
+					resetMutate({ password });
+				})}
+			>
+				<CardWrapper>
+					<CardHeader>
+						<CardTitle>Set a new password</CardTitle>
+					</CardHeader>
+					<CardContent>
 						<FormField
 							name="password"
 							control={control}
@@ -163,9 +162,9 @@ export const ResetPasswordForm = () => {
 								</FormItem>
 							)}
 						/>
-					</div>
+					</CardContent>
 
-					{feedback && <p className="text-sm text-emerald-400">{feedback}</p>}
+					{feedback && <p className={successTextSm}>{feedback}</p>}
 
 					<Button
 						disabled={isSubmitDisabled}
@@ -176,8 +175,8 @@ export const ResetPasswordForm = () => {
 					>
 						Update Password
 					</Button>
-				</form>
-			</Form>
-		</CardContent>
+				</CardWrapper>
+			</form>
+		</Form>
 	);
 };

@@ -22,7 +22,7 @@ export function useUpsertProfileMutation(
 	});
 }
 
-export type SignOutData = void;
+export type SignOutData = undefined;
 export function useSignOutMutation(
 	options?: UseMutationOptions<SignOutData, Error, void>,
 ) {

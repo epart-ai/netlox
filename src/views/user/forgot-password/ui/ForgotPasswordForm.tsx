@@ -6,8 +6,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { DIALOGS } from "@/shared/config";
-import { cn } from "@/shared/lib/utils";
-import { cardContentSpace } from "@/shared/styles/snippets";
 import { TextLink } from "@/shared/ui/navigation";
 import { Button } from "@/shared/ui/shadcn/button";
 import {
@@ -15,6 +13,7 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
+	CardWrapper,
 } from "@/shared/ui/shadcn/card";
 import {
 	Form,
@@ -25,6 +24,7 @@ import {
 	FormMessage,
 } from "@/shared/ui/shadcn/form";
 import { Input } from "@/shared/ui/shadcn/input";
+import { errorTextSm } from "@/shared/styles/snippets";
 
 import {
 	type ForgotPasswordData,
@@ -83,24 +83,21 @@ export function ForgotPasswordForm() {
 	};
 
 	return (
-		<CardContent>
-			{isSuccess ? (
-				<ForgotPasswordSuccess />
-			) : (
-				<>
-					<CardHeader className="text-center">
-						<CardTitle>Reset your password</CardTitle>
-						<CardDescription>
-							Enter the email associated with your account, and we&apos;ll send
-							a password reset link.
-						</CardDescription>
-					</CardHeader>
-					<Form {...form}>
-						<form
-							onSubmit={handleSubmit(onSubmit)}
-							className={cn("", cardContentSpace)}
-						>
-							<div className="space-y-4">
+		<Form {...form}>
+			<form onSubmit={handleSubmit(onSubmit)}>
+				<CardWrapper>
+					{isSuccess ? (
+						<ForgotPasswordSuccess />
+					) : (
+						<>
+							<CardHeader className="text-center">
+								<CardTitle>Reset your password</CardTitle>
+								<CardDescription>
+									Enter the email associated with your account, and we&apos;ll
+									send a password reset link.
+								</CardDescription>
+							</CardHeader>
+							<CardContent>
 								<FormField
 									name="email"
 									control={control}
@@ -119,8 +116,8 @@ export function ForgotPasswordForm() {
 										</FormItem>
 									)}
 								/>
-							</div>
-							{error && <p className="text-sm text-red-400">{error}</p>}
+							</CardContent>
+							{error && <p className={errorTextSm}>{error}</p>}
 							<Button
 								type="submit"
 								disabled={isSubmitDisabled}
@@ -130,21 +127,21 @@ export function ForgotPasswordForm() {
 							>
 								Send Reset Link
 							</Button>
-						</form>
-					</Form>
-				</>
-			)}
-			<div className="text-center">
-				<TextLink
-					href={{ query: { dialog: DIALOGS.LOGIN } }}
-					replace
-					scroll={false}
-					className="font-medium text-blue-400 hover:text-blue-300"
-					label="Back to Login"
-					iconAlign="left"
-					icon="show"
-				/>
-			</div>
-		</CardContent>
+						</>
+					)}
+					<div className="text-center">
+						<TextLink
+							href={{ query: { dialog: DIALOGS.LOGIN } }}
+							replace
+							scroll={false}
+							className="font-medium text-blue-400 hover:text-blue-300"
+							label="Back to Login"
+							iconAlign="left"
+							icon="show"
+						/>
+					</div>
+				</CardWrapper>
+			</form>
+		</Form>
 	);
 }

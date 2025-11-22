@@ -21,8 +21,7 @@ const Select = ({
 }: React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>) => {
 	// FormControl의 Slot을 통해 전달된 aria-invalid를 읽어 트리거 스타일에 반영
 	const rawAriaInvalid = (props as Record<string, unknown>)["aria-invalid"];
-	const ariaInvalid =
-		rawAriaInvalid === true || rawAriaInvalid === "true" ? true : false;
+	const ariaInvalid = !!(rawAriaInvalid === true || rawAriaInvalid === "true");
 
 	return (
 		<SelectContext.Provider value={{ ariaInvalid }}>
@@ -64,7 +63,7 @@ const SelectTrigger = React.forwardRef<
 			ref={ref}
 			className={cn(
 				"ring-offset-background focus:ring-ring flex h-12 w-full items-center justify-between whitespace-nowrap rounded-lg bg-white/10 px-3 py-4 text-sm shadow-sm hover:ring-1 hover:ring-white/25 focus:outline-none focus:ring-1 focus:ring-blue-40 disabled:cursor-not-allowed disabled:bg-white/5 data-[placeholder]:text-white/50 [&>span]:line-clamp-1",
-				!!ariaInvalid && "ring-1 ring-alert",
+				!!ariaInvalid && "ring-alert ring-1",
 				className,
 			)}
 			aria-invalid={ariaInvalid}

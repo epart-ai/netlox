@@ -14,13 +14,12 @@ function generateNegativeScale(
 	theme: (key: string) => Record<string, string>,
 	themeKey: string,
 ) {
-	return Object.entries(theme(themeKey)).reduce(
-		(acc, [key, value]) => ({
-			...acc,
-			[`-${key}`]: `-${value}`,
-		}),
-		{} as Record<string, string>,
-	);
+	const entries = Object.entries(theme(themeKey));
+	const result: Record<string, string> = {};
+	for (const [key, value] of entries) {
+		result[`-${key}`] = `-${value}`;
+	}
+	return result;
 }
 
 // 소수점 간격을 포함한 spacing 스케일 자동 생성
@@ -70,7 +69,11 @@ function generateSpacingScale(
 function processObject(
 	obj: unknown,
 	handlers: {
-		onObject?: (path: string, key: string, value: unknown) => boolean | void;
+		onObject?: (
+			path: string,
+			key: string,
+			value: unknown,
+		) => boolean | undefined;
 		onLeaf?: (path: string, key: string, value: unknown) => void;
 	},
 	currentPath = "",
@@ -86,8 +89,7 @@ function processObject(
 		const newPath = currentPath ? `${currentPath}-${key}` : key;
 
 		if (value && typeof value === "object") {
-			const stopProcessing =
-				handlers.onObject && handlers.onObject(currentPath, key, value);
+			const stopProcessing = handlers.onObject?.(currentPath, key, value);
 			if (!stopProcessing) {
 				processObject(value, handlers, newPath);
 			}
@@ -361,7 +363,7 @@ const config = {
 			inset: ({ theme }: { theme: (path: string) => Record<string, string> }) =>
 				generateNegativeScale(theme, "spacing"),
 			// wrapper는 플러그인에서 .wrapper 클래스로 제공
-			maxWidth: { 480: "480px" },
+			maxWidth: { 360: "360px", 480: "480px" },
 			colors: buildThemeColors(),
 			borderRadius: { md: "0.25rem" },
 			boxShadow: {

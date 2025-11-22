@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { cn } from "@/shared/lib/utils";
 
@@ -22,7 +22,7 @@ export const DataList = ({ data, className }: Props) => {
 							height={8}
 						/>
 					</div>
-					<p className="paragraph-12 !text-white/50 md:paragraph-14">{item}</p>
+					<p>{item}</p>
 				</li>
 			))}
 		</ul>

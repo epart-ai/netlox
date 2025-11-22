@@ -6,11 +6,15 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { DIALOGS, ROUTES } from "@/shared/config";
-import { cn } from "@/shared/lib/utils";
-import { cardContentSpace } from "@/shared/styles/snippets";
+import { errorTextSm } from "@/shared/styles/snippets";
 import { TextLink } from "@/shared/ui/navigation";
 import { Button } from "@/shared/ui/shadcn/button";
-import { CardContent, CardHeader, CardTitle } from "@/shared/ui/shadcn/card";
+import {
+	CardContent,
+	CardHeader,
+	CardTitle,
+	CardWrapper,
+} from "@/shared/ui/shadcn/card";
 import {
 	Form,
 	FormControl,
@@ -63,16 +67,13 @@ export function LoginForm() {
 	};
 
 	return (
-		<CardContent>
-			<CardHeader className="text-center">
-				<CardTitle>Log in to your account</CardTitle>
-			</CardHeader>
-			<Form {...form}>
-				<form
-					onSubmit={handleSubmit(onSubmit)}
-					className={cn("", cardContentSpace)}
-				>
-					<div className="space-y-4">
+		<Form {...form}>
+			<form onSubmit={handleSubmit(onSubmit)}>
+				<CardWrapper>
+					<CardHeader className="text-center">
+						<CardTitle>Log in to your account</CardTitle>
+					</CardHeader>
+					<CardContent>
 						<FormField
 							name="email"
 							control={control}
@@ -105,9 +106,9 @@ export function LoginForm() {
 								</FormItem>
 							)}
 						/>
-					</div>
+					</CardContent>
 
-					{error && <p className="text-sm text-red-400">{error}</p>}
+					{error && <p className={errorTextSm}>{error}</p>}
 
 					<Button
 						type="submit"
@@ -118,14 +119,14 @@ export function LoginForm() {
 					>
 						Log In
 					</Button>
-				</form>
-			</Form>
-			<div className="text-center">
-				<p className="paragraph-14 space-x-2">
-					<span>Don’t have an account?</span>
-					<TextLink href={ROUTES.USER_SIGNUP} label="Sign Up" replace />
-				</p>
-			</div>
-		</CardContent>
+					<div className="text-center">
+						<p className="paragraph-14 space-x-2">
+							<span>Don’t have an account?</span>
+							<TextLink href={ROUTES.USER_SIGNUP} label="Sign Up" replace />
+						</p>
+					</div>
+				</CardWrapper>
+			</form>
+		</Form>
 	);
 }

@@ -1,14 +1,22 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { cn } from "@/shared/lib/utils";
-import { cardContentSpace } from "@/shared/styles/snippets";
-import { Button } from "@/shared/ui/shadcn/button";
+import { DIALOGS } from "@/shared/config";
+import { successTextSm } from "@/shared/styles/snippets";
+import { Button, ButtonBox } from "@/shared/ui/shadcn/button";
+import {
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+	CardWrapper,
+} from "@/shared/ui/shadcn/card";
 import {
 	Form,
 	FormControl,
@@ -18,6 +26,7 @@ import {
 	FormMessage,
 } from "@/shared/ui/shadcn/form";
 import { Input } from "@/shared/ui/shadcn/input";
+import { Spinner } from "@/shared/ui/shadcn/spinner";
 
 import type { UserProfile } from "../model";
 import {
@@ -71,8 +80,11 @@ export const ProfileForm = () => {
 		}
 		setState({ status: "ready", profile: data ?? null });
 		reset(toProfileFormValues(data ?? null));
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isLoading, error, data]);
+	}, [isLoading, error, data, reset]);
+	// 위 effect는 폼의 reset을 호출하므로 reset도 의존성에 포함
+	// Biome 권고에 따라 누락된 의존성을 추가합니다.
+	// (폼 초기화 타이밍은 서버 응답에 연동됨)
+	// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 
 	const { mutate: upsertMutate, isPending: isSaving } =
 		useUpsertProfileMutation({
@@ -100,44 +112,41 @@ export const ProfileForm = () => {
 	});
 
 	if (state.status === "loading") {
-		return <p className="text-slate-300">프로필을 불러오는 중...</p>;
+		return <Spinner />;
 	}
 
 	if (state.status === "error") {
 		return (
-			<div className="space-y-4 rounded-lg border border-rose-900/60 bg-rose-950/40 p-6 text-rose-200">
-				<p>프로필을 불러오는 중 문제가 발생했습니다.</p>
-				<p className="text-sm text-rose-300/80">{state.message}</p>
-				<button
-					type="button"
-					onClick={() => router.push("/user/login")}
-					className="rounded bg-rose-700 px-4 py-2 text-sm font-medium text-white transition hover:bg-rose-600"
-				>
-					로그인 페이지로 이동
-				</button>
-			</div>
+			<CardWrapper className="text-center">
+				<CardTitle>프로필을 불러오는 중 문제가 발생했습니다.</CardTitle>
+				<CardDescription className="text-sm text-rose-300/80">
+					{state.message}
+				</CardDescription>
+				<Button asChild type="button" variant="primary" className="w-full">
+					<Link href={{ query: { dialog: DIALOGS.LOGIN } }}>Login</Link>
+				</Button>
+			</CardWrapper>
 		);
 	}
 
 	return (
-		<section className="space-y-6 rounded-xl border border-slate-800 bg-slate-900/60 p-8 shadow-lg">
-			<header className="space-y-2">
-				<h2 className="text-2xl font-bold text-white">내 프로필</h2>
-				<p className="text-sm text-slate-400">
-					Supabase에서 저장한 `profiles` 테이블 데이터를 조회 및 업데이트하는
-					예시입니다.
-				</p>
-			</header>
+		<Form {...form}>
+			<form
+				onSubmit={handleSubmit((values) => {
+					setFeedback(null);
+					upsertMutate(values);
+				})}
+			>
+				<CardWrapper>
+					<CardHeader>
+						<CardTitle>내 프로필</CardTitle>
+						<CardDescription>
+							Supabase에서 저장한 `profiles` 테이블 데이터를 조회 및
+							업데이트하는 예시입니다.
+						</CardDescription>
+					</CardHeader>
 
-			<Form {...form}>
-				<form
-					onSubmit={handleSubmit((values) => {
-						setFeedback(null);
-						upsertMutate(values);
-					})}
-					className={cn("", cardContentSpace)}
-				>
-					<div className="space-y-4">
+					<CardContent>
 						<FormField
 							name="fullname"
 							control={control}
@@ -235,11 +244,11 @@ export const ProfileForm = () => {
 								</FormItem>
 							)}
 						/>
-					</div>
+					</CardContent>
 
-					{feedback && <p className="text-sm text-emerald-400">{feedback}</p>}
+					{feedback && <p className={successTextSm}>{feedback}</p>}
 
-					<div className="grid grid-cols-2 gap-3">
+					<ButtonBox>
 						<Button
 							type="submit"
 							variant="primary"
@@ -257,9 +266,9 @@ export const ProfileForm = () => {
 						>
 							Sign Out
 						</Button>
-					</div>
-				</form>
-			</Form>
-		</section>
+					</ButtonBox>
+				</CardWrapper>
+			</form>
+		</Form>
 	);
 };

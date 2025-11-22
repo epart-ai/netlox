@@ -1,4 +1,4 @@
-import { ResourceNews } from "@/views/resource/_news/ui";
+import { ResourceNews } from "@/views/resource/news/ui";
 
 type PageProps = {
 	searchParams?: { page?: string };

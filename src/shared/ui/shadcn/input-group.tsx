@@ -1,6 +1,6 @@
 "use client";
 
-import { type ComponentProps } from "react";
+import type { ComponentProps } from "react";
 
 import { type VariantProps, cva } from "class-variance-authority";
 
@@ -13,7 +13,6 @@ function InputGroup({ className, ...props }: ComponentProps<"div">) {
 	return (
 		<div
 			data-slot="input-group"
-			role="group"
 			className={cn(
 				"group/input-group border-input dark:bg-input/30 shadow-xs relative flex w-full items-center rounded-md border outline-none transition-[color,box-shadow]",
 				"h-9 has-[>textarea]:h-auto",
@@ -62,10 +61,10 @@ function InputGroupAddon({
 	className,
 	align = "inline-start",
 	...props
-}: React.ComponentProps<"div"> & VariantProps<typeof inputGroupAddonVariants>) {
+}: React.ComponentProps<"button"> &
+	VariantProps<typeof inputGroupAddonVariants>) {
 	return (
-		<div
-			role="group"
+		<button
 			data-slot="input-group-addon"
 			data-align={align}
 			className={cn(inputGroupAddonVariants({ align }), className)}
@@ -75,6 +74,7 @@ function InputGroupAddon({
 				}
 				e.currentTarget.parentElement?.querySelector("input")?.focus();
 			}}
+			type="button"
 			{...props}
 		/>
 	);

@@ -1,4 +1,4 @@
-import { ResourceBlog } from "@/views/resource/_blog/ui";
+import { ResourceBlog } from "@/views/resource/blog/ui";
 
 type PageProps = {
 	searchParams?: { page?: string };

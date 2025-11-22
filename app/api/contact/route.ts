@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-import { contactFormSchema } from "@/views/business/_contact/model";
-import { sendContactEmail } from "@/views/business/_contact/server";
+import { contactFormSchema } from "@/views/business/contact/model";
+import { sendContactEmail } from "@/views/business/contact/server";
 
 export const runtime = "nodejs";
 

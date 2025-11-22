@@ -1,5 +1,5 @@
 import { ROUTES } from "@/shared/config/routes";
-import { SubPageHero, SubPageTabs } from "@/shared/ui/display";
+import { PageHero, PageTabs } from "@/views/_shared/ui";
 
 export default function BusinessLayout({
 	children,
@@ -20,14 +20,20 @@ export default function BusinessLayout({
 	];
 	return (
 		<>
-			<SubPageHero
+			<PageHero
 				title="NetLOX Business"
-				description="From open-source community editions to 24/7 supported enterprise-grade deployments, NetLOX provides the right solution for your scale."
-				image="/images/products/bg_hero.jpg"
+				description={
+					<>
+						Transparent pricing and direct access to our team. <br />
+						Find the plan that fits your needs or contact us for a custom
+						solution.
+					</>
+				}
+				image="/images/business/bg_hero.jpg"
 			/>
-			<SubPageTabs tabs={tabs} image="/images/common/bg_content.png">
+			<PageTabs tabs={tabs} image="/images/common/bg_content.png">
 				{children}
-			</SubPageTabs>
+			</PageTabs>
 		</>
 	);
 }
