@@ -1,0 +1,1 @@
+export { SignUpVerificationPanel } from "./SignUpVerificationPanel";

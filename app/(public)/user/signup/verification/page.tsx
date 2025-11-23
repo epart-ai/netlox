@@ -1,11 +1,11 @@
 import { cardMaxWidth } from "@/shared/styles/snippets";
 import { Card } from "@/shared/ui/shadcn/card";
-import { SignUpSuccessPanel } from "@/views/user/sign-up/success/ui/SignUpSuccessPanel";
+import { SignUpVerificationPanel } from "@/views/user/sign-up/verification/ui/SignUpVerificationPanel";
 
 export default function UserSignupSuccessPage() {
 	return (
 		<Card className={cardMaxWidth}>
-			<SignUpSuccessPanel />
+			<SignUpVerificationPanel />
 		</Card>
 	);
 }

@@ -121,18 +121,6 @@ export const ResetPasswordForm = () => {
 		);
 	}
 
-	if (status.type === "success") {
-		return (
-			<CardWrapper>
-				<CardHeader>
-					<CardTitle>
-						Your password has been successfully updated. Please log in.
-					</CardTitle>
-				</CardHeader>
-			</CardWrapper>
-		);
-	}
-
 	return (
 		<Form {...form}>
 			<form

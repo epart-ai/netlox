@@ -10,7 +10,7 @@ import {
 	CardWrapper,
 } from "@/shared/ui/shadcn/card";
 
-export const SignUpSuccessPanel = () => {
+export const SignUpVerificationPanel = () => {
 	return (
 		<CardWrapper className="text-center">
 			<IconCheck size="80" color="blue50" className="mx-auto" />

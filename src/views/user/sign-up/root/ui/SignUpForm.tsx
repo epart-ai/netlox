@@ -62,7 +62,7 @@ export const SignUpForm = () => {
 			}
 
 			succeed(
-				"Almost t here! Check your email. We've sent a verification link to your email. Please click the link in the email to complete your registration.",
+				"Almost there! Check your email. We've sent a verification link to your email. Please click the link in the email to complete your registration.",
 			);
 		},
 		onError: (err: Error) => {
@@ -169,7 +169,7 @@ export const SignUpForm = () => {
 								<FormItem>
 									<FormLabel>Confirm password *</FormLabel>
 									<FormControl>
-										<Input {...field} disabled={isLoading} />
+										<Input {...field} type="password" disabled={isLoading} />
 									</FormControl>
 									<FormMessage />
 								</FormItem>
