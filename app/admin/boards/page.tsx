@@ -99,10 +99,14 @@ export default function AdminBoardsPage() {
 						<form onSubmit={handleCreate} className="space-y-4">
 							<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 								<div>
-									<label className="mb-1 block text-sm text-slate-300">
+									<label
+										htmlFor="board-slug"
+										className="mb-1 block text-sm text-slate-300"
+									>
 										Slug *
 									</label>
 									<input
+										id="board-slug"
 										value={slug}
 										onChange={(e) => setSlug(e.target.value)}
 										placeholder="예: notice"
@@ -111,10 +115,14 @@ export default function AdminBoardsPage() {
 									/>
 								</div>
 								<div>
-									<label className="mb-1 block text-sm text-slate-300">
+									<label
+										htmlFor="board-name"
+										className="mb-1 block text-sm text-slate-300"
+									>
 										이름 *
 									</label>
 									<input
+										id="board-name"
 										value={name}
 										onChange={(e) => setName(e.target.value)}
 										placeholder="보드 이름"
@@ -123,10 +131,14 @@ export default function AdminBoardsPage() {
 									/>
 								</div>
 								<div>
-									<label className="mb-1 block text-sm text-slate-300">
+									<label
+										htmlFor="board-description"
+										className="mb-1 block text-sm text-slate-300"
+									>
 										설명
 									</label>
 									<input
+										id="board-description"
 										value={description}
 										onChange={(e) => setDescription(e.target.value)}
 										placeholder="보드 설명 (선택사항)"
@@ -137,10 +149,14 @@ export default function AdminBoardsPage() {
 
 							<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
 								<div>
-									<label className="mb-1 block text-sm text-slate-300">
+									<label
+										htmlFor="board-max-attachments"
+										className="mb-1 block text-sm text-slate-300"
+									>
 										최대 첨부파일 수
 									</label>
 									<input
+										id="board-max-attachments"
 										type="number"
 										min={0}
 										value={maxAttachments}
@@ -151,10 +167,14 @@ export default function AdminBoardsPage() {
 									/>
 								</div>
 								<div>
-									<label className="mb-1 block text-sm text-slate-300">
+									<label
+										htmlFor="board-posts-per-page"
+										className="mb-1 block text-sm text-slate-300"
+									>
 										페이지당 게시물 수
 									</label>
 									<input
+										id="board-posts-per-page"
 										type="number"
 										min={1}
 										value={postsPerPage}

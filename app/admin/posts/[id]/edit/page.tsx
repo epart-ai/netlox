@@ -261,8 +261,14 @@ export default function AdminPostEditPage() {
 				<form onSubmit={handleSubmit} className="space-y-5">
 					<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 						<div>
-							<label className="mb-2 block text-sm text-slate-300">보드</label>
+							<label
+								htmlFor="edit-board"
+								className="mb-2 block text-sm text-slate-300"
+							>
+								보드
+							</label>
 							<select
+								id="edit-board"
 								value={form.boardSlug}
 								onChange={(event) =>
 									setForm((prev) => ({
@@ -277,11 +283,15 @@ export default function AdminPostEditPage() {
 						</div>
 					</div>
 					<div>
-						<label className="mb-2 block text-sm text-slate-300">
+						<label
+							htmlFor="edit-attachments"
+							className="mb-2 block text-sm text-slate-300"
+						>
 							첨부파일 (최대 {maxAttachments}개, 추가 가능 {remainAttachments}
 							개)
 						</label>
 						<input
+							id="edit-attachments"
 							type="file"
 							multiple
 							onChange={(event) => {
@@ -299,8 +309,14 @@ export default function AdminPostEditPage() {
 						)}
 					</div>
 					<div>
-						<label className="mb-2 block text-sm text-slate-300">제목</label>
+						<label
+							htmlFor="edit-title"
+							className="mb-2 block text-sm text-slate-300"
+						>
+							제목
+						</label>
 						<input
+							id="edit-title"
 							value={form.title}
 							onChange={(event) =>
 								setForm((prev) => ({ ...prev, title: event.target.value }))
@@ -310,8 +326,14 @@ export default function AdminPostEditPage() {
 						/>
 					</div>
 					<div>
-						<label className="mb-2 block text-sm text-slate-300">내용</label>
+						<label
+							htmlFor="edit-content"
+							className="mb-2 block text-sm text-slate-300"
+						>
+							내용
+						</label>
 						<textarea
+							id="edit-content"
 							value={form.content}
 							onChange={(event) =>
 								setForm((prev) => ({ ...prev, content: event.target.value }))
@@ -322,10 +344,14 @@ export default function AdminPostEditPage() {
 						/>
 					</div>
 					<div>
-						<label className="mb-2 block text-sm text-slate-300">
+						<label
+							htmlFor="edit-link"
+							className="mb-2 block text-sm text-slate-300"
+						>
 							링크 (선택사항)
 						</label>
 						<input
+							id="edit-link"
 							type="url"
 							value={form.etc1}
 							onChange={(event) =>

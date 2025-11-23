@@ -1,0 +1,75 @@
+"use client";
+
+import { useMemo } from "react";
+
+import { CardList } from "@/shared/ui/shadcn/card";
+import { Spinner } from "@/shared/ui/shadcn/spinner";
+import { Pagination } from "@/views/resource/_shared/ui/Pagination";
+import { PostCard } from "@/views/resource/_shared/ui/PostCard";
+import {
+	ResourceEmpty,
+	ResourceError,
+} from "@/views/resource/_shared/ui/ResourceStates";
+
+import { usePostMetaQuery, usePostsQuery } from "../model/blog.query";
+
+type ResourceBlogProps = {
+	searchParams?: { page?: string };
+};
+
+export function ResourceBlog({ searchParams }: ResourceBlogProps) {
+	const initialPage = searchParams?.page ? parseInt(searchParams.page, 10) : 1;
+	const page = initialPage;
+	const { data: meta } = usePostMetaQuery();
+	const usePagination = meta?.usePagination ?? false;
+	const postsPerPage = meta?.postsPerPage ?? 10;
+
+	const queryPage = useMemo(
+		() => (usePagination ? page : 1),
+		[usePagination, page],
+	);
+
+	const { data, isLoading, isError } = usePostsQuery({
+		page: queryPage,
+		limit: usePagination ? postsPerPage : 30,
+	});
+
+	if (isLoading) return <Spinner size="lg" />;
+
+	if (isError || !data) return <ResourceError />;
+
+	const { posts, total } = data;
+	const totalPages = usePagination ? Math.ceil(total / postsPerPage) : 1;
+	const currentPage = queryPage;
+
+	return (
+		<>
+			{posts.length === 0 ? (
+				<ResourceEmpty />
+			) : (
+				<>
+					<CardList
+						colors="blue"
+						enableHover
+						className="gap-y-9.75 grid-cols-2 gap-y-9 lg:gap-y-19.5"
+					>
+						{posts.map((post) => (
+							<PostCard
+								key={post.id}
+								id={post.id}
+								title={post.title}
+								createdAt={post.created_at}
+								imageUrl={post.imageUrl}
+								href={post.etc1 ?? undefined}
+							/>
+						))}
+					</CardList>
+
+					{usePagination && (
+						<Pagination currentPage={currentPage} totalPages={totalPages} />
+					)}
+				</>
+			)}
+		</>
+	);
+}

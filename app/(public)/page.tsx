@@ -1,19 +1,19 @@
 import {
-	MainFeatures,
-	MainHero,
-	MainModel,
-	MainReport,
-	MainSuccess,
-} from "@/views/main";
+	RootFeatures,
+	RootHero,
+	RootModel,
+	RootReport,
+	RootSuccess,
+} from "@/views/root";
 
-export default function MainPage() {
+export default function RootPage() {
 	return (
 		<>
-			<MainHero />
-			<MainReport />
-			<MainFeatures />
-			<MainModel />
-			<MainSuccess />
+			<RootHero />
+			<RootReport />
+			<RootFeatures />
+			<RootModel />
+			<RootSuccess />
 		</>
 	);
 }

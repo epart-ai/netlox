@@ -71,8 +71,7 @@ export const ProfileForm = () => {
 		}
 		setState({ status: "ready", profile: data ?? null });
 		reset(toProfileFormValues(data ?? null));
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isLoading, error, data]);
+	}, [isLoading, error, data, reset]);
 
 	const { mutate: upsertMutate, isPending: isSaving } =
 		useUpsertProfileMutation({

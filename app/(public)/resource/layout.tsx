@@ -1,5 +1,5 @@
 import { ROUTES } from "@/shared/config/routes";
-import { SubPageHero, SubPageTabs } from "@/shared/ui/display";
+import { PageHero, PageTabs } from "@/views/_shared/ui";
 
 export default function ResourceLayout({
 	children,
@@ -25,14 +25,20 @@ export default function ResourceLayout({
 	];
 	return (
 		<>
-			<SubPageHero
+			<PageHero
 				title="NetLOX Resource"
-				description="From open-source community editions to 24/7 supported enterprise-grade deployments, NetLOX provides the right solution for your scale."
-				image="/images/products/bg_hero.jpg"
+				description={
+					<>
+						Explore our technical documentation, user guides, API references,{" "}
+						<br />
+						and latest articles from the NetLOX team.
+					</>
+				}
+				image="/images/resource/bg_hero.png"
 			/>
-			<SubPageTabs tabs={tabs} image="/images/common/bg_content.png">
+			<PageTabs tabs={tabs} image="/images/common/bg_content.png">
 				{children}
-			</SubPageTabs>
+			</PageTabs>
 		</>
 	);
 }

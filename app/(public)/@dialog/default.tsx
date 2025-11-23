@@ -3,8 +3,8 @@
 import { useSearchParams } from "next/navigation";
 
 import { RouteDialog } from "@/shared/ui/overlays";
-import { ForgotPasswordForm } from "@/views/user/forgot-password/ui";
-import { LoginForm } from "@/views/user/login/ui";
+import { ForgotPasswordForm } from "@/views/user/forgot-password/root/ui";
+import { LoginForm } from "@/views/user/login/root/ui";
 
 const dialogComponents = {
 	login: <LoginForm />,

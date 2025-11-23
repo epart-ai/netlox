@@ -1,14 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { ROUTES } from "@/shared/config";
 import { cn } from "@/shared/lib/utils";
 import { useSupabaseClient } from "@/shared/supabase";
-import { Button } from "@/shared/ui/shadcn/button";
+import { TextLink } from "@/shared/ui/navigation";
 
 import { HeaderAuth } from "./HeaderAuth";
 
@@ -145,26 +144,18 @@ export const Header = () => {
 						<ul className="flex flex-col items-center gap-8 lg:flex-row">
 							{navItems.map((item) => (
 								<li key={item.label}>
-									<Link href={item.href} className="paragraph-18 font-medium">
-										{item.label}
-									</Link>
+									<TextLink
+										href={item.href}
+										label={item.label}
+										size="lg"
+										colors="white75"
+										className="font-medium"
+									/>
 								</li>
 							))}
 						</ul>
 					</nav>
-					<div className="flex flex-wrap items-center justify-center lg:pointer-events-auto lg:ml-auto">
-						<HeaderAuth userEmail={userEmail} />
-
-						<Button
-							asChild
-							variant="primary"
-							type="button"
-							aria-label="Sign up for an account"
-							lg={false}
-						>
-							<Link href={ROUTES.USER_SIGNUP}>Sign Up</Link>
-						</Button>
-					</div>
+					<HeaderAuth userEmail={userEmail} />
 				</div>
 			</div>
 		</header>

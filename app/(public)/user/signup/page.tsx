@@ -1,5 +1,5 @@
 import { Card } from "@/shared/ui/shadcn/card";
-import { SignUpForm, SignUpInformation } from "@/views/user/sign-up/ui";
+import { SignUpForm, SignUpInformation } from "@/views/user/sign-up/root/ui";
 
 export default function UserSignupPage() {
 	return (

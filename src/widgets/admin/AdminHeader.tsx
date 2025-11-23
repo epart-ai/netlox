@@ -44,9 +44,10 @@ export default function AdminHeader() {
 						이메일설정
 					</Link>
 					<button
+						type="button"
 						onClick={handleLogout}
 						disabled={loading}
-						className="rounded border border-slate-700 px-3 py-1.5 text-sm font-medium text-slate-300 transition-colors hover:bg-slate-800 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+						className="rounded border border-slate-700 px-3 py-1.5 text-sm font-medium text-slate-300 transition-colors duration-300 hover:bg-slate-800 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
 					>
 						{loading ? "로그아웃 중..." : "로그아웃"}
 					</button>

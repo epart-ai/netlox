@@ -81,15 +81,19 @@ export const DataCarousel = ({
 				<div className="mt-4 flex justify-center gap-1.5 lg:gap-2">
 					{paginationKeys.map((key, index) => {
 						return (
-							<span
+							<button
+								type="button"
 								key={key}
 								className={cn(
-									"h-1.5 w-1.5 rounded-full lg:h-2.5 lg:w-2.5",
+									"h-1.5 w-1.5 rounded-full transition-all duration-300 lg:h-2.5 lg:w-2.5",
 									current === index + 1
 										? "w-3.5 bg-blue-40 lg:w-6"
 										: "bg-white/50",
 								)}
-							/>
+								onClick={() => api?.scrollTo(index)}
+							>
+								<span className="sr-only">Go to slide {index + 1}</span>
+							</button>
 						);
 					})}
 				</div>

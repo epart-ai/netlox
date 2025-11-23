@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 
+import { useCloseRouteDialog } from "@/shared/lib/useCloseRouteDialog";
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/shadcn/button";
 import { Card } from "@/shared/ui/shadcn/card";
@@ -14,25 +14,7 @@ interface Props {
 }
 
 export const RouteDialog = ({ children, className }: Props) => {
-	const router = useRouter();
-	const pathname = usePathname();
-	const searchParams = useSearchParams();
-
-	const closeDialog = useCallback(() => {
-		if (!pathname) {
-			router.back();
-			return;
-		}
-		if (searchParams?.has("dialog")) {
-			const params = new URLSearchParams(searchParams.toString());
-			params.delete("dialog");
-			const next = params.toString();
-			const href = next ? `${pathname}?${next}` : pathname;
-			router.replace(href);
-		} else {
-			router.back();
-		}
-	}, [pathname, router, searchParams]);
+	const closeDialog = useCloseRouteDialog();
 
 	useEffect(() => {
 		const onKeyDown = (event: KeyboardEvent) => {

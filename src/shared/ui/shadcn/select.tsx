@@ -21,8 +21,7 @@ const Select = ({
 }: React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>) => {
 	// FormControl의 Slot을 통해 전달된 aria-invalid를 읽어 트리거 스타일에 반영
 	const rawAriaInvalid = (props as Record<string, unknown>)["aria-invalid"];
-	const ariaInvalid =
-		rawAriaInvalid === true || rawAriaInvalid === "true" ? true : false;
+	const ariaInvalid = !!(rawAriaInvalid === true || rawAriaInvalid === "true");
 
 	return (
 		<SelectContext.Provider value={{ ariaInvalid }}>

@@ -1,6 +1,4 @@
 "use client";
-
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { isAdminUser } from "@/shared/admin/admin";
@@ -9,7 +7,6 @@ import { createClient } from "@/shared/supabase/client";
 export const dynamic = "force-dynamic";
 
 export default function AdminLoginPage() {
-	const router = useRouter();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState(false);
@@ -28,7 +25,7 @@ export default function AdminLoginPage() {
 			}
 		};
 		checkAdmin();
-	}, [router]);
+	}, []);
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();

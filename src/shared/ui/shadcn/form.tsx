@@ -6,7 +6,7 @@ import {
 	Controller,
 	type ControllerProps,
 	type ControllerRenderProps,
-	FieldError,
+	type FieldError,
 	type FieldPath,
 	type FieldValues,
 	FormProvider,
@@ -14,7 +14,7 @@ import {
 	useFormContext,
 } from "react-hook-form";
 
-import * as LabelPrimitive from "@radix-ui/react-label";
+import type * as LabelPrimitive from "@radix-ui/react-label";
 import { Slot } from "@radix-ui/react-slot";
 
 import { cn } from "../../lib/utils";
@@ -164,7 +164,10 @@ const FormDescription = React.forwardRef<
 		<p
 			ref={ref}
 			id={formDescriptionId}
-			className={cn("paragraph-14 text-blue-20", className)}
+			className={cn(
+				"paragraph-14 flex items-center gap-1 text-blue-20",
+				className,
+			)}
 			{...props}
 		/>
 	);

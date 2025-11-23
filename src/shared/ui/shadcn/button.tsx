@@ -7,17 +7,23 @@ import { cn } from "../../lib/utils";
 import { Spinner } from "./spinner";
 
 const buttonVariants = cva(
-	"inline-flex items-center relative justify-center gap-2 whitespace-nowrap rounded-lg !text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none  [&_svg]:shrink-0 hover:after:content-[''] hover:after:absolute hover:after:inset-0 hover:after:w-full hover:after:h-full hover:after:rounded-lg hover:after:pointer-events-none hover:shadow-none hover:after:bg-[#00000026]",
+	"inline-flex items-center relative justify-center gap-2 whitespace-nowrap rounded-lg !text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 transition-colors duration-300",
 	{
 		variants: {
 			variant: {
-				primary: "bg-blue-60",
+				primary: "",
 				secondary:
-					"border border-white/25 to-white/5 from-white/25 bg-gradient-to-b backdrop-blur-[6px]",
+					"border border-white/25 to-white/5 from-white/25 bg-gradient-to-b backdrop-blur-[6px] hover:border-white",
 				outline: "border border-white/25",
 				text: "!text-white/75 hover:text-white",
-				white: "bg-white !text-blue-60",
+				white: "bg-white !text-blue-60 hover:bg-blue-40 hover:!text-white",
 				icon: "!p-1 rounded-full !h-auto ",
+			},
+			colors: {
+				blue: "",
+				green: "",
+				purple: "",
+				orange: "",
 			},
 			size: {
 				sm: "h-9 px-4 subTitle-14",
@@ -37,7 +43,31 @@ const buttonVariants = cva(
 				false: "",
 			},
 		},
+		compoundVariants: [
+			{
+				colors: "blue",
+				variant: "primary",
+				class: "bg-blue-40 hover:bg-blue-60",
+			},
+			{
+				colors: "green",
+				variant: "primary",
+				class: "bg-green-40 hover:bg-green-60",
+			},
+			{
+				colors: "purple",
+				variant: "primary",
+				class: "bg-purple-40 hover:bg-purple-60",
+			},
+			{
+				colors: "orange",
+				variant: "primary",
+				class: "bg-orange-40 hover:bg-orange-60",
+			},
+		],
 		defaultVariants: {
+			variant: "primary",
+			colors: "blue",
 			sm: true,
 			md: true,
 			lg: true,
@@ -56,6 +86,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 	(
 		{
 			className,
+			colors,
 			variant,
 			size,
 			sm,
@@ -70,7 +101,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 		const Comp = asChild ? Slot : "button";
 		return (
 			<Comp
-				className={cn(buttonVariants({ variant, size, sm, md, lg, className }))}
+				className={cn(
+					buttonVariants({ variant, size, sm, md, lg, colors, className }),
+				)}
 				ref={ref}
 				{...props}
 			>

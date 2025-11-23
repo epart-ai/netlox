@@ -1,4 +1,4 @@
-import { SolutionsAiLlm } from "@/views/solutions/_ai-llm/ui";
+import { SolutionsAiLlm } from "@/views/solutions/ai-llm/ui";
 
 export default function SolutionsAiLlmPage() {
 	return <SolutionsAiLlm />;

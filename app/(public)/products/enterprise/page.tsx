@@ -1,4 +1,4 @@
-import { ProductsEnterprise } from "@/views/products/_enterprise/ui";
+import { ProductsEnterprise } from "@/views/products/enterprise/ui";
 
 export default function ProductEnterprisePage() {
 	return <ProductsEnterprise />;
