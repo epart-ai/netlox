@@ -1,1 +1,0 @@
-export { BusinessPricing } from "./BusinessPricing";

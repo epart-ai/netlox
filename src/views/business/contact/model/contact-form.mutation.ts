@@ -7,7 +7,7 @@ import {
 } from "./contact-form-schema";
 
 export type ContactMutationVariables = ContactFormValues;
-export type ContactMutationData = undefined;
+export type ContactMutationData = void;
 
 export function useContactFormMutation(
 	options?: UseMutationOptions<

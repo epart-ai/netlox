@@ -144,10 +144,10 @@ function buildMailContent(values: ContactFormValues) {
 		fullName: escapeHtml(values.fullName),
 		businessEmail: escapeHtml(values.businessEmail),
 		companyName: escapeHtml(values.companyName),
-		phoneNumber: escapeHtml(values.phoneNumber),
+		phoneNumber: escapeHtml(values.phoneNumber || ""),
 		role: escapeHtml(values.role),
 		primaryUseCase: escapeHtml(values.primaryUseCase),
-		howToKnowUs: escapeHtml(values.howToKnowUs),
+		howToKnowUs: escapeHtml(values.howToKnowUs || ""),
 		help: escapeHtml(values.help),
 	};
 

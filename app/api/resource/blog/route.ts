@@ -48,9 +48,7 @@ export async function GET(request: Request) {
 
 		const firstImageMap = new Map<string, string>();
 		attachments?.forEach((attachment) => {
-			// @ts-expect-error - runtime safety
 			const pid = attachment?.post_id as string | undefined;
-			// @ts-expect-error - runtime safety
 			const url = attachment?.file_url as string | null | undefined;
 			if (!pid) return;
 			if (!firstImageMap.has(pid) && url) {

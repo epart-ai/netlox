@@ -4,7 +4,7 @@ import { updatePassword } from "../api/resetPassword.api";
 import type { ResetPasswordPayload } from "./reset-password.schema";
 
 export type ResetPasswordVariables = ResetPasswordPayload;
-export type ResetPasswordData = undefined;
+export type ResetPasswordData = void;
 
 export function useResetPasswordMutation(
 	options?: UseMutationOptions<

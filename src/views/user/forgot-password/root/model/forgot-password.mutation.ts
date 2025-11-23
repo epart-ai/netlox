@@ -6,7 +6,7 @@ import type { ForgotPasswordPayload } from "./forgot-password.schema";
 export type ForgotPasswordVariables = ForgotPasswordPayload & {
 	redirectTo?: string;
 };
-export type ForgotPasswordData = undefined;
+export type ForgotPasswordData = void;
 
 export function useForgotPasswordMutation(
 	options?: UseMutationOptions<
