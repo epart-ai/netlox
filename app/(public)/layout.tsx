@@ -29,7 +29,7 @@ export default function RootLayout({
 			>
 				<AppProviders>
 					<Header />
-					{children}
+					<main className="min-h-screen">{children}</main>
 					<Footer />
 					<CookieAgree />
 					{dialog}

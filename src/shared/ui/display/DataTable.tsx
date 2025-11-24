@@ -71,7 +71,10 @@ export function DataTable<TData = unknown, TValue = unknown>({
 
 	return (
 		<div
-			className={cn("glass-surface relative w-full overflow-x-auto", className)}
+			className={cn(
+				"glass-surface relative w-full overflow-x-auto px-4 lg:px-5",
+				className,
+			)}
 		>
 			<Table className={tableClassName}>
 				<TableHeader>

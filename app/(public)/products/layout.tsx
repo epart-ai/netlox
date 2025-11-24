@@ -32,7 +32,13 @@ export default function ProductsLayout({
 		<>
 			<PageHero
 				title="NetLOX Products"
-				description="From open-source community editions to 24/7 supported enterprise-grade deployments, NetLOX provides the right solution for your scale."
+				description={
+					<>
+						From open-source community editions to 24/7 supported <br />
+						enterprise-grade deployments, NetLOX provides the right solution for
+						your scale.
+					</>
+				}
 				image="/images/products/bg_hero.jpg"
 			/>
 			<PageTabs tabs={tabs} image="/images/common/bg_content.png">

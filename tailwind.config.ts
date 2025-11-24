@@ -298,7 +298,7 @@ function wrapperComponentPlugin(api: PluginAPI) {
 			paddingLeft: "5vw",
 			paddingRight: "5vw",
 			"@media (min-width: 1400px)": {
-				maxWidth: "72.916vw",
+				maxWidth: "1400px",
 				paddingLeft: "0",
 				paddingRight: "0",
 			},

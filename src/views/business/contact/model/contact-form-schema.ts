@@ -10,7 +10,7 @@ import {
 // API 전송용 페이로드 스키마
 export const contactPayloadSchema = z.object({
 	fullName: z.string().trim().min(1, "This field is required."),
-	businessEmail: z.string().trim().email("").min(1, "This field is required."),
+	businessEmail: z.string().trim().min(1, "This field is required.").email(""),
 	companyName: z.string().trim().min(1, "This field is required."),
 	phoneNumber: z.string().trim().optional(),
 	role: z
