@@ -1,1 +1,0 @@
-export { SolutionsKubernetes } from "./SolutionsKubernetes";

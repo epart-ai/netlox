@@ -1,1 +1,0 @@
-export { TechnologyPerformance } from "./TechnologyPerformance";
