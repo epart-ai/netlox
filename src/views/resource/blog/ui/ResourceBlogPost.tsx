@@ -2,6 +2,8 @@
 
 import { useMemo } from "react";
 
+import { Reveal } from "@/shared/ui/display";
+import { CardList } from "@/shared/ui/shadcn/card";
 import { Spinner } from "@/shared/ui/shadcn/spinner";
 import { Pagination } from "@/views/resource/_shared/ui/Pagination";
 import { PostCard } from "@/views/resource/_shared/ui/PostCard";
@@ -9,16 +11,14 @@ import {
 	ResourceEmpty,
 	ResourceError,
 } from "@/views/resource/_shared/ui/ResourceStates";
-import {
-	usePostMetaQuery,
-	usePostsQuery,
-} from "@/views/resource/news/model/news.query";
 
-type ResourceNewsProps = {
+import { usePostMetaQuery, usePostsQuery } from "../model/blog.query";
+
+interface Props {
 	searchParams?: { page?: string };
-};
+}
 
-export function ResourceNews({ searchParams }: ResourceNewsProps) {
+export function ResourceBlogPost({ searchParams }: Props) {
 	const initialPage = searchParams?.page ? parseInt(searchParams.page, 10) : 1;
 	const page = initialPage;
 	const { data: meta } = usePostMetaQuery();
@@ -36,6 +36,7 @@ export function ResourceNews({ searchParams }: ResourceNewsProps) {
 	});
 
 	if (isLoading) return <Spinner size="lg" />;
+
 	if (isError || !data) return <ResourceError />;
 
 	const { posts, total } = data;
@@ -43,12 +44,16 @@ export function ResourceNews({ searchParams }: ResourceNewsProps) {
 	const currentPage = queryPage;
 
 	return (
-		<>
+		<Reveal rootMargin="-10% 0px -10% 0px" threshold={0}>
 			{posts.length === 0 ? (
 				<ResourceEmpty />
 			) : (
 				<>
-					<ul className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+					<CardList
+						colors="blue"
+						enableHover
+						className="gap-y-9.75 grid-cols-2 gap-y-9 lg:gap-y-19.5"
+					>
 						{posts.map((post) => (
 							<PostCard
 								key={post.id}
@@ -59,13 +64,13 @@ export function ResourceNews({ searchParams }: ResourceNewsProps) {
 								href={post.etc1 ?? undefined}
 							/>
 						))}
-					</ul>
+					</CardList>
 
 					{usePagination && (
 						<Pagination currentPage={currentPage} totalPages={totalPages} />
 					)}
 				</>
 			)}
-		</>
+		</Reveal>
 	);
 }

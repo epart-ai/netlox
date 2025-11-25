@@ -38,7 +38,7 @@ import {
 
 export const ResetPasswordForm = () => {
 	const router = useRouter();
-	const { reset, fail, succeed, StatusBanner, status } = useActionStatus();
+	const { reset, fail, succeed, StatusBanner } = useActionStatus();
 
 	const form = useForm<ResetPasswordFormValues>({
 		mode: "onChange",

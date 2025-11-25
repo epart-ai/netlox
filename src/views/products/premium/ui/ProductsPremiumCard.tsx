@@ -1,9 +1,12 @@
+import type { ThemeColor } from "@/shared/model/types";
 import { sectionTitleLg } from "@/shared/styles/snippets";
 import { DataCard, Reveal } from "@/shared/ui/display";
 
-export const SolutionsAiLlm = () => {
-	const themeColor = "purple";
+interface Props {
+	themeColor: ThemeColor;
+}
 
+export const ProductsPremiumCard = ({ themeColor }: Props) => {
 	const cardData = [
 		{
 			title: "Dedicated Engineer",

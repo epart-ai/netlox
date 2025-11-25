@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 
+import { Reveal } from "@/shared/ui/display";
 import { CardList } from "@/shared/ui/shadcn/card";
 import { Spinner } from "@/shared/ui/shadcn/spinner";
 import { Pagination } from "@/views/resource/_shared/ui/Pagination";
@@ -10,14 +11,16 @@ import {
 	ResourceEmpty,
 	ResourceError,
 } from "@/views/resource/_shared/ui/ResourceStates";
+import {
+	usePostMetaQuery,
+	usePostsQuery,
+} from "@/views/resource/news/model/news.query";
 
-import { usePostMetaQuery, usePostsQuery } from "../model/blog.query";
-
-type ResourceBlogProps = {
+interface Props {
 	searchParams?: { page?: string };
-};
+}
 
-export function ResourceBlog({ searchParams }: ResourceBlogProps) {
+export function ResourceNewsPost({ searchParams }: Props) {
 	const initialPage = searchParams?.page ? parseInt(searchParams.page, 10) : 1;
 	const page = initialPage;
 	const { data: meta } = usePostMetaQuery();
@@ -35,7 +38,6 @@ export function ResourceBlog({ searchParams }: ResourceBlogProps) {
 	});
 
 	if (isLoading) return <Spinner size="lg" />;
-
 	if (isError || !data) return <ResourceError />;
 
 	const { posts, total } = data;
@@ -43,7 +45,7 @@ export function ResourceBlog({ searchParams }: ResourceBlogProps) {
 	const currentPage = queryPage;
 
 	return (
-		<>
+		<Reveal rootMargin="-10% 0px -10% 0px" threshold={0}>
 			{posts.length === 0 ? (
 				<ResourceEmpty />
 			) : (
@@ -70,6 +72,6 @@ export function ResourceBlog({ searchParams }: ResourceBlogProps) {
 					)}
 				</>
 			)}
-		</>
+		</Reveal>
 	);
 }

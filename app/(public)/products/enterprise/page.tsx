@@ -1,5 +1,14 @@
-import { ProductsEnterprise } from "@/views/products/enterprise/ui";
+import {
+	ProductsEnterpriseCard,
+	ProductsEnterpriseIntro,
+} from "@/views/products/enterprise/ui";
 
 export default function ProductEnterprisePage() {
-	return <ProductsEnterprise />;
+	const themeColor = "blue";
+	return (
+		<>
+			<ProductsEnterpriseIntro themeColor={themeColor} />
+			<ProductsEnterpriseCard themeColor={themeColor} />
+		</>
+	);
 }

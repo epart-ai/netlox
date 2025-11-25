@@ -1,1 +1,2 @@
-export { ResourceNews } from "./ResourceNews";
+export { ResourceNewsPost } from "./ResourceNewsPost";
+export { ResourceNewsIntro } from "./ResourceNewsIntro";
