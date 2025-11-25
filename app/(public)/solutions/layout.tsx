@@ -20,7 +20,7 @@ export default function ProductsLayout({
 		{
 			label: "5G&Telco",
 			value: "telco5g",
-			href: ROUTES.SOLUTIONS_TELCO_5G,
+			href: ROUTES.SOLUTIONS_5G_TELCO,
 		},
 		{
 			label: "Edge Computing",

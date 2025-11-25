@@ -43,11 +43,11 @@ export const ProductsOpenSourceCard = ({ themeColor }: Props) => {
 	];
 
 	return (
-		<Reveal delayMs={300}>
-			<div className="mt-[100px]">
+		<div className="mt-[100px]">
+			<Reveal delayMs={300}>
 				<h3 className={sectionTitleLg}>Core Features</h3>
 				<DataCard data={cardData} enableHover={true} colors={themeColor} />
-			</div>
-		</Reveal>
+			</Reveal>
+		</div>
 	);
 };

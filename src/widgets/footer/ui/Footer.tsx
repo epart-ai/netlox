@@ -22,7 +22,7 @@ export const Footer = () => {
 			links: [
 				{ label: "AI/LLM", href: ROUTES.SOLUTIONS_AI_LLM },
 				{ label: "Kubernetes", href: ROUTES.SOLUTIONS_KUBERNETES },
-				{ label: "5G&Telco", href: ROUTES.SOLUTIONS_TELCO_5G },
+				{ label: "5G&Telco", href: ROUTES.SOLUTIONS_5G_TELCO },
 				{ label: "Edge Computing", href: ROUTES.SOLUTIONS_EDGE_COMPUTING },
 			],
 		},

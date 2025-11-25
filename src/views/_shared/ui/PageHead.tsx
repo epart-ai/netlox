@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode, isValidElement } from "react";
 
 import { cn } from "@/shared/lib/utils";
 import {
@@ -38,7 +38,18 @@ export const PageHead = ({
 				</strong>
 			) : null}
 			<h3 className={headingSecondary}>{title}</h3>
-			{description ? <p className={paragraphLead}>{description}</p> : null}
+			{description ? (
+				typeof description === "string" ||
+				(isValidElement(description) && description.type === Fragment) ? (
+					<p className={cn(paragraphLead, "[&_strong]:font-semibold")}>
+						{description}
+					</p>
+				) : (
+					<div className={cn(paragraphLead, "[&_strong]:font-semibold")}>
+						{description}
+					</div>
+				)
+			) : null}
 		</div>
 	);
 };

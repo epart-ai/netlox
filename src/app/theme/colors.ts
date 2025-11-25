@@ -3,6 +3,7 @@ const colors = {
 	black: "#000000",
 	alert: "#ff3d67",
 	green: {
+		"10": "#6CFF77",
 		"20": "#4ce183",
 		"40": "#09bc4b",
 		"60": "#0a943d",

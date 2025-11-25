@@ -1,5 +1,15 @@
-import { SolutionsEdgeComputing } from "@/views/solutions/edge-computing/ui";
+import {
+	SolutionsEdgeComputingCard,
+	SolutionsEdgeComputingIntro,
+} from "@/views/solutions/edge-computing/ui";
 
 export default function SolutionsEdgeComputingPage() {
-	return <SolutionsEdgeComputing />;
+	const themeColor = "orange";
+
+	return (
+		<>
+			<SolutionsEdgeComputingIntro themeColor={themeColor} />
+			<SolutionsEdgeComputingCard themeColor={themeColor} />
+		</>
+	);
 }

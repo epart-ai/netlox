@@ -1,1 +1,2 @@
-export { SolutionsAiLlm } from "./SolutionsAiLlm";
+export { SolutionsAiLlmCard } from "./SolutionsAiLlmCard";
+export { SolutionsAiLlmIntro } from "./SolutionsAiLlmIntro";

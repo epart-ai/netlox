@@ -1,1 +1,2 @@
-export { SolutionsKubernetes } from "./SolutionsKubernetes";
+export { SolutionsKubernetesIntro } from "./SolutionsKubernetesIntro";
+export { SolutionsKubernetesCard } from "./SolutionsKubernetesCard";
