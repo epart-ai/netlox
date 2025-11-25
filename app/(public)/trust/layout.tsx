@@ -16,9 +16,14 @@ export default function TrustLayout({
 	return (
 		<>
 			<PageHero
-				title="NetLOX Trust"
-				description="From open-source community editions to 24/7 supported enterprise-grade deployments, NetLOX provides the right solution for your scale."
-				image="/images/products/bg_hero.jpg"
+				title="Trusted by Global Leaders"
+				description={
+					<>
+						Proven results across industries and scales, <br />
+						from Fortune 500 enterprises to major telecom operators.
+					</>
+				}
+				image="/images/trust/bg_hero.jpg"
 			/>
 			<PageTabs tabs={tabs} image="/images/common/bg_content.png">
 				{children}

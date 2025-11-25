@@ -22,8 +22,14 @@ export default function TechnologyLayout({
 		<>
 			<PageHero
 				title="NetLOX Technology"
-				description="From open-source community editions to 24/7 supported enterprise-grade deployments, NetLOX provides the right solution for your scale."
-				image="/images/products/bg_hero.jpg"
+				description={
+					<>
+						Explore our eBPF-powered architecture, comprehensive features,{" "}
+						<br />
+						and independently verified performance benchmarks.
+					</>
+				}
+				image="/images/technology/bg_hero.jpg"
 			/>
 			<PageTabs tabs={tabs} image="/images/common/bg_content.png">
 				{children}

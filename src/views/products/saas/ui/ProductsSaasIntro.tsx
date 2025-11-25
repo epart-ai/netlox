@@ -13,15 +13,15 @@ interface Props {
 export const ProductsSaasIntro = ({ themeColor }: Props) => {
 	const carouselImage = [
 		{
-			src: "/images/products/saas_slide1.jpg",
+			src: "/images/products/img_saas_slide1.jpg",
 			alt: "Feature 1",
 		},
 		{
-			src: "/images/products/saas_slide2.jpg",
+			src: "/images/products/img_saas_slide2.jpg",
 			alt: "Feature 2",
 		},
 		{
-			src: "/images/products/saas_slide3.jpg",
+			src: "/images/products/img_saas_slide3.jpg",
 			alt: "Feature 3",
 		},
 	];

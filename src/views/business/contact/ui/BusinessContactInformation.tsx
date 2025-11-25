@@ -17,7 +17,7 @@ export const BusinessContactInformation = () => {
 					running.
 				</>
 			),
-			image: "/images/user/icon_signup1.svg",
+			image: "/images/business/icon_contact1.svg",
 		},
 		{
 			title: "Cutting-edge Performance",
@@ -27,7 +27,7 @@ export const BusinessContactInformation = () => {
 					with 10x the throughput of alternatives like MetalLB.
 				</>
 			),
-			image: "/images/user/icon_signup2.svg",
+			image: "/images/business/icon_contact2.svg",
 		},
 		{
 			title: "Enterprise-Grade Security",
@@ -39,7 +39,7 @@ export const BusinessContactInformation = () => {
 					safeguard your infrastructure..
 				</>
 			),
-			image: "/images/user/icon_signup3.svg",
+			image: "/images/business/icon_contact3.svg",
 		},
 	];
 	return (

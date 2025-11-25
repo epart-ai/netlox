@@ -74,7 +74,7 @@ export function LoginForm() {
 		<Form {...form}>
 			<form onSubmit={handleSubmit(onValid, onInvalid)}>
 				<CardWrapper>
-					<CardHeader className="text-center">
+					<CardHeader>
 						<CardTitle>Log in to your account</CardTitle>
 					</CardHeader>
 					<CardContent>

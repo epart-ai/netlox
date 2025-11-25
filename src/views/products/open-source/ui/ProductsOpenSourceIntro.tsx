@@ -13,15 +13,15 @@ interface Props {
 export const ProductsOpenSourceIntro = ({ themeColor }: Props) => {
 	const carouselImage = [
 		{
-			src: "/images/products/open-source_slide1.png",
+			src: "/images/products/img_open-source_slide1.png",
 			alt: "Open Source Slide 1",
 		},
 		{
-			src: "/images/products/open-source_slide2.png",
+			src: "/images/products/img_open-source_slide2.png",
 			alt: "Open Source Slide 2",
 		},
 		{
-			src: "/images/products/open-source_slide3.png",
+			src: "/images/products/img_open-source_slide3.png",
 			alt: "Open Source Slide 3",
 		},
 	];

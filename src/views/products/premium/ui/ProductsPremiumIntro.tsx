@@ -13,8 +13,16 @@ interface Props {
 export const ProductsPremiumIntro = ({ themeColor }: Props) => {
 	const carouselImage = [
 		{
-			src: "/images/products/premium_slide1.png",
+			src: "/images/products/img_premium_slide1.jpg",
 			alt: "Premium Slide 1",
+		},
+		{
+			src: "/images/products/img_premium_slide2.jpg",
+			alt: "Premium Slide 2",
+		},
+		{
+			src: "/images/products/img_premium_slide3.jpg",
+			alt: "Premium Slide 3",
 		},
 	];
 
