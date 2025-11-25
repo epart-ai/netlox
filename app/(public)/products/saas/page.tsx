@@ -1,5 +1,12 @@
-import { ProductsSaas } from "@/views/products/saas/ui";
+import { ProductsSaasCard, ProductsSaasIntro } from "@/views/products/saas/ui";
 
 export default function ProductSaasPage() {
-	return <ProductsSaas />;
+	const themeColor = "orange";
+
+	return (
+		<>
+			<ProductsSaasIntro themeColor={themeColor} />
+			<ProductsSaasCard themeColor={themeColor} />
+		</>
+	);
 }

@@ -33,7 +33,7 @@ import {
 } from "../model/login.schema";
 
 export function LoginForm() {
-	const { reset, fail, StatusBanner } = useActionStatus();
+	const { reset, fail } = useActionStatus();
 	const closeDialog = useCloseRouteDialog();
 
 	const form = useForm<LoginFormValues>({
@@ -74,7 +74,7 @@ export function LoginForm() {
 		<Form {...form}>
 			<form onSubmit={handleSubmit(onValid, onInvalid)}>
 				<CardWrapper>
-					<CardHeader className="text-center">
+					<CardHeader>
 						<CardTitle>Log in to your account</CardTitle>
 					</CardHeader>
 					<CardContent>
@@ -109,8 +109,6 @@ export function LoginForm() {
 							)}
 						/>
 					</CardContent>
-
-					<StatusBanner />
 
 					<Button
 						type="submit"

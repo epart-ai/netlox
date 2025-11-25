@@ -1,18 +1,16 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { ROUTES } from "@/shared/config";
+import { DIALOGS, ROUTES } from "@/shared/config";
 import { useActionStatus } from "@/shared/lib/useActionStatus";
-import { TextLink } from "@/shared/ui/navigation";
 import { Button } from "@/shared/ui/shadcn/button";
 import {
 	CardContent,
-	CardDescription,
 	CardHeader,
 	CardTitle,
 	CardWrapper,
@@ -38,7 +36,7 @@ import {
 
 export const ResetPasswordForm = () => {
 	const router = useRouter();
-	const { reset, fail, succeed, StatusBanner, status } = useActionStatus();
+	const { reset, fail, succeed } = useActionStatus();
 
 	const form = useForm<ResetPasswordFormValues>({
 		mode: "onChange",
@@ -52,20 +50,15 @@ export const ResetPasswordForm = () => {
 		formState: { isSubmitting },
 	} = form;
 
-	const {
-		data: session,
-		isLoading: isSessionLoading,
-		error: sessionError,
-	} = useCurrentSessionQuery();
+	const { data: session, isLoading: isSessionLoading } =
+		useCurrentSessionQuery();
 
 	const { mutate: resetMutate, isPending } = useResetPasswordMutation({
 		onSuccess: () => {
-			reset();
-			succeed("Your password has been successfully updated. Please log in.");
-			setTimeout(() => {
-				// 로그인 페이지로 이동 (또는 로그인 모달을 띄우려면 쿼리 파라미터 사용)
-				router.push(ROUTES.USER_LOGIN);
-			}, 1500);
+			succeed(
+				"Your password has been successfully updated. Please log in.",
+				() => router.push(`${ROUTES.ROOT}?dialog=${DIALOGS.LOGIN}`),
+			);
 		},
 		onError: (err: Error) => {
 			console.error(err);
@@ -79,56 +72,37 @@ export const ResetPasswordForm = () => {
 		[form.formState.isValid, isLoading],
 	);
 
+	const invalidShownRef = useRef(false);
+
+	useEffect(() => {
+		if (!isSessionLoading && !session?.user && !invalidShownRef.current) {
+			invalidShownRef.current = true;
+			fail(
+				"This password reset link is invalid or has expired. Please request a new one.",
+				"",
+				() => router.back(),
+			);
+		}
+	}, [isSessionLoading, session?.user, fail, router]);
+
 	if (isSessionLoading) {
 		return <Spinner />;
 	}
 
-	if (sessionError) {
-		return (
-			<CardWrapper className="text-center">
-				<CardHeader>
-					<CardTitle>비밀번호 재설정을 진행할 수 없습니다.</CardTitle>
-				</CardHeader>
-				<CardDescription>
-					{sessionError.message ?? "세션 확인 중 오류가 발생했습니다."}
-				</CardDescription>
-				<div className="text-center">
-					<TextLink href="/user/forgot-password" label="다시 시도하기" />
-				</div>
-			</CardWrapper>
-		);
+	if (!session?.user) {
+		return null;
 	}
 
-	if (!session?.user) {
-		return (
-			<CardWrapper className="text-center">
-				<CardHeader>
-					<CardTitle>
-						유효한 비밀번호 재설정 링크가 확인되지 않았습니다.
-					</CardTitle>
-				</CardHeader>
-				<CardDescription>
-					비밀번호 재설정 이메일의 링크를 클릭하여 다시 이 페이지에 접근해
-					주세요.
-				</CardDescription>
-				<div className="text-center">
-					<TextLink
-						href="/user/forgot-password"
-						label="재설정 메일 다시 보내기"
-					/>
-				</div>
-			</CardWrapper>
-		);
-	}
+	const onSubmit = (values: ResetPasswordFormValues) => {
+		console.log("🚀 ~ onSubmit ~ values:", values);
+		reset();
+
+		resetMutate(values);
+	};
 
 	return (
 		<Form {...form}>
-			<form
-				onSubmit={handleSubmit(({ password }) => {
-					reset();
-					resetMutate({ password });
-				})}
-			>
+			<form onSubmit={handleSubmit(onSubmit)}>
 				<CardWrapper>
 					<CardHeader>
 						<CardTitle>Set a new password</CardTitle>
@@ -161,8 +135,6 @@ export const ResetPasswordForm = () => {
 							)}
 						/>
 					</CardContent>
-
-					<StatusBanner />
 
 					<Button
 						disabled={isSubmitDisabled}

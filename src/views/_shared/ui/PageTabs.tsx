@@ -18,11 +18,13 @@ interface Props {
 
 export const PageTabs = ({ tabs, image, children }: Props) => {
 	const pathname = usePathname();
+	console.log("🚀 ~ PageTabs ~ pathname:", pathname);
 	const defaultTab =
 		tabs.find((tab) => tab.href === pathname)?.value ?? tabs[0].value;
+	console.log("🚀 ~ PageTabs ~ defaultTab:", defaultTab);
 
 	return (
-		<Tabs defaultValue={defaultTab} className="">
+		<Tabs value={defaultTab} className="">
 			<TabsList>
 				<div className="wrapper">
 					{tabs.map((tab) => (

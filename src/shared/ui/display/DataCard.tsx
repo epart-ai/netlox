@@ -12,6 +12,7 @@ import {
 	CardFooter,
 	CardList,
 	CardTitle,
+	CardWrapper,
 } from "@/shared/ui/shadcn/card";
 
 const dataCardVariant = cva("", {
@@ -80,25 +81,29 @@ export const DataCard = ({
 		>
 			{data.map((item) => (
 				<Card key={item.title} variant="glass">
-					{item.image && (
-						<div className="iconBox flex size-15 items-center justify-center rounded-2xl p-3.5 backdrop-blur-md transition-colors duration-300 md:size-20 md:p-5 lg:p-4.5">
-							<Image
-								src={item.image}
-								alt={item.title}
-								width={44}
-								height={44}
-								className={cn(
-									"iconImage size-full",
-									enableHover &&
-										"[.card:hover_&]:brightness-0 [.card:hover_&]:invert [.card:hover_&]:filter",
-								)}
-								priority={true}
-							/>
-						</div>
-					)}
-					<CardContent>
-						<CardTitle>{item.title}</CardTitle>
-						<CardDescription>{item.description}</CardDescription>
+					<CardWrapper>
+						{item.image && (
+							<div className="iconBox flex size-15 items-center justify-center rounded-2xl p-3.5 backdrop-blur-md transition-colors duration-300 md:size-20 md:p-5 lg:p-4.5">
+								<Image
+									src={item.image}
+									alt={item.title}
+									width={44}
+									height={44}
+									className={cn(
+										"iconImage size-full",
+										enableHover &&
+											"[.card:hover_&]:brightness-0 [.card:hover_&]:invert [.card:hover_&]:filter",
+									)}
+									priority={true}
+								/>
+							</div>
+						)}
+						<CardContent>
+							<CardTitle>{item.title}</CardTitle>
+							<CardDescription>{item.description}</CardDescription>
+
+							{item.footer && <CardFooter separator>{item.footer}</CardFooter>}
+						</CardContent>
 						{item.link && (
 							<TextLink
 								href={item.link.url}
@@ -108,9 +113,7 @@ export const DataCard = ({
 								iconVisible="right"
 							/>
 						)}
-
-						{item.footer && <CardFooter separator>{item.footer}</CardFooter>}
-					</CardContent>
+					</CardWrapper>
 				</Card>
 			))}
 		</CardList>

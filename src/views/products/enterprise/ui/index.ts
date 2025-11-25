@@ -1,1 +1,2 @@
-export { ProductsEnterprise } from "./ProductsEnterprise";
+export { ProductsEnterpriseCard } from "./ProductsEnterpriseCard";
+export { ProductsEnterpriseIntro } from "./ProductsEnterpriseIntro";

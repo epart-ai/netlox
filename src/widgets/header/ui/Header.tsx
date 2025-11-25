@@ -66,7 +66,7 @@ export const Header = () => {
 	}, [supabase]);
 
 	const navItems = [
-		{ label: "Product", href: ROUTES.PRODUCTS_OPEN_SOURCE },
+		{ label: "Product", href: ROUTES.PRODUCTS_ENTERPRISE },
 		{ label: "Solutions", href: ROUTES.SOLUTIONS_AI_LLM },
 		{ label: "Technology", href: ROUTES.TECHNOLOGY_FEATURES },
 		{ label: "Trust", href: ROUTES.TRUST_SUCCESS_STORY },

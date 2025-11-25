@@ -12,7 +12,7 @@ import {
 
 export const SignUpVerificationPanel = () => {
 	return (
-		<CardWrapper className="text-center">
+		<CardWrapper>
 			<IconCheck size="80" color="blue50" className="mx-auto" />
 			<CardHeader>
 				<CardTitle>Email verified!</CardTitle>

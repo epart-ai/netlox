@@ -8,7 +8,7 @@ export default function ProductsLayout({
 }>) {
 	const tabs = [
 		{
-			label: "AI LLM",
+			label: "AI/LLM Workloads",
 			value: "aiLlm",
 			href: ROUTES.SOLUTIONS_AI_LLM,
 		},
@@ -20,7 +20,7 @@ export default function ProductsLayout({
 		{
 			label: "5G&Telco",
 			value: "telco5g",
-			href: ROUTES.SOLUTIONS_TELCO_5G,
+			href: ROUTES.SOLUTIONS_5G_TELCO,
 		},
 		{
 			label: "Edge Computing",
@@ -31,9 +31,14 @@ export default function ProductsLayout({
 	return (
 		<>
 			<PageHero
-				title="NetLOX Solutions"
-				description="From open-source community editions to 24/7 supported enterprise-grade deployments, NetLOX provides the right solution for your scale."
-				image="/images/products/bg_hero.jpg"
+				title="Solutions for Modern Infrastructure"
+				description={
+					<>
+						Optimized performance for your most demanding workloads, <br />
+						from hyperscale AI platforms to resource-constrained Edge nodes.
+					</>
+				}
+				image="/images/solutions/bg_hero.jpg"
 			/>
 			<PageTabs tabs={tabs} image="/images/common/bg_content.png">
 				{children}

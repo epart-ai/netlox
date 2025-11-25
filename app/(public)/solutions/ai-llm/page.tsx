@@ -1,5 +1,15 @@
-import { SolutionsAiLlm } from "@/views/solutions/ai-llm/ui";
+import {
+	SolutionsAiLlmCard,
+	SolutionsAiLlmIntro,
+} from "@/views/solutions/ai-llm/ui";
 
 export default function SolutionsAiLlmPage() {
-	return <SolutionsAiLlm />;
+	const themeColor = "green";
+
+	return (
+		<>
+			<SolutionsAiLlmIntro themeColor={themeColor} />
+			<SolutionsAiLlmCard themeColor={themeColor} />
+		</>
+	);
 }

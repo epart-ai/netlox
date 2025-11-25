@@ -38,7 +38,7 @@ import {
 import { ForgotPasswordSuccess } from "./ForgotPasswordSuccess";
 
 export function ForgotPasswordForm() {
-	const { reset, fail, succeed, StatusBanner, status } = useActionStatus();
+	const { reset, fail, succeed, status } = useActionStatus();
 
 	const form = useForm<ForgotPasswordFormValues>({
 		mode: "onBlur",
@@ -95,7 +95,7 @@ export function ForgotPasswordForm() {
 						<ForgotPasswordSuccess />
 					) : (
 						<>
-							<CardHeader className="text-center">
+							<CardHeader>
 								<CardTitle>Reset your password</CardTitle>
 								<CardDescription>
 									Enter the email associated with your account, and we&apos;ll
@@ -121,7 +121,6 @@ export function ForgotPasswordForm() {
 									)}
 								/>
 							</CardContent>
-							<StatusBanner />
 							<Button
 								type="submit"
 								disabled={isSubmitDisabled}

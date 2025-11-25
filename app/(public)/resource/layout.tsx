@@ -29,12 +29,12 @@ export default function ResourceLayout({
 				title="NetLOX Resource"
 				description={
 					<>
-						Explore our technical documentation, user guides, API references,{" "}
+						Explore our technical documentation, user guides, API references,
 						<br />
 						and latest articles from the NetLOX team.
 					</>
 				}
-				image="/images/resource/bg_hero.png"
+				image="/images/resource/bg_hero.jpg"
 			/>
 			<PageTabs tabs={tabs} image="/images/common/bg_content.png">
 				{children}

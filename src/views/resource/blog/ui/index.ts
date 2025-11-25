@@ -1,1 +1,2 @@
-export { ResourceBlog } from "./ResourceBlog";
+export { ResourceBlogPost } from "./ResourceBlogPost";
+export { ResourceBlogIntro } from "./ResourceBlogIntro";

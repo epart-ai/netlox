@@ -12,7 +12,7 @@ export function ForgotPasswordSuccess() {
 	return (
 		<>
 			<IconCheck size="80" color="blue50" className="mx-auto" />
-			<CardHeader className="text-center">
+			<CardHeader>
 				<CardTitle>Check your email</CardTitle>
 				<CardDescription>
 					If an account exists for{" "}

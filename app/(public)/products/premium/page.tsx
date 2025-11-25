@@ -1,5 +1,15 @@
-import { ProductsPremium } from "@/views/products/premium/ui";
+import {
+	ProductsPremiumCard,
+	ProductsPremiumIntro,
+} from "@/views/products/premium/ui";
 
 export default function ProductPremiumPage() {
-	return <ProductsPremium />;
+	const themeColor = "purple";
+
+	return (
+		<>
+			<ProductsPremiumIntro themeColor={themeColor} />
+			<ProductsPremiumCard themeColor={themeColor} />
+		</>
+	);
 }

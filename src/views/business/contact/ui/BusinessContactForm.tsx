@@ -47,7 +47,7 @@ import {
 import { useContactFormMutation } from "../model/contact-form.mutation";
 
 export function BusinessContactForm() {
-	const { reset, succeed, fail, StatusBanner } = useActionStatus();
+	const { reset, succeed, fail } = useActionStatus();
 
 	const form = useForm<ContactFormValues>({
 		mode: "onBlur",
@@ -314,7 +314,6 @@ export function BusinessContactForm() {
 							)}
 						/>
 					</CardContent>
-					<StatusBanner />
 
 					<Button
 						variant="primary"
