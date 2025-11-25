@@ -1,10 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { DIALOGS } from "@/shared/config";
+import { DIALOGS, ROUTES } from "@/shared/config";
 import { useActionStatus } from "@/shared/lib/useActionStatus";
 import { gridTwoCol } from "@/shared/styles/snippets";
 import { IconCheck } from "@/shared/ui/icon";
@@ -39,7 +40,8 @@ import {
 } from "../model/sign-up.schema";
 
 export const SignUpForm = () => {
-	const { reset, fail, succeed, StatusBanner } = useActionStatus();
+	const router = useRouter();
+	const { reset, fail, succeed } = useActionStatus();
 
 	const form = useForm<SignUpFormValues>({
 		mode: "onBlur",
@@ -63,6 +65,7 @@ export const SignUpForm = () => {
 
 			succeed(
 				"Almost there! Check your email. We've sent a verification link to your email. Please click the link in the email to complete your registration.",
+				() => router.push(`${ROUTES.ROOT}?dialog=${DIALOGS.LOGIN}`),
 			);
 		},
 		onError: (err: Error) => {
@@ -206,8 +209,6 @@ export const SignUpForm = () => {
 					<p className="paragraph-14 text-center">
 						A verification link will be sent to your email.
 					</p>
-
-					<StatusBanner />
 
 					<Button
 						variant="primary"

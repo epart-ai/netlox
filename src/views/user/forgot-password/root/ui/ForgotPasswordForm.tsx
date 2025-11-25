@@ -38,7 +38,7 @@ import {
 import { ForgotPasswordSuccess } from "./ForgotPasswordSuccess";
 
 export function ForgotPasswordForm() {
-	const { reset, fail, succeed, StatusBanner, status } = useActionStatus();
+	const { reset, fail, succeed, status } = useActionStatus();
 
 	const form = useForm<ForgotPasswordFormValues>({
 		mode: "onBlur",

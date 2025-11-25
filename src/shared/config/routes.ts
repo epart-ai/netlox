@@ -1,4 +1,5 @@
 export const ROUTES = {
+	ROOT: "/",
 	USER_LOGIN: "/user/login",
 	USER_SIGNUP: "/user/signup",
 	USER_SIGNUP_SUCCESS: "/user/signup/success",
