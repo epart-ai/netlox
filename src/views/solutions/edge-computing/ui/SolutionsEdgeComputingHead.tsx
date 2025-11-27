@@ -8,7 +8,7 @@ interface Props {
 	themeColor: ThemeColor;
 }
 
-export function SolutionsEdgeComputingIntro({ themeColor }: Props) {
+export function SolutionsEdgeComputingHead({ themeColor }: Props) {
 	return (
 		<Reveal rootMargin="-25% 0px -25% 0px" threshold={0}>
 			<PageHead

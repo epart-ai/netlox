@@ -1,6 +1,7 @@
 import {
-	SolutionsKubernetesCard,
-	SolutionsKubernetesIntro,
+	SolutionsKubernetesHead,
+	SolutionsKubernetesLoxilb,
+	SolutionsKubernetesTable,
 } from "@/views/solutions/kubernetes/ui";
 
 export default function ProductOpenSourcePage() {
@@ -8,8 +9,13 @@ export default function ProductOpenSourcePage() {
 
 	return (
 		<>
-			<SolutionsKubernetesIntro themeColor={themeColor} />
-			<SolutionsKubernetesCard themeColor={themeColor} />
+			<SolutionsKubernetesHead themeColor={themeColor} />
+			<div className="mt-20">
+				<SolutionsKubernetesTable />
+			</div>
+			<div className="mt-[108px]">
+				<SolutionsKubernetesLoxilb themeColor={themeColor} />
+			</div>
 		</>
 	);
 }

@@ -1,6 +1,7 @@
 import {
-	Solutions5gTelcoCard,
-	Solutions5gTelcoIntro,
+	Solutions5gTelcoChallenge,
+	Solutions5gTelcoHead,
+	Solutions5gTelcoLoxilb,
 } from "@/views/solutions/5g-telco/ui";
 
 export default function ProductPremiumPage() {
@@ -8,8 +9,13 @@ export default function ProductPremiumPage() {
 
 	return (
 		<>
-			<Solutions5gTelcoIntro themeColor={themeColor} />
-			<Solutions5gTelcoCard themeColor={themeColor} />
+			<Solutions5gTelcoHead themeColor={themeColor} />
+			<div className="mt-20">
+				<Solutions5gTelcoChallenge themeColor={themeColor} />
+			</div>
+			<div className="mt-[108px]">
+				<Solutions5gTelcoLoxilb themeColor={themeColor} />
+			</div>
 		</>
 	);
 }

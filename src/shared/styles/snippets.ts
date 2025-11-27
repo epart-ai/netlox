@@ -8,6 +8,7 @@ export const flexRowBetweenMd =
 export const halfWidthMd = "md:w-[48.57%]";
 export const sectionFrame =
 	"overflow-hidden rounded-lg lg:rounded-2xl border border-white/25";
+export const contentPadding = "pt-[50px] lg:pt-[100px]";
 
 // 타이포/여백 패턴
 export const headingEyebrow = "title-16 lg:title-18";
@@ -31,3 +32,4 @@ export const responsiveArrowBack = "w-1.5 rotate-180 md:w-2 lg:w-2.5";
 // 카드 리스트 간격(이미 사용 중인 추상화)
 export const cardMaxWidth = "m-auto w-full max-w-360 lg:max-w-480";
 export const cardWrapperSpace = "space-y-8 md:space-y-10";
+export const cardListGrid = "gap-y-9.75 grid-cols-2 gap-y-9 lg:gap-y-19.5";

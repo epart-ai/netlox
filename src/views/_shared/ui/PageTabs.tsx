@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { contentPadding } from "@/shared/styles/snippets";
 import { BackgroundImage } from "@/shared/ui/display/BackgroundImage";
 import { Tabs, TabsList, TabsTrigger } from "@/shared/ui/shadcn/tabs";
 
@@ -18,10 +19,8 @@ interface Props {
 
 export const PageTabs = ({ tabs, image, children }: Props) => {
 	const pathname = usePathname();
-	console.log("🚀 ~ PageTabs ~ pathname:", pathname);
 	const defaultTab =
 		tabs.find((tab) => tab.href === pathname)?.value ?? tabs[0].value;
-	console.log("🚀 ~ PageTabs ~ defaultTab:", defaultTab);
 
 	return (
 		<Tabs value={defaultTab} className="">
@@ -34,7 +33,7 @@ export const PageTabs = ({ tabs, image, children }: Props) => {
 					))}
 				</div>
 			</TabsList>
-			<div className="pt-[50px] lg:pt-[100px]">
+			<div className={contentPadding}>
 				<BackgroundImage className="top-[87%] mix-blend-overlay" src={image} />
 				<div className="wrapper">{children}</div>
 			</div>

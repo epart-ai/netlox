@@ -1,6 +1,7 @@
 import {
-	SolutionsEdgeComputingCard,
-	SolutionsEdgeComputingIntro,
+	SolutionsEdgeComputingChallenge,
+	SolutionsEdgeComputingHead,
+	SolutionsEdgeComputingLoxilb,
 } from "@/views/solutions/edge-computing/ui";
 
 export default function SolutionsEdgeComputingPage() {
@@ -8,8 +9,13 @@ export default function SolutionsEdgeComputingPage() {
 
 	return (
 		<>
-			<SolutionsEdgeComputingIntro themeColor={themeColor} />
-			<SolutionsEdgeComputingCard themeColor={themeColor} />
+			<SolutionsEdgeComputingHead themeColor={themeColor} />
+			<div className="mt-20">
+				<SolutionsEdgeComputingChallenge themeColor={themeColor} />
+			</div>
+			<div className="mt-[108px]">
+				<SolutionsEdgeComputingLoxilb themeColor={themeColor} />
+			</div>
 		</>
 	);
 }

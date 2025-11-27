@@ -54,7 +54,7 @@ const dataCardVariant = cva("", {
 
 type Item = {
 	title: string;
-	description: ReactNode;
+	description?: ReactNode;
 	image?: string;
 	link?: {
 		label: string;
@@ -100,7 +100,9 @@ export const DataCard = ({
 						)}
 						<CardContent>
 							<CardTitle>{item.title}</CardTitle>
-							<CardDescription>{item.description}</CardDescription>
+							{item.description && (
+								<CardDescription>{item.description}</CardDescription>
+							)}
 
 							{item.footer && <CardFooter separator>{item.footer}</CardFooter>}
 						</CardContent>

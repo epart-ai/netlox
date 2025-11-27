@@ -10,19 +10,19 @@ interface Props {
 	themeColor: ThemeColor;
 }
 
-export const ProductsPremiumIntro = ({ themeColor }: Props) => {
+export const ProductsSaasHead = ({ themeColor }: Props) => {
 	const carouselImage = [
 		{
-			src: "/images/products/img_premium_slide1.jpg",
-			alt: "Premium Slide 1",
+			src: "/images/products/img_saas_slide1.jpg",
+			alt: "Feature 1",
 		},
 		{
-			src: "/images/products/img_premium_slide2.jpg",
-			alt: "Premium Slide 2",
+			src: "/images/products/img_saas_slide2.jpg",
+			alt: "Feature 2",
 		},
 		{
-			src: "/images/products/img_premium_slide3.jpg",
-			alt: "Premium Slide 3",
+			src: "/images/products/img_saas_slide3.jpg",
+			alt: "Feature 3",
 		},
 	];
 
@@ -33,27 +33,18 @@ export const ProductsPremiumIntro = ({ themeColor }: Props) => {
 					<PageHead
 						theme={themeColor}
 						align="left"
-						eyebrow="Premium"
-						title={
-							<>
-								24/7 Support <br />& Custom Development
-							</>
-						}
+						eyebrow="SaaS"
+						title="LoxiLB on AWS Marketplace"
 						description={
 							<>
-								For mission-critical deployments that tolerate zero downtime.
-								<br />
-								Get a dedicated engineer, 24/7/365 coverage, <br />
-								and custom feature development.
+								The easiest way to consume NetLOX. Get a fully managed, <br />
+								auto-scaling, pay-as-you-go service directly from the AWS
+								Marketplace.
 							</>
 						}
 					/>
-					<Button
-						variant="primary"
-						colors={themeColor}
-						className={cn("mt-8 lg:mt-15")}
-					>
-						Schedule Executive Briefing
+					<Button colors={themeColor} className={cn("mt-8 lg:mt-15")}>
+						Launch on AWS
 					</Button>
 				</div>
 				<ProductsCarousel images={carouselImage} />
@@ -61,3 +52,5 @@ export const ProductsPremiumIntro = ({ themeColor }: Props) => {
 		</Reveal>
 	);
 };
+
+

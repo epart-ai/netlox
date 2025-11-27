@@ -8,7 +8,7 @@ interface Props {
 	themeColor: ThemeColor;
 }
 
-export function Solutions5gTelcoIntro({ themeColor }: Props) {
+export function Solutions5gTelcoHead({ themeColor }: Props) {
 	return (
 		<Reveal rootMargin="-25% 0px -25% 0px" threshold={0}>
 			<PageHead

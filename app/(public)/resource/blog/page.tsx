@@ -1,4 +1,4 @@
-import { ResourceBlogIntro, ResourceBlogPost } from "@/views/resource/blog/ui";
+import { ResourceBlogHead, ResourceBlogPost } from "@/views/resource/blog/ui";
 
 type PageProps = {
 	searchParams?: { page?: string };
@@ -7,7 +7,7 @@ type PageProps = {
 export default function ResourceBlogPage({ searchParams }: PageProps) {
 	return (
 		<>
-			<ResourceBlogIntro />
+			<ResourceBlogHead />
 			<div className="mt-20">
 				<ResourceBlogPost searchParams={searchParams} />
 			</div>

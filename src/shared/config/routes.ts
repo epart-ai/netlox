@@ -20,7 +20,7 @@ export const ROUTES = {
 	TECHNOLOGY_FEATURES: "/technology/features",
 	TECHNOLOGY_PERFORMANCE: "/technology/performance",
 
-	TRUST_SUCCESS_STORY: "/trust/success-story",
+	TRUST: "/trust",
 
 	BUSINESS_PRICING: "/business/pricing",
 	BUSINESS_CONTACT: "/business/contact",

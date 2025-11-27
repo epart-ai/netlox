@@ -1,6 +1,6 @@
 import {
 	ProductsOpenSourceCard,
-	ProductsOpenSourceIntro,
+	ProductsOpenSourceHead,
 } from "@/views/products/open-source/ui";
 
 export default function ProductOpenSourcePage() {
@@ -8,8 +8,10 @@ export default function ProductOpenSourcePage() {
 
 	return (
 		<>
-			<ProductsOpenSourceIntro themeColor={themeColor} />
-			<ProductsOpenSourceCard themeColor={themeColor} />
+			<ProductsOpenSourceHead themeColor={themeColor} />
+			<div className="mt-[100px]">
+				<ProductsOpenSourceCard themeColor={themeColor} />
+			</div>
 		</>
 	);
 }

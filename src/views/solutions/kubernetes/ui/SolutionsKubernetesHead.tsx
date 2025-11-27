@@ -8,7 +8,7 @@ interface Props {
 	themeColor: ThemeColor;
 }
 
-export function SolutionsKubernetesIntro({ themeColor }: Props) {
+export function SolutionsKubernetesHead({ themeColor }: Props) {
 	return (
 		<Reveal rootMargin="-25% 0px -25% 0px" threshold={0}>
 			<PageHead
@@ -27,3 +27,5 @@ export function SolutionsKubernetesIntro({ themeColor }: Props) {
 		</Reveal>
 	);
 }
+
+

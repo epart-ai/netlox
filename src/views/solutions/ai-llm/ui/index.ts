@@ -1,2 +1,3 @@
-export { SolutionsAiLlmCard } from "./SolutionsAiLlmCard";
-export { SolutionsAiLlmIntro } from "./SolutionsAiLlmIntro";
+export { SolutionsAiLlmChallenge } from "./SolutionsAiLlmChallenge";
+export { SolutionsAiLlmHead } from "./SolutionsAiLlmHead";
+export { SolutionsAiLlmLoxilb } from "./SolutionsAiLlmLoxilb";

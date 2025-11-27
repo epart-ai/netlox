@@ -8,7 +8,7 @@ interface Props {
 	themeColor: ThemeColor;
 }
 
-export function SolutionsAiLlmIntro({ themeColor }: Props) {
+export function SolutionsAiLlmHead({ themeColor }: Props) {
 	return (
 		<Reveal rootMargin="-25% 0px -25% 0px" threshold={0}>
 			<PageHead
@@ -36,3 +36,5 @@ export function SolutionsAiLlmIntro({ themeColor }: Props) {
 		</Reveal>
 	);
 }
+
+

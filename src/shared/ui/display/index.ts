@@ -5,3 +5,4 @@ export { DataCarousel } from "./DataCarousel";
 export { DataList } from "./DataList";
 export { DataTable } from "./DataTable";
 export { Reveal } from "./Reveal";
+export { StatHighlights } from "./StatHighlights";

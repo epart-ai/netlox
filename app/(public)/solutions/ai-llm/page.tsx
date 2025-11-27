@@ -1,6 +1,7 @@
 import {
-	SolutionsAiLlmCard,
-	SolutionsAiLlmIntro,
+	SolutionsAiLlmChallenge,
+	SolutionsAiLlmHead,
+	SolutionsAiLlmLoxilb,
 } from "@/views/solutions/ai-llm/ui";
 
 export default function SolutionsAiLlmPage() {
@@ -8,8 +9,13 @@ export default function SolutionsAiLlmPage() {
 
 	return (
 		<>
-			<SolutionsAiLlmIntro themeColor={themeColor} />
-			<SolutionsAiLlmCard themeColor={themeColor} />
+			<SolutionsAiLlmHead themeColor={themeColor} />
+			<div className="mt-20">
+				<SolutionsAiLlmChallenge themeColor={themeColor} />
+			</div>
+			<div className="mt-[108px]">
+				<SolutionsAiLlmLoxilb themeColor={themeColor} />
+			</div>
 		</>
 	);
 }

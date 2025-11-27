@@ -1,2 +1,3 @@
-export { SolutionsEdgeComputingIntro } from "./SolutionsEdgeComputingIntro";
-export { SolutionsEdgeComputingCard } from "./SolutionsEdgeComputingCard";
+export { SolutionsEdgeComputingChallenge } from "./SolutionsEdgeComputingChallenge";
+export { SolutionsEdgeComputingHead } from "./SolutionsEdgeComputingHead";
+export { SolutionsEdgeComputingLoxilb } from "./SolutionsEdgeComputingLoxilb";

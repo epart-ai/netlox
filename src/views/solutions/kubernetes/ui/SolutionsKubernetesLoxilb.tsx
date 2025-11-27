@@ -3,13 +3,12 @@
 import type { ThemeColor } from "@/shared/model/types";
 import { sectionTitleLg } from "@/shared/styles/snippets";
 import { DataCard, Reveal } from "@/shared/ui/display";
-import { SolutionsKubernetesTable } from "@/views/solutions/kubernetes/ui/SolutionsKubernetesTable";
 
 interface Props {
 	themeColor: ThemeColor;
 }
 
-export const SolutionsKubernetesCard = ({ themeColor }: Props) => {
+export const SolutionsKubernetesLoxilb = ({ themeColor }: Props) => {
 	const solutionCardData = [
 		{
 			title: "Zero-Downtime Migration",
@@ -32,25 +31,15 @@ export const SolutionsKubernetesCard = ({ themeColor }: Props) => {
 	];
 
 	return (
-		<>
-			<div className="mt-20">
-				<Reveal delayMs={300}>
-					<h3 className={sectionTitleLg}>
-						Verified Benchmarks: LoxiLB vs MetalLB
-					</h3>
-					<SolutionsKubernetesTable />
-				</Reveal>
-			</div>
-			<div className="mt-[108px]">
-				<Reveal delayMs={300}>
-					<h3 className={sectionTitleLg}>The LoxiLB Solution</h3>
-					<DataCard
-						data={solutionCardData}
-						enableHover={true}
-						colors={themeColor}
-					/>
-				</Reveal>
-			</div>
-		</>
+		<div className="mt-[108px]">
+			<Reveal delayMs={300}>
+				<h3 className={sectionTitleLg}>The LoxiLB Solution</h3>
+				<DataCard
+					data={solutionCardData}
+					enableHover={true}
+					colors={themeColor}
+				/>
+			</Reveal>
+		</div>
 	);
 };

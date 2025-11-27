@@ -2,11 +2,12 @@
 
 import { useMemo } from "react";
 
+import { cardListGrid } from "@/shared/styles/snippets";
 import { Reveal } from "@/shared/ui/display";
 import { CardList } from "@/shared/ui/shadcn/card";
 import { Spinner } from "@/shared/ui/shadcn/spinner";
+import { PostCard } from "@/views/_shared/ui";
 import { Pagination } from "@/views/resource/_shared/ui/Pagination";
-import { PostCard } from "@/views/resource/_shared/ui/PostCard";
 import {
 	ResourceEmpty,
 	ResourceError,
@@ -49,11 +50,7 @@ export function ResourceBlogPost({ searchParams }: Props) {
 				<ResourceEmpty />
 			) : (
 				<>
-					<CardList
-						colors="blue"
-						enableHover
-						className="gap-y-9.75 grid-cols-2 gap-y-9 lg:gap-y-19.5"
-					>
+					<CardList colors="blue" enableHover className={cardListGrid}>
 						{posts.map((post) => (
 							<PostCard
 								key={post.id}
