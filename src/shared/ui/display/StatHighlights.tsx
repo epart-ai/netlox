@@ -1,10 +1,15 @@
 import { Fragment, type ReactNode } from "react";
 
 import { cn } from "@/shared/lib/utils";
+import { AnimatedCounter } from "@/shared/ui/display/AnimatedCounter";
 import { Separator } from "@/shared/ui/shadcn/separator";
 
 type StatItem = {
-	highlight: ReactNode;
+	highlight: {
+		value: number;
+		prefix?: string;
+		unit: string;
+	};
 	title?: ReactNode;
 	description?: ReactNode;
 };
@@ -22,10 +27,7 @@ export const StatHighlights = ({
 }: Props) => {
 	return (
 		<div
-			className={cn(
-				"flex flex-col items-stretch gap-6 md:flex-row lg:gap-12.5",
-				className,
-			)}
+			className={cn("flex flex-col gap-6 md:flex-row lg:gap-12.5", className)}
 		>
 			{items.map((item, index) => (
 				<Fragment key={`${index}-${String(item.title)}`}>
@@ -33,20 +35,22 @@ export const StatHighlights = ({
 						<Separator
 							opacity="25"
 							orientation="vertical"
-							className={"hidden h-auto md:my-[5%] md:block"}
+							className={"hidden h-auto md:my-[40px] md:block"}
 						/>
 					)}
 					<div>
 						<p className="title-44 text-blue-40 lg:title-60">
-							{item.highlight}
+							{item.highlight.prefix}
+							<AnimatedCounter value={item.highlight.value} />
+							{item.highlight.unit}
 						</p>
 						{item.title && (
-							<strong className="title-20 mt-6 lg:title-24 lg:mt-9">
+							<strong className="title-20 mt-6 block lg:title-24 lg:mt-9">
 								{item.title}
 							</strong>
 						)}
 						{item.description && (
-							<p className="paragraph-14 mt-3 lg:paragraph-16 lg:mt-4.5">
+							<p className="paragraph-14 mt-2 lg:paragraph-16 lg:mt-3.5">
 								{item.description}
 							</p>
 						)}

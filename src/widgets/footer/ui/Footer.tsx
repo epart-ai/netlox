@@ -35,7 +35,7 @@ export const Footer = () => {
 		},
 		{
 			title: "TRUST",
-			links: [{ label: "Success Story", href: ROUTES.TRUST_SUCCESS_STORY }],
+			links: [{ label: "Success Story", href: ROUTES.TRUST }],
 		},
 		{
 			title: "BUSINESS",

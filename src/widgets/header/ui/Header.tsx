@@ -69,7 +69,7 @@ export const Header = () => {
 		{ label: "Product", href: ROUTES.PRODUCTS_ENTERPRISE },
 		{ label: "Solutions", href: ROUTES.SOLUTIONS_AI_LLM },
 		{ label: "Technology", href: ROUTES.TECHNOLOGY_FEATURES },
-		{ label: "Trust", href: ROUTES.TRUST_SUCCESS_STORY },
+		{ label: "Trust", href: ROUTES.TRUST },
 		{ label: "Business", href: ROUTES.BUSINESS_PRICING },
 		{ label: "Resource", href: ROUTES.RESOURCE_DOCUMENTATION },
 	];

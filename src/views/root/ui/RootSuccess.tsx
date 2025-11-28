@@ -6,19 +6,29 @@ import { RootSectionLayout } from "./RootSectionLayout";
 export const RootSuccess = () => {
 	const data = [
 		{
-			highlight: "10×",
+			highlight: {
+				value: 10,
+				unit: "×",
+			},
 			title: "Performance Improvement",
 			description:
 				"Global Electronics Leader reduced load balancer costs by 60% and achieved 10x performance.",
 		},
 		{
-			highlight: "<1ms",
+			highlight: {
+				prefix: "<",
+				value: 1,
+				unit: "ms",
+			},
 			title: "Latency for AI Workloads",
 			description:
 				"Fortune 100 Software Company handles millions of AI inference requests with sub-millisecond latency.",
 		},
 		{
-			highlight: "99.999%",
+			highlight: {
+				value: 99.999,
+				unit: "%",
+			},
 			title: "Uptime for 5G Core",
 			description:
 				"Major Telco deployed a carrier-grade 5G core with 99.999% uptime using LoxiLB.",

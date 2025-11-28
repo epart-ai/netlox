@@ -2,7 +2,7 @@
 
 import type { ColumnDef } from "@tanstack/react-table";
 
-import { DataTable } from "@/shared/ui/display";
+import { DataTable, Reveal } from "@/shared/ui/display";
 
 export const SolutionsKubernetesTable = () => {
 	const columns: ColumnDef<Record<string, unknown>, unknown>[] = [
@@ -55,6 +55,13 @@ export const SolutionsKubernetesTable = () => {
 	];
 
 	return (
-		<DataTable data={data} columns={columns} tableClassName="min-w-[650px]" />
+		<Reveal delayMs={300}>
+			<DataTable
+				data={data}
+				columns={columns}
+				tableClassName="min-w-[650px]"
+				className="glass-surface"
+			/>
+		</Reveal>
 	);
 };
