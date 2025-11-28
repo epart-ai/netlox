@@ -1,2 +1,2 @@
 export { ProductsOpenSourceCard } from "./ProductsOpenSourceCard";
-export { ProductsOpenSourceHead } from "./ProductsOpenSourceHead";
+export { ProductsOpenSourceIntro } from "./ProductsOpenSourceIntro";

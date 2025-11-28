@@ -18,38 +18,12 @@ import {
 const dataCardVariant = cva("", {
 	variants: {
 		colors: {
-			blue: "",
-			green: "",
-			purple: "",
-			orange: "",
-		},
-		enableHover: {
-			true: "",
-			false: "",
+			blue: "[&_.iconBox]:bg-blue-40/ 25",
+			green: "[&_.iconBox]:bg-green-40/15",
+			purple: "[&_.iconBox]:bg-purple-40/15",
+			orange: "[&_.iconBox]:bg-orange-40/15",
 		},
 	},
-	compoundVariants: [
-		{
-			colors: "blue",
-			enableHover: true,
-			class: "[&_.iconBox]:bg-blue-40/ 25",
-		},
-		{
-			colors: "green",
-			enableHover: true,
-			class: "[&_.iconBox]:bg-green-40/15",
-		},
-		{
-			colors: "purple",
-			enableHover: true,
-			class: "[&_.iconBox]:bg-purple-40/15",
-		},
-		{
-			colors: "orange",
-			enableHover: true,
-			class: "[&_.iconBox]:bg-orange-40/15",
-		},
-	],
 });
 
 type Item = {
@@ -60,6 +34,7 @@ type Item = {
 		label: string;
 		url: string;
 	};
+	disabledIconInvert?: boolean;
 	footer?: ReactNode;
 };
 interface Props extends VariantProps<typeof dataCardVariant> {
@@ -67,17 +42,11 @@ interface Props extends VariantProps<typeof dataCardVariant> {
 	className?: string;
 }
 
-export const DataCard = ({
-	data,
-	className,
-	colors,
-	enableHover = false,
-}: Props) => {
+export const DataCard = ({ data, className, colors }: Props) => {
 	return (
 		<CardList
 			colors={colors}
-			enableHover={enableHover}
-			className={cn(dataCardVariant({ colors, enableHover }), className)}
+			className={cn(dataCardVariant({ colors }), className)}
 		>
 			{data.map((item) => (
 				<Card key={item.title} variant="glass">
@@ -91,7 +60,7 @@ export const DataCard = ({
 									height={44}
 									className={cn(
 										"iconImage size-full",
-										enableHover &&
+										!item.disabledIconInvert &&
 											"[.card:hover_&]:brightness-0 [.card:hover_&]:invert [.card:hover_&]:filter",
 									)}
 									priority={true}

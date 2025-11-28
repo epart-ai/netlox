@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel, {
 	type UseEmblaCarouselType,
 } from "embla-carousel-react";
@@ -12,12 +13,18 @@ type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
 export type CarouselOptions = UseCarouselParameters[0];
 type CarouselPlugin = UseCarouselParameters[1];
+type AutoplayOptions = Parameters<typeof Autoplay>[0];
 
 type CarouselProps = {
 	opts?: CarouselOptions;
 	plugins?: CarouselPlugin;
 	orientation?: "horizontal" | "vertical";
 	setApi?: (api: CarouselApi) => void;
+	/**
+	 * 자동 슬라이드 플러그인 활성화.
+	 * true면 기본 옵션으로, 객체면 해당 옵션으로 활성화합니다.
+	 */
+	autoplay?: boolean | AutoplayOptions;
 };
 
 type CarouselContextProps = {
@@ -53,16 +60,31 @@ const Carousel = React.forwardRef<
 			plugins,
 			className,
 			children,
+			autoplay,
 			...props
 		},
 		ref,
 	) => {
+		const pluginsWithAutoplay = React.useMemo<
+			NonNullable<CarouselPlugin>
+		>(() => {
+			const list = ([] as NonNullable<CarouselPlugin>).slice();
+			if (Array.isArray(plugins) && plugins.length > 0) {
+				list.push(...plugins);
+			}
+			if (autoplay) {
+				const opts = typeof autoplay === "object" ? autoplay : undefined;
+				list.push(Autoplay(opts));
+			}
+			return list;
+		}, [plugins, autoplay]);
+
 		const [carouselRef, api] = useEmblaCarousel(
 			{
 				...opts,
 				axis: orientation === "horizontal" ? "x" : "y",
 			},
-			plugins,
+			pluginsWithAutoplay,
 		);
 		const [canScrollPrev, setCanScrollPrev] = React.useState(false);
 		const [canScrollNext, setCanScrollNext] = React.useState(false);
@@ -155,11 +177,11 @@ const CarouselContent = React.forwardRef<
 	const { carouselRef, orientation } = useCarousel();
 
 	return (
-		<div ref={carouselRef} className="overflow-hidden">
+		<div ref={carouselRef} className="h-full overflow-hidden">
 			<div
 				ref={ref}
 				className={cn(
-					"flex",
+					"flex h-full",
 					orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
 					className,
 				)}
@@ -180,7 +202,7 @@ const CarouselItem = React.forwardRef<
 		<section
 			ref={ref}
 			className={cn(
-				"min-w-0 shrink-0 grow-0 basis-full",
+				"h-full min-w-0 shrink-0 grow-0 basis-full [&_div]:h-full [&_img]:!h-full [&_img]:object-cover",
 				orientation === "horizontal" ? "pl-4" : "pt-4",
 				className,
 			)}

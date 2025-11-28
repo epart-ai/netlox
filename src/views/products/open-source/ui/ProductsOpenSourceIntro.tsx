@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { cn } from "@/shared/lib/utils";
 import type { ThemeColor } from "@/shared/model/types";
 import { flexRowBetweenMd, halfWidthMd } from "@/shared/styles/snippets";
@@ -10,19 +12,19 @@ interface Props {
 	themeColor: ThemeColor;
 }
 
-export const ProductsPremiumHead = ({ themeColor }: Props) => {
+export const ProductsOpenSourceIntro = ({ themeColor }: Props) => {
 	const carouselImage = [
 		{
-			src: "/images/products/img_premium_slide1.jpg",
-			alt: "Premium Slide 1",
+			src: "/images/products/img_open-source_slide1.png",
+			alt: "Open Source Slide 1",
 		},
 		{
-			src: "/images/products/img_premium_slide2.jpg",
-			alt: "Premium Slide 2",
+			src: "/images/products/img_open-source_slide2.png",
+			alt: "Open Source Slide 2",
 		},
 		{
-			src: "/images/products/img_premium_slide3.jpg",
-			alt: "Premium Slide 3",
+			src: "/images/products/img_open-source_slide3.png",
+			alt: "Open Source Slide 3",
 		},
 	];
 
@@ -33,27 +35,21 @@ export const ProductsPremiumHead = ({ themeColor }: Props) => {
 					<PageHead
 						theme={themeColor}
 						align="left"
-						eyebrow="Premium"
-						title={
-							<>
-								24/7 Support <br />& Custom Development
-							</>
-						}
+						eyebrow="Open Source"
+						title="The eBPF Foundation"
 						description={
 							<>
-								For mission-critical deployments that tolerate zero downtime.
-								<br />
-								Get a dedicated engineer, 24/7/365 coverage, <br />
-								and custom feature development.
+								The core of NetLOX, LoxiLB, is a CNCF Sandbox project. It&apos;s
+								free, open-source, and driven by a global community of
+								developers. Perfect for testing, development, and
+								community-supported production use.
 							</>
 						}
 					/>
-					<Button
-						variant="primary"
-						colors={themeColor}
-						className={cn("mt-8 lg:mt-15")}
-					>
-						Schedule Executive Briefing
+					<Button asChild colors={themeColor} className={cn("mt-8 lg:mt-15")}>
+						<Link href="https://github.com/loxilb-io/loxilb" target="_blank">
+							Go to GitHub
+						</Link>
 					</Button>
 				</div>
 				<ProductsCarousel images={carouselImage} />
@@ -61,5 +57,3 @@ export const ProductsPremiumHead = ({ themeColor }: Props) => {
 		</Reveal>
 	);
 };
-
-

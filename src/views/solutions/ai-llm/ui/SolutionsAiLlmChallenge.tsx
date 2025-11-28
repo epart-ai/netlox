@@ -44,7 +44,7 @@ export const SolutionsAiLlmChallenge = ({ themeColor }: Props) => {
 		<div className="mt-20">
 			<Reveal delayMs={300}>
 				<h3 className={sectionTitleLg}>The Challenge: AI at Scale</h3>
-				<DataCard data={challengeCardData} enableHover={true} colors={themeColor} />
+				<DataCard data={challengeCardData} colors={themeColor} />
 			</Reveal>
 		</div>
 	);

@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+import { ROUTES } from "@/shared/config";
 import { cn } from "@/shared/lib/utils";
 import type { ThemeColor } from "@/shared/model/types";
 import { flexRowBetweenMd, halfWidthMd } from "@/shared/styles/snippets";
@@ -10,19 +13,11 @@ interface Props {
 	themeColor: ThemeColor;
 }
 
-export const ProductsSaasHead = ({ themeColor }: Props) => {
+export const ProductsSaasIntro = ({ themeColor }: Props) => {
 	const carouselImage = [
 		{
 			src: "/images/products/img_saas_slide1.jpg",
 			alt: "Feature 1",
-		},
-		{
-			src: "/images/products/img_saas_slide2.jpg",
-			alt: "Feature 2",
-		},
-		{
-			src: "/images/products/img_saas_slide3.jpg",
-			alt: "Feature 3",
 		},
 	];
 
@@ -43,8 +38,8 @@ export const ProductsSaasHead = ({ themeColor }: Props) => {
 							</>
 						}
 					/>
-					<Button colors={themeColor} className={cn("mt-8 lg:mt-15")}>
-						Launch on AWS
+					<Button asChild colors={themeColor} className={cn("mt-8 lg:mt-15")}>
+						<Link href={ROUTES.BUSINESS_CONTACT}>Launch on AWS</Link>
 					</Button>
 				</div>
 				<ProductsCarousel images={carouselImage} />
@@ -52,5 +47,3 @@ export const ProductsSaasHead = ({ themeColor }: Props) => {
 		</Reveal>
 	);
 };
-
-

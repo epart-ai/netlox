@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { Fragment } from "react";
 
+import { ROUTES } from "@/shared/config";
 import { Reveal } from "@/shared/ui/display";
 import { Button, ButtonBox } from "@/shared/ui/shadcn/button";
 import { Separator } from "@/shared/ui/shadcn/separator";
@@ -57,8 +59,16 @@ export const RootHero = () => {
 						</Reveal>
 						<Reveal delayMs={450}>
 							<ButtonBox className="mt-4">
-								<Button variant="primary">Request Enterprise Demo</Button>
-								<Button variant="secondary">View Performance</Button>
+								<Button asChild>
+									<Link href={ROUTES.BUSINESS_CONTACT}>
+										<span>Request Enterprise Demo</span>
+									</Link>
+								</Button>
+								<Button asChild variant="secondary">
+									<Link href={ROUTES.TECHNOLOGY_PERFORMANCE}>
+										<span>View Performance</span>
+									</Link>
+								</Button>
 							</ButtonBox>
 						</Reveal>
 						<Reveal delayMs={450}>

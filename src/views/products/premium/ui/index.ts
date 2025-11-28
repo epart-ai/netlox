@@ -1,2 +1,2 @@
 export { ProductsPremiumCard } from "./ProductsPremiumCard";
-export { ProductsPremiumHead } from "./ProductsPremiumHead";
+export { ProductsPremiumIntro } from "./ProductsPremiumIntro";

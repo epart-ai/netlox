@@ -1,2 +1,2 @@
 export { ProductsSaasCard } from "./ProductsSaasCard";
-export { ProductsSaasHead } from "./ProductsSaasHead";
+export { ProductsSaasIntro } from "./ProductsSaasIntro";

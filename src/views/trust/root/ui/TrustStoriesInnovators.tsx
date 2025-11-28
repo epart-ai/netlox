@@ -47,7 +47,7 @@ export const TrustStoriesInnovators = ({ themeColor }: Props) => {
 
 	return (
 		<Reveal delayMs={300}>
-			<CardList colors={themeColor} enableHover className={cardListGrid}>
+			<CardList colors={themeColor} className={cardListGrid}>
 				{postData.map((post) => (
 					<PostCard
 						key={post.id}

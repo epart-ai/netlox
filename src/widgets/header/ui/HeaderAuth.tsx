@@ -18,7 +18,7 @@ export function HeaderAuth({ userEmail }: HeaderAuthProps) {
 	};
 
 	return (
-		<div className="flex flex-wrap items-center justify-center lg:pointer-events-auto lg:ml-auto">
+		<div className="flex flex-wrap items-center justify-center lg:pointer-events-auto lg:ml-auto lg:h-full">
 			{!userEmail ? (
 				<>
 					<TextLink
@@ -26,11 +26,10 @@ export function HeaderAuth({ userEmail }: HeaderAuthProps) {
 						label="Log In"
 						size="lg"
 						colors="white75"
-						className="font-medium md:mx-5 lg:mx-6"
+						className="mx-5 font-medium lg:mx-6"
 					/>
 					<Button
 						asChild
-						variant="primary"
 						type="button"
 						aria-label="Sign up for an account"
 						lg={false}
@@ -39,7 +38,7 @@ export function HeaderAuth({ userEmail }: HeaderAuthProps) {
 					</Button>
 				</>
 			) : (
-				<>
+				<div className="flex flex-col gap-3 lg:block">
 					<TextLink
 						href={{ query: { dialog: DIALOGS.LOGIN } }}
 						label={
@@ -55,10 +54,9 @@ export function HeaderAuth({ userEmail }: HeaderAuthProps) {
 						}
 						size="md"
 						colors="white75"
-						className="mx-4 font-medium md:mx-5 lg:mx-6"
+						className="mx-4 mx-5 font-medium lg:mx-6"
 					/>
 					<Button
-						variant="primary"
 						type="button"
 						aria-label="Log out from the account"
 						lg={false}
@@ -66,8 +64,8 @@ export function HeaderAuth({ userEmail }: HeaderAuthProps) {
 					>
 						Log Out
 					</Button>
-				</>
-			)}{" "}
+				</div>
+			)}
 		</div>
 	);
 }

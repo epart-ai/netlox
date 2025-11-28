@@ -32,7 +32,7 @@ export const SolutionsEdgeComputingChallenge = ({ themeColor }: Props) => {
 		<div className="mt-20">
 			<Reveal delayMs={300}>
 				<h3 className={sectionTitleLg}>The Challenge: The Edge</h3>
-				<DataCard data={challengeCardData} enableHover={true} colors={themeColor} />
+				<DataCard data={challengeCardData} colors={themeColor} />
 			</Reveal>
 		</div>
 	);

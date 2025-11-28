@@ -1,5 +1,7 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
+import { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -33,6 +35,7 @@ import {
 } from "@/shared/ui/shadcn/select";
 import { Textarea } from "@/shared/ui/shadcn/textarea";
 
+import type { HelpValue } from "../model/contact-form-options";
 import {
 	HELP_OPTIONS,
 	HOW_TO_KNOW_US_OPTIONS,
@@ -48,17 +51,36 @@ import { useContactFormMutation } from "../model/contact-form.mutation";
 
 export function BusinessContactForm() {
 	const { reset, succeed, fail } = useActionStatus();
+	const searchParams = useSearchParams();
+
+	// 허용된 HelpValue 검증 유틸
+	const isHelpValue = useCallback(
+		(v: string | null): v is HelpValue =>
+			!!v && HELP_OPTIONS.some((o) => o.value === v),
+		[],
+	);
+
+	// 쿼리 파라미터 기반 초기 help 값 계산 (help_options | help 지원)
+	const helpParamRaw =
+		searchParams.get("help_options") ?? searchParams.get("help");
+	const initialHelp = isHelpValue(helpParamRaw)
+		? helpParamRaw
+		: contactFormDefaultValues.help;
 
 	const form = useForm<ContactFormValues>({
 		mode: "onBlur",
 		resolver: zodResolver(contactFormSchema),
-		defaultValues: contactFormDefaultValues,
+		defaultValues: {
+			...contactFormDefaultValues,
+			help: initialHelp,
+		},
 	});
 
 	const {
 		control,
 		handleSubmit,
 		reset: formReset,
+		setValue,
 		formState: { isSubmitting },
 	} = form;
 
@@ -71,6 +93,13 @@ export function BusinessContactForm() {
 			fail(err, "An error occurred. Please try again.");
 		},
 	});
+
+	// 쿼리 파라미터 변경 시 help 값을 동기화
+	useEffect(() => {
+		if (isHelpValue(helpParamRaw)) {
+			setValue("help", helpParamRaw);
+		}
+	}, [helpParamRaw, setValue, isHelpValue]);
 
 	const isLoading = isSubmitting || isPending;
 	const isTermsChecked = form.watch("terms");
@@ -316,7 +345,6 @@ export function BusinessContactForm() {
 					</CardContent>
 
 					<Button
-						variant="primary"
 						className="w-full"
 						type="submit"
 						disabled={isLoading || !isTermsChecked}

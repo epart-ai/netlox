@@ -35,48 +35,44 @@ export function PostCard({
 	textLink,
 }: PostCardProps) {
 	const cardContent = (
-		<Card key={id} className="pt-[30.729vw] lg:pt-[15.3645vw]">
-			<CardWrapper>
-				<div className="absolute inset-0 h-[30.729vw] lg:h-[15.3645vw]">
-					{imageUrl ? (
-						<Image
-							src={imageUrl}
-							alt={title}
-							fill
-							className="object-cover"
-							priority={false}
-						/>
-					) : (
-						<div className="flex h-full w-full items-center justify-center text-sm text-slate-500">
-							이미지가 없습니다
-						</div>
-					)}
-				</div>
-				<CardContent>
-					<CardTitle className="[.card:hover_&]:text-blue-20">
-						{title}
-					</CardTitle>
-					{description && (
-						<CardDescription className="line-clamp-2">
-							{description}
-						</CardDescription>
-					)}
-					{createdAt && <CardFooter>{formatDate(createdAt)}</CardFooter>}
-				</CardContent>
-				{textLink && (
-					<TextLink
-						href={textLink.href}
-						label={textLink.label}
-						colors="blue"
-						iconVisible="right"
+		<CardWrapper>
+			<div className="absolute inset-0 h-[295px]">
+				{imageUrl ? (
+					<Image
+						src={imageUrl}
+						alt={title}
+						fill
+						className="object-cover"
+						priority={false}
 					/>
+				) : (
+					<div className="flex h-full w-full items-center justify-center text-sm text-slate-500">
+						이미지가 없습니다
+					</div>
 				)}
-			</CardWrapper>
-		</Card>
+			</div>
+			<CardContent>
+				<CardTitle className="[.card:hover_&]:text-blue-20">{title}</CardTitle>
+				{description && (
+					<CardDescription className="line-clamp-2">
+						{description}
+					</CardDescription>
+				)}
+				{createdAt && <CardFooter>{formatDate(createdAt)}</CardFooter>}
+			</CardContent>
+			{textLink && (
+				<TextLink
+					href={textLink.href}
+					label={textLink.label}
+					colors="blue"
+					iconVisible="right"
+				/>
+			)}
+		</CardWrapper>
 	);
 
 	return (
-		<>
+		<Card key={id} className="w-full !pt-[295px] md:w-[440px]">
 			{href ? (
 				<Link href={href} target="_blank" rel="noopener noreferrer">
 					{cardContent}
@@ -84,6 +80,6 @@ export function PostCard({
 			) : (
 				cardContent
 			)}
-		</>
+		</Card>
 	);
 }

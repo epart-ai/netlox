@@ -7,63 +7,36 @@ import { Separator } from "@/shared/ui/shadcn/separator";
 import { cn } from "../../lib/utils";
 
 const cardListVariants = cva(
-	"grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-10 ",
+	"grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-10 [&_.card:hover]:-translate-y-2",
 	{
 		variants: {
 			colors: {
-				blue: "[&_.iconBox]:bg-blue-40/ 25",
-				green: "[&_.iconBox]:bg-green-40/15",
-				purple: "[&_.iconBox]:bg-purple-10/15",
-				orange: "[&_.iconBox]:bg-orange-10/15",
-			},
-			enableHover: {
-				true: "[&_.card:hover]:-translate-y-2",
-				false: "",
+				blue: "[&_.iconBox]:bg-blue-40/ 25 [&_.card:hover]:border-blue-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-blue-60-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-blue-60",
+				green:
+					"[&_.iconBox]:bg-green-40/15 [&_.card:hover]:border-green-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-green-40-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-green-40",
+				purple:
+					"[&_.iconBox]:bg-purple-10/15 [&_.card:hover]:border-purple-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-purple-40-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-purple-40",
+				orange:
+					"[&_.iconBox]:bg-orange-10/15 [&_.card:hover]:border-orange-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-orange-40-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-orange-40",
 			},
 		},
-		compoundVariants: [
-			{
-				colors: "blue",
-				enableHover: true,
-				class:
-					"[&_.card:hover]:border-blue-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-blue-60-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-blue-60",
-			},
-			{
-				colors: "green",
-				enableHover: true,
-				class:
-					"[&_.card:hover]:border-green-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-green-40-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-green-40",
-			},
-			{
-				colors: "purple",
-				enableHover: true,
-				class:
-					"[&_.card:hover]:border-purple-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-purple-40-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-purple-40",
-			},
-			{
-				colors: "orange",
-				enableHover: true,
-				class:
-					"[&_.card:hover]:border-orange-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-orange-40-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-orange-40",
-			},
-		],
 	},
 );
 
 const CardList = React.forwardRef<
 	HTMLDivElement,
 	React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof cardListVariants>
->(({ className, colors, enableHover, ...props }, ref) => (
+>(({ className, colors, ...props }, ref) => (
 	<div
 		ref={ref}
-		className={cn(cardListVariants({ colors, enableHover }), className)}
+		className={cn(cardListVariants({ colors }), className)}
 		{...props}
 	/>
 ));
 CardList.displayName = "CardList";
 
 const cardVariants = cva(
-	"card relative p-4 md:p-6 lg:p-8 overflow-hidden transition-all duration-300 [&_.iconBox]:transition-colors [&_.iconBox]:duration-300",
+	"card relative p-4 md:p-6 lg:p-8 overflow-hidden duration-300 [&_.iconBox]:transition-colors [&_.iconBox]:duration-300",
 	{
 		variants: {
 			variant: {

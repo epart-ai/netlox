@@ -9,17 +9,10 @@ export function ResourceBlogHead() {
 			<PageHead
 				eyebrow="Blog"
 				title="Latest News & Insights"
-				description={
-					<>
-						The latest articles, performance benchmarks, and engineering
-						insights from the NetLOX team.
-					</>
-				}
+				description="The latest articles, performance benchmarks, and engineering insights from the NetLOX team."
 				align="center"
 				theme="blue"
 			/>
 		</Reveal>
 	);
 }
-
-

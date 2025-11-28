@@ -9,7 +9,7 @@ import {
 	TrustValidationHead,
 } from "@/views/trust/root/ui";
 
-export default function TrustPage() {
+export default function TrustOverviewPage() {
 	const themeColor = "blue";
 	return (
 		<div className="space-y-[160px]">

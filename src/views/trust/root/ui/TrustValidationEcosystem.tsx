@@ -41,7 +41,7 @@ export const TrustValidationEcosystem = ({ themeColor }: Props) => {
 
 	return (
 		<Reveal delayMs={300}>
-			<DataCard data={cardData} enableHover={true} colors={themeColor} />
+			<DataCard data={cardData} colors={themeColor} />
 		</Reveal>
 	);
 };
