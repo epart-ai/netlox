@@ -139,7 +139,6 @@ export const ResetPasswordForm = () => {
 					<Button
 						disabled={isSubmitDisabled}
 						isLoading={isLoading}
-						variant="primary"
 						className="w-full"
 						type="submit"
 					>

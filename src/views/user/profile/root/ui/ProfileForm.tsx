@@ -122,7 +122,7 @@ export const ProfileForm = () => {
 				<CardDescription className="text-sm text-rose-300/80">
 					{state.message}
 				</CardDescription>
-				<Button asChild type="button" variant="primary" className="w-full">
+				<Button asChild type="button" className="w-full">
 					<Link href={{ query: { dialog: DIALOGS.LOGIN } }}>Login</Link>
 				</Button>
 			</CardWrapper>
@@ -251,7 +251,6 @@ export const ProfileForm = () => {
 					<ButtonBox>
 						<Button
 							type="submit"
-							variant="primary"
 							disabled={isSaving || isSubmitting}
 							isLoading={isSaving || isSubmitting}
 						>

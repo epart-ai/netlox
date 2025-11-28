@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+import { ROUTES } from "@/shared/config";
 import { Reveal } from "@/shared/ui/display";
 import { Button, ButtonBox } from "@/shared/ui/shadcn/button";
 import { RootReportTable } from "@/views/root/ui/RootReportTable";
@@ -22,8 +25,12 @@ export const RootReport = () => {
 			</Reveal>
 			<Reveal delayMs={450}>
 				<ButtonBox className="mt-10 lg:mt-20">
-					<Button variant="primary">Download Full Report</Button>
-					<Button variant="secondary">See Test Methodology</Button>
+					<Button>Download Full Report</Button>
+					<Button asChild variant="secondary">
+						<Link href={ROUTES.RESOURCE_BLOG}>
+							<span>See Test Methodology</span>
+						</Link>
+					</Button>
 				</ButtonBox>
 			</Reveal>
 		</RootSectionLayout>

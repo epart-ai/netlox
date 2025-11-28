@@ -21,7 +21,7 @@ export const SignUpVerificationPanel = () => {
 					access your resources.
 				</CardDescription>
 			</CardHeader>
-			<Button asChild variant="primary" className="w-full">
+			<Button asChild className="w-full">
 				<Link href={{ query: { dialog: DIALOGS.LOGIN } }} replace>
 					Go to Login
 				</Link>

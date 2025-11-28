@@ -13,3 +13,10 @@ export function isPathnameMatched(
 		typeof pattern === "string" ? pattern === pathname : pattern.test(pathname),
 	);
 }
+
+export function isDesktopViewport(): boolean {
+	return (
+		typeof window !== "undefined" &&
+		window.matchMedia("(min-width: 1024px)").matches
+	);
+}

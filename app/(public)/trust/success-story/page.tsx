@@ -1,5 +1,3 @@
-import { TrustSuccessStory } from "@/views/trust/success-story/ui";
-
 export default function TrustSuccessStoryPage() {
-	return <TrustSuccessStory />;
+	return <div className="space-y-[160px]">Success Story</div>;
 }

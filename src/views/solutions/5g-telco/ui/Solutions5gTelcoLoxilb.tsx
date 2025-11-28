@@ -43,11 +43,7 @@ export const Solutions5gTelcoLoxilb = ({ themeColor }: Props) => {
 	return (
 		<Reveal delayMs={300}>
 			<h3 className={sectionTitleLg}>The LoxiLB Solution</h3>
-			<DataCard
-				data={solutionCardData}
-				enableHover={true}
-				colors={themeColor}
-			/>
+			<DataCard data={solutionCardData} colors={themeColor} />
 		</Reveal>
 	);
 };

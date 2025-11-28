@@ -85,49 +85,45 @@ export const TextLink = ({
 				className,
 			)}
 		>
-			{iconVisible !== false &&
-				iconVisible !== "right" &&
-				(iconVisible === "left" || leftIcon || iconVisible) && (
-					<span className="leftIcon">
-						{leftIcon ? (
-							leftIcon
-						) : (
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 124 200"
-								width={5}
-								height={8}
-								aria-hidden="true"
-								focusable="false"
-								className="rotate-180"
-							>
-								<path d="M112.94,112.42l-76.04,76.04c-3.71,3.71-8.59,5.55-13.42,5.55s-9.71-1.83-13.42-5.55c-7.42-7.42-7.42-19.41,0-26.84l62.62-62.62L10.06,36.38c-7.42-7.42-7.42-19.41,0-26.84,3.71-3.71,8.59-5.55,13.42-5.55s9.71,1.83,13.42,5.55l76.04,76.04c7.42,7.42,7.42,19.41,0,26.84Z" />
-							</svg>
-						)}
-					</span>
-				)}
+			{(leftIcon || iconVisible === "left" || iconVisible === true) && (
+				<span className="leftIcon">
+					{leftIcon ? (
+						leftIcon
+					) : (
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 124 200"
+							width={5}
+							height={8}
+							aria-hidden="true"
+							focusable="false"
+							className="rotate-180"
+						>
+							<path d="M112.94,112.42l-76.04,76.04c-3.71,3.71-8.59,5.55-13.42,5.55s-9.71-1.83-13.42-5.55c-7.42-7.42-7.42-19.41,0-26.84l62.62-62.62L10.06,36.38c-7.42-7.42-7.42-19.41,0-26.84,3.71-3.71,8.59-5.55,13.42-5.55s9.71,1.83,13.42,5.55l76.04,76.04c7.42,7.42,7.42,19.41,0,26.84Z" />
+						</svg>
+					)}
+				</span>
+			)}
 			{label}
 
-			{iconVisible !== false &&
-				iconVisible !== "left" &&
-				(iconVisible === "right" || rightIcon || iconVisible) && (
-					<span className="rightIcon">
-						{rightIcon ? (
-							rightIcon
-						) : (
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 124 200"
-								width={5}
-								height={8}
-								aria-hidden="true"
-								focusable="false"
-							>
-								<path d="M112.94,112.42l-76.04,76.04c-3.71,3.71-8.59,5.55-13.42,5.55s-9.71-1.83-13.42-5.55c-7.42-7.42-7.42-19.41,0-26.84l62.62-62.62L10.06,36.38c-7.42-7.42-7.42-19.41,0-26.84,3.71-3.71,8.59-5.55,13.42-5.55s9.71,1.83,13.42,5.55l76.04,76.04c7.42,7.42,7.42,19.41,0,26.84Z" />
-							</svg>
-						)}
-					</span>
-				)}
+			{(rightIcon || iconVisible === "right" || iconVisible === true) && (
+				<span className="rightIcon">
+					{rightIcon ? (
+						rightIcon
+					) : (
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 124 200"
+							width={5}
+							height={8}
+							aria-hidden="true"
+							focusable="false"
+						>
+							<path d="M112.94,112.42l-76.04,76.04c-3.71,3.71-8.59,5.55-13.42,5.55s-9.71-1.83-13.42-5.55c-7.42-7.42-7.42-19.41,0-26.84l62.62-62.62L10.06,36.38c-7.42-7.42-7.42-19.41,0-26.84,3.71-3.71,8.59-5.55,13.42-5.55s9.71,1.83,13.42,5.55l76.04,76.04c7.42,7.42,7.42,19.41,0,26.84Z" />
+						</svg>
+					)}
+				</span>
+			)}
 		</Link>
 	);
 };

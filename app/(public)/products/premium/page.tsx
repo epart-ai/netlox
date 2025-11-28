@@ -1,6 +1,6 @@
 import {
 	ProductsPremiumCard,
-	ProductsPremiumHead,
+	ProductsPremiumIntro,
 } from "@/views/products/premium/ui";
 
 export default function ProductPremiumPage() {
@@ -8,7 +8,7 @@ export default function ProductPremiumPage() {
 
 	return (
 		<>
-			<ProductsPremiumHead themeColor={themeColor} />
+			<ProductsPremiumIntro themeColor={themeColor} />
 			<div className="mt-[100px]">
 				<ProductsPremiumCard themeColor={themeColor} />
 			</div>

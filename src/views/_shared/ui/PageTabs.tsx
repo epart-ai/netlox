@@ -3,8 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { contentPadding } from "@/shared/styles/snippets";
-import { BackgroundImage } from "@/shared/ui/display/BackgroundImage";
+import { cn } from "@/shared/lib/utils";
+import {
+	beforeBackgroundImage,
+	contentPadding,
+	pageBackground,
+} from "@/shared/styles/snippets";
 import { Tabs, TabsList, TabsTrigger } from "@/shared/ui/shadcn/tabs";
 
 interface Props {
@@ -13,11 +17,10 @@ interface Props {
 		value: string;
 		href: string;
 	}[];
-	image: string;
 	children: React.ReactNode;
 }
 
-export const PageTabs = ({ tabs, image, children }: Props) => {
+export const PageTabs = ({ tabs, children }: Props) => {
 	const pathname = usePathname();
 	const defaultTab =
 		tabs.find((tab) => tab.href === pathname)?.value ?? tabs[0].value;
@@ -33,8 +36,9 @@ export const PageTabs = ({ tabs, image, children }: Props) => {
 					))}
 				</div>
 			</TabsList>
-			<div className={contentPadding}>
-				<BackgroundImage className="top-[87%] mix-blend-overlay" src={image} />
+			<div
+				className={cn(contentPadding, beforeBackgroundImage, pageBackground)}
+			>
 				<div className="wrapper">{children}</div>
 			</div>
 		</Tabs>

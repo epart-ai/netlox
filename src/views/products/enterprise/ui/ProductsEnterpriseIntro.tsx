@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+import { ROUTES } from "@/shared/config";
 import { cn } from "@/shared/lib/utils";
 import type { ThemeColor } from "@/shared/model/types";
 import { flexRowBetweenMd, halfWidthMd } from "@/shared/styles/snippets";
@@ -10,19 +13,19 @@ interface Props {
 	themeColor: ThemeColor;
 }
 
-export const ProductsOpenSourceHead = ({ themeColor }: Props) => {
+export const ProductsEnterpriseIntro = ({ themeColor }: Props) => {
 	const carouselImage = [
 		{
-			src: "/images/products/img_open-source_slide1.png",
-			alt: "Open Source Slide 1",
+			src: "/images/products/img_enterprise_slide1.jpg",
+			alt: "Feature 1",
 		},
 		{
-			src: "/images/products/img_open-source_slide2.png",
-			alt: "Open Source Slide 2",
+			src: "/images/products/img_enterprise_slide2.jpg",
+			alt: "Feature 2",
 		},
 		{
-			src: "/images/products/img_open-source_slide3.png",
-			alt: "Open Source Slide 3",
+			src: "/images/products/img_enterprise_slide3.jpg",
+			alt: "Feature 3",
 		},
 	];
 
@@ -33,19 +36,24 @@ export const ProductsOpenSourceHead = ({ themeColor }: Props) => {
 					<PageHead
 						theme={themeColor}
 						align="left"
-						eyebrow="Open Source"
-						title="The eBPF Foundation"
+						eyebrow="Enterprise"
+						title={
+							<>
+								Enterprise-Grade
+								<br />
+								with Fixed Pricing
+							</>
+						}
 						description={
 							<>
-								The core of NetLOX, LoxiLB, is a CNCF Sandbox project. It&apos;s
-								free, open-source, and driven by a global community of
-								developers. Perfect for testing, development, and
-								community-supported production use.
+								The perfect solution for production clusters. <br />
+								Get professional support, advanced features, and a 99.9% uptime
+								SLA <br /> for a predictable fixed price.
 							</>
 						}
 					/>
-					<Button colors={themeColor} className={cn("mt-8 lg:mt-15")}>
-						Go to GitHub
+					<Button asChild colors={themeColor} className={cn("mt-8 lg:mt-15")}>
+						<Link href={ROUTES.BUSINESS_CONTACT}>Request Quote</Link>
 					</Button>
 				</div>
 				<ProductsCarousel images={carouselImage} />
@@ -53,5 +61,3 @@ export const ProductsOpenSourceHead = ({ themeColor }: Props) => {
 		</Reveal>
 	);
 };
-
-

@@ -51,7 +51,7 @@ export function ResourceNewsPost({ searchParams }: Props) {
 				<ResourceEmpty />
 			) : (
 				<>
-					<CardList colors="blue" enableHover className={cardListGrid}>
+					<CardList colors="blue" className={cardListGrid}>
 						{posts.map((post) => (
 							<PostCard
 								key={post.id}

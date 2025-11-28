@@ -10,19 +10,11 @@ interface Props {
 	themeColor: ThemeColor;
 }
 
-export const ProductsEnterpriseHead = ({ themeColor }: Props) => {
+export const ProductsPremiumIntro = ({ themeColor }: Props) => {
 	const carouselImage = [
 		{
-			src: "/images/products/img_enterprise_slide1.jpg",
-			alt: "Feature 1",
-		},
-		{
-			src: "/images/products/img_enterprise_slide2.jpg",
-			alt: "Feature 2",
-		},
-		{
-			src: "/images/products/img_enterprise_slide3.jpg",
-			alt: "Feature 3",
+			src: "/images/products/img_premium_slide1.jpg",
+			alt: "Premium Slide 1",
 		},
 	];
 
@@ -33,24 +25,23 @@ export const ProductsEnterpriseHead = ({ themeColor }: Props) => {
 					<PageHead
 						theme={themeColor}
 						align="left"
-						eyebrow="Enterprise"
+						eyebrow="Premium"
 						title={
 							<>
-								Enterprise-Grade
-								<br />
-								with Fixed Pricing
+								24/7 Support <br />& Custom Development
 							</>
 						}
 						description={
 							<>
-								The perfect solution for production clusters. <br />
-								Get professional support, advanced features, and a 99.9% uptime
-								SLA <br /> for a predictable fixed price.
+								For mission-critical deployments that tolerate zero downtime.
+								<br />
+								Get a dedicated engineer, 24/7/365 coverage, <br />
+								and custom feature development.
 							</>
 						}
 					/>
 					<Button colors={themeColor} className={cn("mt-8 lg:mt-15")}>
-						Request Quote
+						Schedule Executive Briefing
 					</Button>
 				</div>
 				<ProductsCarousel images={carouselImage} />
@@ -58,5 +49,3 @@ export const ProductsEnterpriseHead = ({ themeColor }: Props) => {
 		</Reveal>
 	);
 };
-
-

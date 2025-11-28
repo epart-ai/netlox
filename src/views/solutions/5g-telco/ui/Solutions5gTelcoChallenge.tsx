@@ -40,11 +40,7 @@ export const Solutions5gTelcoChallenge = ({ themeColor }: Props) => {
 	return (
 		<Reveal delayMs={300}>
 			<h3 className={sectionTitleLg}>The Challenge: Telco Demands</h3>
-			<DataCard
-				data={challengeCardData}
-				enableHover={true}
-				colors={themeColor}
-			/>
+			<DataCard data={challengeCardData} colors={themeColor} />
 		</Reveal>
 	);
 };

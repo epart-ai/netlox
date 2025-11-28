@@ -24,6 +24,7 @@ interface Props {
 	data: ReactNode[];
 	enablePagination?: boolean;
 	enableNavigation?: boolean;
+	enableAutoplay?: boolean;
 	opts?: CarouselOptions;
 }
 
@@ -31,6 +32,7 @@ export const DataCarousel = ({
 	data,
 	enablePagination = true,
 	enableNavigation = true,
+	enableAutoplay = true,
 	opts,
 }: Props) => {
 	const [api, setApi] = useState<CarouselApi>();
@@ -52,7 +54,10 @@ export const DataCarousel = ({
 		<div>
 			<Carousel
 				setApi={setApi}
-				className=""
+				className="h-[400px]"
+				autoplay={
+					enableAutoplay ? { delay: 3000, stopOnInteraction: false } : undefined
+				}
 				opts={{
 					align: "start",
 					loop: true,

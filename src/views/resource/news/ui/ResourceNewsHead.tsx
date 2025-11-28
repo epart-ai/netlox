@@ -7,19 +7,12 @@ export function ResourceNewsHead() {
 	return (
 		<Reveal rootMargin="-25% 0px -25% 0px" threshold={0}>
 			<PageHead
-				eyebrow="Blog"
-				title="Latest News & Insights"
-				description={
-					<>
-						The latest articles, performance benchmarks, and engineering
-						insights from the NetLOX team.
-					</>
-				}
+				eyebrow="News"
+				title="Official Press Releases & Updates"
+				description="Read the latest official company announcements, press releases, partnerships, and industry recognition."
 				align="center"
 				theme="blue"
 			/>
 		</Reveal>
 	);
 }
-
-

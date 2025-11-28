@@ -43,7 +43,7 @@ export const ProductsPremiumCard = ({ themeColor }: Props) => {
 	return (
 		<Reveal delayMs={300}>
 			<h3 className={sectionTitleLg}>Core Features</h3>
-			<DataCard data={cardData} enableHover={true} colors={themeColor} />
+			<DataCard data={cardData} colors={themeColor} />
 		</Reveal>
 	);
 };

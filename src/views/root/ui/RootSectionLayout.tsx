@@ -10,7 +10,6 @@ interface Props {
 	eyebrow?: string;
 	title?: ReactNode;
 	description?: ReactNode;
-	bgImage?: ReactNode;
 }
 
 export const RootSectionLayout = ({
@@ -19,7 +18,6 @@ export const RootSectionLayout = ({
 	eyebrow,
 	title,
 	description,
-	bgImage,
 }: Props) => {
 	return (
 		<section
@@ -28,7 +26,6 @@ export const RootSectionLayout = ({
 				className,
 			)}
 		>
-			{bgImage && bgImage}
 			<div className="wrapper">
 				<Reveal delayMs={0}>
 					<div className="mb-10 text-center lg:mb-20">

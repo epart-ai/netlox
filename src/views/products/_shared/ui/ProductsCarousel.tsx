@@ -28,7 +28,7 @@ export const ProductsCarousel = ({ images }: Props) => {
 
 	return (
 		<div className={halfWidthMd}>
-			<DataCarousel data={carouselData} />
+			<DataCarousel data={carouselData} opts={{ loop: true }} />
 		</div>
 	);
 };

@@ -211,7 +211,6 @@ export const SignUpForm = () => {
 					</p>
 
 					<Button
-						variant="primary"
 						className="w-full"
 						type="submit"
 						disabled={isLoading || !isTermsChecked}

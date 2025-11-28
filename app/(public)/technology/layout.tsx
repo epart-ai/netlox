@@ -31,9 +31,7 @@ export default function TechnologyLayout({
 				}
 				image="/images/technology/bg_hero.jpg"
 			/>
-			<PageTabs tabs={tabs} image="/images/common/bg_content.png">
-				{children}
-			</PageTabs>
+			<PageTabs tabs={tabs}>{children}</PageTabs>
 		</>
 	);
 }

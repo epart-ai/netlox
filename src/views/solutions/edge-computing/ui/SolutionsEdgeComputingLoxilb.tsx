@@ -49,7 +49,6 @@ export const SolutionsEdgeComputingLoxilb = ({ themeColor }: Props) => {
 				<h3 className={sectionTitleLg}>The LoxiLB Solution</h3>
 				<DataCard
 					data={solutionCardData}
-					enableHover={true}
 					colors={themeColor}
 					className="lg:grid-cols-4 lg:gap-5"
 				/>

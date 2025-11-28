@@ -1,4 +1,9 @@
-import { BackgroundImage, Reveal, StatHighlights } from "@/shared/ui/display";
+import Link from "next/link";
+
+import { ROUTES } from "@/shared/config";
+import { cn } from "@/shared/lib/utils";
+import { beforeBackgroundImage } from "@/shared/styles/snippets";
+import { Reveal, StatHighlights } from "@/shared/ui/display";
 import { Button, ButtonBox } from "@/shared/ui/shadcn/button";
 
 import { RootSectionLayout } from "./RootSectionLayout";
@@ -6,19 +11,29 @@ import { RootSectionLayout } from "./RootSectionLayout";
 export const RootSuccess = () => {
 	const data = [
 		{
-			highlight: "10×",
+			highlight: {
+				value: 10,
+				unit: "×",
+			},
 			title: "Performance Improvement",
 			description:
 				"Global Electronics Leader reduced load balancer costs by 60% and achieved 10x performance.",
 		},
 		{
-			highlight: "<1ms",
+			highlight: {
+				prefix: "<",
+				value: 1,
+				unit: "ms",
+			},
 			title: "Latency for AI Workloads",
 			description:
 				"Fortune 100 Software Company handles millions of AI inference requests with sub-millisecond latency.",
 		},
 		{
-			highlight: "99.999%",
+			highlight: {
+				value: 99.999,
+				unit: "%",
+			},
 			title: "Uptime for 5G Core",
 			description:
 				"Major Telco deployed a carrier-grade 5G core with 99.999% uptime using LoxiLB.",
@@ -28,20 +43,21 @@ export const RootSuccess = () => {
 		<RootSectionLayout
 			eyebrow="Proven by Global Leaders"
 			title="Trusted by Fortune 500s"
-			bgImage={
-				<BackgroundImage
-					className="mix-blend-overlay"
-					src="/images/common/bg_content.png"
-				/>
-			}
-			className="bg-gradient-to-t from-blue-100/15 to-blue-40/15"
+			className={cn(
+				"bg-gradient-to-t from-blue-100/15 to-blue-40/15 before:bg-[url('/images/common/bg_content.png')] before:mix-blend-overlay",
+				beforeBackgroundImage,
+			)}
 		>
 			<Reveal delayMs={300}>
 				<StatHighlights items={data} />
 			</Reveal>
 			<Reveal delayMs={450}>
 				<ButtonBox className="mt-23">
-					<Button variant="primary">View All Success Stories</Button>
+					<Button asChild>
+						<Link href={ROUTES.TRUST_SUCCESS_STORY}>
+							<span>View All Success Stories</span>
+						</Link>
+					</Button>
 				</ButtonBox>
 			</Reveal>
 		</RootSectionLayout>

@@ -1,2 +1,2 @@
 export { ProductsEnterpriseCard } from "./ProductsEnterpriseCard";
-export { ProductsEnterpriseHead } from "./ProductsEnterpriseHead";
+export { ProductsEnterpriseIntro } from "./ProductsEnterpriseIntro";

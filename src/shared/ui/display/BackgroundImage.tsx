@@ -3,7 +3,7 @@ import { type VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/shared/lib/utils";
 
 const backgroundImageVariants = cva(
-	"inset-0 -z-[1] h-full w-full bg-cover bg-center absolute-center",
+	"min-h-screen inset-0 -z-[1] h-full w-full bg-cover bg-center absolute-center",
 	{
 		variants: {
 			opacity: {

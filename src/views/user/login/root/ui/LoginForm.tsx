@@ -114,7 +114,6 @@ export function LoginForm() {
 						type="submit"
 						disabled={isLoading}
 						isLoading={isLoading}
-						variant="primary"
 						className="w-full"
 					>
 						Log In

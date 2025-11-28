@@ -124,7 +124,6 @@ export function ForgotPasswordForm() {
 							<Button
 								type="submit"
 								disabled={isSubmitDisabled}
-								variant="primary"
 								className="w-full"
 								isLoading={isLoading}
 							>

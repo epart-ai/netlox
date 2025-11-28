@@ -1,69 +1,71 @@
-export const ROLE_VALUES = [
-	"",
-	"engineer",
-	"architect",
-	"manager",
-	"c_level",
-	"other",
-] as const;
+export const ROLE_VALUES = {
+	technical_engineer: "Technical / Engineer",
+	devops_sre: "DevOps / SRE",
+	ai_ml: "AI / ML",
+	product_manager: "Product / Manager",
+	business_partner: "Business / Partner",
+	research_student: "Research / Student",
+	other: "Other",
+} as const;
 
-export type RoleValue = (typeof ROLE_VALUES)[number];
+export type RoleValue = keyof typeof ROLE_VALUES;
 
-export const ROLE_OPTIONS: Array<{ value: RoleValue; label: string }> = [
-	{ value: "engineer", label: "Engineer" },
-	{ value: "architect", label: "Architect" },
-	{ value: "manager", label: "Manager" },
-	{ value: "c_level", label: "C-level" },
-];
+export const ROLE_OPTIONS: Array<{ value: RoleValue; label: string }> =
+	Object.entries(ROLE_VALUES).map(([value, label]) => ({
+		value: value as RoleValue,
+		label,
+	}));
 
-export const HELP_VALUES = ["", "demo", "technical", "pricing"] as const;
+export const HELP_VALUES = {
+	demo: "Request a Demo",
+	technical: "Technical Question",
+	pricing: "Pricing/Quote Request",
+	partnership: "Partnership Inquiry",
+	general: "General Inquiry",
+} as const;
 
-export type HelpValue = (typeof HELP_VALUES)[number];
+export type HelpValue = keyof typeof HELP_VALUES;
 
-export const HELP_OPTIONS: Array<{ value: HelpValue; label: string }> = [
-	{ value: "demo", label: "Request a Demo" },
-	{ value: "technical", label: "Technical Question" },
-	{ value: "pricing", label: "Pricing/Quote Request" },
-];
+export const HELP_OPTIONS: Array<{ value: HelpValue; label: string }> =
+	Object.entries(HELP_VALUES).map(([value, label]) => ({
+		value: value as HelpValue,
+		label,
+	}));
 
-export const PRIMARY_USE_CASE_VALUES = [
-	"",
-	"kubernetes_lb",
-	"ai_ml_inference",
-	"telco_5g",
-	"other",
-] as const;
+export const PRIMARY_USE_CASE_VALUES = {
+	kubernetes_lb: "Kubernetes Load Balancing",
+	ai_ml_inference: "AI/ML Inference",
+	telco_5g: "5G/Telco Applications",
+	edge_computing: "Edge Computing",
+	multi_cloud_ha: "Multi-Cloud HA",
+	other: "Other",
+} as const;
 
-export type PrimaryUseCaseValue = (typeof PRIMARY_USE_CASE_VALUES)[number];
+export type PrimaryUseCaseValue = keyof typeof PRIMARY_USE_CASE_VALUES;
 
 export const PRIMARY_USE_CASE_OPTIONS: Array<{
 	value: PrimaryUseCaseValue;
 	label: string;
-}> = [
-	{ value: "kubernetes_lb", label: "Kubernetes Load Balancing" },
-	{ value: "ai_ml_inference", label: "AI/ML Inference" },
-	{ value: "telco_5g", label: "5G/Telco Applications" },
-	{ value: "other", label: "기타" },
-];
+}> = Object.entries(PRIMARY_USE_CASE_VALUES).map(([value, label]) => ({
+	value: value as PrimaryUseCaseValue,
+	label,
+}));
 
-export const HOW_TO_KNOW_US_VALUES = [
-	"",
-	"search",
-	"github",
-	"cncf",
-	"referral",
-	"other",
-] as const;
+export const HOW_TO_KNOW_US_VALUES = {
+	search_engine: "Search Engine",
+	github_community: "GitHub / Community",
+	event_conference: "Event / Conference",
+	social_media: "Social Media",
+	partner_referral: "Partner / Referral",
+	other: "Other",
+} as const;
 
-export type HowToKnowUsValue = (typeof HOW_TO_KNOW_US_VALUES)[number];
+export type HowToKnowUsValue = keyof typeof HOW_TO_KNOW_US_VALUES;
 
 export const HOW_TO_KNOW_US_OPTIONS: Array<{
 	value: HowToKnowUsValue;
 	label: string;
-}> = [
-	{ value: "search", label: "Goog le Se arc h" },
-	{ value: "github", label: "G it Hub" },
-	{ value: "cncf", label: "CNCF" },
-	{ value: "referral", label: "R e f e rra l" },
-	{ value: "other", label: "기타" },
-];
+}> = Object.entries(HOW_TO_KNOW_US_VALUES).map(([value, label]) => ({
+	value: value as HowToKnowUsValue,
+	label,
+}));
