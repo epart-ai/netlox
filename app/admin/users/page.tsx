@@ -9,6 +9,9 @@ export const dynamic = "force-dynamic";
 type AdminUser = {
 	id: string;
 	email: string | null;
+	email_confirmed_at: string | null;
+	fullname: string | null;
+	companyname: string | null;
 	app_metadata?: {
 		role?: string;
 	};
@@ -171,6 +174,15 @@ export default function AdminUsersPage() {
 										이메일
 									</th>
 									<th className="px-4 py-2 text-left text-xs font-semibold uppercase text-slate-200">
+										이름
+									</th>
+									<th className="px-4 py-2 text-left text-xs font-semibold uppercase text-slate-200">
+										회사명
+									</th>
+									<th className="px-4 py-2 text-left text-xs font-semibold uppercase text-slate-200">
+										Email 인증 여부
+									</th>
+									<th className="px-4 py-2 text-left text-xs font-semibold uppercase text-slate-200">
 										역할
 									</th>
 									<th className="px-4 py-2 text-left text-xs font-semibold uppercase text-slate-200">
@@ -186,6 +198,19 @@ export default function AdminUsersPage() {
 									<tr key={user.id} className="hover:bg-slate-800/40">
 										<td className="px-4 py-2 text-sm text-slate-200">
 											{user.email}
+										</td>
+										<td className="px-4 py-2 text-sm text-slate-200">
+											{user.fullname || "-"}
+										</td>
+										<td className="px-4 py-2 text-sm text-slate-200">
+											{user.companyname || "-"}
+										</td>
+										<td className="px-4 py-2 text-sm">
+											{user.email_confirmed_at ? (
+												<span className="text-green-400">인증됨</span>
+											) : (
+												<span className="text-red-400">미인증</span>
+											)}
 										</td>
 										<td className="px-4 py-2 text-sm">
 											<select
@@ -216,7 +241,7 @@ export default function AdminUsersPage() {
 								{users.length === 0 && (
 									<tr>
 										<td
-											colSpan={4}
+											colSpan={7}
 											className="px-4 py-8 text-center text-slate-400"
 										>
 											검색 결과가 없습니다.

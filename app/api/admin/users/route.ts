@@ -30,9 +30,28 @@ export async function GET(request: Request) {
 		if (error)
 			return NextResponse.json({ error: error.message }, { status: 400 });
 		const users = data?.users ?? [];
+		
+		// Profile 데이터 가져오기
+		const userIds = users.map((u) => u.id);
+		const { data: profiles } = await admin
+			.from("profiles")
+			.select("id, fullname, companyname")
+			.in("id", userIds);
+		
+		const profileMap = new Map(
+			(profiles || []).map((p) => [p.id, { fullname: p.fullname, companyname: p.companyname }])
+		);
+		
+		// 사용자 데이터에 profile 정보 추가
+		const usersWithProfile = users.map((user) => ({
+			...user,
+			fullname: profileMap.get(user.id)?.fullname ?? null,
+			companyname: profileMap.get(user.id)?.companyname ?? null,
+		}));
+		
 		if (query) {
 			const q = query.toLowerCase();
-			const filtered = users.filter((user) =>
+			const filtered = usersWithProfile.filter((user) =>
 				(user.email || "").toLowerCase().includes(q),
 			);
 			return NextResponse.json({
@@ -43,7 +62,7 @@ export async function GET(request: Request) {
 			});
 		}
 		return NextResponse.json({
-			users,
+			users: usersWithProfile,
 			page,
 			perPage,
 			total: data?.total ?? users.length,

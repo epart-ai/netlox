@@ -21,6 +21,7 @@ export const ROUTES = {
 	TECHNOLOGY_PERFORMANCE: "/technology/performance",
 
 	TRUST: "/trust",
+	TRUST_SUCCESS_STORY: "/trust/success-story",
 
 	BUSINESS_PRICING: "/business/pricing",
 	BUSINESS_CONTACT: "/business/contact",

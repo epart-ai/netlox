@@ -282,32 +282,80 @@ export default function AdminPostEditPage() {
 							</select>
 						</div>
 					</div>
-					<div>
-						<label
-							htmlFor="edit-attachments"
-							className="mb-2 block text-sm text-slate-300"
-						>
-							첨부파일 (최대 {maxAttachments}개, 추가 가능 {remainAttachments}
-							개)
-						</label>
-						<input
-							id="edit-attachments"
-							type="file"
-							multiple
-							onChange={(event) => {
-								const selectedFiles = Array.from(event.target.files ?? []);
-								setFiles(selectedFiles.slice(0, remainAttachments));
-							}}
-							className="block w-full text-sm text-slate-200"
-						/>
-						{files.length > 0 && (
-							<ul className="mt-2 list-disc pl-5 text-sm text-slate-400">
-								{files.map((file) => (
-									<li key={file.name}>{file.name}</li>
+					{remainAttachments > 0 && (
+						<div>
+							<label
+								htmlFor="edit-attachments"
+								className="mb-2 block text-sm text-slate-300"
+							>
+								첨부파일 (최대 {maxAttachments}개, 추가 가능 {remainAttachments}
+								개)
+							</label>
+							<input
+								id="edit-attachments"
+								type="file"
+								multiple
+								onChange={(event) => {
+									const selectedFiles = Array.from(event.target.files ?? []);
+									setFiles(selectedFiles.slice(0, remainAttachments));
+								}}
+								className="block w-full text-sm text-slate-200"
+							/>
+							{files.length > 0 && (
+								<ul className="mt-2 list-disc pl-5 text-sm text-slate-400">
+									{files.map((file) => (
+										<li key={file.name}>{file.name}</li>
+									))}
+								</ul>
+							)}
+						</div>
+					)}
+
+					{existingAttachments.length > 0 && (
+						<div>
+							<h2 className="mb-2 text-sm font-semibold text-slate-300">
+								기존 첨부
+							</h2>
+							<ul className="divide-y divide-slate-800">
+								{existingAttachments.map((attachment) => (
+									<li
+										key={attachment.id}
+										className="flex items-center justify-between py-2"
+									>
+										<a
+											href={attachment.file_url}
+											target="_blank"
+											rel="noreferrer"
+											className="mr-4 truncate text-sm text-blue-400 hover:text-blue-300 hover:underline"
+										>
+											{attachment.file_name || attachment.file_url}
+										</a>
+										<div className="flex items-center gap-3">
+											<label className="cursor-pointer text-sm text-slate-300">
+												교체
+												<input
+													type="file"
+													className="hidden"
+													onChange={(event) => {
+														const file = event.target.files?.[0];
+														if (file) replaceAttachment(attachment.id, file);
+													}}
+												/>
+											</label>
+											<button
+												type="button"
+												onClick={() => deleteAttachment(attachment.id)}
+												className="text-sm text-red-400 hover:text-red-300"
+											>
+												삭제
+											</button>
+										</div>
+									</li>
 								))}
 							</ul>
-						)}
-					</div>
+						</div>
+					)}
+
 					<div>
 						<label
 							htmlFor="edit-title"
@@ -364,51 +412,6 @@ export default function AdminPostEditPage() {
 							게시글에 연결할 링크를 입력하세요.
 						</p>
 					</div>
-
-					{existingAttachments.length > 0 && (
-						<div>
-							<h2 className="mb-2 text-sm font-semibold text-slate-300">
-								기존 첨부
-							</h2>
-							<ul className="divide-y divide-slate-800">
-								{existingAttachments.map((attachment) => (
-									<li
-										key={attachment.id}
-										className="flex items-center justify-between py-2"
-									>
-										<a
-											href={attachment.file_url}
-											target="_blank"
-											rel="noreferrer"
-											className="mr-4 truncate text-sm text-blue-400 hover:text-blue-300 hover:underline"
-										>
-											{attachment.file_name || attachment.file_url}
-										</a>
-										<div className="flex items-center gap-3">
-											<label className="cursor-pointer text-sm text-slate-300">
-												교체
-												<input
-													type="file"
-													className="hidden"
-													onChange={(event) => {
-														const file = event.target.files?.[0];
-														if (file) replaceAttachment(attachment.id, file);
-													}}
-												/>
-											</label>
-											<button
-												type="button"
-												onClick={() => deleteAttachment(attachment.id)}
-												className="text-sm text-red-400 hover:text-red-300"
-											>
-												삭제
-											</button>
-										</div>
-									</li>
-								))}
-							</ul>
-						</div>
-					)}
 
 					<div className="flex justify-end gap-3">
 						<button
