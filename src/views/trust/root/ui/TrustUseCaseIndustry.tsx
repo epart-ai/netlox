@@ -2,7 +2,7 @@ import type { ThemeColor } from "@/shared/model/types";
 import { DataCard, DataList, Reveal } from "@/shared/ui/display";
 
 interface Props {
-	themeColor: ThemeColor;
+	themeColor?: ThemeColor;
 }
 
 export const TrustUseCaseIndustry = ({ themeColor }: Props) => {
@@ -52,7 +52,7 @@ export const TrustUseCaseIndustry = ({ themeColor }: Props) => {
 	];
 
 	return (
-		<Reveal delayMs={300}>
+		<Reveal>
 			<DataCard data={cardData} colors={themeColor} />
 		</Reveal>
 	);

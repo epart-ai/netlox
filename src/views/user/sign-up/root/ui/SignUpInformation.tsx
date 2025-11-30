@@ -37,7 +37,6 @@ export const SignUpInformation = () => {
 					</>
 				}
 				align="left"
-				theme="blue"
 			/>
 			<div className="mt-20">
 				<h4 className="title-24 lg:title-40">Join the NetLOX Platform</h4>

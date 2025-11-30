@@ -4,7 +4,7 @@ import { flexRowBetweenMd, halfWidthMd } from "@/shared/styles/snippets";
 import { Reveal } from "@/shared/ui/display";
 import { Button } from "@/shared/ui/shadcn/button";
 import { PageHead } from "@/views/_shared/ui/PageHead";
-import { ProductsCarousel } from "@/views/products/_shared/ui";
+import { PageImagesCarousel } from "@/views/_shared/ui/PageImagesCarousel";
 
 interface Props {
 	themeColor: ThemeColor;
@@ -44,7 +44,9 @@ export const ProductsPremiumIntro = ({ themeColor }: Props) => {
 						Schedule Executive Briefing
 					</Button>
 				</div>
-				<ProductsCarousel images={carouselImage} />
+				<div className={halfWidthMd}>
+					<PageImagesCarousel images={carouselImage} />
+				</div>
 			</div>
 		</Reveal>
 	);

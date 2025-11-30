@@ -1,5 +1,3 @@
-"use client";
-
 import type { ThemeColor } from "@/shared/model/types";
 import { Reveal } from "@/shared/ui/display";
 import { PageHead } from "@/views/_shared/ui";
@@ -36,5 +34,3 @@ export function SolutionsAiLlmHead({ themeColor }: Props) {
 		</Reveal>
 	);
 }
-
-

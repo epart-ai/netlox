@@ -20,7 +20,7 @@ export const RootReport = () => {
 				</>
 			}
 		>
-			<Reveal delayMs={300}>
+			<Reveal>
 				<RootReportTable />
 			</Reveal>
 			<Reveal delayMs={450}>

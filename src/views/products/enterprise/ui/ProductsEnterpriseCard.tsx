@@ -1,9 +1,9 @@
 import type { ThemeColor } from "@/shared/model/types";
-import { sectionTitleLg } from "@/shared/styles/snippets";
+import { sectionTitle } from "@/shared/styles/snippets";
 import { DataCard, Reveal } from "@/shared/ui/display";
 
 interface Props {
-	themeColor: ThemeColor;
+	themeColor?: ThemeColor;
 }
 export const ProductsEnterpriseCard = ({ themeColor }: Props) => {
 	const cardData = [
@@ -37,8 +37,8 @@ export const ProductsEnterpriseCard = ({ themeColor }: Props) => {
 	];
 
 	return (
-		<Reveal delayMs={300}>
-			<h3 className={sectionTitleLg}>Core Features</h3>
+		<Reveal>
+			<h3 className={sectionTitle}>Core Features</h3>
 			<DataCard data={cardData} colors={themeColor} />
 		</Reveal>
 	);

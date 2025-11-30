@@ -1,5 +1,5 @@
 import type { ThemeColor } from "@/shared/model/types";
-import { sectionTitleLg } from "@/shared/styles/snippets";
+import { sectionTitle } from "@/shared/styles/snippets";
 import { DataCard, Reveal } from "@/shared/ui/display";
 
 interface Props {
@@ -30,8 +30,8 @@ export const SolutionsAiLlmLoxilb = ({ themeColor }: Props) => {
 
 	return (
 		<div className="mt-[108px]">
-			<Reveal delayMs={300}>
-				<h3 className={sectionTitleLg}>The LoxiLB Solution</h3>
+			<Reveal>
+				<h3 className={sectionTitle}>The LoxiLB Solution</h3>
 				<DataCard data={solutionCardData} colors={themeColor} />
 			</Reveal>
 		</div>

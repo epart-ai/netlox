@@ -6,8 +6,6 @@
 export const flexRowBetweenMd =
 	"flex flex-col justify-between gap-8 md:flex-row";
 export const halfWidthMd = "md:w-[48.57%]";
-export const sectionFrame =
-	"overflow-hidden rounded-lg lg:rounded-2xl border border-white/25";
 export const contentPadding = "pt-[50px] lg:pt-[100px]";
 
 export const beforeBackgroundImage =
@@ -16,10 +14,10 @@ export const pageBackground =
 	"before:min-h-screen before:bg-[url('/images/common/bg_content.png')] before:mix-blend-overlay  before:translate-y-[-15%]";
 
 // 타이포/여백 패턴
-export const headingEyebrow = "title-16 lg:title-18";
-export const headingSecondary = "title-36 mt-1.5 lg:title-44 lg:mt-3";
-export const paragraphLead = "paragraph-16 mt-4 lg:paragraph-18 lg:mt-8";
-export const sectionTitleLg = "title-28 mb-4 lg:title-40 lg:mb-8";
+export const headingEyebrow = "title-16 mb-1.5 lg:title-18 lg:mb-3";
+export const headingTitle = "title-36 mt-4 lg:title-44  lg:mb-8";
+export const paragraphLead = "paragraph-16 lg:paragraph-18";
+export const sectionTitle = "title-28 mb-4 lg:title-40 lg:mb-8";
 
 // 폼/메시지
 export const errorTextSm = "text-sm text-alert";

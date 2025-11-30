@@ -41,7 +41,7 @@ export const RootFeatures = () => {
 				beforeBackgroundImage,
 			)}
 		>
-			<Reveal delayMs={300}>
+			<Reveal>
 				<DataCard data={data} colors="blue" />
 			</Reveal>
 			<Reveal delayMs={450}>

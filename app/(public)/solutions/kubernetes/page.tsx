@@ -1,20 +1,18 @@
 import {
+	SolutionsKubernetesBenchmarks,
 	SolutionsKubernetesHead,
 	SolutionsKubernetesLoxilb,
-	SolutionsKubernetesTable,
 } from "@/views/solutions/kubernetes/ui";
 
 export default function ProductOpenSourcePage() {
-	const themeColor = "blue";
-
 	return (
 		<>
-			<SolutionsKubernetesHead themeColor={themeColor} />
+			<SolutionsKubernetesHead />
 			<div className="mt-20">
-				<SolutionsKubernetesTable />
+				<SolutionsKubernetesBenchmarks />
 			</div>
 			<div className="mt-[108px]">
-				<SolutionsKubernetesLoxilb themeColor={themeColor} />
+				<SolutionsKubernetesLoxilb />
 			</div>
 		</>
 	);

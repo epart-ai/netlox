@@ -26,6 +26,7 @@ interface Props {
 	enableNavigation?: boolean;
 	enableAutoplay?: boolean;
 	opts?: CarouselOptions;
+	className?: string;
 }
 
 export const DataCarousel = ({
@@ -34,6 +35,7 @@ export const DataCarousel = ({
 	enableNavigation = true,
 	enableAutoplay = true,
 	opts,
+	className,
 }: Props) => {
 	const [api, setApi] = useState<CarouselApi>();
 	const [current, setCurrent] = useState(1);
@@ -51,10 +53,10 @@ export const DataCarousel = ({
 		});
 	}, [api]);
 	return (
-		<div>
+		<>
 			<Carousel
 				setApi={setApi}
-				className="h-[400px]"
+				className={cn("h-[400px]", className)}
 				autoplay={
 					enableAutoplay ? { delay: 3000, stopOnInteraction: false } : undefined
 				}
@@ -103,6 +105,6 @@ export const DataCarousel = ({
 					})}
 				</div>
 			)}
-		</div>
+		</>
 	);
 };

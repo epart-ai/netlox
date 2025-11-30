@@ -48,7 +48,7 @@ export const RootSuccess = () => {
 				beforeBackgroundImage,
 			)}
 		>
-			<Reveal delayMs={300}>
+			<Reveal>
 				<StatHighlights items={data} />
 			</Reveal>
 			<Reveal delayMs={450}>

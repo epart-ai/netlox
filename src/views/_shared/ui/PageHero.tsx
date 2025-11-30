@@ -14,10 +14,10 @@ export const PageHero = ({ title, description, image }: Props) => {
 				<BackgroundImage opacity="50" src={image} />
 
 				<div className="wrapper flex h-[260px] flex-col items-center justify-center gap-4 text-center lg:h-[420px] lg:gap-6">
-					<Reveal delayMs={0}>
+					<Reveal>
 						<h2 className="title-36 lg:title-60">{title}</h2>
 					</Reveal>
-					<Reveal delayMs={300}>
+					<Reveal>
 						<p className="paragraph-16 lg:paragraph-20">{description}</p>
 					</Reveal>
 				</div>

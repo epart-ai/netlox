@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-import { halfWidthMd, sectionFrame } from "@/shared/styles/snippets";
 import { DataCarousel } from "@/shared/ui/display";
 
 interface Props {
@@ -8,12 +7,16 @@ interface Props {
 		src: string;
 		alt: string;
 	}[];
+	className?: string;
 }
 
-export const ProductsCarousel = ({ images }: Props) => {
-	const carouselData = images.map((image) => {
+export const PageImagesCarousel = ({ images, className }: Props) => {
+	const data = images.map((image) => {
 		return (
-			<div key={image.src} className={sectionFrame}>
+			<div
+				key={image.src}
+				className="overflow-hidden rounded-lg border border-white/25 lg:rounded-2xl"
+			>
 				<Image
 					src={image.src}
 					alt={image.alt}
@@ -26,9 +29,5 @@ export const ProductsCarousel = ({ images }: Props) => {
 		);
 	});
 
-	return (
-		<div className={halfWidthMd}>
-			<DataCarousel data={carouselData} />
-		</div>
-	);
+	return <DataCarousel data={data} className={className} />;
 };

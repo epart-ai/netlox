@@ -50,7 +50,7 @@ export const RootHero = () => {
 								<span className="block text-blue-60">Than MetalLB</span>
 							</h2>
 						</Reveal>
-						<Reveal delayMs={300}>
+						<Reveal>
 							<p className="paragraph-16 text-center md:paragraph-20 lg:paragraph-24">
 								eBPF-powered, independently benchmarked, and trusted by Fortune
 								<br />
