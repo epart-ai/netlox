@@ -27,14 +27,13 @@ export const RootSectionLayout = ({
 			)}
 		>
 			<div className="wrapper">
-				<Reveal delayMs={0}>
+				<Reveal>
 					<div className="mb-10 text-center lg:mb-20">
 						<PageHead
 							eyebrow={eyebrow}
 							title={title}
 							description={description}
 							align="center"
-							theme="blue"
 						/>
 					</div>
 				</Reveal>

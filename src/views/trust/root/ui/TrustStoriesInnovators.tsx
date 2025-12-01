@@ -5,7 +5,7 @@ import { CardList } from "@/shared/ui/shadcn/card";
 import { PostCard } from "@/views/_shared/ui";
 
 interface Props {
-	themeColor: ThemeColor;
+	themeColor?: ThemeColor;
 }
 
 export const TrustStoriesInnovators = ({ themeColor }: Props) => {
@@ -46,7 +46,7 @@ export const TrustStoriesInnovators = ({ themeColor }: Props) => {
 	];
 
 	return (
-		<Reveal delayMs={300}>
+		<Reveal>
 			<CardList colors={themeColor} className={cardListGrid}>
 				{postData.map((post) => (
 					<PostCard

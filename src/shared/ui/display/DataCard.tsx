@@ -42,7 +42,7 @@ interface Props extends VariantProps<typeof dataCardVariant> {
 	className?: string;
 }
 
-export const DataCard = ({ data, className, colors }: Props) => {
+export const DataCard = ({ data, className, colors = "blue" }: Props) => {
 	return (
 		<CardList
 			colors={colors}

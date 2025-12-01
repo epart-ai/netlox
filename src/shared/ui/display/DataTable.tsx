@@ -34,6 +34,7 @@ interface Props<TData, TValue> {
 	emptyText?: string;
 	className?: string;
 	tableClassName?: string;
+	orientation?: "horizontal" | "vertical";
 }
 
 export function DataTable<TData = unknown, TValue = unknown>({
@@ -43,6 +44,7 @@ export function DataTable<TData = unknown, TValue = unknown>({
 	emptyText = "No results.",
 	className,
 	tableClassName,
+	orientation = "horizontal",
 }: Props<TData, TValue>) {
 	const [sorting, setSorting] = useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -69,6 +71,10 @@ export function DataTable<TData = unknown, TValue = unknown>({
 		},
 	});
 
+	const rowLength = table.getRowModel().rows.length;
+	// console.log(table.getHeaderGroups());
+	// console.log(table.getRowModel());
+
 	return (
 		<div
 			className={cn(
@@ -76,8 +82,11 @@ export function DataTable<TData = unknown, TValue = unknown>({
 				className,
 			)}
 		>
-			<Table className={tableClassName}>
-				<TableHeader>
+			<Table
+				className={cn("table w-full caption-bottom", tableClassName)}
+				data-orientation={orientation}
+			>
+				<TableHeader className={cn(orientation === "vertical" && "flex-1")}>
 					{table.getHeaderGroups().map((headerGroup) => (
 						<TableRow key={headerGroup.id}>
 							{headerGroup.headers.map((header) => {
@@ -87,7 +96,7 @@ export function DataTable<TData = unknown, TValue = unknown>({
 								return (
 									<TableHead
 										key={header.id}
-										className={meta?.className}
+										className={cn(meta?.className)}
 										width={meta?.width}
 									>
 										{header.isPlaceholder
@@ -102,32 +111,47 @@ export function DataTable<TData = unknown, TValue = unknown>({
 						</TableRow>
 					))}
 				</TableHeader>
-				<TableBody>
-					{table.getRowModel().rows.length > 0 ? (
-						table.getRowModel().rows.map((row) => (
-							<TableRow
-								key={row.id}
-								data-state={row.getIsSelected() && "selected"}
-							>
-								{row.getVisibleCells().map((cell) => {
-									const meta = cell.column.columnDef.meta as
-										| { className?: string; width?: string }
-										| undefined;
-									return (
-										<TableCell
-											key={cell.id}
-											className={meta?.className}
-											width={meta?.width}
-										>
-											{flexRender(
-												cell.column.columnDef.cell,
-												cell.getContext(),
-											)}
-										</TableCell>
-									);
-								})}
-							</TableRow>
-						))
+				<TableBody
+					style={{ flex: orientation === "vertical" ? rowLength : undefined }}
+				>
+					{rowLength > 0 ? (
+						table.getRowModel().rows.map((row) => {
+							const renderRows = () => {
+								return (
+									<TableRow
+										key={row.id}
+										className={cn(orientation === "vertical" ? "w-max" : "")}
+										data-state={row.getIsSelected() && "selected"}
+									>
+										{row.getVisibleCells().map((cell) => {
+											const meta = cell.column.columnDef.meta as
+												| { className?: string; width?: string }
+												| undefined;
+											return (
+												<TableCell
+													key={cell.id}
+													className={meta?.className}
+													width={meta?.width}
+												>
+													{flexRender(
+														cell.column.columnDef.cell,
+														cell.getContext(),
+													)}
+												</TableCell>
+											);
+										})}
+									</TableRow>
+								);
+							};
+
+							return orientation === "horizontal" ? (
+								renderRows()
+							) : (
+								<div key={row.id} className="flex-1 overflow-hidden">
+									{renderRows()}
+								</div>
+							);
+						})
 					) : (
 						<TableRow>
 							<TableCell className="h-24 text-center">{emptyText}</TableCell>

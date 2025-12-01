@@ -3,7 +3,7 @@ import { Reveal } from "@/shared/ui/display";
 import { PageHead } from "@/views/_shared/ui";
 
 interface Props {
-	themeColor: ThemeColor;
+	themeColor?: ThemeColor;
 }
 
 export const TrustUseCaseHead = ({ themeColor }: Props) => {
@@ -14,7 +14,7 @@ export const TrustUseCaseHead = ({ themeColor }: Props) => {
 				title="Powering Every Industry"
 				description={
 					<>
-						From cloud-native SaaS to industrial IoT and financial services,{" "}
+						From cloud-native SaaS to industrial IoT and financial services,
 						<br />
 						NetLOX provides the reliability and performance modern applications
 						demand.

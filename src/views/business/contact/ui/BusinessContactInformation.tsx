@@ -56,7 +56,6 @@ export const BusinessContactInformation = () => {
 					</>
 				}
 				align="left"
-				theme="blue"
 			/>
 			<div className="mt-20 space-y-10">
 				<h4 className="title-24 lg:title-40">Why work with NetLOX?</h4>

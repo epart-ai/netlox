@@ -7,10 +7,10 @@ import { flexRowBetweenMd, halfWidthMd } from "@/shared/styles/snippets";
 import { Reveal } from "@/shared/ui/display";
 import { Button } from "@/shared/ui/shadcn/button";
 import { PageHead } from "@/views/_shared/ui/PageHead";
-import { ProductsCarousel } from "@/views/products/_shared/ui";
+import { PageImagesCarousel } from "@/views/_shared/ui/PageImagesCarousel";
 
 interface Props {
-	themeColor: ThemeColor;
+	themeColor?: ThemeColor;
 }
 
 export const ProductsEnterpriseIntro = ({ themeColor }: Props) => {
@@ -56,7 +56,9 @@ export const ProductsEnterpriseIntro = ({ themeColor }: Props) => {
 						<Link href={ROUTES.BUSINESS_CONTACT}>Request Quote</Link>
 					</Button>
 				</div>
-				<ProductsCarousel images={carouselImage} />
+				<div className={halfWidthMd}>
+					<PageImagesCarousel images={carouselImage} />
+				</div>
 			</div>
 		</Reveal>
 	);

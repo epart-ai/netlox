@@ -3,7 +3,7 @@ import { Fragment, type ReactNode, isValidElement } from "react";
 import { cn } from "@/shared/lib/utils";
 import {
 	headingEyebrow,
-	headingSecondary,
+	headingTitle,
 	paragraphLead,
 } from "@/shared/styles/snippets";
 
@@ -37,7 +37,7 @@ export const PageHead = ({
 					{eyebrow}
 				</strong>
 			) : null}
-			<h3 className={headingSecondary}>{title}</h3>
+			<h3 className={headingTitle}>{title}</h3>
 			{description ? (
 				typeof description === "string" ||
 				(isValidElement(description) && description.type === Fragment) ? (

@@ -3,7 +3,7 @@ import { Reveal } from "@/shared/ui/display";
 import { PageHead } from "@/views/_shared/ui";
 
 interface Props {
-	themeColor: ThemeColor;
+	themeColor?: ThemeColor;
 }
 
 export const TrustValidationHead = ({ themeColor }: Props) => {

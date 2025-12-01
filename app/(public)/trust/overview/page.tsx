@@ -10,31 +10,30 @@ import {
 } from "@/views/trust/root/ui";
 
 export default function TrustOverviewPage() {
-	const themeColor = "blue";
 	return (
 		<div className="space-y-[160px]">
 			<div>
-				<TrustOverviewHead themeColor={themeColor} />
+				<TrustOverviewHead />
 				<div className="mt-20">
 					<TrustOverviewHighlight />
 				</div>
 			</div>
 			<div>
-				<TrustStoriesHead themeColor={themeColor} />
+				<TrustStoriesHead />
 				<div className="mt-20">
-					<TrustStoriesInnovators themeColor={themeColor} />
+					<TrustStoriesInnovators />
 				</div>
 			</div>
 			<div>
-				<TrustUseCaseHead themeColor={themeColor} />
+				<TrustUseCaseHead />
 				<div className="mt-20">
-					<TrustUseCaseIndustry themeColor={themeColor} />
+					<TrustUseCaseIndustry />
 				</div>
 			</div>
 			<div>
-				<TrustValidationHead themeColor={themeColor} />
+				<TrustValidationHead />
 				<div className="mt-20">
-					<TrustValidationEcosystem themeColor={themeColor} />
+					<TrustValidationEcosystem />
 				</div>
 			</div>
 		</div>

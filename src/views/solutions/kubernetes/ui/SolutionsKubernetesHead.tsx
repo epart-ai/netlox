@@ -1,11 +1,9 @@
-"use client";
-
 import type { ThemeColor } from "@/shared/model/types";
 import { Reveal } from "@/shared/ui/display";
 import { PageHead } from "@/views/_shared/ui";
 
 interface Props {
-	themeColor: ThemeColor;
+	themeColor?: ThemeColor;
 }
 
 export function SolutionsKubernetesHead({ themeColor }: Props) {
@@ -27,5 +25,3 @@ export function SolutionsKubernetesHead({ themeColor }: Props) {
 		</Reveal>
 	);
 }
-
-

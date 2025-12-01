@@ -1,5 +1,5 @@
 import type { ThemeColor } from "@/shared/model/types";
-import { sectionTitleLg } from "@/shared/styles/snippets";
+import { sectionTitle } from "@/shared/styles/snippets";
 import { DataCard, Reveal } from "@/shared/ui/display";
 
 interface Props {
@@ -38,8 +38,8 @@ export const Solutions5gTelcoChallenge = ({ themeColor }: Props) => {
 	];
 
 	return (
-		<Reveal delayMs={300}>
-			<h3 className={sectionTitleLg}>The Challenge: Telco Demands</h3>
+		<Reveal>
+			<h3 className={sectionTitle}>The Challenge: Telco Demands</h3>
 			<DataCard data={challengeCardData} colors={themeColor} />
 		</Reveal>
 	);
