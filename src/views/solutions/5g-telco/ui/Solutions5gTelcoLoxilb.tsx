@@ -16,7 +16,7 @@ export const Solutions5gTelcoLoxilb = ({ themeColor }: Props) => {
 					and automatic failover, compliant with 3GPP specs.
 				</>
 			),
-			image: "/images/solutions/icon_5g-telco_solution1.svg",
+			icon: "/images/solutions/icon_5g-telco_solution1.svg",
 		},
 		{
 			title: "5G Protocol Awareness",
@@ -26,7 +26,7 @@ export const Solutions5gTelcoLoxilb = ({ themeColor }: Props) => {
 					intelligence (N4), and SRv6 support.
 				</>
 			),
-			image: "/images/solutions/icon_5g-telco_solution2.svg",
+			icon: "/images/solutions/icon_5g-telco_solution2.svg",
 		},
 		{
 			title: "UPF & SCP Load Balancing",
@@ -36,7 +36,7 @@ export const Solutions5gTelcoLoxilb = ({ themeColor }: Props) => {
 					and provides robust UPF load balancing.
 				</>
 			),
-			image: "/images/solutions/icon_5g-telco_solution3.svg",
+			icon: "/images/solutions/icon_5g-telco_solution3.svg",
 		},
 	];
 

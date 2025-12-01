@@ -12,19 +12,19 @@ export const SolutionsKubernetesLoxilb = ({ themeColor }: Props) => {
 			title: "Zero-Downtime Migration",
 			description:
 				"Seamlessly migrate from MetalLB with zero downtime. LoxiLB integrates with any CNI.",
-			image: "/images/solutions/icon_kubernetes_solution1.svg",
+			icon: "/images/solutions/icon_kubernetes_solution1.svg",
 		},
 		{
 			title: "BGP & Gateway API",
 			description:
 				"Full support for BGP with goBGP, plus compliance with ServiceType=LoadBalancer and Gateway API.",
-			image: "/images/solutions/icon_kubernetes_solution2.svg",
+			icon: "/images/solutions/icon_kubernetes_solution2.svg",
 		},
 		{
 			title: "Multi-Cluster Balancing",
 			description:
 				"Manage traffic across multiple Kubernetes clusters from a single, high-performance control plane.",
-			image: "/images/solutions/icon_kubernetes_solution3.svg",
+			icon: "/images/solutions/icon_kubernetes_solution3.svg",
 		},
 	];
 

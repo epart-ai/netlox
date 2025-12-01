@@ -16,7 +16,7 @@ export const SolutionsAiLlmChallenge = ({ themeColor }: Props) => {
 					that last minutes or hours, not seconds.
 				</>
 			),
-			image: "/images/solutions/icon_ai-llm_challenge1.svg",
+			icon: "/images/solutions/icon_ai-llm_challenge1.svg",
 		},
 		{
 			title: "Critical Session State",
@@ -26,7 +26,7 @@ export const SolutionsAiLlmChallenge = ({ themeColor }: Props) => {
 					for multi-turn conversations and model context.
 				</>
 			),
-			image: "/images/solutions/icon_ai-llm_challenge2.svg",
+			icon: "/images/solutions/icon_ai-llm_challenge2.svg",
 		},
 		{
 			title: "GPU Optimization",
@@ -36,7 +36,7 @@ export const SolutionsAiLlmChallenge = ({ themeColor }: Props) => {
 					expensive GPU resources and higher costs.
 				</>
 			),
-			image: "/images/solutions/icon_ai-llm_challenge3.svg",
+			icon: "/images/solutions/icon_ai-llm_challenge3.svg",
 		},
 	];
 

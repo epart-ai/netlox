@@ -230,7 +230,7 @@ export const Header = () => {
 						className="lg:pointer-events-auto lg:h-full lg:absolute-center"
 						aria-label="Main navigation"
 					>
-						<ul className="lg:flex lg:h-full lg:items-center lg:gap-8">
+						<ul className="navigation-list lg:flex lg:h-full lg:items-center lg:gap-8">
 							{navItems.map((item, idx) => (
 								<li
 									key={item.label}

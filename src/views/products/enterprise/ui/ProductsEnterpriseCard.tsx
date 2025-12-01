@@ -14,7 +14,7 @@ export const ProductsEnterpriseCard = ({ themeColor }: Props) => {
 					Access our expert engineering team <br /> (9AM-6PM).
 				</>
 			),
-			image: "/images/products/icon_enterprise_feature1.svg",
+			icon: "/images/products/icon_enterprise_feature1.svg",
 		},
 		{
 			title: "Security Patching",
@@ -23,7 +23,7 @@ export const ProductsEnterpriseCard = ({ themeColor }: Props) => {
 					Receive timely security updates <br /> and patches.
 				</>
 			),
-			image: "/images/products/icon_enterprise_feature2.svg",
+			icon: "/images/products/icon_enterprise_feature2.svg",
 		},
 		{
 			title: "High Availability (HA)",
@@ -32,7 +32,7 @@ export const ProductsEnterpriseCard = ({ themeColor }: Props) => {
 					Includes configuration support <br /> for multi-AZ resilience.
 				</>
 			),
-			image: "/images/products/icon_enterprise_feature3.svg",
+			icon: "/images/products/icon_enterprise_feature3.svg",
 		},
 	];
 

@@ -17,7 +17,7 @@ export const ProductsSaasCard = ({ themeColor }: Props) => {
 					kernel-level packet processing.
 				</>
 			),
-			image: "/images/products/icon_saas_feature1.svg",
+			icon: "/images/products/icon_saas_feature1.svg",
 		},
 		{
 			title: "Kubernetes Integration",
@@ -28,7 +28,7 @@ export const ProductsSaasCard = ({ themeColor }: Props) => {
 					Service type LB, and more.
 				</>
 			),
-			image: "/images/products/icon_saas_feature2.svg",
+			icon: "/images/products/icon_saas_feature2.svg",
 		},
 		{
 			title: "Community Support",
@@ -38,7 +38,7 @@ export const ProductsSaasCard = ({ themeColor }: Props) => {
 					and GitHub Issues.
 				</>
 			),
-			image: "/images/products/icon_saas_feature3.svg",
+			icon: "/images/products/icon_saas_feature3.svg",
 		},
 	];
 

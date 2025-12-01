@@ -30,8 +30,8 @@ export const TechnologyPerformanceIngress = () => {
 
 	const data = [
 		{
-			image: "/images/technology/icon_performance_ingress1.svg",
 			title: "Test Environment Details",
+			icon: "/images/technology/icon_performance_ingress1.svg",
 			footer: (
 				<DataList
 					data={[
@@ -56,8 +56,8 @@ export const TechnologyPerformanceIngress = () => {
 			),
 		},
 		{
-			image: "/images/technology/icon_performance_ingress2.svg",
 			title: "Scaling Characteristics",
+			icon: "/images/technology/icon_performance_ingress2.svg",
 			footer: (
 				<DataList
 					data={[

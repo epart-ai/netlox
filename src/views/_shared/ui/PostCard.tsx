@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link, { type LinkProps } from "next/link";
 
 import { TextLink } from "@/shared/ui/navigation";
 import {
@@ -19,9 +19,8 @@ type PostCardProps = {
 	createdAt?: string;
 	imageUrl?: string | null;
 	href?: string | null;
-	textLink?: {
+	textLink?: LinkProps & {
 		label: string;
-		href: string;
 	};
 };
 
@@ -62,7 +61,7 @@ export function PostCard({
 			</CardContent>
 			{textLink && (
 				<TextLink
-					href={textLink.href}
+					{...textLink}
 					label={textLink.label}
 					colors="blue"
 					iconVisible="right"
