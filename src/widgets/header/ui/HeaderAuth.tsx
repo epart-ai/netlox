@@ -18,7 +18,7 @@ export function HeaderAuth({ userEmail }: HeaderAuthProps) {
 	};
 
 	return (
-		<div className="flex flex-wrap items-center justify-center lg:pointer-events-auto lg:ml-auto lg:h-full">
+		<div className="navigation-auth flex flex-wrap items-center justify-center lg:pointer-events-auto lg:ml-auto lg:h-full">
 			{!userEmail ? (
 				<>
 					<TextLink

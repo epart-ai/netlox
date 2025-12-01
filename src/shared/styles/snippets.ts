@@ -36,4 +36,4 @@ export const responsiveArrowBack = "w-1.5 rotate-180 md:w-2 lg:w-2.5";
 export const cardMaxWidth = "m-auto w-full max-w-360 lg:max-w-480";
 export const cardWrapperSpace = "space-y-8 md:space-y-10";
 export const cardListGrid =
-	"flex flex-wrap justify-center gap-y-9 lg:gap-y-19.5";
+	"flex flex-wrap gap-y-9 lg:gap-y-19.5 [@media(max-width:1473px)]:justify-center";

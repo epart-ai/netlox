@@ -57,7 +57,9 @@ export function ResourceBlogPost({ searchParams }: Props) {
 								id={post.id}
 								title={post.title}
 								createdAt={post.created_at}
-								imageUrl={post.imageUrl}
+								imageUrl={
+									post.imageUrl ?? "/images/resource/img_blog_thumbnail.jpg"
+								}
 								href={post.etc1 ?? undefined}
 							/>
 						))}
