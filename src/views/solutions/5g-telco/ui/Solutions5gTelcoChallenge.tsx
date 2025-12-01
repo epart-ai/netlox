@@ -17,7 +17,7 @@ export const Solutions5gTelcoChallenge = ({ themeColor }: Props) => {
 					fail to handle.
 				</>
 			),
-			image: "/images/solutions/icon_5g-telco_challenge1.svg",
+			icon: "/images/solutions/icon_5g-telco_challenge1.svg",
 		},
 		{
 			title: "Five Nines Reliability",
@@ -27,13 +27,13 @@ export const Solutions5gTelcoChallenge = ({ themeColor }: Props) => {
 					zero packet loss during failover, and &lt;100µs latency.
 				</>
 			),
-			image: "/images/solutions/icon_5g-telco_challenge2.svg",
+			icon: "/images/solutions/icon_5g-telco_challenge2.svg",
 		},
 		{
 			title: "Network Slicing & MEC",
 			description:
 				"Must support multi-access edge computing (MEC) and network slicing with guaranteed QoS.",
-			image: "/images/solutions/icon_5g-telco_challenge3.svg",
+			icon: "/images/solutions/icon_5g-telco_challenge3.svg",
 		},
 	];
 

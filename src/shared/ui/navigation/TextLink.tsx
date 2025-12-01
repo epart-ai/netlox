@@ -48,7 +48,7 @@ interface Props
 }
 
 export const TextLink = ({
-	href,
+	href = "#",
 	label,
 	colors,
 	size,
@@ -59,22 +59,6 @@ export const TextLink = ({
 	underline,
 	...props
 }: Props) => {
-	// href가 undefined인 경우 방어 처리
-	if (!href) {
-		console.warn("TextLink: href prop is required but was undefined");
-		return (
-			<span
-				className={cn(
-					linkVariant({ colors, size }),
-					underline && "underline underline-offset-2",
-					className,
-				)}
-			>
-				{label}
-			</span>
-		);
-	}
-
 	return (
 		<Link
 			{...props}

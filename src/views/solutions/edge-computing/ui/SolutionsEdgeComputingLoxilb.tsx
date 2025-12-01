@@ -16,7 +16,7 @@ export const SolutionsEdgeComputingLoxilb = ({ themeColor }: Props) => {
 					Fast boot in &lt;5 seconds.
 				</>
 			),
-			image: "/images/solutions/icon_edge-computing_solution1.svg",
+			icon: "/images/solutions/icon_edge-computing_solution1.svg",
 		},
 		{
 			title: "ARM Native Support",
@@ -27,19 +27,19 @@ export const SolutionsEdgeComputingLoxilb = ({ themeColor }: Props) => {
 					per watt.
 				</>
 			),
-			image: "/images/solutions/icon_edge-computing_solution2.svg",
+			icon: "/images/solutions/icon_edge-computing_solution2.svg",
 		},
 		{
 			title: "< 200µs Latency",
 			description:
 				"Ultra-low P99 latency ensures real-time processing for industrial IoT and video.",
-			image: "/images/solutions/icon_edge-computing_solution3.svg",
+			icon: "/images/solutions/icon_edge-computing_solution3.svg",
 		},
 		{
 			title: "QUIC Protocol",
 			description:
 				"Native QUIC support for fast, reliable connections even in unstable networks.",
-			image: "/images/solutions/icon_edge-computing_solution4.svg",
+			icon: "/images/solutions/icon_edge-computing_solution4.svg",
 		},
 	];
 

@@ -9,7 +9,7 @@ export const TrustUseCaseIndustry = ({ themeColor }: Props) => {
 	const cardData = [
 		{
 			title: "Technology & SaaS",
-			image: "/images/trust/icon_use-case1.svg",
+			icon: "/images/trust/icon_use-case1.svg",
 			footer: (
 				<DataList
 					data={[
@@ -23,7 +23,7 @@ export const TrustUseCaseIndustry = ({ themeColor }: Props) => {
 		},
 		{
 			title: "Technology & SaaS",
-			image: "/images/trust/icon_use-case2.svg",
+			icon: "/images/trust/icon_use-case2.svg",
 			footer: (
 				<DataList
 					data={[
@@ -37,7 +37,7 @@ export const TrustUseCaseIndustry = ({ themeColor }: Props) => {
 		},
 		{
 			title: "Technology & SaaS",
-			image: "/images/trust/icon_use-case3.svg",
+			icon: "/images/trust/icon_use-case3.svg",
 			footer: (
 				<DataList
 					data={[

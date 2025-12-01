@@ -15,7 +15,7 @@ export const TrustValidationEcosystem = ({ themeColor }: Props) => {
 					Computing Foundation.
 				</>
 			),
-			image: "/images/trust/icon_validation1.svg",
+			icon: "/images/trust/icon_validation1.svg",
 		},
 		{
 			title: "2,000+ GitHub Stars",
@@ -25,7 +25,7 @@ export const TrustValidationEcosystem = ({ themeColor }: Props) => {
 					open-source community.
 				</>
 			),
-			image: "/images/trust/icon_validation2.svg",
+			icon: "/images/trust/icon_validation2.svg",
 		},
 		{
 			title: "Network Slicing & MEC",
@@ -35,7 +35,7 @@ export const TrustValidationEcosystem = ({ themeColor }: Props) => {
 					and technology providers.
 				</>
 			),
-			image: "/images/trust/icon_validation3.svg",
+			icon: "/images/trust/icon_validation3.svg",
 		},
 	];
 

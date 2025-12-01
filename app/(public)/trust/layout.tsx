@@ -1,23 +1,16 @@
-import { ROUTES } from "@/shared/config";
-import { PageHero, PageTabs } from "@/views/_shared/ui";
+import { cn } from "@/shared/lib/utils";
+import {
+	beforeBackgroundImage,
+	contentPadding,
+	pageBackground,
+} from "@/shared/styles/snippets";
+import { PageHero } from "@/views/_shared/ui";
 
 export default function TrustLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const tabs = [
-		{
-			label: "Overview",
-			value: "overview",
-			href: ROUTES.TRUST_OVERVIEW,
-		},
-		{
-			label: "Success Story",
-			value: "successStory",
-			href: ROUTES.TRUST_SUCCESS_STORY,
-		},
-	];
 	return (
 		<>
 			<PageHero
@@ -30,7 +23,11 @@ export default function TrustLayout({
 				}
 				image="/images/trust/bg_hero.jpg"
 			/>
-			<PageTabs tabs={tabs}>{children}</PageTabs>
+			<div
+				className={cn(contentPadding, beforeBackgroundImage, pageBackground)}
+			>
+				<div className="wrapper">{children}</div>
+			</div>
 		</>
 	);
 }

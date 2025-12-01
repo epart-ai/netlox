@@ -12,9 +12,7 @@ export const TrustStoriesInnovators = ({ themeColor }: Props) => {
 	const postData = [
 		{
 			id: 1,
-			title: "NetLOX Success Stories title area sample text",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et",
+			title: "Private 5G Cloud Service",
 			imageUrl: "/images/trust/img_post.jpg",
 			textLink: {
 				label: "Read Full Story",
@@ -23,9 +21,7 @@ export const TrustStoriesInnovators = ({ themeColor }: Props) => {
 		},
 		{
 			id: 2,
-			title: "NetLOX Success Stories title area sample text",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et",
+			title: "Cloud Native DRA(Diameter Routing Agent) with SCTP Multi-homing",
 			imageUrl: "/images/trust/img_post.jpg",
 			textLink: {
 				label: "Read Full Story",
@@ -34,9 +30,7 @@ export const TrustStoriesInnovators = ({ themeColor }: Props) => {
 		},
 		{
 			id: 3,
-			title: "NetLOX Success Stories title area sample text",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et",
+			title: "Multi-Cloud HA Success Story",
 			imageUrl: "/images/trust/img_post.jpg",
 			textLink: {
 				label: "Read Full Story",
@@ -53,7 +47,6 @@ export const TrustStoriesInnovators = ({ themeColor }: Props) => {
 						key={post.id}
 						id={post.id}
 						title={post.title}
-						description={post.description}
 						imageUrl={post.imageUrl}
 						textLink={post.textLink}
 					/>

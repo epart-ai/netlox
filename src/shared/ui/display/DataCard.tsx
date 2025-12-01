@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { LinkProps } from "next/link";
 import type { ReactNode } from "react";
 
 import { type VariantProps, cva } from "class-variance-authority";
@@ -29,10 +30,9 @@ const dataCardVariant = cva("", {
 type Item = {
 	title: string;
 	description?: ReactNode;
-	image?: string;
-	link?: {
+	icon?: string;
+	link?: LinkProps & {
 		label: string;
-		url: string;
 	};
 	disabledIconInvert?: boolean;
 	footer?: ReactNode;
@@ -51,10 +51,10 @@ export const DataCard = ({ data, className, colors = "blue" }: Props) => {
 			{data.map((item) => (
 				<Card key={item.title} variant="glass">
 					<CardWrapper>
-						{item.image && (
+						{item.icon && (
 							<div className="iconBox flex size-15 items-center justify-center rounded-2xl p-3.5 backdrop-blur-md transition-colors duration-300 md:size-20 md:p-5 lg:p-4.5">
 								<Image
-									src={item.image}
+									src={item.icon}
 									alt={item.title}
 									width={44}
 									height={44}
@@ -77,7 +77,7 @@ export const DataCard = ({ data, className, colors = "blue" }: Props) => {
 						</CardContent>
 						{item.link && (
 							<TextLink
-								href={item.link.url}
+								{...item.link}
 								label={item.link.label}
 								colors={colors}
 								className="mt-2"

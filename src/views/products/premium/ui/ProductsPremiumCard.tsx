@@ -16,7 +16,7 @@ export const ProductsPremiumCard = ({ themeColor }: Props) => {
 					who knows your environment.
 				</>
 			),
-			image: "/images/products/icon_premium_feature1.svg",
+			icon: "/images/products/icon_premium_feature1.svg",
 		},
 		{
 			title: "Custom Development",
@@ -26,7 +26,7 @@ export const ProductsPremiumCard = ({ themeColor }: Props) => {
 					developed for your needs.
 				</>
 			),
-			image: "/images/products/icon_premium_feature2.svg",
+			icon: "/images/products/icon_premium_feature2.svg",
 		},
 		{
 			title: "Architecture Reviews",
@@ -36,7 +36,7 @@ export const ProductsPremiumCard = ({ themeColor }: Props) => {
 					and optimization consulting.
 				</>
 			),
-			image: "/images/products/icon_premium_feature3.svg",
+			icon: "/images/products/icon_premium_feature3.svg",
 		},
 	];
 

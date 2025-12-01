@@ -4,7 +4,7 @@ export const TechnologyFeaturePlatform = () => {
 	const data = [
 		{
 			title: "eBPF-Powered Data Plane",
-			image: "/images/technology/icon_features_platform1.svg",
+			icon: "/images/technology/icon_features_platform1.svg",
 			footer: (
 				<DataList
 					data={[
@@ -18,7 +18,7 @@ export const TechnologyFeaturePlatform = () => {
 		},
 		{
 			title: "L4/L7 Capabilities",
-			image: "/images/technology/icon_features_platform2.svg",
+			icon: "/images/technology/icon_features_platform2.svg",
 			footer: (
 				<DataList
 					data={[
@@ -32,7 +32,7 @@ export const TechnologyFeaturePlatform = () => {
 		},
 		{
 			title: "",
-			image: "/images/technology/icon_features_platform3.svg",
+			icon: "/images/technology/icon_features_platform3.svg",
 			footer: (
 				<DataList
 					data={[
@@ -46,7 +46,7 @@ export const TechnologyFeaturePlatform = () => {
 		},
 		{
 			title: "",
-			image: "/images/technology/icon_features_platform4.svg",
+			icon: "/images/technology/icon_features_platform4.svg",
 			footer: (
 				<DataList
 					data={[
@@ -60,7 +60,7 @@ export const TechnologyFeaturePlatform = () => {
 		},
 		{
 			title: "",
-			image: "/images/technology/icon_features_platform5.svg",
+			icon: "/images/technology/icon_features_platform5.svg",
 			footer: (
 				<DataList
 					data={[
@@ -74,7 +74,7 @@ export const TechnologyFeaturePlatform = () => {
 		},
 		{
 			title: "",
-			image: "/images/technology/icon_features_platform6.svg",
+			icon: "/images/technology/icon_features_platform6.svg",
 			footer: (
 				<DataList
 					data={[
