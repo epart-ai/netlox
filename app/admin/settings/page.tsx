@@ -16,6 +16,14 @@ type EmailSettings = {
 	smtp_secure: string | null;
 };
 
+type TestResult = {
+	success: boolean;
+	message?: string;
+	messageId?: string;
+	error?: string;
+	debug?: Record<string, unknown>;
+};
+
 export default function AdminSettingsPage() {
 	const [loading, setLoading] = useState(true);
 	const [saving, setSaving] = useState(false);
@@ -31,6 +39,12 @@ export default function AdminSettingsPage() {
 		contact_from_email: null,
 		smtp_secure: null,
 	});
+
+	// 테스트 이메일 관련 상태
+	const [testEmail, setTestEmail] = useState("");
+	const [testing, setTesting] = useState(false);
+	const [testResult, setTestResult] = useState<TestResult | null>(null);
+	const [showDebug, setShowDebug] = useState(false);
 
 	const authHeader = useCallback(async (): Promise<Record<string, string>> => {
 		const supabase = createClient();
@@ -102,6 +116,64 @@ export default function AdminSettingsPage() {
 			setError(message);
 		} finally {
 			setSaving(false);
+		}
+	};
+
+	const handleTestEmail = async () => {
+		if (!testEmail.trim()) {
+			setTestResult({
+				success: false,
+				error: "테스트 이메일 주소를 입력하세요.",
+			});
+			return;
+		}
+
+		setTesting(true);
+		setTestResult(null);
+		setShowDebug(false);
+
+		try {
+			const headers = {
+				"Content-Type": "application/json",
+				...(await authHeader()),
+			};
+
+			const response = await fetch("/api/admin/email-settings/test", {
+				method: "POST",
+				headers,
+				body: JSON.stringify({
+					to: testEmail.trim(),
+					subject: "이메일 설정 테스트",
+				}),
+			});
+
+			const result = await response.json();
+
+			if (!response.ok) {
+				setTestResult({
+					success: false,
+					error: result.error || "테스트 이메일 발송에 실패했습니다.",
+					debug: result.debug,
+				});
+			} else {
+				setTestResult({
+					success: true,
+					message: result.message,
+					messageId: result.messageId,
+					debug: result.debug,
+				});
+			}
+		} catch (err) {
+			const message =
+				err instanceof Error
+					? err.message
+					: "테스트 이메일 발송 중 오류가 발생했습니다.";
+			setTestResult({
+				success: false,
+				error: message,
+			});
+		} finally {
+			setTesting(false);
 		}
 	};
 
@@ -293,6 +365,118 @@ export default function AdminSettingsPage() {
 							</button>
 						</div>
 					</form>
+				)}
+
+				{/* 테스트 이메일 발송 섹션 */}
+				{!loading && (
+					<div className="mt-8 rounded-lg border border-slate-800 bg-slate-900 p-6">
+						<h2 className="mb-4 text-xl font-bold text-white">
+							이메일 발송 테스트
+						</h2>
+						<p className="mb-4 text-sm text-slate-400">
+							설정한 SMTP 정보로 테스트 이메일을 발송하여 연결 및 설정을 확인할
+							수 있습니다.
+						</p>
+
+						<div className="space-y-4">
+							<div>
+								<label
+									htmlFor="test_email"
+									className="mb-2 block text-sm font-medium text-slate-200"
+								>
+									테스트 수신 이메일 주소
+								</label>
+								<div className="flex gap-2">
+									<input
+										id="test_email"
+										type="email"
+										value={testEmail}
+										onChange={(e) => setTestEmail(e.target.value)}
+										placeholder="test@example.com"
+										className="flex-1 rounded border border-slate-700 bg-slate-800 px-3 py-2 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+									/>
+									{settings.contact_recipient_email && (
+										<button
+											type="button"
+											onClick={() => {
+												const firstEmail = settings.contact_recipient_email
+													?.split(",")[0]
+													.trim();
+												if (firstEmail) {
+													setTestEmail(firstEmail);
+												}
+											}}
+											className="rounded border border-slate-600 px-4 py-2 text-sm text-slate-300 hover:bg-slate-800"
+											title="수신 이메일 주소 사용"
+										>
+											수신 이메일 사용
+										</button>
+									)}
+									<button
+										type="button"
+										onClick={handleTestEmail}
+										disabled={testing || !testEmail.trim()}
+										className="rounded bg-purple-600 px-6 py-2 text-white hover:bg-purple-700 disabled:cursor-not-allowed disabled:opacity-50"
+									>
+										{testing ? "발송 중..." : "테스트 발송"}
+									</button>
+								</div>
+							</div>
+
+							{/* 테스트 결과 표시 */}
+							{testResult && (
+								<div
+									className={`rounded border p-4 ${
+										testResult.success
+											? "border-green-700 bg-green-900/30"
+											: "border-red-700 bg-red-900/30"
+									}`}
+								>
+									<div
+										className={`mb-2 font-semibold ${
+											testResult.success ? "text-green-300" : "text-red-300"
+										}`}
+									>
+										{testResult.success ? "✓ 성공" : "✗ 실패"}
+									</div>
+									{testResult.success ? (
+										<div className="space-y-2 text-sm text-green-200">
+											<p>{testResult.message}</p>
+											{testResult.messageId && (
+												<p className="text-xs text-green-400">
+													Message ID: {testResult.messageId}
+												</p>
+											)}
+										</div>
+									) : (
+										<div className="space-y-2 text-sm text-red-200">
+											<p>{testResult.error}</p>
+										</div>
+									)}
+
+									{/* 디버깅 정보 */}
+									{testResult.debug && (
+										<div className="mt-4">
+											<button
+												type="button"
+												onClick={() => setShowDebug(!showDebug)}
+												className="mb-2 text-xs text-slate-400 hover:text-slate-300"
+											>
+												{showDebug
+													? "▼ 디버깅 정보 숨기기"
+													: "▶ 디버깅 정보 보기"}
+											</button>
+											{showDebug && (
+												<pre className="max-h-96 overflow-auto rounded border border-slate-700 bg-slate-950 p-3 text-xs text-slate-300">
+													{JSON.stringify(testResult.debug, null, 2)}
+												</pre>
+											)}
+										</div>
+									)}
+								</div>
+							)}
+						</div>
+					</div>
 				)}
 			</div>
 		</div>
