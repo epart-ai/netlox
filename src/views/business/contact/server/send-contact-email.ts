@@ -44,7 +44,12 @@ async function getMailConfig(): Promise<MailEnvConfig> {
 				throw new Error("SMTP_PORT가 올바른 숫자가 아닙니다.");
 			}
 
-			const secure = smtp_secure ? smtp_secure === "true" : port === 465;
+			const secure: boolean =
+				smtp_secure === "true"
+					? true
+					: smtp_secure === "false"
+						? false
+						: port === 465;
 
 			// 쉼표로 구분된 이메일 주소들을 배열로 변환
 			const recipientEmails = contact_recipient_email
@@ -94,7 +99,8 @@ async function getMailConfig(): Promise<MailEnvConfig> {
 		throw new Error("SMTP_PORT 환경변수가 올바른 숫자가 아닙니다.");
 	}
 
-	const secure = SMTP_SECURE ? SMTP_SECURE === "true" : port === 465;
+	const secure: boolean =
+		SMTP_SECURE === "true" ? true : SMTP_SECURE === "false" ? false : port === 465;
 
 	return {
 		host: SMTP_HOST,
@@ -115,10 +121,13 @@ async function getMailConfig(): Promise<MailEnvConfig> {
 async function createTransport() {
 	const config = await getMailConfig();
 
+	// secure는 항상 boolean이어야 합니다
+	const secureValue: boolean = typeof config.secure === "boolean" ? config.secure : false;
+
 	const transporter = nodemailer.createTransport({
 		host: config.host,
 		port: config.port,
-		secure: config.secure,
+		secure: secureValue,
 		auth: {
 			user: config.user,
 			pass: config.pass,
