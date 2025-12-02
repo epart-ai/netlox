@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 import "@fontsource-variable/outfit";
 
 import "@/app/globals.css";
 import { CookieAgree } from "@/features/cookie-agree";
+import { QueryAlertMessageListener } from "@/features/query-alert-message";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 
@@ -32,7 +34,10 @@ export default function RootLayout({
 					<main className="min-h-screen">{children}</main>
 					<Footer />
 					<CookieAgree />
-					{dialog}
+					<Suspense fallback={null}>
+						<QueryAlertMessageListener />
+					</Suspense>
+					<Suspense fallback={null}>{dialog}</Suspense>
 				</AppProviders>
 			</body>
 		</html>

@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import { Card } from "@/shared/ui/shadcn/card";
 import {
 	BusinessContactForm,
@@ -9,7 +11,9 @@ export default function BusinessContactPage() {
 		<div className="grid grid-cols-1 gap-[7.03125vw] md:grid-cols-2">
 			<BusinessContactInformation />
 			<Card>
-				<BusinessContactForm />
+				<Suspense fallback={null}>
+					<BusinessContactForm />
+				</Suspense>
 			</Card>
 		</div>
 	);
