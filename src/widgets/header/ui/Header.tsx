@@ -141,7 +141,10 @@ export const Header = () => {
 			href: ROUTES.TRUST_OVERVIEW,
 			children: [
 				{ label: "Overview", href: ROUTES.TRUST_OVERVIEW },
-				{ label: "Success Story", href: ROUTES.TRUST_SUCCESS_STORY },
+				{
+					label: "Success Story",
+					href: ROUTES.TRUST_SUCCESS_STORY.replace(":id", "1"),
+				},
 			],
 		},
 		{
