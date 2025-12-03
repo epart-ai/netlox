@@ -6,7 +6,7 @@ interface Props {
 	themeColor?: ThemeColor;
 }
 
-export const TrustValidationHead = ({ themeColor }: Props) => {
+export const TrustOverviewValidationHead = ({ themeColor }: Props) => {
 	return (
 		<Reveal rootMargin="-25% 0px -25% 0px" threshold={0}>
 			<PageHead

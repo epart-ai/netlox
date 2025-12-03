@@ -12,6 +12,7 @@ import {
 	CardDescription,
 	CardFooter,
 	CardList,
+	type CardListProps,
 	CardTitle,
 	CardWrapper,
 } from "@/shared/ui/shadcn/card";
@@ -37,16 +38,24 @@ type Item = {
 	disabledIconInvert?: boolean;
 	footer?: ReactNode;
 };
-interface Props extends VariantProps<typeof dataCardVariant> {
+interface Props
+	extends VariantProps<typeof dataCardVariant>,
+		Omit<CardListProps, "colors"> {
 	data: Item[];
 	className?: string;
 }
 
-export const DataCard = ({ data, className, colors = "blue" }: Props) => {
+export const DataCard = ({
+	data,
+	className,
+	colors = "blue",
+	...props
+}: Props) => {
 	return (
 		<CardList
 			colors={colors}
 			className={cn(dataCardVariant({ colors }), className)}
+			{...props}
 		>
 			{data.map((item) => (
 				<Card key={item.title} variant="glass">

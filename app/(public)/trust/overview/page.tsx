@@ -1,13 +1,13 @@
 import {
 	TrustOverviewHead,
 	TrustOverviewHighlight,
-	TrustStoriesHead,
-	TrustStoriesInnovators,
-	TrustUseCaseHead,
-	TrustUseCaseIndustry,
-	TrustValidationEcosystem,
-	TrustValidationHead,
-} from "@/views/trust/root/ui";
+	TrustOverviewStoriesHead,
+	TrustOverviewStoriesInnovators,
+	TrustOverviewUseCaseHead,
+	TrustOverviewUseCaseIndustry,
+	TrustOverviewValidationEcosystem,
+	TrustOverviewValidationHead,
+} from "@/views/trust/overview/ui";
 
 export default function TrustOverviewPage() {
 	return (
@@ -19,21 +19,21 @@ export default function TrustOverviewPage() {
 				</div>
 			</div>
 			<div>
-				<TrustStoriesHead />
+				<TrustOverviewStoriesHead />
 				<div className="mt-20">
-					<TrustStoriesInnovators />
+					<TrustOverviewStoriesInnovators />
 				</div>
 			</div>
 			<div>
-				<TrustUseCaseHead />
+				<TrustOverviewUseCaseHead />
 				<div className="mt-20">
-					<TrustUseCaseIndustry />
+					<TrustOverviewUseCaseIndustry />
 				</div>
 			</div>
 			<div>
-				<TrustValidationHead />
+				<TrustOverviewValidationHead />
 				<div className="mt-20">
-					<TrustValidationEcosystem />
+					<TrustOverviewValidationEcosystem />
 				</div>
 			</div>
 		</div>
