@@ -31,7 +31,7 @@ export const TechnologyFeaturePlatform = () => {
 			),
 		},
 		{
-			title: "",
+			title: "Kubernetes Integration",
 			icon: "/images/technology/icon_features_platform3.svg",
 			footer: (
 				<DataList
@@ -45,7 +45,7 @@ export const TechnologyFeaturePlatform = () => {
 			),
 		},
 		{
-			title: "",
+			title: "High Availability",
 			icon: "/images/technology/icon_features_platform4.svg",
 			footer: (
 				<DataList
@@ -59,7 +59,7 @@ export const TechnologyFeaturePlatform = () => {
 			),
 		},
 		{
-			title: "",
+			title: "Security & Compliance",
 			icon: "/images/technology/icon_features_platform5.svg",
 			footer: (
 				<DataList
@@ -73,7 +73,7 @@ export const TechnologyFeaturePlatform = () => {
 			),
 		},
 		{
-			title: "",
+			title: "Deployment Flexibility",
 			icon: "/images/technology/icon_features_platform6.svg",
 			footer: (
 				<DataList

@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+import { ROUTES } from "@/shared/config";
 import { cn } from "@/shared/lib/utils";
 import type { ThemeColor } from "@/shared/model/types";
 import { flexRowBetweenMd, halfWidthMd } from "@/shared/styles/snippets";
@@ -40,8 +43,10 @@ export const ProductsPremiumIntro = ({ themeColor }: Props) => {
 							</>
 						}
 					/>
-					<Button colors={themeColor} className={cn("mt-8 lg:mt-15")}>
-						Schedule Executive Briefing
+					<Button asChild colors={themeColor} className={cn("mt-8 lg:mt-15")}>
+						<Link href={ROUTES.BUSINESS_CONTACT}>
+							Schedule Executive Briefing
+						</Link>
 					</Button>
 				</div>
 				<div className={halfWidthMd}>

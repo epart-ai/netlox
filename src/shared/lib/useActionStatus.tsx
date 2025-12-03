@@ -13,7 +13,10 @@ export function useActionStatus(
 	const reset = () => setStatus({ type: "idle" });
 
 	const succeed = (message?: string, callback?: () => void) => {
-		alert(message);
+		setStatus({ type: "success", message });
+		if (message) {
+			alert(message);
+		}
 		if (callback) {
 			callback();
 		}
@@ -30,7 +33,10 @@ export function useActionStatus(
 		} else if (typeof error === "string" && error.trim()) {
 			message = error;
 		}
-		alert(message);
+		setStatus({ type: "error", message });
+		if (message) {
+			alert(message);
+		}
 		if (callback) {
 			callback();
 		}

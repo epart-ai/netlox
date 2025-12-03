@@ -21,7 +21,11 @@ export default function TechnologyPerformancePage() {
 			<div className="mt-20 text-center">
 				<Reveal>
 					<Button asChild>
-						<Link href="" className="m-auto">
+						<Link
+							href="https://docs.loxilb.io/latest/perf/"
+							className="m-auto"
+							target="_blank"
+						>
 							Download Full Benchmark Report
 						</Link>
 					</Button>

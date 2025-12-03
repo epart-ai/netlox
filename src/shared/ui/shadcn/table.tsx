@@ -71,23 +71,28 @@ const TableFooter = React.forwardRef<
 ));
 TableFooter.displayName = "TableFooter";
 
-const TableRow = React.forwardRef<
-	HTMLDivElement,
-	React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-	/* biome-ignore lint/a11y/useSemanticElements: div에 row 역할을 부여하여 tr 역할을 대체 */
-	<div
-		ref={ref}
-		role="row"
-		tabIndex={-1}
-		className={cn(
-			"data-[state=selected]:bg-muted relative border-b border-white/10 after:absolute after:bottom-1 after:left-0 after:right-0 after:top-1 after:rounded-lg after:bg-blue-40/15 after:opacity-0 after:transition-opacity after:duration-300 after:ease-out group-data-[orientation=horizontal]/table:table-row [.table-body_&:hover]:after:opacity-100",
-			"group-data-[orientation=horizontal]/table:before:absolute group-data-[orientation=horizontal]/table:before:bottom-0 group-data-[orientation=horizontal]/table:before:left-0 group-data-[orientation=horizontal]/table:before:right-0 group-data-[orientation=horizontal]/table:before:h-px group-data-[orientation=horizontal]/table:before:bg-white/10 group-data-[orientation=horizontal]/table:before:content-['']",
-			className,
-		)}
-		{...props}
-	/>
-));
+type TableRowProps = React.HTMLAttributes<HTMLDivElement> & {
+	enableHover?: boolean;
+};
+
+const TableRow = React.forwardRef<HTMLDivElement, TableRowProps>(
+	({ className, enableHover = true, ...props }, ref) => (
+		/* biome-ignore lint/a11y/useSemanticElements: div에 row 역할을 부여하여 tr 역할을 대체 */
+		<div
+			ref={ref}
+			role="row"
+			tabIndex={-1}
+			className={cn(
+				"relative border-b border-white/10 after:absolute after:bottom-1 after:left-0 after:right-0 after:top-1 after:rounded-lg after:bg-blue-40/15 after:opacity-0 after:transition-opacity after:duration-300 after:ease-out data-[state=selected]:after:opacity-100 group-data-[orientation=horizontal]/table:table-row",
+				enableHover && "[.table-body_&:hover]:after:opacity-100",
+				"group-data-[orientation=horizontal]/table:before:absolute group-data-[orientation=horizontal]/table:before:bottom-0 group-data-[orientation=horizontal]/table:before:left-0 group-data-[orientation=horizontal]/table:before:right-0 group-data-[orientation=horizontal]/table:before:h-px group-data-[orientation=horizontal]/table:before:bg-white/10 group-data-[orientation=horizontal]/table:before:content-['']",
+
+				className,
+			)}
+			{...props}
+		/>
+	),
+);
 TableRow.displayName = "TableRow";
 
 type HeaderDivProps = React.HTMLAttributes<HTMLDivElement> & {
