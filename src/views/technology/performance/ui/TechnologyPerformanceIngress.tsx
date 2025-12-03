@@ -89,6 +89,7 @@ export const TechnologyPerformanceIngress = () => {
 				data={tableData}
 				columns={technologyPerformanceIngressColumns}
 				tableClassName="min-w-[650px]"
+				selectedRowIndex={0}
 				orientation="vertical"
 			/>
 			<div className="mt-15">

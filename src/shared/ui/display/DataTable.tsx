@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
 	type ColumnDef,
@@ -34,7 +34,9 @@ interface Props<TData, TValue> {
 	emptyText?: string;
 	className?: string;
 	tableClassName?: string;
+	selectedRowIndex?: number;
 	orientation?: "horizontal" | "vertical";
+	enableHover?: boolean;
 }
 
 export function DataTable<TData = unknown, TValue = unknown>({
@@ -44,7 +46,9 @@ export function DataTable<TData = unknown, TValue = unknown>({
 	emptyText = "No results.",
 	className,
 	tableClassName,
+	selectedRowIndex,
 	orientation = "horizontal",
+	enableHover = true,
 }: Props<TData, TValue>) {
 	const [sorting, setSorting] = useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -70,6 +74,22 @@ export function DataTable<TData = unknown, TValue = unknown>({
 			rowSelection,
 		},
 	});
+
+	const selectedRowId =
+		selectedRowIndex == null
+			? undefined
+			: table.getRowModel().rows[selectedRowIndex]?.id;
+
+	useEffect(() => {
+		if (selectedRowId == null) {
+			setRowSelection({});
+			return;
+		}
+
+		setRowSelection((previous) =>
+			previous[selectedRowId] ? previous : { [selectedRowId]: true },
+		);
+	}, [selectedRowId]);
 
 	const rowLength = table.getRowModel().rows.length;
 	// console.log(table.getHeaderGroups());
@@ -122,6 +142,7 @@ export function DataTable<TData = unknown, TValue = unknown>({
 										key={row.id}
 										className={cn(orientation === "vertical" ? "w-max" : "")}
 										data-state={row.getIsSelected() && "selected"}
+										enableHover={enableHover}
 									>
 										{row.getVisibleCells().map((cell) => {
 											const meta = cell.column.columnDef.meta as

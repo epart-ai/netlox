@@ -1,6 +1,5 @@
-import Link from "next/link";
+"use client";
 
-import { ROUTES } from "@/shared/config";
 import { cn } from "@/shared/lib/utils";
 import type { ThemeColor } from "@/shared/model/types";
 import { flexRowBetweenMd, halfWidthMd } from "@/shared/styles/snippets";
@@ -38,8 +37,16 @@ export const ProductsSaasIntro = ({ themeColor }: Props) => {
 							</>
 						}
 					/>
-					<Button asChild colors={themeColor} className={cn("mt-8 lg:mt-15")}>
-						<Link href={ROUTES.BUSINESS_CONTACT}>Launch on AWS</Link>
+					<Button
+						colors={themeColor}
+						className={cn("mt-8 lg:mt-15")}
+						onClick={() => {
+							alert(
+								"The AWS Marketplace service is currently under preparation. It is scheduled for official launch in the first quarter of 2026. We will be launching soon!",
+							);
+						}}
+					>
+						Launch on AWS
 					</Button>
 				</div>
 				<div className={halfWidthMd}>
