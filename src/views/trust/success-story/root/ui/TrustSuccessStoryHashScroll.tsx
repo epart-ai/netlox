@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { usePathname } from "next/navigation";
 
 const scrollToHash = () => {
 	const hash = window.location.hash;
@@ -23,8 +22,6 @@ const scrollToHash = () => {
 };
 
 export const TrustSuccessStoryHashScroll = () => {
-	const pathname = usePathname();
-
 	useEffect(() => {
 		if (typeof window === "undefined") {
 			return;
@@ -40,8 +37,7 @@ export const TrustSuccessStoryHashScroll = () => {
 		return () => {
 			window.removeEventListener("hashchange", handleScroll);
 		};
-	}, [pathname]);
+	}, []);
 
 	return null;
 };
-

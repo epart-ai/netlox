@@ -9,9 +9,9 @@ export const halfWidthMd = "md:w-[48.57%]";
 export const contentPadding = "pt-[50px] lg:pt-[100px]";
 
 export const beforeBackgroundImage =
-	"relative before:bg-cover before:bg-center before:content-[''] before:absolute before:top-[0] before:pointer-events-none before:inset-0 before:size-full";
+	"relative before:bg-contain before:bg-center before:bg-no-repeat before:content-[''] before:absolute before:top-[0] before:pointer-events-none before:inset-0 before:size-full";
 export const pageBackground =
-	"before:min-h-screen before:bg-[url('/images/common/bg_content.png')] before:mix-blend-overlay  before:translate-y-[-15%]";
+	"before:h-screen before:bg-[url('/images/common/bg_content.png')] before:mix-blend-overlay before:top-0 before:translate-y-[-15vw]";
 
 // 타이포/여백 패턴
 export const headingEyebrow = "title-16 mb-1.5 lg:title-18 lg:mb-3";

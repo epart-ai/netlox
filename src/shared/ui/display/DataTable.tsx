@@ -168,7 +168,10 @@ export function DataTable<TData = unknown, TValue = unknown>({
 							return orientation === "horizontal" ? (
 								renderRows()
 							) : (
-								<div key={row.id} className="flex-1 overflow-hidden">
+								<div
+									key={row.id}
+									className="t-table-row-box flex-1 overflow-hidden"
+								>
 									{renderRows()}
 								</div>
 							);

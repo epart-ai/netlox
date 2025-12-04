@@ -1,6 +1,8 @@
 import {
-	ProductsEnterpriseCard,
+	ProductsEnterpriseBenchmarks,
+	ProductsEnterpriseComparison,
 	ProductsEnterpriseIntro,
+	ProductsEnterpriseProduction,
 } from "@/views/products/enterprise/ui";
 
 export default function ProductEnterprisePage() {
@@ -8,7 +10,13 @@ export default function ProductEnterprisePage() {
 		<>
 			<ProductsEnterpriseIntro />
 			<div className="mt-[100px]">
-				<ProductsEnterpriseCard />
+				<ProductsEnterpriseProduction />
+			</div>
+			<div className="mt-[160px]">
+				<ProductsEnterpriseBenchmarks />
+			</div>
+			<div className="mt-[160px]">
+				<ProductsEnterpriseComparison />
 			</div>
 		</>
 	);

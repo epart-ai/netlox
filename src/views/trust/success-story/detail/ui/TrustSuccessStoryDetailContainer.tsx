@@ -17,7 +17,7 @@ export const TrustSuccessStoryContainer = ({
 	const ReferenceComponent = entry?.component;
 
 	return (
-		<Reveal rootMargin="-25% 0px -25% 0px" threshold={0}>
+		<Reveal>
 			{ReferenceComponent ? (
 				<ReferenceComponent />
 			) : (

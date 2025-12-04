@@ -12,7 +12,7 @@ const Table = React.forwardRef<
 		ref={ref}
 		role="table"
 		className={cn(
-			"group/table w-full caption-bottom data-[orientation=vertical]:flex data-[orientation=horizontal]:table",
+			"t-table group/table w-full caption-bottom data-[orientation=vertical]:flex data-[orientation=horizontal]:table",
 			className,
 		)}
 		{...props}
@@ -29,7 +29,7 @@ const TableHeader = React.forwardRef<
 		ref={ref}
 		role="rowgroup"
 		className={cn(
-			"title-14 lg:title-16 group-data-[orientation=horizontal]/table:table-header-group",
+			"t-table-header title-14 lg:title-16 group-data-[orientation=horizontal]/table:table-header-group",
 			className,
 		)}
 		{...props}
@@ -46,7 +46,7 @@ const TableBody = React.forwardRef<
 		ref={ref}
 		role="rowgroup"
 		className={cn(
-			"table-body paragraph-14 lg:paragraph-16 group-data-[orientation=vertical]/table:flex group-data-[orientation=horizontal]/table:table-row-group",
+			"t-table-body paragraph-14 lg:paragraph-16 group-data-[orientation=vertical]/table:flex group-data-[orientation=horizontal]/table:table-row-group",
 			className,
 		)}
 		{...props}
@@ -63,7 +63,7 @@ const TableFooter = React.forwardRef<
 		ref={ref}
 		role="rowgroup"
 		className={cn(
-			"group-data-[orientation=horizontal]/table:table-footer-group",
+			"t-table-footer group-data-[orientation=horizontal]/table:table-footer-group",
 			className,
 		)}
 		{...props}
@@ -83,8 +83,8 @@ const TableRow = React.forwardRef<HTMLDivElement, TableRowProps>(
 			role="row"
 			tabIndex={-1}
 			className={cn(
-				"relative border-b border-white/10 after:absolute after:bottom-1 after:left-0 after:right-0 after:top-1 after:rounded-lg after:bg-blue-40/15 after:opacity-0 after:transition-opacity after:duration-300 after:ease-out data-[state=selected]:after:opacity-100 group-data-[orientation=horizontal]/table:table-row",
-				enableHover && "[.table-body_&:hover]:after:opacity-100",
+				"t-table-row relative border-b border-white/10 after:absolute after:bottom-1 after:left-0 after:right-0 after:top-1 after:rounded-lg after:bg-blue-40/15 after:opacity-0 after:transition-opacity after:duration-300 after:ease-out data-[state=selected]:after:opacity-100 group-data-[orientation=horizontal]/table:table-row",
+				enableHover && "[.t-table-body_&:hover]:after:opacity-100",
 				"group-data-[orientation=horizontal]/table:before:absolute group-data-[orientation=horizontal]/table:before:bottom-0 group-data-[orientation=horizontal]/table:before:left-0 group-data-[orientation=horizontal]/table:before:right-0 group-data-[orientation=horizontal]/table:before:h-px group-data-[orientation=horizontal]/table:before:bg-white/10 group-data-[orientation=horizontal]/table:before:content-['']",
 
 				className,
@@ -108,7 +108,7 @@ const TableHead = React.forwardRef<HTMLDivElement, HeaderDivProps>(
 				ref={ref}
 				role={_scope === "row" ? "rowheader" : "columnheader"}
 				className={cn(
-					"px-1.5 py-2.5 text-left font-medium group-data-[orientation=horizontal]/table:table-cell lg:px-3 lg:py-4.5",
+					"t-table-head px-1.5 py-2.5 text-left font-medium group-data-[orientation=horizontal]/table:table-cell lg:px-3 lg:py-4.5",
 					// vertical 모드에서는 첫 번째를 제외한 헤더에 before로 상단 라인 추가
 					"relative group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:absolute group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:left-0 group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:right-0 group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:top-0 group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:h-px group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:bg-white/10 group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:content-['']",
 
@@ -133,7 +133,7 @@ const TableCell = React.forwardRef<HTMLDivElement, CellDivProps>(
 			ref={ref}
 			role="cell"
 			className={cn(
-				"group-data-[orientation=vertical]/table: whitespace-nowrap px-1.5 py-2.5 font-medium group-data-[orientation=horizontal]/table:table-cell lg:px-3 lg:py-4.5",
+				"t-table-cell group-data-[orientation=vertical]/table: whitespace-nowrap px-1.5 py-2.5 font-medium group-data-[orientation=horizontal]/table:table-cell lg:px-3 lg:py-4.5",
 				// vertical 모드에서는 첫 번째를 제외한 셀에 before로 상단 라인 추가
 				"relative group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:absolute group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:left-0 group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:right-0 group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:top-0 group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:h-px group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:w-[400%] group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:bg-white/10 group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:content-['']",
 				className,
@@ -149,7 +149,11 @@ const TableCaption = React.forwardRef<
 	HTMLDivElement,
 	React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-	<div ref={ref} className={cn("mt-4 text-sm", className)} {...props} />
+	<div
+		ref={ref}
+		className={cn("t-table-caption mt-4 text-sm", className)}
+		{...props}
+	/>
 ));
 TableCaption.displayName = "TableCaption";
 
