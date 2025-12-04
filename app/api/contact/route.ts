@@ -44,7 +44,7 @@ export async function POST(request: Request) {
 		return NextResponse.json(
 			{
 				success: false,
-				error: "문의 접수 중 오류가 발생했습니다.",
+				error: "Failed to handle contact form submission.",
 				details: errorMessage,
 			},
 			{

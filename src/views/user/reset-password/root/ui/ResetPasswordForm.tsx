@@ -78,7 +78,7 @@ export const ResetPasswordForm = () => {
 		if (!isSessionLoading && !session?.user && !invalidShownRef.current) {
 			invalidShownRef.current = true;
 			fail(
-				"This password reset link is invalid or has expired. Please request a new one.",
+				"This verification link is expired or invalid. Please try again from the beginning",
 				"",
 				() => router.back(),
 			);

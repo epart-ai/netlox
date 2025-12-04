@@ -59,7 +59,9 @@ export const SignUpForm = () => {
 	const { mutate: signUpMutate, isPending } = useSignUpWithProfileMutation({
 		onSuccess: (data: SignUpWithProfileData) => {
 			if (!data.user) {
-				fail("회원 가입이 정상적으로 완료되지 않았습니다.");
+				fail(
+					"This verification link is expired or invalid. Please try again from the beginning",
+				);
 				return;
 			}
 

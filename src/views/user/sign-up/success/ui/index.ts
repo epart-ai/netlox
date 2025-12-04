@@ -1,0 +1,2 @@
+export { SignUpSuccessPanel } from "./SignUpSuccessPanel";
+
