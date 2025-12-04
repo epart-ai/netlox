@@ -18,9 +18,18 @@ export async function signUpWithProfile(
 	const supabase = createClient();
 	const { email, password, profile } = payload;
 
+	// 이메일 인증 후 리다이렉트할 URL 생성
+	const emailRedirectTo =
+		typeof window !== "undefined"
+			? `${window.location.origin}/user/signup/verify-email`
+			: undefined;
+
 	const { data, error } = await supabase.auth.signUp({
 		email,
 		password,
+		options: {
+			emailRedirectTo,
+		},
 	});
 
 	if (error) {

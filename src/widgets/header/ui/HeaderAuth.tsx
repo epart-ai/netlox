@@ -40,7 +40,7 @@ export function HeaderAuth({ userEmail }: HeaderAuthProps) {
 			) : (
 				<div className="flex flex-col gap-3 lg:block">
 					<TextLink
-						href={{ query: { dialog: DIALOGS.LOGIN } }}
+						href="/user/profile"
 						label={
 							<span className="flex items-center gap-1">
 								<Image

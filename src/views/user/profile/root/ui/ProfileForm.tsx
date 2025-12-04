@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { DIALOGS } from "@/shared/config";
 import { successTextSm } from "@/shared/styles/snippets";
+import { useSupabaseClient } from "@/shared/supabase";
 import { Button, ButtonBox } from "@/shared/ui/shadcn/button";
 import {
 	CardContent,
@@ -48,10 +49,19 @@ type ViewState =
 
 export const ProfileForm = () => {
 	const router = useRouter();
+	const supabase = useSupabaseClient();
 	const [state, setState] = useState<ViewState>({ status: "loading" });
 	const [feedback, setFeedback] = useState<string | null>(null);
+	const [userEmail, setUserEmail] = useState<string | null>(null);
 
 	const { data, isLoading, error } = useCurrentUserProfileQuery();
+
+	// 사용자 이메일 가져오기
+	useEffect(() => {
+		supabase.auth.getUser().then(({ data }) => {
+			setUserEmail(data.user?.email ?? null);
+		});
+	}, [supabase]);
 
 	const form = useForm<ProfileFormValues>({
 		mode: "onBlur",
@@ -139,14 +149,16 @@ export const ProfileForm = () => {
 			>
 				<CardWrapper>
 					<CardHeader>
-						<CardTitle>내 프로필</CardTitle>
+						<CardTitle>My Account Information</CardTitle>
 						<CardDescription>
-							Supabase에서 저장한 `profiles` 테이블 데이터를 조회 및
-							업데이트하는 예시입니다.
+							Account information cannot be modified. <br />
+							If you need to make changes, please withdraw your account and sign
+							up again.
 						</CardDescription>
 					</CardHeader>
 
 					<CardContent>
+						{/* Full Name 필드 (읽기 전용) */}
 						<FormField
 							name="fullname"
 							control={control}
@@ -154,13 +166,18 @@ export const ProfileForm = () => {
 								<FormItem>
 									<FormLabel> Full Name * </FormLabel>
 									<FormControl>
-										<Input {...field} disabled={isSaving || isSubmitting} />
+										<Input
+											{...field}
+											disabled
+											className="bg-muted cursor-not-allowed"
+										/>
 									</FormControl>
 									<FormMessage />
 								</FormItem>
 							)}
 						/>
 
+						{/* Company Name 필드 (읽기 전용) */}
 						<FormField
 							name="companyname"
 							control={control}
@@ -168,104 +185,51 @@ export const ProfileForm = () => {
 								<FormItem>
 									<FormLabel> Company Name * </FormLabel>
 									<FormControl>
-										<Input {...field} disabled={isSaving || isSubmitting} />
+										<Input
+											{...field}
+											disabled
+											className="bg-muted cursor-not-allowed"
+										/>
 									</FormControl>
 									<FormMessage />
 								</FormItem>
 							)}
 						/>
 
-						<FormField
-							name="etc1"
-							control={control}
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel> Etc 1 * </FormLabel>
-									<FormControl>
-										<Input {...field} disabled={isSaving || isSubmitting} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-
-						<FormField
-							name="etc2"
-							control={control}
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel> Etc 2 * </FormLabel>
-									<FormControl>
-										<Input {...field} disabled={isSaving || isSubmitting} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-
-						<FormField
-							name="etc3"
-							control={control}
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel> Etc 3 * </FormLabel>
-									<FormControl>
-										<Input {...field} disabled={isSaving || isSubmitting} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-
-						<FormField
-							name="etc4"
-							control={control}
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel> Etc 4 * </FormLabel>
-									<FormControl>
-										<Input {...field} disabled={isSaving || isSubmitting} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-
-						<FormField
-							name="etc5"
-							control={control}
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel> Etc 5 * </FormLabel>
-									<FormControl>
-										<Input {...field} disabled={isSaving || isSubmitting} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
+						{/* Email 필드 (읽기 전용, RHF 필드 아님) */}
+						<div className="mb-4 space-y-1">
+							<label className="text-sm font-medium">Business Email</label>
+							<Input
+								value={userEmail || ""}
+								disabled
+								className="bg-muted cursor-not-allowed"
+							/>
+						</div>
 					</CardContent>
 
 					{feedback && <p className={successTextSm}>{feedback}</p>}
 
-					<ButtonBox>
-						<Button
-							type="submit"
-							disabled={isSaving || isSubmitting}
-							isLoading={isSaving || isSubmitting}
-						>
-							Save Changes
-						</Button>
-						<Button
-							type="button"
-							onClick={() => signOutMutate()}
-							variant="outline"
-							disabled={isSaving || isSubmitting}
-							isLoading={isSaving || isSubmitting}
-						>
-							Sign Out
-						</Button>
-					</ButtonBox>
+					<div className="mt-6 border-t pt-6">
+						<div className="flex flex-col gap-3">
+							<Button
+								type="button"
+								asChild
+								variant="outline"
+								className="w-full"
+							>
+								<Link href="/user/profile/password">Change Password</Link>
+							</Button>
+							<Button
+								type="button"
+								asChild
+								variant="outline"
+								className="text-destructive hover:text-destructive w-full"
+								disabled={isSaving || isSubmitting}
+							>
+								<Link href="/user/profile/withdraw">Withdraw Account</Link>
+							</Button>
+						</div>
+					</div>
 				</CardWrapper>
 			</form>
 		</Form>
