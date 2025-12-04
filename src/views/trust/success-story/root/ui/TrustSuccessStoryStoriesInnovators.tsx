@@ -9,33 +9,33 @@ interface Props {
 	themeColor?: ThemeColor;
 }
 
-export const TrustOverviewStoriesInnovators = ({ themeColor }: Props) => {
+export const TrustSuccessStoryStoriesInnovators = ({ themeColor }: Props) => {
 	const postData = [
 		{
 			id: 1,
 			title: "Private 5G Cloud Service",
-			imageUrl: "/images/trust/img_success-story_reference1.jpg",
+			imageUrl: "/images/trust/img_success-story_detail1.jpg",
 			textLink: {
 				label: "Read Full Story",
-				href: ROUTES.TRUST_SUCCESS_STORY.replace(":id", "1"),
+				href: ROUTES.TRUST_SUCCESS_STORY_DETAIL.replace(":id", "1"),
 			},
 		},
 		{
 			id: 2,
 			title: "Cloud Native DRA(Diameter Routing Agent) with SCTP Multi-homing",
-			imageUrl: "/images/trust/img_success-story_reference2.jpg",
+			imageUrl: "/images/trust/img_success-story_detail2.jpg",
 			textLink: {
 				label: "Read Full Story",
-				href: ROUTES.TRUST_SUCCESS_STORY.replace(":id", "2"),
+				href: ROUTES.TRUST_SUCCESS_STORY_DETAIL.replace(":id", "2"),
 			},
 		},
 		{
 			id: 3,
 			title: "Multi-Cloud HA Success Story",
-			imageUrl: "/images/trust/img_success-story_reference3.jpg",
+			imageUrl: "/images/trust/img_success-story_detail3.jpg",
 			textLink: {
 				label: "Read Full Story",
-				href: ROUTES.TRUST_SUCCESS_STORY.replace(":id", "3"),
+				href: ROUTES.TRUST_SUCCESS_STORY_DETAIL.replace(":id", "3"),
 			},
 		},
 	];

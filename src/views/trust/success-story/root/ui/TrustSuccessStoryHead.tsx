@@ -6,7 +6,7 @@ interface Props {
 	themeColor?: ThemeColor;
 }
 
-export const TrustOverviewHead = ({ themeColor }: Props) => {
+export const TrustSuccessStoryHead = ({ themeColor }: Props) => {
 	return (
 		<Reveal rootMargin="-25% 0px -25% 0px" threshold={0}>
 			<PageHead eyebrow="Trust" title="Overview" theme={themeColor} />

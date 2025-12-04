@@ -3,11 +3,11 @@ import { notFound } from "next/navigation";
 import {
 	getTrustSuccessStoryEntry,
 	isTrustSuccessStoryId,
-} from "@/views/trust/success-story/lib/trustSuccessStoryRegistry";
+} from "@/views/trust/success-story/detail/lib";
 import {
 	TrustSuccessStoryContainer,
 	TrustSuccessStoryHead,
-} from "@/views/trust/success-story/ui";
+} from "@/views/trust/success-story/detail/ui";
 
 export default function TrustSuccessStoryDetailPage({
 	params,

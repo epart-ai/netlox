@@ -29,7 +29,7 @@ const dataCardVariant = cva("", {
 });
 
 type Item = {
-	title: string;
+	title: string | ReactNode;
 	description?: ReactNode;
 	icon?: string;
 	link?: LinkProps & {
@@ -57,14 +57,14 @@ export const DataCard = ({
 			className={cn(dataCardVariant({ colors }), className)}
 			{...props}
 		>
-			{data.map((item) => (
-				<Card key={item.title} variant="glass">
+			{data.map((item, index) => (
+				<Card key={index} variant="glass">
 					<CardWrapper>
 						{item.icon && (
 							<div className="iconBox flex size-15 items-center justify-center rounded-2xl p-3.5 backdrop-blur-md transition-colors duration-300 md:size-20 md:p-5 lg:p-4.5">
 								<Image
 									src={item.icon}
-									alt={item.title}
+									alt=""
 									width={44}
 									height={44}
 									className={cn(

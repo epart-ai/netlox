@@ -74,7 +74,10 @@ const CardWrapper = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<div
 		ref={ref}
-		className={cn("space-y-4 md:space-y-6 lg:space-y-8", className)}
+		className={cn(
+			"card-wrapper space-y-4 md:space-y-6 lg:space-y-8",
+			className,
+		)}
 		{...props}
 	/>
 ));
@@ -86,7 +89,10 @@ const CardHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<div
 		ref={ref}
-		className={cn("space-y-2 text-center md:space-y-3 lg:space-y-4", className)}
+		className={cn(
+			"card-header space-y-2 text-center md:space-y-3 lg:space-y-4",
+			className,
+		)}
 		{...props}
 	/>
 ));
@@ -98,7 +104,10 @@ const CardTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<div
 		ref={ref}
-		className={cn("title-16 tracking-tight md:title-18 lg:title-24", className)}
+		className={cn(
+			"card-title title-16 tracking-tight md:title-18 lg:title-24",
+			className,
+		)}
 		{...props}
 	/>
 ));
@@ -110,7 +119,10 @@ const CardContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<div
 		ref={ref}
-		className={cn("space-y-2 md:space-y-3 lg:space-y-4", className)}
+		className={cn(
+			"card-content space-y-2 md:space-y-3 lg:space-y-4",
+			className,
+		)}
 		{...props}
 	/>
 ));
@@ -122,7 +134,10 @@ const CardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<div
 		ref={ref}
-		className={cn("paragraph-12 md:paragraph-14 lg:paragraph-16", className)}
+		className={cn(
+			"card-description paragraph-12 md:paragraph-14 lg:paragraph-16",
+			className,
+		)}
 		{...props}
 	/>
 ));
@@ -133,7 +148,7 @@ const CardFooter = React.forwardRef<
 		separator?: boolean;
 	}
 >(({ className, children, separator, ...props }, ref) => (
-	<div className="pt-1">
+	<div className="card-footer pt-1">
 		{separator && <Separator className="mb-3 md:mb-4 lg:mb-5" />}
 		<div
 			ref={ref}

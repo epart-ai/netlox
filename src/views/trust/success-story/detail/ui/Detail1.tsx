@@ -2,11 +2,13 @@ import Image from "next/image";
 
 import { DataCard, DataList, Reveal } from "@/shared/ui/display";
 
+import { cardWrapper, imageWrapper, layoutContainer } from "../styles/snippets";
+
 export const Reference1 = () => {
 	const cardData = [
 		{
 			title: "Problem Statement",
-			icon: "/images/trust/icon_success-story_reference1.svg",
+			icon: "/images/trust/icon_success-story_detail1.svg",
 			footer: (
 				<DataList
 					data={[
@@ -27,7 +29,7 @@ export const Reference1 = () => {
 		},
 		{
 			title: "Applied Solution : LoxiLB Premium",
-			icon: "/images/trust/icon_success-story_reference2.svg",
+			icon: "/images/trust/icon_success-story_detail2.svg",
 			footer: (
 				<DataList
 					data={[
@@ -46,7 +48,7 @@ export const Reference1 = () => {
 		},
 		{
 			title: "Impact",
-			icon: "/images/trust/icon_success-story_reference3.svg",
+			icon: "/images/trust/icon_success-story_detail3.svg",
 			footer: (
 				<DataList
 					data={[
@@ -75,17 +77,17 @@ export const Reference1 = () => {
 
 	return (
 		<Reveal>
-			<div className=":gap-20 flex flex-col items-start gap-10 md:flex-row">
-				<div className="w-full md:flex-1">
+			<div className={layoutContainer}>
+				<div className={imageWrapper}>
 					<Image
-						src="/images/trust/img_success-story_reference1.jpg"
+						src="/images/trust/img_success-story_detail1.jpg"
 						alt="Success Story Content 1"
 						className="size-full overflow-hidden rounded-2xl object-cover"
 						width={500}
 						height={500}
 					/>
 				</div>
-				<div className="w-full md:flex-1">
+				<div className={cardWrapper}>
 					<DataCard data={cardData} orientation="vertical" />
 				</div>
 			</div>

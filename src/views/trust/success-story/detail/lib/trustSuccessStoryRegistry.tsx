@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 
-import { Reference1 } from "../ui/Reference1";
-import { Reference2 } from "../ui/Reference2";
-import { Reference3 } from "../ui/Reference3";
+import { Reference1 } from "../ui/Detail1";
+import { Reference2 } from "../ui/Detail2";
+import { Reference3 } from "../ui/Detail3";
 
 type ReferenceComponent = () => JSX.Element;
 

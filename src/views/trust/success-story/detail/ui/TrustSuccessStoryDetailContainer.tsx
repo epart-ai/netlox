@@ -1,8 +1,9 @@
 import { Reveal } from "@/shared/ui/display";
+
 import type {
 	TrustSuccessStoryEntry,
 	TrustSuccessStoryId,
-} from "@/views/trust/success-story/lib/trustSuccessStoryRegistry";
+} from "../lib/trustSuccessStoryRegistry";
 
 interface TrustSuccessStoryContainerProps {
 	id: TrustSuccessStoryId;
@@ -16,7 +17,7 @@ export const TrustSuccessStoryContainer = ({
 	const ReferenceComponent = entry?.component;
 
 	return (
-		<Reveal rootMargin="-25% 0px -25% 0px" threshold={0}>
+		<Reveal>
 			{ReferenceComponent ? (
 				<ReferenceComponent />
 			) : (

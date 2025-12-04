@@ -6,3 +6,5 @@ export { DataList } from "./DataList";
 export { DataTable } from "./DataTable";
 export { Reveal } from "./Reveal";
 export { StatHighlights } from "./StatHighlights";
+export { DataChart } from "./DataChart";
+export type { DataChartProps } from "./DataChart";
