@@ -5,11 +5,11 @@ interface Props {
 	themeColor?: ThemeColor;
 }
 
-export const TrustOverviewUseCaseIndustry = ({ themeColor }: Props) => {
+export const TrustSuccessStoryUseCaseIndustry = ({ themeColor }: Props) => {
 	const cardData = [
 		{
 			title: "Technology & SaaS",
-			icon: "/images/trust/icon_overview_use-case1.svg",
+			icon: "/images/trust/icon_success-story_use-case1.svg",
 			footer: (
 				<DataList
 					data={[
@@ -23,7 +23,7 @@ export const TrustOverviewUseCaseIndustry = ({ themeColor }: Props) => {
 		},
 		{
 			title: "Technology & SaaS",
-			icon: "/images/trust/icon_overview_use-case2.svg",
+			icon: "/images/trust/icon_success-story_use-case2.svg",
 			footer: (
 				<DataList
 					data={[
@@ -37,7 +37,7 @@ export const TrustOverviewUseCaseIndustry = ({ themeColor }: Props) => {
 		},
 		{
 			title: "Technology & SaaS",
-			icon: "/images/trust/icon_overview_use-case3.svg",
+			icon: "/images/trust/icon_success-story_use-case3.svg",
 			footer: (
 				<DataList
 					data={[

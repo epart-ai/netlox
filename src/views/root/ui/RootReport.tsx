@@ -25,7 +25,11 @@ export const RootReport = () => {
 			</Reveal>
 			<Reveal delayMs={450}>
 				<ButtonBox className="mt-10 lg:mt-20">
-					<Button>Download Full Report</Button>
+					<Button asChild>
+						<Link href="https://docs.loxilb.io/latest/perf/" target="_blank">
+							<span>Download Full Report</span>
+						</Link>
+					</Button>
 					<Button asChild variant="secondary">
 						<Link href={ROUTES.RESOURCE_BLOG}>
 							<span>See Test Methodology</span>

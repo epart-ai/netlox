@@ -112,10 +112,10 @@ export const Header = () => {
 			label: "Product",
 			href: ROUTES.PRODUCTS_ENTERPRISE,
 			children: [
-				{ label: "Open Source", href: ROUTES.PRODUCTS_OPEN_SOURCE },
 				{ label: "Enterprise", href: ROUTES.PRODUCTS_ENTERPRISE },
 				{ label: "Premium", href: ROUTES.PRODUCTS_PREMIUM },
 				{ label: "SaaS", href: ROUTES.PRODUCTS_SAAS },
+				{ label: "Open Source", href: ROUTES.PRODUCTS_OPEN_SOURCE },
 			],
 		},
 		{
@@ -138,14 +138,8 @@ export const Header = () => {
 		},
 		{
 			label: "Trust",
-			href: ROUTES.TRUST_OVERVIEW,
-			children: [
-				{ label: "Overview", href: ROUTES.TRUST_OVERVIEW },
-				{
-					label: "Success Story",
-					href: ROUTES.TRUST_SUCCESS_STORY.replace(":id", "1"),
-				},
-			],
+			href: ROUTES.TRUST_SUCCESS_STORY,
+			children: [{ label: "Success Story", href: ROUTES.TRUST_SUCCESS_STORY }],
 		},
 		{
 			label: "Business",

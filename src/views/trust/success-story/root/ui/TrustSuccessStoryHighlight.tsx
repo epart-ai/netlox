@@ -1,6 +1,6 @@
 import { Reveal, StatHighlights } from "@/shared/ui/display";
 
-export const TrustOverviewHighlight = () => {
+export const TrustSuccessStoryHighlight = () => {
 	const data = [
 		{
 			highlight: {

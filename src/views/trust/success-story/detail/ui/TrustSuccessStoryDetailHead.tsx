@@ -1,9 +1,10 @@
 import { Reveal } from "@/shared/ui/display";
 import { PageHead } from "@/views/_shared/ui";
+
 import type {
 	TrustSuccessStoryEntry,
 	TrustSuccessStoryId,
-} from "@/views/trust/success-story/lib/trustSuccessStoryRegistry";
+} from "../lib/trustSuccessStoryRegistry";
 
 interface TrustSuccessStoryHeadProps {
 	id: TrustSuccessStoryId;

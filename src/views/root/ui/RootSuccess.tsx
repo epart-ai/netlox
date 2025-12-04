@@ -54,7 +54,7 @@ export const RootSuccess = () => {
 			<Reveal delayMs={450}>
 				<ButtonBox className="mt-23">
 					<Button asChild>
-						<Link href={ROUTES.TRUST_SUCCESS_STORY.replace(":id", "1")}>
+						<Link href={ROUTES.TRUST_SUCCESS_STORY + "#trust-success-stories"}>
 							<span>View All Success Stories</span>
 						</Link>
 					</Button>
