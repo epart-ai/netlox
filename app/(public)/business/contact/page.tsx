@@ -8,7 +8,7 @@ import {
 
 export default function BusinessContactPage() {
 	return (
-		<div className="grid grid-cols-1 gap-[7.03125vw] md:grid-cols-2">
+		<div className="grid gap-20 lg:grid-cols-2 lg:gap-[7.03125vw]">
 			<BusinessContactInformation />
 			<Card>
 				<Suspense fallback={null}>

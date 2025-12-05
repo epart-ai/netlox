@@ -1,3 +1,4 @@
+import { gradientBackgroundBlack } from "@/shared/styles/snippets";
 import { DataCard, Reveal } from "@/shared/ui/display";
 
 import { RootSectionLayout } from "./RootSectionLayout";
@@ -44,7 +45,7 @@ export const RootModel = () => {
 			eyebrow="Maximum Flexibility"
 			title="Choose Your Deployment Model"
 			description="Deploy NetLOX anywhere, from on-premise bare metal and Kubernetes clusters to a fully managed SaaS on AWS."
-			className="bg-gradient-to-b from-blue-100/15 to-blue-40/15"
+			className={gradientBackgroundBlack}
 		>
 			<Reveal>
 				<DataCard data={data} colors="blue" />

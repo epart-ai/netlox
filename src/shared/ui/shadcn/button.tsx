@@ -26,20 +26,20 @@ const buttonVariants = cva(
 				orange: "",
 			},
 			size: {
-				sm: "h-9 px-4 subTitle-14",
-				md: "h-10 px-5 subTitle-16",
-				lg: "h-12 px-6 subTitle-18",
+				sm: "h-9 px-4 title-14",
+				md: "h-10 px-5 title-16",
+				lg: "h-12 px-6 title-18",
 			},
 			sm: {
-				true: "h-9 px-4 subTitle-14",
+				true: "h-9 px-4 title-14",
 				false: "",
 			},
 			md: {
-				true: "md:h-10 md:px-5 md:subTitle-16 ",
+				true: "md:h-10 md:px-5 md:title-16 ",
 				false: "",
 			},
 			lg: {
-				true: "lg:h-12 lg:px-6 lg:subTitle-18",
+				true: "lg:h-12 lg:px-6 lg:title-18",
 				false: "",
 			},
 		},

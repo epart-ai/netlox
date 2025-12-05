@@ -3,5 +3,5 @@ import { ROUTES } from "@/shared/config";
 export const hiddenCtaPaths: Array<string | RegExp> = [
 	ROUTES.USER_RESET_PASSWORD,
 	ROUTES.USER_SIGNUP,
-	ROUTES.USER_SIGNUP_SUCCESS,
+	ROUTES.USER_SIGNUP_VERIFICATION,
 ];

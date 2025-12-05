@@ -66,7 +66,7 @@ export const ProductsEnterpriseProduction = ({ themeColor }: Props) => {
 				<h3 className={sectionTitle}>What&apos;s Included?</h3>
 				<DataCard data={includedData} colors={themeColor} />
 			</Reveal>
-			<div className="mt-[108px]">
+			<div className="mt-15 lg:mt-[108px]">
 				<Reveal>
 					<h3 className={enterpriseSectionTitle}>Best For Production</h3>
 					<p className={enterpriseParagraphLead}>

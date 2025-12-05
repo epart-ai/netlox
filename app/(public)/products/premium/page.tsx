@@ -9,7 +9,7 @@ export default function ProductPremiumPage() {
 	return (
 		<>
 			<ProductsPremiumIntro themeColor={themeColor} />
-			<div className="mt-[100px]">
+			<div className="mt-14 lg:mt-[100px]">
 				<ProductsPremiumCard themeColor={themeColor} />
 			</div>
 		</>

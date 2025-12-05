@@ -8,16 +8,23 @@ export const flexRowBetweenMd =
 export const halfWidthMd = "md:w-[48.57%]";
 export const contentPadding = "pt-[50px] lg:pt-[100px]";
 
+//  배경
+export const gradientBackgroundBlack =
+	"bg-gradient-to-b from-blue-100/15 to-blue-40/15";
+export const gradientBackgroundBlue =
+	"bg-gradient-to-b from-blue-60 to-blue-40";
+
 export const beforeBackgroundImage =
-	"relative before:bg-contain before:bg-center before:bg-no-repeat before:content-[''] before:absolute before:top-[0] before:pointer-events-none before:inset-0 before:size-full";
+	"relative  before:bg-center before:bg-no-repeat before:content-[''] before:absolute before:top-[0] before:pointer-events-none before:inset-0 before:size-full";
 export const pageBackground =
 	"before:h-screen before:bg-[url('/images/common/bg_content.png')] before:mix-blend-overlay before:top-0 before:translate-y-[-15vw]";
 
 // 타이포/여백 패턴
-export const headingEyebrow = "title-16 mb-1.5 lg:title-18 lg:mb-3";
-export const headingTitle = "title-36 mt-4 lg:title-44  lg:mb-8";
+export const headingEyebrow = "block title-16 mb-1.5 lg:title-18 lg:mb-3";
+export const headingTitle =
+	"block title-28 md:title-36 mb-5 lg:title-44 lg:mb-8";
 export const paragraphLead = "paragraph-16 lg:paragraph-18";
-export const sectionTitle = "title-28 mb-4 lg:title-40 lg:mb-8";
+export const sectionTitle = "title-28 mb-5 lg:title-40 lg:mb-8";
 
 // 폼/메시지
 export const errorTextSm = "text-sm text-alert";
@@ -27,6 +34,7 @@ export const gridTwoCol = "grid grid-cols-2 gap-4";
 // 아이콘 배지
 export const iconBadgeLarge =
 	"flex size-15 shrink-0 items-center justify-center rounded-md bg-blue-20/15 p-3.5";
+export const logoWidth = "w-[120px] md:w-[150px] lg:w-[180px]";
 
 // 페이지네이션 화살표
 export const responsiveArrow = "w-1.5 md:w-2 lg:w-2.5";

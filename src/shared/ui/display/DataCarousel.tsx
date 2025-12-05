@@ -52,11 +52,12 @@ export const DataCarousel = ({
 			setCurrent(api.selectedScrollSnap() + 1);
 		});
 	}, [api]);
+
 	return (
 		<>
 			<Carousel
 				setApi={setApi}
-				className={cn("h-[400px]", className)}
+				className={cn("w-full", className)}
 				autoplay={
 					enableAutoplay ? { delay: 3000, stopOnInteraction: false } : undefined
 				}
@@ -66,16 +67,12 @@ export const DataCarousel = ({
 					...opts,
 				}}
 			>
-				<CarouselContent className="">
+				<CarouselContent>
 					{data.map((item) => {
 						const itemKey =
 							(isValidElement(item) ? (item.key as Key | null) : null) ??
 							undefined;
-						return (
-							<CarouselItem key={itemKey} className="">
-								{item}
-							</CarouselItem>
-						);
+						return <CarouselItem key={itemKey}>{item}</CarouselItem>;
 					})}
 				</CarouselContent>
 				{enableNavigation && (

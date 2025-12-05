@@ -9,13 +9,13 @@ export default function ProductEnterprisePage() {
 	return (
 		<>
 			<ProductsEnterpriseIntro />
-			<div className="mt-[100px]">
+			<div className="mt-14 lg:mt-[100px]">
 				<ProductsEnterpriseProduction />
 			</div>
-			<div className="mt-[160px]">
+			<div className="mt-20 lg:mt-[160px]">
 				<ProductsEnterpriseBenchmarks />
 			</div>
-			<div className="mt-[160px]">
+			<div className="mt-20 lg:mt-[160px]">
 				<ProductsEnterpriseComparison />
 			</div>
 		</>

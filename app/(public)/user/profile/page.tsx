@@ -4,7 +4,7 @@ import { ProfileForm } from "@/views/user/profile/root/ui";
 
 export default function UserProfilePage() {
 	return (
-		<Card className={cardMaxWidth}>
+		<Card variant="glass" className={cardMaxWidth}>
 			<ProfileForm />
 		</Card>
 	);

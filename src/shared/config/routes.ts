@@ -2,7 +2,7 @@ export const ROUTES = {
 	ROOT: "/",
 	USER_LOGIN: "/user/login",
 	USER_SIGNUP: "/user/signup",
-	USER_SIGNUP_SUCCESS: "/user/signup/success",
+	USER_SIGNUP_VERIFICATION: "/user/signup/verification",
 	USER_FORGOT_PASSWORD: "/user/forgot-password",
 	USER_RESET_PASSWORD: "/user/reset-password",
 	COOKIE_POLICY: "/cookie-policy",

@@ -10,10 +10,10 @@ export default function ProductPremiumPage() {
 	return (
 		<>
 			<Solutions5gTelcoHead themeColor={themeColor} />
-			<div className="mt-20">
+			<div className="mt-10 lg:mt-20">
 				<Solutions5gTelcoChallenge themeColor={themeColor} />
 			</div>
-			<div className="mt-[108px]">
+			<div className="mt-15 lg:mt-[108px]">
 				<Solutions5gTelcoLoxilb themeColor={themeColor} />
 			</div>
 		</>

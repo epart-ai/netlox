@@ -4,9 +4,8 @@ import { WithdrawAccountForm } from "@/views/user/profile/withdraw/ui";
 
 export default function WithdrawAccountPage() {
 	return (
-		<Card className={cardMaxWidth}>
+		<Card variant="glass" className={cardMaxWidth}>
 			<WithdrawAccountForm />
 		</Card>
 	);
 }
-

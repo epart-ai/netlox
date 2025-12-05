@@ -50,7 +50,7 @@ export const ProductsSaasIntro = ({ themeColor }: Props) => {
 					</Button>
 				</div>
 				<div className={halfWidthMd}>
-					<PageImagesCarousel images={carouselImage} />
+					<PageImagesCarousel images={carouselImage} className="aspect-[1.7]" />
 				</div>
 			</div>
 		</Reveal>

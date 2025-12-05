@@ -6,7 +6,7 @@ export default function ProductSaasPage() {
 	return (
 		<>
 			<ProductsSaasIntro themeColor={themeColor} />
-			<div className="mt-[100px]">
+			<div className="mt-14 lg:mt-[100px]">
 				<ProductsSaasCard themeColor={themeColor} />
 			</div>
 		</>

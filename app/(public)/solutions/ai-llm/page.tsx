@@ -10,10 +10,10 @@ export default function SolutionsAiLlmPage() {
 	return (
 		<>
 			<SolutionsAiLlmHead themeColor={themeColor} />
-			<div className="mt-20">
+			<div className="mt-10 lg:mt-20">
 				<SolutionsAiLlmChallenge themeColor={themeColor} />
 			</div>
-			<div className="mt-[108px]">
+			<div className="mt-15 lg:mt-[108px]">
 				<SolutionsAiLlmLoxilb themeColor={themeColor} />
 			</div>
 		</>

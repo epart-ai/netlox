@@ -45,7 +45,7 @@ export const RootFeatures = () => {
 				<DataCard data={data} colors="blue" />
 			</Reveal>
 			<Reveal delayMs={450}>
-				<ButtonBox className="mt-20">
+				<ButtonBox className="mt-10 lg:mt-20">
 					<Button asChild>
 						<Link href={ROUTES.TECHNOLOGY_FEATURES}>
 							<span>Explore All Features</span>

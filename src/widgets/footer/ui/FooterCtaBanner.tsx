@@ -5,7 +5,13 @@ import { usePathname } from "next/navigation";
 
 import { ROUTES } from "@/shared/config";
 import { cn, isPathnameMatched } from "@/shared/lib/utils";
-import { beforeBackgroundImage } from "@/shared/styles/snippets";
+import {
+	beforeBackgroundImage,
+	gradientBackgroundBlack,
+	gradientBackgroundBlue,
+	headingTitle,
+	paragraphLead,
+} from "@/shared/styles/snippets";
 import { Reveal } from "@/shared/ui/display";
 import { Button, ButtonBox } from "@/shared/ui/shadcn/button";
 
@@ -18,21 +24,19 @@ export const FooterCtaBanner = () => {
 	}
 
 	return (
-		<div className="to-blue-40/ 15 bg-gradient-to-b from-blue-100/15">
+		<div className={gradientBackgroundBlack}>
 			<div className="wrapper py-15 md:py-25 lg:py-40">
 				<Reveal>
 					<div
 						className={cn(
-							"relative flex w-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-b from-blue-60 to-blue-40 px-4 py-10 before:bg-[url('/images/common/bg_banner.png')] before:opacity-50 before:mix-blend-multiply lg:py-20",
+							"relative flex w-full flex-col items-center justify-center overflow-hidden rounded-2xl px-4 py-10 before:bg-[url('/images/common/bg_banner.png')] before:bg-cover before:bg-center before:opacity-50 before:mix-blend-multiply lg:py-20",
+							gradientBackgroundBlue,
 							beforeBackgroundImage,
 						)}
 					>
 						<div className="text-center">
-							<strong className="title-36 lg:title-44">
-								Ready to 10× Your Performance?
-							</strong>
-
-							<p className="paragraph-16 mt-4 lg:paragraph-18 lg:mt-8">
+							<h3 className={headingTitle}>Ready to 10× Your Performance?</h3>
+							<p className={paragraphLead}>
 								Get in touch with our engineers <br />
 								or request a live demo to see NetLOX in action.
 							</p>

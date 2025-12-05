@@ -34,6 +34,9 @@ interface Props {
 	xDataKey?: string;
 	bars: BarDefinition[];
 	children?: React.ReactNode;
+	groupLabel?: Record<string, string>;
+	yAxisDomain?: [number, number];
+	yAxisTicks?: number[];
 }
 
 export const DataChart = ({
@@ -42,7 +45,10 @@ export const DataChart = ({
 	data,
 	xDataKey = "name",
 	bars,
+	groupLabel,
 	children,
+	yAxisDomain,
+	yAxisTicks,
 }: Props) => {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const animationTriggeredRef = useRef(false);
@@ -86,12 +92,18 @@ export const DataChart = ({
 	}, []);
 
 	const yAxisWidth = 40;
-	// Recharts default margin left -8 effect is complex to calculate exactly without ref to chart internal,
-	// but we can approximate. The plotting area is roughly (width - yAxisWidth).
 	const plotWidth = Math.max(0, chartWidth - yAxisWidth);
 	const step = data.length > 0 ? plotWidth / data.length : 0;
-	// We need to shift group label to the right by half a step to center it between two ticks.
 	const groupLabelShift = step / 2;
+
+	const formatYAxisTick = (value: number) => {
+		if (value === 0) {
+			return "0";
+		}
+		// 천 단위로 나누고 점(.)을 붙여서 표시
+		const thousands = value / 1000;
+		return `${thousands}.`;
+	};
 
 	return (
 		<Card ref={containerRef} className={cn("w-full", className)}>
@@ -100,6 +112,7 @@ export const DataChart = ({
 					<BarChart
 						data={data}
 						margin={{ top: 24, right: 0, left: -8, bottom: 0 }}
+						barGap={16}
 					>
 						<ChartLegend
 							className="absolute left-0 top-0"
@@ -116,18 +129,12 @@ export const DataChart = ({
 							dataKey={xDataKey}
 							axisLine={false}
 							tickLine={false}
-							// tick={{ fill: , fontSize: 12 }}
 							height={60}
 							interval={0}
 							tick={({ x, y, index }) => {
 								const isEven = index % 2 === 0;
 								const label = isEven ? "1 connection" : "8 connections";
-								const groupLabel =
-									index === 0
-										? "(POD ON SAME NODE)"
-										: index === 2
-											? "(POD ON DIFFERENT NODE)"
-											: null;
+								const currentGroupLabel = groupLabel?.[index] ?? null;
 
 								return (
 									<g transform={`translate(${x},${y})`}>
@@ -142,7 +149,7 @@ export const DataChart = ({
 										>
 											{label}
 										</text>
-										{groupLabel && (
+										{currentGroupLabel && (
 											<text
 												x={0}
 												y={0}
@@ -153,7 +160,7 @@ export const DataChart = ({
 												fontSize={12}
 												opacity={0.5}
 											>
-												{groupLabel}
+												{currentGroupLabel}
 											</text>
 										)}
 									</g>
@@ -163,10 +170,23 @@ export const DataChart = ({
 						<YAxis
 							axisLine={false}
 							tickLine={false}
-							tick={{ fill: "#ffffff", fontSize: 12, opacity: 0.5 }}
+							tick={({ x, y, payload }) => {
+								return (
+									<text
+										x={x}
+										y={y}
+										textAnchor="end"
+										fill="#ffffff"
+										fontSize={12}
+										opacity={0.5}
+									>
+										{formatYAxisTick(payload.value as number)}
+									</text>
+								);
+							}}
 							width={40}
-							domain={[0, 80]}
-							ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80]}
+							domain={yAxisDomain}
+							ticks={yAxisTicks}
 						/>
 						{bars.map((bar) => (
 							<Bar
@@ -174,16 +194,16 @@ export const DataChart = ({
 								dataKey={bar.dataKey}
 								fill={`var(--color-${bar.dataKey})`}
 								radius={bar.radius ?? 4}
-								barSize={bar.barSize ?? 32}
+								barSize={bar.barSize ?? 24}
 								animationDuration={1500}
 								animationBegin={0}
 							>
 								<LabelList
 									dataKey={bar.dataKey}
 									position="top"
-									offset={12}
+									offset={4}
 									className="fill-foreground"
-									fontSize={12}
+									fontSize={10}
 									fill={`var(--color-${bar.dataKey})`}
 								/>
 							</Bar>

@@ -4,9 +4,8 @@ import { VerifyEmailPanel } from "@/views/user/sign-up/verify-email/ui/VerifyEma
 
 export default function UserSignupVerifyEmailPage() {
 	return (
-		<Card className={cardMaxWidth}>
+		<Card variant="glass" className={cardMaxWidth}>
 			<VerifyEmailPanel />
 		</Card>
 	);
 }
-

@@ -14,25 +14,25 @@ export default function TrustOverviewPage() {
 		<div className="space-y-[160px]">
 			<div>
 				<TrustSuccessStoryHead />
-				<div className="mt-20">
+				<div className="mt-10 lg:mt-20">
 					<TrustSuccessStoryHighlight />
 				</div>
 			</div>
 			<div>
 				<TrustSuccessStoryStoriesHead />
-				<div className="mt-20">
+				<div className="mt-10 lg:mt-20">
 					<TrustSuccessStoryStoriesInnovators />
 				</div>
 			</div>
 			<div>
 				<TrustSuccessStoryUseCaseHead />
-				<div className="mt-20">
+				<div className="mt-10 lg:mt-20">
 					<TrustSuccessStoryUseCaseIndustry />
 				</div>
 			</div>
 			<div>
 				<TrustSuccessStoryValidationHead />
-				<div className="mt-20">
+				<div className="mt-10 lg:mt-20">
 					<TrustSuccessStoryValidationEcosystem />
 				</div>
 			</div>

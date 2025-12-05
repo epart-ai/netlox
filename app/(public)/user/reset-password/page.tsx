@@ -4,7 +4,7 @@ import { ResetPasswordForm } from "@/views/user/reset-password/root/ui";
 
 export default function UserResetPasswordPage() {
 	return (
-		<Card className={cardMaxWidth}>
+		<Card variant="glass" className={cardMaxWidth}>
 			<ResetPasswordForm />
 		</Card>
 	);

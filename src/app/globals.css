@@ -76,8 +76,4 @@
 	:root {
 		--header-h: 80px;
 	}
-	body[data-scroll-locked] .navigation-list,
-	body[data-scroll-locked] .navigation-auth {
-		margin-right: 15px;
-	}
 }

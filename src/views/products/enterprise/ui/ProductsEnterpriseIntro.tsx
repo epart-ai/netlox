@@ -16,15 +16,15 @@ interface Props {
 export const ProductsEnterpriseIntro = ({ themeColor }: Props) => {
 	const carouselImage = [
 		{
-			src: "/images/products/img_enterprise_slide1.jpg",
+			src: "/images/products/img_enterprise_slide1.png",
 			alt: "Feature 1",
 		},
 		{
-			src: "/images/products/img_enterprise_slide2.jpg",
+			src: "/images/products/img_enterprise_slide2.png",
 			alt: "Feature 2",
 		},
 		{
-			src: "/images/products/img_enterprise_slide3.jpg",
+			src: "/images/products/img_enterprise_slide3.png",
 			alt: "Feature 3",
 		},
 	];
@@ -57,7 +57,7 @@ export const ProductsEnterpriseIntro = ({ themeColor }: Props) => {
 					</Button>
 				</div>
 				<div className={halfWidthMd}>
-					<PageImagesCarousel images={carouselImage} />
+					<PageImagesCarousel images={carouselImage} className="aspect-[1.7]" />
 				</div>
 			</div>
 		</Reveal>

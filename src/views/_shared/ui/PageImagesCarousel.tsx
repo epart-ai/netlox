@@ -15,7 +15,7 @@ export const PageImagesCarousel = ({ images, className }: Props) => {
 		return (
 			<div
 				key={image.src}
-				className="overflow-hidden rounded-lg border border-white/25 lg:rounded-2xl"
+				className="relative w-full overflow-hidden rounded-lg border border-white/25 lg:rounded-2xl"
 			>
 				<Image
 					src={image.src}
@@ -23,7 +23,8 @@ export const PageImagesCarousel = ({ images, className }: Props) => {
 					width={0}
 					height={0}
 					sizes="100vw"
-					style={{ width: "100%", height: "auto" }}
+					className="h-auto w-full"
+					style={{ aspectRatio: "auto" }}
 				/>
 			</div>
 		);

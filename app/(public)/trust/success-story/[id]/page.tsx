@@ -29,7 +29,7 @@ export default function TrustSuccessStoryDetailPage({
 	return (
 		<>
 			<TrustSuccessStoryHead id={id} entry={entry} />
-			<div className="mt-20">
+			<div className="mt-10 lg:mt-20">
 				<TrustSuccessStoryContainer id={id} entry={entry} />
 			</div>
 		</>

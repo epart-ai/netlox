@@ -57,7 +57,7 @@ export const BusinessContactInformation = () => {
 				}
 				align="left"
 			/>
-			<div className="mt-20 space-y-10">
+			<div className="mt-10 space-y-8 lg:mt-20 lg:space-y-10">
 				<h4 className="title-24 lg:title-40">Why work with NetLOX?</h4>
 				<div className={cn("mt-10", cardWrapperSpace)}>
 					{data.map((item) => (
@@ -79,10 +79,10 @@ export const BusinessContactInformation = () => {
 					))}
 				</div>
 			</div>
-			<div className="mt-20">
+			<div className="mt-10 lg:mt-20">
 				<h4 className="title-24 lg:title-40">Headquarters</h4>
 				<DataList
-					className="mt-10"
+					className="mt-6 lg:mt-10"
 					data={[
 						<>
 							<span className="opacity-1 title-16">General</span> :

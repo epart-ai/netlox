@@ -8,6 +8,7 @@ import { ChevronDownIcon } from "lucide-react";
 
 import { ROUTES } from "@/shared/config";
 import { cn } from "@/shared/lib/utils";
+import { logoWidth } from "@/shared/styles/snippets";
 import { useSupabaseClient } from "@/shared/supabase";
 import { TextLink } from "@/shared/ui/navigation";
 
@@ -201,7 +202,7 @@ export const Header = () => {
 						<h1>
 							<a className="relative z-20" href="/" aria-label="Go to homepage">
 								<Image
-									className="h-auto w-[120px] md:w-[150px] lg:w-[180px]"
+									className={logoWidth}
 									alt="Logo"
 									src="/images/common/logo.svg"
 									width={120}
@@ -215,7 +216,7 @@ export const Header = () => {
 			</div>
 			<div
 				className={cn(
-					"bg-blur absolute flex h-[calc(100vh-var(--header-h))] w-[60vw] max-w-[320px] transform flex-col justify-between overflow-y-auto border-r-[1px] border-white/25 shadow-x-1 transition-transform duration-300 ease-out lg:overflow-visible",
+					"bg-blur absolute flex h-[calc(100dvh-var(--header-h))] w-[60vw] max-w-[320px] transform flex-col justify-between overflow-y-auto border-r-[1px] border-white/25 shadow-x-1 transition-transform duration-300 ease-out lg:overflow-visible",
 					"lg:pointer-events-none lg:static lg:z-20 lg:h-full lg:w-full lg:max-w-none lg:transform-none lg:border-none lg:bg-transparent lg:shadow-none lg:backdrop-blur-none lg:backdrop-brightness-100 lg:absolute-center lg:[backdrop-filter:none]",
 
 					isMobileNavOpen ? "translate-x-0" : "-translate-x-[calc(100vw+5vw)]",

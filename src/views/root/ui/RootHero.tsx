@@ -22,7 +22,7 @@ export const RootHero = () => {
 		<section className="relative">
 			<video
 				playsInline={true}
-				className="h-[100vh] w-full object-cover"
+				className="h-[100dvh] w-full object-cover"
 				autoPlay={true}
 				muted={true}
 				loop={true}

@@ -40,7 +40,10 @@ export const TechnologyFeatureIntro = () => {
 					/>
 				</div>
 				<div className={halfWidthMd}>
-					<PageImagesCarousel images={carouselImage} className="h-[440px]" />
+					<PageImagesCarousel
+						images={carouselImage}
+						className="aspect-[1.54]"
+					/>
 				</div>
 			</div>
 		</Reveal>
