@@ -59,7 +59,6 @@ export const TextLink = ({
 	underline,
 	...props
 }: Props) => {
-	console.log("🚀 ~ TextLink ~ props:", props);
 	return (
 		<Link
 			{...props}

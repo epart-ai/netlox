@@ -41,7 +41,7 @@ export function HeaderAuth({ userEmail }: HeaderAuthProps) {
 				) : (
 					<>
 						<TextLink
-							href="/user/profile"
+							href={{ query: { dialog: DIALOGS.USER_PROFILE } }}
 							label={
 								<span className="flex items-center gap-1">
 									<Image
@@ -55,7 +55,7 @@ export function HeaderAuth({ userEmail }: HeaderAuthProps) {
 							}
 							size="md"
 							colors="white75"
-							className="mx-4 mx-5 font-medium lg:mx-6"
+							className="mx-4 font-medium md:mx-5 lg:mx-6"
 						/>
 						<Button
 							type="button"

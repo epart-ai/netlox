@@ -114,19 +114,30 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = "Button";
 
-interface ButtonBoxProps extends React.HTMLAttributes<HTMLDivElement> {
+const buttonBoxVariants = cva("flex flex-col items-center justify-center", {
+	variants: {
+		orientation: {
+			horizontal: "gap-3 md:flex-row",
+			vertical: "gap-4",
+		},
+	},
+	defaultVariants: {
+		orientation: "horizontal",
+	},
+});
+
+interface ButtonBoxProps
+	extends React.HTMLAttributes<HTMLDivElement>,
+		VariantProps<typeof buttonBoxVariants> {
 	asChild?: boolean;
 }
 
 const ButtonBox = React.forwardRef<HTMLDivElement, ButtonBoxProps>(
-	({ className, asChild = false, ...props }, ref) => {
+	({ className, orientation, asChild = false, ...props }, ref) => {
 		const Comp = asChild ? Slot : "div";
 		return (
 			<Comp
-				className={cn(
-					"flex flex-col items-center justify-center gap-2.5 md:flex-row",
-					className,
-				)}
+				className={cn(buttonBoxVariants({ orientation }), className)}
 				ref={ref}
 				{...props}
 			/>

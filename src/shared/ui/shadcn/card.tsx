@@ -46,7 +46,7 @@ const cardVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: "bg-blue-100 border border-white/25 rounded-lg lg:rounded-2xl",
+				default: "bg-blue-80 border border-white/25 rounded-lg lg:rounded-2xl",
 				glass: "glass-surface ",
 			},
 		},

@@ -92,8 +92,6 @@ export function DataTable<TData = unknown, TValue = unknown>({
 	}, [selectedRowId]);
 
 	const rowLength = table.getRowModel().rows.length;
-	// console.log(table.getHeaderGroups());
-	// console.log(table.getRowModel());
 
 	return (
 		<div
