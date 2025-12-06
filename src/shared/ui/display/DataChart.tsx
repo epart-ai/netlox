@@ -106,9 +106,12 @@ export const DataChart = ({
 	};
 
 	return (
-		<Card ref={containerRef} className={cn("w-full", className)}>
+		<Card ref={containerRef} className={cn("w-full overflow-auto", className)}>
 			{shouldRender && (
-				<ChartContainer config={config} className="-mb-3 h-full w-full pt-4">
+				<ChartContainer
+					config={config}
+					className="-mb-3 h-full w-full min-w-[550px] pt-4"
+				>
 					<BarChart
 						data={data}
 						margin={{ top: 24, right: 0, left: -8, bottom: 0 }}

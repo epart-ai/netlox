@@ -1,12 +1,12 @@
 import Image from "next/image";
 
 import { DataTable, Reveal } from "@/shared/ui/display";
-import { productsEnterpriseComparisonColumns } from "@/views/products/enterprise/model/productsEnterpriseComparisonColumns";
+import { businessPricingComparisonColumns } from "@/views/business/pricing/model/businessPricingComparisonColumns";
 
-export const ProductsEnterpriseComparisonTable = () => {
+export const BusinessPricingComparisonTable = () => {
 	const tableData = [
 		{
-			feature: <div className="text-center text-white">Open Source</div>,
+			feature: <div className="text-center text-white/75">Open Source</div>,
 			coreLoadBalancer: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
@@ -25,15 +25,6 @@ export const ProductsEnterpriseComparisonTable = () => {
 					height={16}
 				/>
 			),
-			basicL4Protocols: (
-				<Image
-					className="mx-auto my-[1px] lg:my-0.5"
-					src="/images/common/icon_check_blue.svg"
-					alt="Check Icon"
-					width={16}
-					height={16}
-				/>
-			),
 			kubernetesSupport: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
@@ -43,28 +34,29 @@ export const ProductsEnterpriseComparisonTable = () => {
 					height={16}
 				/>
 			),
-			documentationAccess: (
-				<Image
-					className="mx-auto my-[1px] lg:my-0.5"
-					src="/images/common/icon_check_blue.svg"
-					alt="Check Icon"
-					width={16}
-					height={16}
-				/>
+			support: <div className="text-white/75/75 text-center">Community</div>,
+			advancedDashboard: (
+				<div className="text-white/75/75 text-center">CLI</div>
 			),
-			support: <div className="text-center text-white/75">Community</div>,
-			sla: <div className="text-center text-white/75">None</div>,
-			advancedDashboard: <div className="text-center text-white/75">CLI</div>,
-			highAvailability: <div className="text-center text-white/75">Manual</div>,
-			advancedLbAlgorithms: <div className="text-center text-white/75">-</div>,
-			securityPatching: <div className="text-center text-white/75">Manual</div>,
-			telcoProtocols: <div className="text-center text-white/75">-</div>,
-			advancedSecurities: <div className="text-center text-white/75">-</div>,
-			customIntegrations: <div className="text-center text-white/75">-</div>,
-			onlineTechTransfer: <div className="text-center text-white/75">-</div>,
+			highAvailability: (
+				<div className="text-white/75/75 text-center">Manual</div>
+			),
+			securityPatching: (
+				<div className="text-white/75/75 text-center">Manual</div>
+			),
+			customDevelopment: <div className="text-white/75/75 text-center">-</div>,
+			dedicatedEngineer: <div className="text-white/75/75 text-center">-</div>,
+			architectureReview: <div className="text-white/75/75 text-center">-</div>,
+			sla: <div className="text-white/75/75 text-center">None</div>,
+			responseTime: (
+				<div className="text-white/75/75 text-center">Community</div>
+			),
+			deploymentSupport: (
+				<div className="text-white/75/75 text-center">Docs</div>
+			),
 		},
 		{
-			feature: <div className="text-center text-white">Enterprise</div>,
+			feature: <div className="text-center text-white/75">Enterprise</div>,
 			coreLoadBalancer: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
@@ -83,15 +75,6 @@ export const ProductsEnterpriseComparisonTable = () => {
 					height={16}
 				/>
 			),
-			basicL4Protocols: (
-				<Image
-					className="mx-auto my-[1px] lg:my-0.5"
-					src="/images/common/icon_check_blue.svg"
-					alt="Check Icon"
-					width={16}
-					height={16}
-				/>
-			),
 			kubernetesSupport: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
@@ -101,17 +84,7 @@ export const ProductsEnterpriseComparisonTable = () => {
 					height={16}
 				/>
 			),
-			documentationAccess: (
-				<Image
-					className="mx-auto my-[1px] lg:my-0.5"
-					src="/images/common/icon_check_blue.svg"
-					alt="Check Icon"
-					width={16}
-					height={16}
-				/>
-			),
-			support: <div className="text-center text-blue-20">8x5 Business</div>,
-			sla: <div className="text-center text-blue-20">99.9%</div>,
+			support: <div className="text-center text-blue-20">Business Hours</div>,
 			advancedDashboard: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
@@ -130,15 +103,6 @@ export const ProductsEnterpriseComparisonTable = () => {
 					height={16}
 				/>
 			),
-			advancedLbAlgorithms: (
-				<Image
-					className="mx-auto my-[1px] lg:my-0.5"
-					src="/images/common/icon_check_blue.svg"
-					alt="Check Icon"
-					width={16}
-					height={16}
-				/>
-			),
 			securityPatching: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
@@ -148,13 +112,19 @@ export const ProductsEnterpriseComparisonTable = () => {
 					height={16}
 				/>
 			),
-			telcoProtocols: <div className="text-center text-white/75">-</div>,
-			advancedSecurities: <div className="text-center text-white/75">-</div>,
-			customIntegrations: <div className="text-center text-white/75">-</div>,
-			onlineTechTransfer: <div className="text-center text-white/75">-</div>,
+			customDevelopment: <div className="text-center text-white/75">-</div>,
+			dedicatedEngineer: (
+				<div className="text-center text-white/75">Add-on</div>
+			),
+			architectureReview: (
+				<div className="text-center text-white/75">Add-on</div>
+			),
+			sla: <div className="text-center text-blue-20">99.9%</div>,
+			responseTime: <div className="text-center text-blue-20">24H</div>,
+			deploymentSupport: <div className="text-center text-blue-20">Remote</div>,
 		},
 		{
-			feature: <div className="text-center text-white">Premium</div>,
+			feature: <div className="text-center text-white/75">Premium</div>,
 			coreLoadBalancer: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
@@ -173,25 +143,7 @@ export const ProductsEnterpriseComparisonTable = () => {
 					height={16}
 				/>
 			),
-			basicL4Protocols: (
-				<Image
-					className="mx-auto my-[1px] lg:my-0.5"
-					src="/images/common/icon_check_blue.svg"
-					alt="Check Icon"
-					width={16}
-					height={16}
-				/>
-			),
 			kubernetesSupport: (
-				<Image
-					className="mx-auto my-[1px] lg:my-0.5"
-					src="/images/common/icon_check_blue.svg"
-					alt="Check Icon"
-					width={16}
-					height={16}
-				/>
-			),
-			documentationAccess: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
 					src="/images/common/icon_check_blue.svg"
@@ -201,7 +153,6 @@ export const ProductsEnterpriseComparisonTable = () => {
 				/>
 			),
 			support: <div className="text-center text-green-20">24/7 Dedicated</div>,
-			sla: <div className="text-center text-green-20">99.99%</div>,
 			advancedDashboard: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
@@ -220,15 +171,6 @@ export const ProductsEnterpriseComparisonTable = () => {
 					height={16}
 				/>
 			),
-			advancedLbAlgorithms: (
-				<Image
-					className="mx-auto my-[1px] lg:my-0.5"
-					src="/images/common/icon_check_blue.svg"
-					alt="Check Icon"
-					width={16}
-					height={16}
-				/>
-			),
 			securityPatching: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
@@ -238,7 +180,7 @@ export const ProductsEnterpriseComparisonTable = () => {
 					height={16}
 				/>
 			),
-			telcoProtocols: (
+			customDevelopment: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
 					src="/images/common/icon_check_blue.svg"
@@ -247,7 +189,7 @@ export const ProductsEnterpriseComparisonTable = () => {
 					height={16}
 				/>
 			),
-			advancedSecurities: (
+			dedicatedEngineer: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
 					src="/images/common/icon_check_blue.svg"
@@ -256,7 +198,7 @@ export const ProductsEnterpriseComparisonTable = () => {
 					height={16}
 				/>
 			),
-			customIntegrations: (
+			architectureReview: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
 					src="/images/common/icon_check_blue.svg"
@@ -265,18 +207,14 @@ export const ProductsEnterpriseComparisonTable = () => {
 					height={16}
 				/>
 			),
-			onlineTechTransfer: (
-				<Image
-					className="mx-auto my-[1px] lg:my-0.5"
-					src="/images/common/icon_check_blue.svg"
-					alt="Check Icon"
-					width={16}
-					height={16}
-				/>
+			sla: <div className="text-center text-green-20">99.99%</div>,
+			responseTime: <div className="text-center text-green-20">4H</div>,
+			deploymentSupport: (
+				<div className="text-center text-green-20">On-site</div>
 			),
 		},
 		{
-			feature: <div className="text-center text-white">SaaS</div>,
+			feature: <div className="text-center text-white/75">SaaS</div>,
 			coreLoadBalancer: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
@@ -295,15 +233,6 @@ export const ProductsEnterpriseComparisonTable = () => {
 					height={16}
 				/>
 			),
-			basicL4Protocols: (
-				<Image
-					className="mx-auto my-[1px] lg:my-0.5"
-					src="/images/common/icon_check_blue.svg"
-					alt="Check Icon"
-					width={16}
-					height={16}
-				/>
-			),
 			kubernetesSupport: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
@@ -313,17 +242,7 @@ export const ProductsEnterpriseComparisonTable = () => {
 					height={16}
 				/>
 			),
-			documentationAccess: (
-				<Image
-					className="mx-auto my-[1px] lg:my-0.5"
-					src="/images/common/icon_check_blue.svg"
-					alt="Check Icon"
-					width={16}
-					height={16}
-				/>
-			),
 			support: <div className="text-center text-blue-20">Managed</div>,
-			sla: <div className="text-center text-blue-20">99.9%</div>,
 			advancedDashboard: (
 				<Image
 					className="mx-auto my-[1px] lg:my-0.5"
@@ -334,27 +253,22 @@ export const ProductsEnterpriseComparisonTable = () => {
 				/>
 			),
 			highAvailability: <div className="text-center text-blue-20">Auto</div>,
-			advancedLbAlgorithms: (
-				<Image
-					className="mx-auto my-[1px] lg:my-0.5"
-					src="/images/common/icon_check_blue.svg"
-					alt="Check Icon"
-					width={16}
-					height={16}
-				/>
-			),
 			securityPatching: <div className="text-center text-blue-20">Auto</div>,
-			telcoProtocols: <div className="text-center text-white/75">-</div>,
-			advancedSecurities: <div className="text-center text-white/75">-</div>,
-			customIntegrations: <div className="text-center text-white/75">-</div>,
-			onlineTechTransfer: <div className="text-center text-white/75">-</div>,
+			customDevelopment: <div className="text-center text-white/75">-</div>,
+			dedicatedEngineer: <div className="text-center text-white/75">-</div>,
+			architectureReview: <div className="text-center text-white/75">-</div>,
+			sla: <div className="text-center text-blue-20">99.9%</div>,
+			responseTime: <div className="text-center text-blue-20">Auto</div>,
+			deploymentSupport: (
+				<div className="text-center text-blue-20">Managed</div>
+			),
 		},
 	];
 	return (
 		<Reveal>
 			<DataTable
 				data={tableData}
-				columns={productsEnterpriseComparisonColumns}
+				columns={businessPricingComparisonColumns}
 				tableClassName="min-w-[650px]"
 				selectedRowIndex={1}
 				orientation="vertical"

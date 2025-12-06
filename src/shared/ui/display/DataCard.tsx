@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { LinkProps } from "next/link";
-import type { ReactNode } from "react";
+import { type ReactNode, cloneElement, isValidElement } from "react";
 
 import { type VariantProps, cva } from "class-variance-authority";
 
@@ -20,10 +20,10 @@ import {
 const dataCardVariant = cva("", {
 	variants: {
 		colors: {
-			blue: "[&_.iconBox]:bg-blue-40/ 25",
-			green: "[&_.iconBox]:bg-green-40/15",
-			purple: "[&_.iconBox]:bg-purple-40/15",
-			orange: "[&_.iconBox]:bg-orange-40/15",
+			blue: "[&_.icon-box]:bg-blue-40/ 25",
+			green: "[&_.icon-box]:bg-green-40/15",
+			purple: "[&_.icon-box]:bg-purple-40/15",
+			orange: "[&_.icon-box]:bg-orange-40/15",
 		},
 	},
 });
@@ -31,12 +31,13 @@ const dataCardVariant = cva("", {
 type Item = {
 	title: string | ReactNode;
 	description?: ReactNode;
-	icon?: string;
+	icon?: string | ReactNode;
 	link?: LinkProps & {
 		label: string;
 	};
 	disabledIconInvert?: boolean;
 	footer?: ReactNode;
+	children?: ReactNode;
 };
 interface Props
 	extends VariantProps<typeof dataCardVariant>,
@@ -61,19 +62,32 @@ export const DataCard = ({
 				<Card key={index} variant="glass">
 					<CardWrapper>
 						{item.icon && (
-							<div className="iconBox flex size-15 items-center justify-center rounded-2xl p-3.5 backdrop-blur-md transition-colors duration-300 md:size-20 md:p-5 lg:p-4.5">
-								<Image
-									src={item.icon}
-									alt=""
-									width={44}
-									height={44}
-									className={cn(
-										"iconImage size-full",
-										!item.disabledIconInvert &&
-											"[.card:hover_&]:brightness-0 [.card:hover_&]:invert [.card:hover_&]:filter",
-									)}
-									priority={true}
-								/>
+							<div className="icon-box flex size-15 items-center justify-center rounded-2xl p-3.5 backdrop-blur-md transition-colors duration-300 md:size-20 md:p-5 lg:p-4.5">
+								{typeof item.icon === "string" ? (
+									<Image
+										src={item.icon}
+										alt=""
+										width={44}
+										height={44}
+										className={cn(
+											"iconImage size-full",
+											!item.disabledIconInvert &&
+												"[.card:hover_&]:brightness-0 [.card:hover_&]:invert [.card:hover_&]:filter",
+										)}
+										priority={true}
+									/>
+								) : isValidElement(item.icon) ? (
+									cloneElement(item.icon as React.ReactElement, {
+										className: cn(
+											"iconImage",
+											!item.disabledIconInvert &&
+												"[.card:hover_&]:brightness-0 [.card:hover_&]:invert [.card:hover_&]:filter",
+											item.icon.props?.className,
+										),
+									})
+								) : (
+									item.icon
+								)}
 							</div>
 						)}
 						<CardContent>
@@ -93,6 +107,7 @@ export const DataCard = ({
 								iconVisible="right"
 							/>
 						)}
+						{item.children && item.children}
 					</CardWrapper>
 				</Card>
 			))}

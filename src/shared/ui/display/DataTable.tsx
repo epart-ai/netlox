@@ -101,7 +101,7 @@ export function DataTable<TData = unknown, TValue = unknown>({
 			)}
 		>
 			<Table
-				className={cn("table w-full caption-bottom", tableClassName)}
+				className={cn("caption-bottom", tableClassName)}
 				data-orientation={orientation}
 			>
 				<TableHeader className={cn(orientation === "vertical" && "flex-1")}>
@@ -130,7 +130,14 @@ export function DataTable<TData = unknown, TValue = unknown>({
 					))}
 				</TableHeader>
 				<TableBody
-					style={{ flex: orientation === "vertical" ? rowLength : undefined }}
+					className={cn(
+						orientation === "vertical" && `md:flex-[var(--row-length)]`,
+					)}
+					style={
+						orientation === "vertical"
+							? ({ "--row-length": rowLength } as React.CSSProperties)
+							: undefined
+					}
 				>
 					{rowLength > 0 ? (
 						table.getRowModel().rows.map((row) => {
@@ -138,7 +145,11 @@ export function DataTable<TData = unknown, TValue = unknown>({
 								return (
 									<TableRow
 										key={row.id}
-										className={cn(orientation === "vertical" ? "w-max" : "")}
+										className={cn(
+											orientation === "vertical"
+												? "w-max after:left-1 after:right-1"
+												: "",
+										)}
 										data-state={row.getIsSelected() && "selected"}
 										enableHover={enableHover}
 									>
@@ -168,7 +179,7 @@ export function DataTable<TData = unknown, TValue = unknown>({
 							) : (
 								<div
 									key={row.id}
-									className="t-table-row-box flex-1 overflow-hidden"
+									className="t-table-row-box overflow-hidden md:flex-1"
 								>
 									{renderRows()}
 								</div>

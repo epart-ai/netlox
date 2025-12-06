@@ -22,7 +22,7 @@ export default function ProductEnterprisePage() {
 			</div>
 			<div className="mt-20 lg:mt-[160px]">
 				<ProductsEnterpriseBenchmarksHead />
-				<div className="mt-[80px]">
+				<div className="mt-10 lg:mt-[80px]">
 					<ProductsEnterpriseBenchmarksIncluster />
 				</div>
 				<div className="mt-14 lg:mt-[100px]">
@@ -34,7 +34,7 @@ export default function ProductEnterprisePage() {
 			</div>
 			<div className="mt-20 lg:mt-[160px]">
 				<ProductsEnterpriseComparisonHead />
-				<div className="mt-[80px]">
+				<div className="mt-10 lg:mt-[80px]">
 					<ProductsEnterpriseComparisonTable />
 				</div>
 			</div>

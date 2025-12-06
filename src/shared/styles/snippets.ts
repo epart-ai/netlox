@@ -35,6 +35,8 @@ export const gridTwoCol = "grid grid-cols-2 gap-4";
 export const iconBadgeLarge =
 	"flex size-15 shrink-0 items-center justify-center rounded-md bg-blue-20/15 p-3.5";
 export const logoWidth = "w-[120px] md:w-[150px] lg:w-[180px]";
+export const imageRounded =
+	"size-full overflow-hidden rounded-2xl object-cover";
 
 // 페이지네이션 화살표
 export const responsiveArrow = "w-1.5 md:w-2 lg:w-2.5";

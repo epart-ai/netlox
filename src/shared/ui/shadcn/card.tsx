@@ -6,26 +6,29 @@ import { Separator } from "@/shared/ui/shadcn/separator";
 
 import { cn } from "../../lib/utils";
 
-const cardListVariants = cva("grid gap-5 [&_.card:hover]:-translate-y-2", {
-	variants: {
-		colors: {
-			blue: "[&_.iconBox]:bg-blue-40/ 25 [&_.card:hover]:border-blue-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-blue-60-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-blue-60",
-			green:
-				"[&_.iconBox]:bg-green-40/15 [&_.card:hover]:border-green-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-green-40-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-green-40",
-			purple:
-				"[&_.iconBox]:bg-purple-10/15 [&_.card:hover]:border-purple-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-purple-40-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-purple-40",
-			orange:
-				"[&_.iconBox]:bg-orange-10/15 [&_.card:hover]:border-orange-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-orange-40-rgb)/0.25)] [&_.card:hover_.iconBox]:bg-orange-40",
+const cardListVariants = cva(
+	"grid gap-5 lg:gap-10 [&_.card:hover]:-translate-y-2",
+	{
+		variants: {
+			colors: {
+				blue: "[&_.icon-box]:bg-blue-40/25 [&_.card:hover]:border-blue-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-blue-60-rgb)/0.25)] [&_.card:hover_.icon-box]:bg-blue-60",
+				green:
+					"[&_.icon-box]:bg-green-40/15 [&_.card:hover]:border-green-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-green-40-rgb)/0.25)] [&_.card:hover_.icon-box]:bg-green-40",
+				purple:
+					"[&_.icon-box]:bg-purple-10/15 [&_.card:hover]:border-purple-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-purple-40-rgb)/0.25)] [&_.card:hover_.icon-box]:bg-purple-40",
+				orange:
+					"[&_.icon-box]:bg-orange-10/15 [&_.card:hover]:border-orange-40 [&_.card:hover]:shadow-[0_0_40px_0_rgb(var(--color-orange-40-rgb)/0.25)] [&_.card:hover_.icon-box]:bg-orange-40",
+			},
+			orientation: {
+				horizontal: "md:grid-cols-2 lg:grid-cols-3",
+				vertical: "",
+			},
 		},
-		orientation: {
-			horizontal: "md:grid-cols-2 lg:grid-cols-3 lg:gap-10",
-			vertical: "grid-cols-1 md:grid-cols-1 lg:grid-cols-1",
+		defaultVariants: {
+			orientation: "horizontal",
 		},
 	},
-	defaultVariants: {
-		orientation: "horizontal",
-	},
-});
+);
 
 export type CardListProps = React.HTMLAttributes<HTMLDivElement> &
 	VariantProps<typeof cardListVariants>;
@@ -42,7 +45,7 @@ const CardList = React.forwardRef<HTMLDivElement, CardListProps>(
 CardList.displayName = "CardList";
 
 const cardVariants = cva(
-	"card relative p-4 md:p-6 lg:p-8 overflow-hidden duration-300 [&_.iconBox]:transition-colors [&_.iconBox]:duration-300",
+	"card relative overflow-hidden p-4 md:p-6 lg:p-8 duration-300 [&_.icon-box]:transition-colors [&_.icon-box]:duration-300",
 	{
 		variants: {
 			variant: {
