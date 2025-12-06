@@ -12,7 +12,7 @@ export const RootModel = () => {
 			icon: "/images/main/icon_model1.svg",
 			link: {
 				label: "Launch on AWS",
-				href: "javascript:alert('The AWS Marketplace service is currently under preparation. It is scheduled for official launch in the first quarter of 2026. We will be launching soon!')",
+				href: 'javascript:alert("The AWS Marketplace service is currently under preparation. It is scheduled for official launch in the first quarter of 2026. We will be launching soon!")',
 			},
 		},
 		{

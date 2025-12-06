@@ -36,6 +36,7 @@ export const RootReportTable = () => {
 			columns={rootReportTableColumns}
 			tableClassName="min-w-[650px]"
 			orientation="horizontal"
+			selectedRowIndex={0}
 		/>
 	);
 };

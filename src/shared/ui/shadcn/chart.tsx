@@ -68,6 +68,12 @@ const ChartContainer = React.forwardRef<
 });
 ChartContainer.displayName = "Chart";
 
+// CSS 선택자에서 특수 문자를 안전하게 이스케이프
+function escapeCssSelector(value: string): string {
+	// CSS 선택자에서 특수 문자를 이스케이프
+	return value.replace(/[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~]/g, "\\$&");
+}
+
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
 	const colorConfig = Object.entries(config).filter(
 		([, config]) => config.theme || config.color,
@@ -77,6 +83,9 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
 		return null;
 	}
 
+	// CSS 선택자에서 id를 안전하게 이스케이프
+	const escapedId = escapeCssSelector(id);
+	
 	return (
 		<style
 			// biome-ignore lint/security/noDangerouslySetInnerHtml: Dynamic CSS variables for chart theming
@@ -84,7 +93,7 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
 				__html: Object.entries(THEMES)
 					.map(
 						([theme, prefix]) => `
-${prefix} [data-chart=${id}] {
+${prefix} [data-chart="${escapedId}"] {
 ${colorConfig
 	.map(([key, itemConfig]) => {
 		const color =

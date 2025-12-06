@@ -1,15 +1,9 @@
 import Image from "next/image";
 
-import type { ThemeColor } from "@/shared/model/types";
 import { DataTable, Reveal } from "@/shared/ui/display";
-import { PageHead } from "@/views/_shared/ui/PageHead";
 import { productsEnterpriseComparisonColumns } from "@/views/products/enterprise/model/productsEnterpriseComparisonColumns";
 
-interface Props {
-	themeColor?: ThemeColor;
-}
-
-export const ProductsEnterpriseComparison = ({ themeColor }: Props) => {
+export const ProductsEnterpriseComparisonTable = () => {
 	const tableData = [
 		{
 			feature: <div className="text-center text-white">Open Source</div>,
@@ -357,26 +351,15 @@ export const ProductsEnterpriseComparison = ({ themeColor }: Props) => {
 		},
 	];
 	return (
-		<>
-			<Reveal>
-				<PageHead
-					theme={themeColor}
-					title="Detailed Feature Comparison"
-					description="Compare Enterprise features against Open Source, Premium, and SaaS plans."
-				/>
-			</Reveal>
-			<div className="mt-[80px]">
-				<Reveal>
-					<DataTable
-						data={tableData}
-						columns={productsEnterpriseComparisonColumns}
-						tableClassName="min-w-[650px]"
-						selectedRowIndex={1}
-						orientation="vertical"
-						className="[&_.t-table-body]:!flex-[1.5] [&_.t-table-row]:m-auto [&_.t-table-row]:w-[calc(100%-8px)]"
-					/>
-				</Reveal>
-			</div>
-		</>
+		<Reveal>
+			<DataTable
+				data={tableData}
+				columns={productsEnterpriseComparisonColumns}
+				tableClassName="min-w-[650px]"
+				selectedRowIndex={1}
+				orientation="vertical"
+				className="[&_.t-table-body]:!flex-[1.5] [&_.t-table-row]:m-auto [&_.t-table-row]:w-[calc(100%-8px)]"
+			/>
+		</Reveal>
 	);
 };

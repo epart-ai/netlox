@@ -2,18 +2,13 @@ import Link from "next/link";
 
 import { ROUTES } from "@/shared/config";
 import { cn } from "@/shared/lib/utils";
-import type { ThemeColor } from "@/shared/model/types";
 import { flexRowBetweenMd, halfWidthMd } from "@/shared/styles/snippets";
 import { Reveal } from "@/shared/ui/display";
 import { Button } from "@/shared/ui/shadcn/button";
 import { PageHead } from "@/views/_shared/ui/PageHead";
 import { PageImagesCarousel } from "@/views/_shared/ui/PageImagesCarousel";
 
-interface Props {
-	themeColor?: ThemeColor;
-}
-
-export const ProductsEnterpriseIntro = ({ themeColor }: Props) => {
+export const ProductsEnterpriseIntro = () => {
 	const carouselImage = [
 		{
 			src: "/images/products/img_enterprise_slide1.png",
@@ -34,7 +29,6 @@ export const ProductsEnterpriseIntro = ({ themeColor }: Props) => {
 			<div className={flexRowBetweenMd}>
 				<div className={halfWidthMd}>
 					<PageHead
-						theme={themeColor}
 						align="left"
 						eyebrow="Enterprise"
 						title={
@@ -52,7 +46,7 @@ export const ProductsEnterpriseIntro = ({ themeColor }: Props) => {
 							</>
 						}
 					/>
-					<Button asChild colors={themeColor} className={cn("mt-8 lg:mt-15")}>
+					<Button asChild className={cn("mt-8 lg:mt-15")}>
 						<Link href={ROUTES.BUSINESS_CONTACT}>Request Quote</Link>
 					</Button>
 				</div>
