@@ -1,3 +1,4 @@
+import { sectionTitle } from "@/shared/styles/snippets";
 import { DataTable, Reveal } from "@/shared/ui/display";
 
 import { solutionsKubernetesBenchmarksColumns } from "../model/solutionsKubernetesBenchmarksColumns";
@@ -33,6 +34,7 @@ export const SolutionsKubernetesBenchmarks = () => {
 
 	return (
 		<Reveal>
+			<h3 className={sectionTitle}>Verified Benchmarks: LoxiLB vs MetalLB</h3>
 			<DataTable
 				data={data}
 				columns={solutionsKubernetesBenchmarksColumns}

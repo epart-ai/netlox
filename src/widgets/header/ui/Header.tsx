@@ -264,7 +264,7 @@ export const Header = () => {
 												"from-white/8 -mx-[5vw] mb-4 grid border-white/25 bg-gradient-to-b to-white/0 px-[10vw] backdrop-blur-md",
 												"grid-rows-[0fr] overflow-hidden transition-[grid-template-rows] duration-300 ease-out",
 												// Desktop dropdown position and animation
-												"lg:pointer-events-none lg:absolute lg:left-1/2 lg:top-full lg:z-50 lg:m-0 lg:block lg:w-40 lg:-translate-x-1/2 lg:-translate-y-2 lg:rounded-md lg:border lg:px-0 lg:py-3.5 lg:opacity-0 lg:group-hover:pointer-events-auto lg:group-hover:opacity-100",
+												"lg:pointer-events-none lg:absolute lg:left-1/2 lg:top-full lg:z-50 lg:m-0 lg:block lg:w-40 lg:-translate-x-1/2 lg:-translate-y-2 lg:rounded-lg lg:border lg:px-0 lg:py-3.5 lg:opacity-0 lg:group-hover:pointer-events-auto lg:group-hover:opacity-100",
 												// Mobile accordion animation
 												openMobileIndex === idx
 													? "grid-rows-[1fr] border-b border-t"

@@ -100,6 +100,11 @@ export const DataChart = ({
 		if (value === 0) {
 			return "0";
 		}
+
+		if (value < 1000) {
+			return value.toString();
+		}
+
 		// 천 단위로 나누고 점(.)을 붙여서 표시
 		const thousands = value / 1000;
 		return `${thousands}.`;

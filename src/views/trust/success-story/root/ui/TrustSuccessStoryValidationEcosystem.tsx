@@ -21,14 +21,14 @@ export const TrustSuccessStoryValidationEcosystem = ({ themeColor }: Props) => {
 			title: "2,000+ GitHub Stars",
 			description: (
 				<>
-					CDriven by a vibrant and growing <br />
+					Driven by a vibrant and growing <br />
 					open-source community.
 				</>
 			),
 			icon: "/images/trust/icon_success-story_validation2.svg",
 		},
 		{
-			title: "Network Slicing & MEC",
+			title: "AWS Advanced Partner",
 			description: (
 				<>
 					Certified and integrated with major cloud <br />

@@ -14,7 +14,7 @@ export const DataList = ({ data, className }: Props) => {
 		<ul className={cn("flex flex-col gap-1.5 md:gap-2", className)}>
 			{data.map((item, index) => (
 				<li key={index} className="flex gap-1.5">
-					<IconCheck className="shrink-0 translate-y-0.5" />
+					<IconCheck className="shrink-0 translate-y-[25%]" />
 					<p>{item}</p>
 				</li>
 			))}

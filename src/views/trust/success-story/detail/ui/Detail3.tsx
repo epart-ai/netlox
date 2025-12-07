@@ -8,7 +8,7 @@ import { cardWrapper, imageWrapper, layoutContainer } from "../styles/snippets";
 export const Reference3 = () => {
 	const cardData = [
 		{
-			title: "Problem Statement",
+			title: "Challenge",
 			icon: "/images/trust/icon_success-story_detail1.svg",
 			footer: (
 				<DataList
