@@ -64,6 +64,9 @@
 		--chart-4: 280 65% 60%;
 		--chart-5: 340 75% 55%;
 	}
+	body {
+		font-family: "Outfit Variable", sans-serif;
+	}
 }
 
 /* Breakpoint overrides for header height */
@@ -75,9 +78,5 @@
 @media (min-width: 1024px) {
 	:root {
 		--header-h: 80px;
-	}
-	body[data-scroll-locked] .navigation-list,
-	body[data-scroll-locked] .navigation-auth {
-		margin-right: 15px;
 	}
 }

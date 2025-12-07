@@ -2,9 +2,13 @@ export const ROUTES = {
 	ROOT: "/",
 	USER_LOGIN: "/user/login",
 	USER_SIGNUP: "/user/signup",
-	USER_SIGNUP_SUCCESS: "/user/signup/success",
+	USER_SIGNUP_VERIFICATION: "/user/signup/verification",
 	USER_FORGOT_PASSWORD: "/user/forgot-password",
 	USER_RESET_PASSWORD: "/user/reset-password",
+	USER_PROFILE: "/user/profile",
+	USER_PROFILE_PASSWORD: "/user/profile/password",
+	USER_PROFILE_WITHDRAW: "/user/profile/withdraw",
+
 	COOKIE_POLICY: "/cookie-policy",
 
 	PRODUCTS_OPEN_SOURCE: "/products/open-source",
@@ -34,4 +38,7 @@ export const ROUTES = {
 export const DIALOGS = {
 	LOGIN: "login",
 	FORGOT_PASSWORD: "forgot-password",
+	USER_PROFILE: "user-profile",
+	USER_PROFILE_PASSWORD: "user-profile-password",
+	USER_PROFILE_WITHDRAW: "user-profile-withdraw",
 } as const;

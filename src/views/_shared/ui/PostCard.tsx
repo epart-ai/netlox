@@ -35,13 +35,14 @@ export function PostCard({
 }: PostCardProps) {
 	const cardContent = (
 		<CardWrapper>
-			<div className="absolute inset-0 h-[295px]">
+			<div className="aspect-[1.4915254237288136 -m-4 !mb-0 md:-m-6 lg:-m-8">
 				{imageUrl ? (
 					<Image
 						src={imageUrl}
 						alt={title}
-						fill
-						className="object-cover"
+						className="size-full object-cover"
+						width={440}
+						height={295}
 						priority={false}
 					/>
 				) : (
@@ -71,7 +72,7 @@ export function PostCard({
 	);
 
 	return (
-		<Card key={id} className="w-full !pt-[295px] md:w-[440px]">
+		<Card key={id} className="w-full md:w-[440px]">
 			{href ? (
 				<Link href={href} target="_blank" rel="noopener noreferrer">
 					{cardContent}

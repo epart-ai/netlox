@@ -10,11 +10,11 @@ const linkVariant = cva(
 	{
 		variants: {
 			colors: {
-				white75: "text-white/75 hover:text-white",
-				blue: "text-blue-20 [&_path]:fill-blue-20",
-				green: "text-green-40 [&_path]:fill-green-40",
-				purple: "text-purple-40 [&_path]:fill-purple-40",
-				orange: "text-orange-40 [&_path]:fill-orange-40",
+				white75: "!text-white/75 hover:!text-white",
+				blue: "!text-blue-20 [&_path]:fill-blue-20",
+				green: "!text-green-40 [&_path]:fill-green-40",
+				purple: "!text-purple-40 [&_path]:fill-purple-40",
+				orange: "!text-orange-40 [&_path]:fill-orange-40",
 			},
 			size: {
 				sm: "paragraph-14",

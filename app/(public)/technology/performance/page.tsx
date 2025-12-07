@@ -12,10 +12,10 @@ export default function TechnologyPerformancePage() {
 	return (
 		<>
 			<TechnologyPerformanceHead />
-			<div className="mt-20">
+			<div className="mt-10 lg:mt-20">
 				<TechnologyPerformanceLoadBalancer />
 			</div>
-			<div className="mt-[100px]">
+			<div className="mt-14 lg:mt-[100px]">
 				<TechnologyPerformanceIngress />
 			</div>
 			<div className="mt-20 text-center">

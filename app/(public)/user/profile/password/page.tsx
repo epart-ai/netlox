@@ -4,9 +4,8 @@ import { ChangePasswordForm } from "@/views/user/profile/password/ui";
 
 export default function ChangePasswordPage() {
 	return (
-		<Card className={cardMaxWidth}>
+		<Card variant="glass" className={cardMaxWidth}>
 			<ChangePasswordForm />
 		</Card>
 	);
 }
-

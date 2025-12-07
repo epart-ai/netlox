@@ -8,10 +8,10 @@ export default function ProductOpenSourcePage() {
 	return (
 		<>
 			<SolutionsKubernetesHead />
-			<div className="mt-20">
+			<div className="mt-10 lg:mt-20">
 				<SolutionsKubernetesBenchmarks />
 			</div>
-			<div className="mt-[108px]">
+			<div className="mt-15 lg:mt-[108px]">
 				<SolutionsKubernetesLoxilb />
 			</div>
 		</>

@@ -44,7 +44,7 @@ export const VerifyEmailPanel = () => {
 						setStatus("success");
 						// 인증 완료 후 회원가입 완료 페이지로 리다이렉트
 						setTimeout(() => {
-							router.push(ROUTES.USER_SIGNUP_SUCCESS);
+							router.push(ROUTES.USER_SIGNUP_VERIFICATION);
 						}, 2000);
 					} else {
 						// 세션은 있지만 아직 이메일이 확인되지 않음
@@ -57,7 +57,7 @@ export const VerifyEmailPanel = () => {
 							if (retrySession?.user?.email_confirmed_at) {
 								setStatus("success");
 								setTimeout(() => {
-									router.push(ROUTES.USER_SIGNUP_SUCCESS);
+									router.push(ROUTES.USER_SIGNUP_VERIFICATION);
 								}, 2000);
 							} else {
 								setStatus("expired");
@@ -74,7 +74,7 @@ export const VerifyEmailPanel = () => {
 						if (retrySession?.user?.email_confirmed_at) {
 							setStatus("success");
 							setTimeout(() => {
-								router.push(ROUTES.USER_SIGNUP_SUCCESS);
+								router.push(ROUTES.USER_SIGNUP_VERIFICATION);
 							}, 2000);
 						} else {
 							setStatus("expired");

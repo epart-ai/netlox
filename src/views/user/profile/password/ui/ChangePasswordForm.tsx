@@ -1,13 +1,15 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { isValidPassword } from "@/shared/lib/password";
+import { useActionStatus } from "@/shared/lib/useActionStatus";
 import { useSupabaseClient } from "@/shared/supabase";
+import { IconCheck } from "@/shared/ui/icon";
 import { Button, ButtonBox } from "@/shared/ui/shadcn/button";
 import {
 	CardContent,
@@ -19,6 +21,7 @@ import {
 import {
 	Form,
 	FormControl,
+	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
@@ -31,13 +34,12 @@ import { type ChangePasswordFormValues, changePasswordSchema } from "../model";
 export const ChangePasswordForm = () => {
 	const router = useRouter();
 	const supabase = useSupabaseClient();
-	const [feedback, setFeedback] = useState<{
-		type: "success" | "error";
-		message: string;
-	} | null>(null);
+
+	const { reset, fail, succeed } = useActionStatus();
+	const [isPending, setIsPending] = useState(false);
 
 	const form = useForm<ChangePasswordFormValues>({
-		mode: "onBlur",
+		mode: "onChange",
 		resolver: zodResolver(changePasswordSchema),
 		defaultValues: {
 			currentPassword: "",
@@ -49,21 +51,39 @@ export const ChangePasswordForm = () => {
 	const {
 		control,
 		handleSubmit,
-		formState: { isSubmitting },
+		formState: { isSubmitting, isValid, errors },
+		watch,
 	} = form;
 
-	const onSubmit = async (values: ChangePasswordFormValues) => {
-		setFeedback(null);
+	const isLoading = isSubmitting || isPending;
+
+	// 모든 필드 값 감시
+	const currentPassword = watch("currentPassword");
+	const newPassword = watch("newPassword");
+	const confirmNewPassword = watch("confirmNewPassword");
+	const isPasswordValid = isValidPassword(newPassword);
+
+	const isFormValid =
+		!!currentPassword?.trim() &&
+		!!newPassword?.trim() &&
+		!!confirmNewPassword?.trim() &&
+		isValid &&
+		Object.keys(errors).length === 0;
+
+	const onValid = async (values: ChangePasswordFormValues) => {
+		reset();
+		setIsPending(true);
 
 		try {
 			// 현재 비밀번호 확인
 			const { data: userData } = await supabase.auth.getUser();
 			if (!userData.user?.email) {
-				setFeedback({
-					type: "error",
-					message:
+				fail(
+					new Error(
 						"The current password you entered is incorrect. Please try again.",
-				});
+					),
+				);
+				setIsPending(false);
 				return;
 			}
 
@@ -74,11 +94,12 @@ export const ChangePasswordForm = () => {
 			});
 
 			if (signInError) {
-				setFeedback({
-					type: "error",
-					message:
+				fail(
+					new Error(
 						"The current password you entered is incorrect. Please try again.",
-				});
+					),
+				);
+				setIsPending(false);
 				return;
 			}
 
@@ -88,42 +109,47 @@ export const ChangePasswordForm = () => {
 			});
 
 			if (updateError) {
-				setFeedback({
-					type: "error",
-					message:
-						updateError.message ||
-						"An error occurred while sending the link. Please try again.",
-				});
+				fail(
+					updateError,
+					"An error occurred while sending the link. Please try again.",
+				);
+				setIsPending(false);
 				return;
 			}
 
-			setFeedback({
-				type: "success",
-				message: "Your password has been successfully changed.",
-			});
-
-			// 완료 후 폼 초기화
+			// 완료 후 폼 초기화 및 성공 메시지
 			form.reset();
-
-			// 2초 후 프로필 페이지로 이동
-			setTimeout(() => {
-				router.push("/user/profile");
-			}, 2000);
-		} catch (error) {
-			const message =
-				error instanceof Error
-					? error.message
-					: "An error occurred while sending the link. Please try again";
-			setFeedback({
-				type: "error",
-				message,
+			succeed("Your password has been successfully changed.", () => {
+				// 2초 후 프로필 페이지로 이동
+				setTimeout(() => {
+					router.back();
+				}, 2000);
 			});
+			setIsPending(false);
+		} catch (error) {
+			fail(
+				error,
+				"An error occurred while sending the link. Please try again.",
+			);
+			setIsPending(false);
+		}
+	};
+
+	const onInvalid = () => {
+		const { currentPassword, newPassword, confirmNewPassword } =
+			form.getValues();
+		if (
+			!currentPassword?.trim() ||
+			!newPassword?.trim() ||
+			!confirmNewPassword?.trim()
+		) {
+			fail(new Error("Please fill in all required fields."));
 		}
 	};
 
 	return (
 		<Form {...form}>
-			<form onSubmit={handleSubmit(onSubmit)}>
+			<form onSubmit={handleSubmit(onValid, onInvalid)}>
 				<CardWrapper>
 					<CardHeader>
 						<CardTitle>Change Password</CardTitle>
@@ -138,12 +164,12 @@ export const ChangePasswordForm = () => {
 							control={control}
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Current Password</FormLabel>
+									<FormLabel>Current Password *</FormLabel>
 									<FormControl>
 										<Input
 											{...field}
 											type="password"
-											disabled={isSubmitting}
+											disabled={isLoading}
 											placeholder=""
 										/>
 									</FormControl>
@@ -157,15 +183,19 @@ export const ChangePasswordForm = () => {
 							control={control}
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>New Password</FormLabel>
+									<FormLabel>New Password *</FormLabel>
 									<FormControl>
 										<Input
 											{...field}
 											type="password"
-											disabled={isSubmitting}
+											disabled={isLoading}
 											placeholder=""
 										/>
 									</FormControl>
+									<FormDescription>
+										{isPasswordValid && <IconCheck />}
+										Must be at least 8 characters and include a number.
+									</FormDescription>
 									<FormMessage />
 								</FormItem>
 							)}
@@ -181,7 +211,7 @@ export const ChangePasswordForm = () => {
 										<Input
 											{...field}
 											type="password"
-											disabled={isSubmitting}
+											disabled={isLoading}
 											placeholder=""
 										/>
 									</FormControl>
@@ -189,33 +219,24 @@ export const ChangePasswordForm = () => {
 								</FormItem>
 							)}
 						/>
-
-						{feedback && (
-							<p
-								className={`mt-4 text-sm ${
-									feedback.type === "success"
-										? "text-green-600 dark:text-green-400"
-										: "text-red-600 dark:text-red-400"
-								}`}
-							>
-								{feedback.message}
-							</p>
-						)}
 					</CardContent>
 
 					<ButtonBox>
 						<Button
 							type="button"
-							variant="outline"
-							asChild
-							disabled={isSubmitting}
+							variant="secondary"
+							disabled={isLoading}
+							onClick={() => router.back()}
+							className="flex-1"
 						>
-							<Link href="/user/profile">Cancel</Link>
+							Cancel
 						</Button>
 						<Button
 							type="submit"
-							disabled={isSubmitting}
-							isLoading={isSubmitting}
+							variant="primary"
+							disabled={!isFormValid}
+							isLoading={isLoading}
+							className="flex-1"
 						>
 							Change Password
 						</Button>
@@ -225,4 +246,3 @@ export const ChangePasswordForm = () => {
 		</Form>
 	);
 };
-

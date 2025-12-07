@@ -1,4 +1,9 @@
-export { ProductsEnterpriseBenchmarks } from "./ProductsEnterpriseBenchmarks";
-export { ProductsEnterpriseComparison } from "./ProductsEnterpriseComparison";
+export { ProductsEnterpriseBenchmarksChwbl } from "./ProductsEnterpriseBenchmarksChwbl";
+export { ProductsEnterpriseBenchmarksHead } from "./ProductsEnterpriseBenchmarksHead";
+export { ProductsEnterpriseBenchmarksIncluster } from "./ProductsEnterpriseBenchmarksIncluster";
+export { ProductsEnterpriseBenchmarksIngress } from "./ProductsEnterpriseBenchmarksIngress";
+export { ProductsEnterpriseComparisonHead } from "./ProductsEnterpriseComparisonHead";
+export { ProductsEnterpriseComparisonTable } from "./ProductsEnterpriseComparisonTable";
+export { ProductsEnterpriseIncluded } from "./ProductsEnterpriseIncluded";
 export { ProductsEnterpriseIntro } from "./ProductsEnterpriseIntro";
 export { ProductsEnterpriseProduction } from "./ProductsEnterpriseProduction";

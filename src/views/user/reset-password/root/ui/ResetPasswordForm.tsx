@@ -94,7 +94,7 @@ export const ResetPasswordForm = () => {
 	}
 
 	const onSubmit = (values: ResetPasswordFormValues) => {
-		console.log("🚀 ~ onSubmit ~ values:", values);
+		console.info("🚀 ~ onSubmit ~ values:", values);
 		reset();
 
 		resetMutate(values);

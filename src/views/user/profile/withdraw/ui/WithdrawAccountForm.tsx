@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { useActionStatus } from "@/shared/lib/useActionStatus";
 import { useSupabaseClient } from "@/shared/supabase";
 import { Button, ButtonBox } from "@/shared/ui/shadcn/button";
 import {
@@ -34,7 +34,9 @@ import {
 export const WithdrawAccountForm = () => {
 	const router = useRouter();
 	const supabase = useSupabaseClient();
-	const [isSubmitting, setIsSubmitting] = useState(false);
+
+	const { reset, fail, succeed } = useActionStatus();
+	const [isPending, setIsPending] = useState(false);
 
 	const form = useForm<WithdrawAccountFormValues>({
 		mode: "onBlur",
@@ -47,17 +49,20 @@ export const WithdrawAccountForm = () => {
 	const {
 		control,
 		handleSubmit,
-		formState: { errors },
+		formState: { isSubmitting, isValid, errors },
+		watch,
 	} = form;
 
-	const onSubmit = async (values: WithdrawAccountFormValues) => {
-		// 비밀번호 입력 확인
-		if (!values.confirmPassword) {
-			alert("Please fill in all required fields.");
-			return;
-		}
+	const isLoading = isSubmitting || isPending;
 
-		setIsSubmitting(true);
+	const confirmPassword = watch("confirmPassword");
+
+	const isFormValid =
+		!!confirmPassword?.trim() && isValid && Object.keys(errors).length === 0;
+
+	const onValid = async (values: WithdrawAccountFormValues) => {
+		reset();
+		setIsPending(true);
 
 		try {
 			// 현재 사용자 이메일 가져오기
@@ -65,8 +70,12 @@ export const WithdrawAccountForm = () => {
 				await supabase.auth.getUser();
 
 			if (userError || !userData.user?.email) {
-				alert("An error occurred while sending the link. Please try again.");
-				setIsSubmitting(false);
+				fail(
+					new Error(
+						"An error occurred while sending the link. Please try again.",
+					),
+				);
+				setIsPending(false);
 				return;
 			}
 
@@ -77,10 +86,12 @@ export const WithdrawAccountForm = () => {
 			});
 
 			if (signInError) {
-				alert(
-					"The password you entered is incorrect. Please check and try again.",
+				fail(
+					new Error(
+						"The password you entered is incorrect. Please check and try again.",
+					),
 				);
-				setIsSubmitting(false);
+				setIsPending(false);
 				return;
 			}
 
@@ -97,33 +108,44 @@ export const WithdrawAccountForm = () => {
 				const errorMessage =
 					result.error ||
 					"An error occurred while sending the link. Please try again.";
-				alert(errorMessage);
-				setIsSubmitting(false);
+				fail(new Error(errorMessage));
+				setIsPending(false);
 				return;
 			}
 
-			// 완료 메시지
-			alert("Account withdrawal complete. Thank you for using NetLOX");
-
-			// 로그아웃 처리 및 홈으로 이동
-			await supabase.auth.signOut();
-			router.push("/");
+			// 완료 메시지 및 로그아웃 처리
+			succeed("Account withdrawal complete. Thank you for using NetLOX", () => {
+				supabase.auth.signOut().then(() => {
+					router.push("/");
+				});
+			});
+			setIsPending(false);
 		} catch (error) {
-			alert("An error occurred while sending the link. Please try again.");
-			setIsSubmitting(false);
+			fail(
+				error,
+				"An error occurred while sending the link. Please try again.",
+			);
+			setIsPending(false);
+		}
+	};
+
+	const onInvalid = () => {
+		const { confirmPassword } = form.getValues();
+		if (!confirmPassword?.trim()) {
+			fail(new Error("Please fill in all required fields."));
 		}
 	};
 
 	return (
 		<Form {...form}>
-			<form onSubmit={handleSubmit(onSubmit)}>
+			<form onSubmit={handleSubmit(onValid, onInvalid)}>
 				<CardWrapper>
 					<CardHeader>
-						<CardTitle>Withdraw Account</CardTitle>
-						<CardDescription>
-							Do you want to proceed with account withdrawal?
-						</CardDescription>
-						<CardDescription>
+						<CardTitle>
+							Do you want to proceed <br />
+							with account withdrawal?
+						</CardTitle>
+						<CardDescription className="!text-alert">
 							All account information will be permanently deleted and cannot be
 							recovered upon withdrawal. Please enter your password to continue.
 						</CardDescription>
@@ -135,12 +157,12 @@ export const WithdrawAccountForm = () => {
 							control={control}
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Confirm Password</FormLabel>
+									<FormLabel>Confirm Password *</FormLabel>
 									<FormControl>
 										<Input
 											{...field}
 											type="password"
-											disabled={isSubmitting}
+											disabled={isLoading}
 											placeholder="Enter your password to confirm"
 										/>
 									</FormControl>
@@ -153,18 +175,19 @@ export const WithdrawAccountForm = () => {
 					<ButtonBox>
 						<Button
 							type="button"
-							variant="outline"
-							asChild
-							disabled={isSubmitting}
+							variant="secondary"
+							disabled={isLoading}
+							onClick={() => router.back()}
+							className="flex-1"
 						>
-							<Link href="/user/profile">Cancel</Link>
+							Cancel
 						</Button>
 						<Button
 							type="submit"
-							variant="outline"
-							className="border-destructive text-destructive hover:text-destructive"
-							disabled={isSubmitting}
-							isLoading={isSubmitting}
+							variant="primary"
+							disabled={!isFormValid}
+							isLoading={isLoading}
+							className="flex-1"
 						>
 							Withdraw Account
 						</Button>
@@ -174,4 +197,3 @@ export const WithdrawAccountForm = () => {
 		</Form>
 	);
 };
-

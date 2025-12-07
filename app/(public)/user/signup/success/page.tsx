@@ -4,9 +4,8 @@ import { SignUpSuccessPanel } from "@/views/user/sign-up/success/ui/SignUpSucces
 
 export default function UserSignupSuccessPage() {
 	return (
-		<Card className={cardMaxWidth}>
+		<Card variant="glass" className={cardMaxWidth}>
 			<SignUpSuccessPanel />
 		</Card>
 	);
 }
-

@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { DIALOGS, ROUTES } from "@/shared/config";
+import { isValidPassword } from "@/shared/lib/password";
 import { useActionStatus } from "@/shared/lib/useActionStatus";
 import { gridTwoCol } from "@/shared/styles/snippets";
 import { IconCheck } from "@/shared/ui/icon";
@@ -85,11 +86,7 @@ export const SignUpForm = () => {
 	const isLoading = isSubmitting || isPending;
 	const isTermsChecked = form.watch("terms");
 	const passwordValue = form.watch("password");
-	const isPasswordValid =
-		(typeof passwordValue === "string" &&
-			passwordValue.length >= 8 &&
-			/\d/.test(passwordValue)) ||
-		false;
+	const isPasswordValid = isValidPassword(passwordValue);
 
 	const onSubmit = (values: SignUpFormValues) => {
 		reset();

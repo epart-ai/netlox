@@ -38,7 +38,7 @@ export const SignUpInformation = () => {
 				}
 				align="left"
 			/>
-			<div className="mt-20">
+			<div className="mt-10 lg:mt-20">
 				<h4 className="title-24 lg:title-40">Join the NetLOX Platform</h4>
 				<div className={cn("mt-10", cardWrapperSpace)}>
 					{data.map((item) => (

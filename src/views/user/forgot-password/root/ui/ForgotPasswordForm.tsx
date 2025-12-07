@@ -54,7 +54,7 @@ export function ForgotPasswordForm() {
 
 	const { mutate: forgotMutate, isPending } = useForgotPasswordMutation({
 		onSuccess: (_data: ForgotPasswordData) => {
-			console.log("🚀 ~ ForgotPasswordForm ~ _data:", _data);
+			console.info("🚀 ~ ForgotPasswordForm ~ _data:", _data);
 			succeed();
 		},
 		onError: (err: Error) => {

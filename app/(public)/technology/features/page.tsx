@@ -8,10 +8,10 @@ export default function TechnologyFeaturesPage() {
 	return (
 		<>
 			<TechnologyFeatureHead />
-			<div className="mt-20">
+			<div className="mt-10 lg:mt-20">
 				<TechnologyFeaturePlatform />
 			</div>
-			<div className="mt-[100px]">
+			<div className="mt-14 lg:mt-[100px]">
 				<TechnologyFeatureIntro />
 			</div>
 		</>

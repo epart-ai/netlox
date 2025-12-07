@@ -4,7 +4,7 @@ import { SignUpVerificationPanel } from "@/views/user/sign-up/verification/ui/Si
 
 export default function UserSignupSuccessPage() {
 	return (
-		<Card className={cardMaxWidth}>
+		<Card variant="glass" className={cardMaxWidth}>
 			<SignUpVerificationPanel />
 		</Card>
 	);

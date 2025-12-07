@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { imageRounded } from "@/shared/styles/snippets";
 import { DataCard, DataList, Reveal } from "@/shared/ui/display";
 
 import { cardWrapper, imageWrapper, layoutContainer } from "../styles/snippets";
@@ -81,7 +82,7 @@ export const Reference2 = () => {
 					<Image
 						src="/images/trust/img_success-story_detail2.jpg"
 						alt="Success Story Content 1"
-						className="size-full overflow-hidden rounded-2xl object-cover"
+						className={imageRounded}
 						width={500}
 						height={500}
 					/>

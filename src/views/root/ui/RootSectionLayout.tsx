@@ -22,7 +22,7 @@ export const RootSectionLayout = ({
 	return (
 		<section
 			className={cn(
-				"relative flex items-center justify-center py-15 md:py-25 lg:h-[100vh] lg:py-0",
+				"relative flex items-center justify-center py-15 md:py-25 lg:h-[100dvh] lg:py-0",
 				className,
 			)}
 		>

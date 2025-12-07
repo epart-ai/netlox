@@ -8,7 +8,7 @@ export default function ResourceBlogPage({ searchParams }: PageProps) {
 	return (
 		<>
 			<ResourceBlogHead />
-			<div className="mt-20">
+			<div className="mt-10 lg:mt-20">
 				<ResourceBlogPost searchParams={searchParams} />
 			</div>
 		</>

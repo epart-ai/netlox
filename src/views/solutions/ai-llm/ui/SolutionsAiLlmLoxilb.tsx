@@ -29,7 +29,7 @@ export const SolutionsAiLlmLoxilb = ({ themeColor }: Props) => {
 	];
 
 	return (
-		<div className="mt-[108px]">
+		<div className="mt-15 lg:mt-[108px]">
 			<Reveal>
 				<h3 className={sectionTitle}>The LoxiLB Solution</h3>
 				<DataCard data={solutionCardData} colors={themeColor} />

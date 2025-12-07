@@ -29,7 +29,7 @@ export const SolutionsEdgeComputingChallenge = ({ themeColor }: Props) => {
 	];
 
 	return (
-		<div className="mt-20">
+		<div className="mt-10 lg:mt-20">
 			<Reveal>
 				<h3 className={sectionTitle}>The Challenge: The Edge</h3>
 				<DataCard data={challengeCardData} colors={themeColor} />

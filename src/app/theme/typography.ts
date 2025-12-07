@@ -2,26 +2,6 @@
 import darkColor from "./colors";
 
 const typography = {
-	subTitle: {
-		"18": {
-			fontFamily: "Outfit Variable",
-			fontSize: "18px",
-			fontWeight: "700",
-			color: darkColor.blue["20"],
-		},
-		"16": {
-			fontFamily: "Outfit Variable",
-			fontSize: "16px",
-			fontWeight: "700",
-			color: darkColor.blue["20"],
-		},
-		"14": {
-			fontFamily: "Outfit Variable",
-			fontSize: "14px",
-			fontWeight: "700",
-			color: darkColor.blue["20"],
-		},
-	},
 	title: {
 		"80": {
 			fontFamily: "Outfit Variable",
@@ -76,6 +56,11 @@ const typography = {
 		"14": {
 			fontFamily: "Outfit Variable",
 			fontSize: "14px",
+			fontWeight: "700",
+		},
+		"12": {
+			fontFamily: "Outfit Variable",
+			fontSize: "12px",
 			fontWeight: "700",
 		},
 	},

@@ -3,9 +3,9 @@ import { SignUpForm, SignUpInformation } from "@/views/user/sign-up/root/ui";
 
 export default function UserSignupPage() {
 	return (
-		<div className="grid grid-cols-2 gap-[7.03125vw]">
+		<div className="grid gap-[7.03125vw] lg:grid-cols-2">
 			<SignUpInformation />
-			<Card>
+			<Card variant="glass">
 				<SignUpForm />
 			</Card>
 		</div>

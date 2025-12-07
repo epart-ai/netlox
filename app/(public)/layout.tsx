@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 	description: "Next.js 14 App with modern stack",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 	dialog,
 }: Readonly<{
@@ -27,7 +27,7 @@ export default function RootLayout({
 		<html lang="ko" suppressHydrationWarning>
 			<body
 				suppressHydrationWarning
-				className={`bg-blue-100 leading-[normal] text-white antialiased`}
+				className="bg-blue-100 leading-[normal] text-white antialiased"
 			>
 				<AppProviders>
 					<Header />
