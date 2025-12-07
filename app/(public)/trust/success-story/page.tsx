@@ -16,11 +16,9 @@ export default function TrustOverviewPage() {
 	return (
 		<div>
 			<TrustSuccessStoryHashScroll />
-			<div className="mt-14 lg:mt-[100px]">
-				<TrustSuccessStoryHead />
-				<div className="mt-10 lg:mt-20">
-					<TrustSuccessStoryHighlight />
-				</div>
+			<TrustSuccessStoryHead />
+			<div className="mt-10 lg:mt-20">
+				<TrustSuccessStoryHighlight />
 			</div>
 			<div id="trust-success-stories" className={paddingTopClass}>
 				<TrustSuccessStoryStoriesHead />

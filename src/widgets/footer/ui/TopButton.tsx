@@ -8,6 +8,7 @@ export default function TopButton() {
 			<button
 				type="button"
 				className="absolute bottom-3 right-2 flex size-9 items-center justify-center rounded-lg bg-blue-40 text-white lg:bottom-4 lg:right-4 lg:size-12"
+				style={{ fontFamily: "var(--font-pretendard-bold)" }}
 				onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
 			>
 				↑

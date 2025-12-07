@@ -15,9 +15,9 @@ export const gradientBackgroundBlue =
 	"bg-gradient-to-b from-blue-60 to-blue-40";
 
 export const beforeBackgroundImage =
-	"relative  before:bg-center before:bg-no-repeat before:content-[''] before:absolute before:top-[0] before:pointer-events-none before:inset-0 before:size-full";
+	"relative before:bg-cover before:bg-center before:bg-no-repeat before:content-[''] before:absolute before:top-[0] before:pointer-events-none before:inset-0 before:size-full";
 export const pageBackground =
-	"before:h-screen before:bg-[url('/images/common/bg_content.png')] before:mix-blend-overlay before:top-0 before:translate-y-[-15vw]";
+	"before:h-screen before:bg-[url('/images/common/bg_content.png')] before:mix-blend-overlay before:top-0 before:translate-y-[-8vw]";
 
 // 타이포/여백 패턴
 export const headingEyebrow = "block title-16 mb-1.5 lg:title-18 lg:mb-3";
@@ -33,7 +33,7 @@ export const gridTwoCol = "grid grid-cols-2 gap-4";
 
 // 아이콘 배지
 export const iconBadgeLarge =
-	"flex size-15 shrink-0 items-center justify-center rounded-md bg-blue-20/15 p-3.5";
+	"flex size-15 shrink-0 items-center justify-center rounded-xl bg-blue-20/15 p-3.5";
 export const logoWidth = "w-[120px] md:w-[150px] lg:w-[180px]";
 export const imageRounded =
 	"size-full overflow-hidden rounded-2xl object-cover";

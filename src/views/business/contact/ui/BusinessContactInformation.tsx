@@ -86,7 +86,9 @@ export const BusinessContactInformation = () => {
 					data={[
 						<>
 							<span className="opacity-1 title-16">General</span> :
-							<Link href="mailto:info@netlox.io">info@netlox.io</Link>
+							<Link href="mailto:info@netlox.io" className="paragraph-16">
+								info@netlox.io
+							</Link>
 						</>,
 					]}
 				/>

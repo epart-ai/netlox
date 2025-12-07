@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { Suspense } from "react";
 
 import "@fontsource-variable/outfit";
@@ -10,6 +11,13 @@ import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 
 import { AppProviders } from "../providers";
+
+const pretendardBold = localFont({
+	src: "../../node_modules/@fontsource/pretendard/files/pretendard-latin-700-normal.woff2",
+	variable: "--font-pretendard-bold",
+	weight: "700",
+	display: "swap",
+});
 
 export const metadata: Metadata = {
 	title: "Netlox",
@@ -27,7 +35,7 @@ export default async function RootLayout({
 		<html lang="ko" suppressHydrationWarning>
 			<body
 				suppressHydrationWarning
-				className="bg-blue-100 leading-[normal] text-white antialiased"
+				className={`${pretendardBold.variable} bg-blue-100 leading-[normal] text-white antialiased`}
 			>
 				<AppProviders>
 					<Header />

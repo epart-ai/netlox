@@ -9,7 +9,7 @@ interface Props {
 export const ProductsOpenSourceCard = ({ themeColor }: Props) => {
 	const cardData = [
 		{
-			title: "Business Hours Support",
+			title: "eBPF Data Plan",
 			description: (
 				<>
 					Maximum performance with

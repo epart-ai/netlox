@@ -22,7 +22,7 @@ export const TrustSuccessStoryUseCaseIndustry = ({ themeColor }: Props) => {
 			),
 		},
 		{
-			title: "Technology & SaaS",
+			title: "Manufacturing & IoT",
 			icon: "/images/trust/icon_success-story_use-case2.svg",
 			footer: (
 				<DataList
@@ -36,7 +36,7 @@ export const TrustSuccessStoryUseCaseIndustry = ({ themeColor }: Props) => {
 			),
 		},
 		{
-			title: "Technology & SaaS",
+			title: "Financial & Telco",
 			icon: "/images/trust/icon_success-story_use-case3.svg",
 			footer: (
 				<DataList

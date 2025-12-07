@@ -30,7 +30,7 @@ export const TechnologyPerformanceLoadBalancer = () => {
 
 	return (
 		<Reveal>
-			<h3 className={sectionTitle}>Core Features</h3>
+			<h3 className={sectionTitle}>Kubernetes Load Balancer Comparison</h3>
 			<DataTable
 				data={data}
 				columns={technologyPerformanceLoadBalancerColumns}

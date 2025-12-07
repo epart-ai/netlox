@@ -1,15 +1,10 @@
 import { ROUTES } from "@/shared/config/routes";
-import type { ThemeColor } from "@/shared/model/types";
 import { cardListGrid } from "@/shared/styles/snippets";
 import { Reveal } from "@/shared/ui/display";
 import { CardList } from "@/shared/ui/shadcn/card";
 import { PostCard } from "@/views/_shared/ui";
 
-interface Props {
-	themeColor?: ThemeColor;
-}
-
-export const TrustSuccessStoryStoriesInnovators = ({ themeColor }: Props) => {
+export const TrustSuccessStoryStoriesInnovators = () => {
 	const postData = [
 		{
 			id: 1,
@@ -42,7 +37,7 @@ export const TrustSuccessStoryStoriesInnovators = ({ themeColor }: Props) => {
 
 	return (
 		<Reveal>
-			<CardList colors={themeColor} className={cardListGrid}>
+			<CardList colors="blue" className={cardListGrid}>
 				{postData.map((post) => (
 					<PostCard
 						key={post.id}

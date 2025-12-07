@@ -9,33 +9,34 @@ interface Props {
 export const ProductsSaasCard = ({ themeColor }: Props) => {
 	const cardData = [
 		{
-			title: "eBPF Data Plan",
+			title: "5-Minute Deployment",
 			description: (
 				<>
-					Maximum performance with
+					Get up and running instantly
 					<br />
-					kernel-level packet processing.
+					via AWS Marketplace.
 				</>
 			),
 			icon: "/images/products/icon_saas_feature1.svg",
 		},
 		{
-			title: "Kubernetes Integration",
+			title: "Automatic Scaling",
 			description: (
 				<>
-					Native support for kube-loxilb,
+					Automatically scales
 					<br />
-					Service type LB, and more.
+					with your workload demands.
 				</>
 			),
 			icon: "/images/products/icon_saas_feature2.svg",
 		},
 		{
-			title: "Community Support",
+			title: "AWS Native Billing",
 			description: (
 				<>
-					Get help and contribute via CNCF Slack <br />
-					and GitHub Issues.
+					All charges are integrated directly
+					<br />
+					into your AWS bill.
 				</>
 			),
 			icon: "/images/products/icon_saas_feature3.svg",

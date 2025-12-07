@@ -292,6 +292,8 @@ function wrapperComponentPlugin(api: PluginAPI) {
 	const { addComponents } = api;
 	addComponents({
 		".wrapper": {
+			position: "relative",
+			zIndex: "1",
 			width: "100%",
 			marginLeft: "auto",
 			marginRight: "auto",

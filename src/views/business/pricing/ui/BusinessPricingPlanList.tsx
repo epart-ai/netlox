@@ -134,7 +134,7 @@ export const BusinessPricingPlanList = () => {
 									</div>
 									{plan.price}
 								</CardTitle>
-								<p className="paragraph-16 mt-3">{plan.description}</p>
+								<p className="paragraph-16 !mt-3">{plan.description}</p>
 							</CardHeader>
 							{plan.button}
 						</CardWrapper>
