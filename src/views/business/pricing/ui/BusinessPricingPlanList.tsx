@@ -52,7 +52,7 @@ export const BusinessPricingPlanList = () => {
 					<Link
 						href={{
 							pathname: ROUTES.BUSINESS_CONTACT,
-							query: { help_options: "technical" },
+							query: { help_options: "pricing" },
 						}}
 					>
 						Request Quote
@@ -70,7 +70,7 @@ export const BusinessPricingPlanList = () => {
 					<Link
 						href={{
 							pathname: ROUTES.BUSINESS_CONTACT,
-							query: { help_options: "technical" },
+							query: { help_options: "pricing" },
 						}}
 					>
 						Contact Sales

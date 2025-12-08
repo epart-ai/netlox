@@ -68,6 +68,7 @@ export const Header = () => {
 		if (prevPathRef.current !== pathname) {
 			if (isMobileNavOpen) setIsMobileNavOpen(false);
 			prevPathRef.current = pathname;
+			window.scrollTo(0, 0);
 		}
 	}, [pathname, isMobileNavOpen]);
 
