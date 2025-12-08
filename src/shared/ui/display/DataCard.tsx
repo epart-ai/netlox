@@ -20,7 +20,7 @@ import {
 const dataCardVariant = cva("", {
 	variants: {
 		colors: {
-			blue: "[&_.icon-box]:bg-blue-40/25",
+			blue: "[&_.icon-box]:bg-blue-40/15",
 			green: "[&_.icon-box]:bg-green-40/15",
 			purple: "[&_.icon-box]:bg-purple-40/15",
 			orange: "[&_.icon-box]:bg-orange-40/15",

@@ -67,6 +67,11 @@
 	body {
 		font-family: "Outfit Variable", sans-serif;
 	}
+
+	/* 스크롤 락 시 헤더 레이아웃 시프트 방지 */
+	body[data-scroll-locked] header {
+		padding-right: var(--removed-body-scroll-bar-size);
+	}
 }
 
 /* Breakpoint overrides for header height */
