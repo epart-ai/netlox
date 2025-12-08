@@ -67,6 +67,13 @@
 	body {
 		font-family: "Outfit Variable", sans-serif;
 	}
+
+	body[data-scroll-locked][data-scroll-locked] {
+		overflow: visible !important;
+	}
+	body[data-scroll-locked] {
+		margin-right: 0 !important;
+	}
 }
 
 /* Breakpoint overrides for header height */

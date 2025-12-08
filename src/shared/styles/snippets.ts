@@ -33,7 +33,7 @@ export const gridTwoCol = "grid grid-cols-2 gap-4";
 
 // 아이콘 배지
 export const iconBadgeLarge =
-	"flex size-15 shrink-0 items-center justify-center rounded-xl bg-blue-20/15 p-3.5";
+	"flex size-15 shrink-0 items-center justify-center rounded-xl bg-blue-40/15 p-3.5";
 export const logoWidth = "w-[120px] md:w-[150px] lg:w-[180px]";
 export const imageRounded =
 	"size-full overflow-hidden rounded-2xl object-cover";
