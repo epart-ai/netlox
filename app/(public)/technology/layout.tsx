@@ -1,4 +1,4 @@
-import { ROUTES } from "@/shared/config/routes";
+import { NAVIGATION_LIST } from "@/shared/config";
 import { PageHero, PageTabs } from "@/views/_shared/ui";
 
 export default function TechnologyLayout({
@@ -6,18 +6,9 @@ export default function TechnologyLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const tabs = [
-		{
-			label: "Features",
-			value: "features",
-			href: ROUTES.TECHNOLOGY_FEATURES,
-		},
-		{
-			label: "Performance",
-			value: "performance",
-			href: ROUTES.TECHNOLOGY_PERFORMANCE,
-		},
-	];
+	const tabs =
+		NAVIGATION_LIST.find((item) => item.value === "technology")?.children ?? [];
+
 	return (
 		<>
 			<PageHero

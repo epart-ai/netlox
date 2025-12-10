@@ -70,7 +70,7 @@ export const DataCard = ({
 										width={44}
 										height={44}
 										className={cn(
-											"iconImage size-full",
+											"iconImage h-auto w-full",
 											!item.disabledIconInvert &&
 												"[.card:hover_&]:brightness-0 [.card:hover_&]:invert [.card:hover_&]:filter",
 										)}

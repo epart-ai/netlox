@@ -34,7 +34,6 @@ export const TechnologyPerformanceLoadBalancer = () => {
 			<DataTable
 				data={data}
 				columns={technologyPerformanceLoadBalancerColumns}
-				tableClassName="min-w-[650px]"
 				orientation="vertical"
 			/>
 		</Reveal>

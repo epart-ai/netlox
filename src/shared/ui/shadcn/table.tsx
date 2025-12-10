@@ -133,7 +133,7 @@ const TableCell = React.forwardRef<HTMLDivElement, CellDivProps>(
 			ref={ref}
 			role="cell"
 			className={cn(
-				"t-table-cell group-data-[orientation=vertical]/table: whitespace-nowrap px-1.5 py-2.5 font-medium group-data-[orientation=horizontal]/table:table-cell lg:px-3 lg:py-4.5",
+				"t-table-cell group-data-[orientation=vertical]/table: whitespace-nowrap px-3 py-2.5 font-medium group-data-[orientation=horizontal]/table:table-cell lg:py-4.5",
 				// vertical 모드에서는 첫 번째를 제외한 셀에 before로 상단 라인 추가
 				"relative group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:absolute group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:left-0 group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:right-0 group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:top-0 group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:h-px group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:w-[400%] group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:bg-white/10 group-data-[orientation=vertical]/table:[&:nth-child(n+3)]:before:content-['']",
 				className,

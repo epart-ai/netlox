@@ -1,11 +1,7 @@
 import Image from "next/image";
 
 import { cn } from "@/shared/lib/utils";
-import {
-	flexRowBetweenMd,
-	halfWidthMd,
-	imageRounded,
-} from "@/shared/styles/snippets";
+import { flexRowBetweenMd, imageRounded } from "@/shared/styles/snippets";
 import { DataList, Reveal } from "@/shared/ui/display";
 import { PageHead } from "@/views/_shared/ui/PageHead";
 
@@ -26,7 +22,7 @@ export const BusinessPricingDetailList = () => {
 				"Advanced web dashboard",
 				"High availability configuration",
 			],
-			image: "/images/business/img_pricing-detail_enterprise.jpg",
+			image: "/images/business/img_pricing-detail_enterprise.png",
 		},
 		{
 			eyebrow: "Premium Edition",
@@ -43,7 +39,7 @@ export const BusinessPricingDetailList = () => {
 				"Named technical account manager",
 				"Custom feature development",
 			],
-			image: "/images/business/img_pricing-detail_premium.jpg",
+			image: "/images/business/img_pricing-detail_premium.png",
 		},
 		{
 			eyebrow: "SaaS Edition",
@@ -68,7 +64,7 @@ export const BusinessPricingDetailList = () => {
 			{detailList.map((item) => (
 				<Reveal key={item.title}>
 					<div className={flexRowBetweenMd}>
-						<div className={halfWidthMd}>
+						<div className="md:w-[58.57%]">
 							<PageHead
 								align="left"
 								eyebrow={item.eyebrow}
@@ -80,7 +76,7 @@ export const BusinessPricingDetailList = () => {
 								data={item.dataList}
 							/>
 						</div>
-						<div className={halfWidthMd}>
+						<div className="md:w-[38.57%]">
 							<Image
 								src={item.image}
 								alt={item.title}

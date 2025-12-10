@@ -1,4 +1,4 @@
-import { ROUTES } from "@/shared/config/routes";
+import { NAVIGATION_LIST } from "@/shared/config";
 import { PageHero, PageTabs } from "@/views/_shared/ui";
 
 export default function ResourceLayout({
@@ -6,23 +6,9 @@ export default function ResourceLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const tabs = [
-		{
-			label: "Documentation",
-			value: "documentation",
-			href: ROUTES.RESOURCE_DOCUMENTATION,
-		},
-		{
-			label: "Blog",
-			value: "blog",
-			href: ROUTES.RESOURCE_BLOG,
-		},
-		{
-			label: "News",
-			value: "news",
-			href: ROUTES.RESOURCE_NEWS,
-		},
-	];
+	const tabs =
+		NAVIGATION_LIST.find((item) => item.value === "resource")?.children ?? [];
+
 	return (
 		<>
 			<PageHero

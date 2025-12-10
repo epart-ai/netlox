@@ -28,14 +28,14 @@ export const TrustSuccessStoryValidationEcosystem = ({ themeColor }: Props) => {
 			icon: "/images/trust/icon_success-story_validation2.svg",
 		},
 		{
-			title: "AWS Advanced Partner",
+			title: "eBPF Official Project",
 			description: (
 				<>
 					Certified and integrated with major cloud <br />
 					and technology providers.
 				</>
 			),
-			icon: "/images/trust/icon_success-story_validation3.svg",
+			icon: "/images/trust/icon_success-story_validation3.avif",
 		},
 	];
 

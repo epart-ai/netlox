@@ -79,19 +79,36 @@ export const BusinessContactInformation = () => {
 					))}
 				</div>
 			</div>
-			<div className="mt-10 lg:mt-20">
+			<div className="mt-10 space-y-6 lg:mt-20 lg:space-y-10">
 				<h4 className="title-24 lg:title-40">Headquarters</h4>
 				<DataList
-					className="mt-6 lg:mt-10"
 					data={[
 						<>
-							<span className="opacity-1 title-16">General</span> :
+							<span className="opacity-1 title-16">Address</span> :{" "}
+							<Link href="mailto:info@netlox.io" className="paragraph-16">
+								Unit 1209, Hybrand, 16 Maeheon-ro, Seocho-gu, Seoul, South Korea
+							</Link>
+						</>,
+						<>
+							<span className="opacity-1 title-16">General</span> :{" "}
 							<Link href="mailto:info@netlox.io" className="paragraph-16">
 								info@netlox.io
 							</Link>
 						</>,
 					]}
 				/>
+				<div className="overflow-hidden rounded-2xl border border-white/25">
+					<iframe
+						title="NetLOX Headquarters Location Map"
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3166.886786422555!2d127.0370136!3d37.4633949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca12a67476b9d%3A0x97d8fbe4061a0530!2s16%20Maeheon-ro%2C%20Seocho%20District%2C%20Seoul!5e0!3m2!1sen!2skr!4v1765376086392!5m2!1sen!2skr"
+						width="100%"
+						height="450"
+						style={{ border: 0 }}
+						allowFullScreen
+						loading="lazy"
+						referrerPolicy="no-referrer-when-downgrade"
+					/>
+				</div>
 			</div>
 		</div>
 	);

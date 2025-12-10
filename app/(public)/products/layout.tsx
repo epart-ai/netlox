@@ -1,4 +1,4 @@
-import { ROUTES } from "@/shared/config/routes";
+import { NAVIGATION_LIST } from "@/shared/config";
 import { PageHero, PageTabs } from "@/views/_shared/ui";
 
 export default function ProductsLayout({
@@ -6,28 +6,9 @@ export default function ProductsLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const tabs = [
-		{
-			label: "Enterprise",
-			value: "enterprise",
-			href: ROUTES.PRODUCTS_ENTERPRISE,
-		},
-		{
-			label: "Premium",
-			value: "premium",
-			href: ROUTES.PRODUCTS_PREMIUM,
-		},
-		{
-			label: "SaaS",
-			value: "saas",
-			href: ROUTES.PRODUCTS_SAAS,
-		},
-		{
-			label: "Open Source",
-			value: "openSource",
-			href: ROUTES.PRODUCTS_OPEN_SOURCE,
-		},
-	];
+	const tabs =
+		NAVIGATION_LIST.find((item) => item.value === "product")?.children ?? [];
+
 	return (
 		<>
 			<PageHero
