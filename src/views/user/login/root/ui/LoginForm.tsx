@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -33,6 +34,8 @@ import {
 } from "../model/login.schema";
 
 export function LoginForm() {
+	const router = useRouter();
+	const pathname = usePathname();
 	const { reset, fail } = useActionStatus();
 	const closeDialog = useCloseRouteDialog();
 
@@ -51,7 +54,12 @@ export function LoginForm() {
 	const { mutate: loginMutate, isPending } = useLoginMutation({
 		onSuccess: () => {
 			reset();
-			closeDialog();
+			// 회원가입 페이지에서 로그인 성공 시 홈으로 리다이렉트
+			if (pathname === ROUTES.USER_SIGNUP) {
+				router.push(ROUTES.ROOT);
+			} else {
+				closeDialog();
+			}
 		},
 		onError: (err: Error) => {
 			fail(err, "An error occurred. Please try again.");
