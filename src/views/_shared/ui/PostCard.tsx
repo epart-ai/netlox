@@ -35,7 +35,7 @@ export function PostCard({
 }: PostCardProps) {
 	const cardContent = (
 		<CardWrapper>
-			<div className="aspect-[1.4915254237288136 -m-4 !mb-0 md:-m-6 lg:-m-8">
+			<div className="-m-4 !mb-0 aspect-[1.4915254237288136] md:-m-6 lg:-m-8">
 				{imageUrl ? (
 					<Image
 						src={imageUrl}

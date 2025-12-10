@@ -5,28 +5,28 @@ import { rootReportTableColumns } from "../model/rootReportTableColumns";
 export const RootReportTable = () => {
 	const data = [
 		{
-			loadBalancer: "LoxiLB (eBPF)",
-			throughput: "HIGH (10x vs MetalLB)",
-			connections: "MILLIONS",
-			p99LatencyMs: 0.8,
+			loadBalancer: <span className="text-green-20">LoxiLB (eBPF)</span>,
+			throughput: <span className="text-green-20">HIGH (10x vs MetalLB)</span>,
+			connections: <span className="text-green-20">MILLIONS</span>,
+			p99LatencyMs: <span className="text-green-20">&lt; 1ms</span>,
 		},
 		{
 			loadBalancer: "MetalLB",
 			throughput: "Moderate",
 			connections: "Limited",
-			p99LatencyMs: 7.0,
+			p99LatencyMs: "5-10ms",
 		},
 		{
 			loadBalancer: "HAProxy",
 			throughput: "High",
 			connections: "High",
-			p99LatencyMs: 5.0,
+			p99LatencyMs: "~5ms",
 		},
 		{
 			loadBalancer: "NGINX",
 			throughput: "Moderate",
 			connections: "Limited",
-			p99LatencyMs: 8.0,
+			p99LatencyMs: "~8ms",
 		},
 	];
 
@@ -34,7 +34,6 @@ export const RootReportTable = () => {
 		<DataTable
 			data={data}
 			columns={rootReportTableColumns}
-			tableClassName="min-w-[650px]"
 			orientation="horizontal"
 			selectedRowIndex={0}
 		/>

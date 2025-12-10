@@ -1,4 +1,4 @@
-import { ROUTES } from "@/shared/config/routes";
+import { NAVIGATION_LIST } from "@/shared/config";
 import { PageHero, PageTabs } from "@/views/_shared/ui";
 
 export default function BusinessLayout({
@@ -6,18 +6,8 @@ export default function BusinessLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const tabs = [
-		{
-			label: "Pricing",
-			value: "pricing",
-			href: ROUTES.BUSINESS_PRICING,
-		},
-		{
-			label: "Contact",
-			value: "contact",
-			href: ROUTES.BUSINESS_CONTACT,
-		},
-	];
+	const tabs =
+		NAVIGATION_LIST.find((item) => item.value === "business")?.children ?? [];
 	return (
 		<>
 			<PageHero

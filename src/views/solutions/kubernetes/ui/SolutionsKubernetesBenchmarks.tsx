@@ -35,11 +35,7 @@ export const SolutionsKubernetesBenchmarks = () => {
 	return (
 		<Reveal>
 			<h3 className={sectionTitle}>Verified Benchmarks: LoxiLB vs MetalLB</h3>
-			<DataTable
-				data={data}
-				columns={solutionsKubernetesBenchmarksColumns}
-				tableClassName="min-w-[650px]"
-			/>
+			<DataTable data={data} columns={solutionsKubernetesBenchmarksColumns} />
 		</Reveal>
 	);
 };

@@ -269,7 +269,6 @@ export const BusinessPricingComparisonTable = () => {
 			<DataTable
 				data={tableData}
 				columns={businessPricingComparisonColumns}
-				tableClassName="min-w-[650px]"
 				selectedRowIndex={1}
 				orientation="vertical"
 				className="md:[&_.t-table-body]:flex-none md:[&_.t-table-row-box]:min-w-[200px] [&_.t-table-row]:m-auto [&_.t-table-row]:w-full"
