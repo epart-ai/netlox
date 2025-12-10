@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { ChevronDownIcon } from "lucide-react";
 
-import { ROUTES } from "@/shared/config";
+import { NAVIGATION_LIST } from "@/shared/config";
 import { cn } from "@/shared/lib/utils";
 import { logoWidth } from "@/shared/styles/snippets";
 import { useSupabaseClient } from "@/shared/supabase";
@@ -109,59 +109,6 @@ export const Header = () => {
 		};
 	}, [supabase]);
 
-	const navItems = [
-		{
-			label: "Product",
-			href: ROUTES.PRODUCTS_ENTERPRISE,
-			children: [
-				{ label: "Enterprise", href: ROUTES.PRODUCTS_ENTERPRISE },
-				{ label: "Premium", href: ROUTES.PRODUCTS_PREMIUM },
-				{ label: "SaaS", href: ROUTES.PRODUCTS_SAAS },
-				{ label: "Open Source", href: ROUTES.PRODUCTS_OPEN_SOURCE },
-			],
-		},
-		{
-			label: "Solutions",
-			href: ROUTES.SOLUTIONS_AI_LLM,
-			children: [
-				{ label: "AI & LLM", href: ROUTES.SOLUTIONS_AI_LLM },
-				{ label: "Kubernetes", href: ROUTES.SOLUTIONS_KUBERNETES },
-				{ label: "5G Telco", href: ROUTES.SOLUTIONS_5G_TELCO },
-				{ label: "Edge Computing", href: ROUTES.SOLUTIONS_EDGE_COMPUTING },
-			],
-		},
-		{
-			label: "Technology",
-			href: ROUTES.TECHNOLOGY_FEATURES,
-			children: [
-				{ label: "Features", href: ROUTES.TECHNOLOGY_FEATURES },
-				{ label: "Performance", href: ROUTES.TECHNOLOGY_PERFORMANCE },
-			],
-		},
-		{
-			label: "Trust",
-			href: ROUTES.TRUST_SUCCESS_STORY,
-			children: [{ label: "Success Story", href: ROUTES.TRUST_SUCCESS_STORY }],
-		},
-		{
-			label: "Business",
-			href: ROUTES.BUSINESS_PRICING,
-			children: [
-				{ label: "Pricing", href: ROUTES.BUSINESS_PRICING },
-				{ label: "Contact", href: ROUTES.BUSINESS_CONTACT },
-			],
-		},
-		{
-			label: "Resource",
-			href: ROUTES.RESOURCE_DOCUMENTATION,
-			children: [
-				{ label: "Documentation", href: ROUTES.RESOURCE_DOCUMENTATION },
-				{ label: "Blog", href: ROUTES.RESOURCE_BLOG },
-				{ label: "News", href: ROUTES.RESOURCE_NEWS },
-			],
-		},
-	];
-
 	return (
 		<header className={cn("fixed top-0 z-50 w-full shadow-y-1")}>
 			<div className={cn("bg-blur relative z-10 border-b border-white/25")}>
@@ -230,13 +177,13 @@ export const Header = () => {
 						aria-label="Main navigation"
 					>
 						<ul className="navigation-list lg:flex lg:h-full lg:items-center lg:gap-8">
-							{navItems.map((item, idx) => (
+							{NAVIGATION_LIST.map((item, idx) => (
 								<li
 									key={item.label}
 									className="group relative w-full lg:h-full"
 								>
 									<TextLink
-										href={item.href}
+										href={item.children[0].href}
 										label={item.label}
 										size="lg"
 										colors="white75"
@@ -262,7 +209,7 @@ export const Header = () => {
 									{Array.isArray(item.children) && item.children.length > 0 && (
 										<div
 											className={cn(
-												"from-white/8 -mx-[5vw] mb-4 grid border-white/25 bg-gradient-to-b to-white/0 px-[10vw] backdrop-blur-md",
+												"-mx-[5vw] mb-4 grid border-white/25 px-[10vw] backdrop-blur-md",
 												"grid-rows-[0fr] overflow-hidden transition-[grid-template-rows] duration-300 ease-out",
 												// Desktop dropdown position and animation
 												"lg:pointer-events-none lg:absolute lg:left-1/2 lg:top-full lg:z-50 lg:m-0 lg:block lg:w-40 lg:-translate-x-1/2 lg:-translate-y-2 lg:rounded-lg lg:border lg:px-0 lg:py-3.5 lg:opacity-0 lg:group-hover:pointer-events-auto lg:group-hover:opacity-100",

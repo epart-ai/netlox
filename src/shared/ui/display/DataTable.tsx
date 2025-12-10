@@ -104,7 +104,7 @@ export function DataTable<TData = unknown, TValue = unknown>({
 				className={cn("caption-bottom", tableClassName)}
 				data-orientation={orientation}
 			>
-				<TableHeader className={cn(orientation === "vertical" && "flex-1")}>
+				<TableHeader className={cn(orientation === "vertical" && "md:flex-1")}>
 					{table.getHeaderGroups().map((headerGroup) => (
 						<TableRow key={headerGroup.id}>
 							{headerGroup.headers.map((header) => {

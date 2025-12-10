@@ -61,7 +61,7 @@ export const Footer = () => {
 			<TopButton />
 			<footer id="site-footer" className="bg-blue-100 pt-8 shadow-y-1 lg:pt-15">
 				<div className="wrapper pb-10 lg:pb-20">
-					<div className="flex flex-col justify-between gap-6 lg:flex-row lg:gap-0 lg:gap-10">
+					<div className="flex flex-col justify-between gap-6 lg:flex-row lg:gap-10">
 						<div className="flex flex-col items-center gap-3 lg:items-start lg:gap-5">
 							<Image
 								className={logoWidth}
@@ -70,7 +70,7 @@ export const Footer = () => {
 								width={180}
 								height={20}
 							/>
-							<p className="paragraph-12 px-5 text-center lg:paragraph-14">
+							<p className="paragraph-12 px-5 text-center lg:paragraph-14 lg:px-0 lg:text-left">
 								The eBPF-powered load balancer{" "}
 								<br className="hidden lg:block" />
 								for cloud-native workloads.

@@ -26,6 +26,7 @@ const nextConfig = {
 			`script-src ${scriptSrc.join(" ")}`,
 			"font-src 'self' data:",
 			"connect-src 'self' https:",
+			"frame-src 'self' https://www.google.com",
 			"frame-ancestors 'none'",
 		].join("; ");
 		return [
