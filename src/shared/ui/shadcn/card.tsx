@@ -151,15 +151,9 @@ const CardFooter = React.forwardRef<
 		separator?: boolean;
 	}
 >(({ className, children, separator, ...props }, ref) => (
-	<div className="card-footer pt-1">
+	<div ref={ref} className={cn("card-footer pt-1", className)} {...props}>
 		{separator && <Separator className="mb-3 md:mb-4 lg:mb-5" />}
-		<div
-			ref={ref}
-			className={cn("paragraph-12 !text-white/50 md:paragraph-14", className)}
-			{...props}
-		>
-			{children}
-		</div>
+		{children}
 	</div>
 ));
 

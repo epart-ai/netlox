@@ -12,6 +12,7 @@ export const Reference2 = () => {
 			icon: "/images/trust/icon_success-story_detail1.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						<>
 							A major telco needed to modernize its 5G Core environment while
@@ -38,6 +39,7 @@ export const Reference2 = () => {
 			icon: "/images/trust/icon_success-story_detail2.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						<span key="1" className="text-white">
 							eBPF-accelerated SCTP and telco-protocol load balancing
@@ -63,6 +65,7 @@ export const Reference2 = () => {
 			icon: "/images/trust/icon_success-story_detail3.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						<span key="1" className="text-white">
 							High TPS at scale

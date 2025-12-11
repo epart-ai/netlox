@@ -7,6 +7,7 @@ export const TechnologyFeaturePlatform = () => {
 			icon: "/images/technology/icon_features_platform1.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						"Kernel bypass for max performance",
 						"Programmable without kernel mods",
@@ -21,6 +22,7 @@ export const TechnologyFeaturePlatform = () => {
 			icon: "/images/technology/icon_features_platform2.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						"TCP, UDP, SCTP, QUIC",
 						"HTTP/2, H/3, gRPC, WebSocket",
@@ -35,6 +37,7 @@ export const TechnologyFeaturePlatform = () => {
 			icon: "/images/technology/icon_features_platform3.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						"ServiceType=LoadBalancer",
 						"Ingress & Gateway API v1.0",
@@ -49,6 +52,7 @@ export const TechnologyFeaturePlatform = () => {
 			icon: "/images/technology/icon_features_platform4.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						"Active-Active clustering",
 						"Hitless failover (<5 seconds)",
@@ -63,6 +67,7 @@ export const TechnologyFeaturePlatform = () => {
 			icon: "/images/technology/icon_features_platform5.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						"Stateful firewall integration",
 						"IPsec & WireGuard tunnels",
@@ -77,6 +82,7 @@ export const TechnologyFeaturePlatform = () => {
 			icon: "/images/technology/icon_features_platform6.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						"AWS SaaS Marketplace",
 						"On-premise bare metal",

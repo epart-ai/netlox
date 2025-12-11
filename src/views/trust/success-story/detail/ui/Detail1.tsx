@@ -12,6 +12,7 @@ export const Reference1 = () => {
 			icon: "/images/trust/icon_success-story_detail1.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						"A private-5G operator needed to launch a cloud-native 5G Core with :",
 						<>
@@ -33,6 +34,7 @@ export const Reference1 = () => {
 			icon: "/images/trust/icon_success-story_detail2.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						"Carrier-grade SCTP load balancing",
 						<>
@@ -52,6 +54,7 @@ export const Reference1 = () => {
 			icon: "/images/trust/icon_success-story_detail3.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						<>
 							<span className="text-white">

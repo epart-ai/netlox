@@ -15,21 +15,33 @@ export const RootFeatures = () => {
 			description:
 				"Achieve sub-millisecond P99 latency and linear CPU scaling by harnessing the power of eBPF for kernel-level packet processing.",
 			icon: "/images/main/icon_feature1.svg",
-			footer: <DataList data={["<1ms P99 Latency", "Linear CPU Scaling"]} />,
+			footer: (
+				<DataList
+					variant="subtle"
+					data={["<1ms P99 Latency", "Linear CPU Scaling"]}
+				/>
+			),
 		},
 		{
 			title: "Enterprise Reliability",
 			description:
 				"Built for mission-critical workloads with 99.999% uptime, Multi-AZ high availability, and dedicated 24/7 enterprise support.",
 			icon: "/images/main/icon_feature2.svg",
-			footer: <DataList data={["99.999% Uptime", "Multi-AZ HA"]} />,
+			footer: (
+				<DataList variant="subtle" data={["99.999% Uptime", "Multi-AZ HA"]} />
+			),
 		},
 		{
 			title: "Specialized Protocols",
 			description:
 				"Support for complex, modern workloads including 5G/Telco protocols (SCTP, GTP), AI/ML inference, and Edge Computing.",
 			icon: "/images/main/icon_feature3.svg",
-			footer: <DataList data={["5G/Telco Protocols", "AI/ML Workloads"]} />,
+			footer: (
+				<DataList
+					variant="subtle"
+					data={["5G/Telco Protocols", "AI/ML Workloads"]}
+				/>
+			),
 		},
 	];
 	return (

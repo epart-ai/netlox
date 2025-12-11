@@ -50,9 +50,9 @@ export const CookieAgree = () => {
 					<p className="paragraph-14 md:paragraph-16">
 						This website uses cookies to ensure you get the best experience.
 						<br className="hidden md:block" />
-						By continuing to use our site, you agree to our
+						By continuing to use our site, you agree to our{" "}
 						<a
-							href={ROUTES.COOKIE_POLICY}
+							href={ROUTES.LEGAL_COOKIES}
 							className="font-bold text-blue-20/75 underline"
 						>
 							Cookie Policy

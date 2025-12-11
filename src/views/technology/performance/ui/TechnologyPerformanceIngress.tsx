@@ -34,6 +34,7 @@ export const TechnologyPerformanceIngress = () => {
 			icon: "/images/technology/icon_performance_ingress1.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						<>
 							<span className="font-medium text-white">Infra</span> : k3s
@@ -60,6 +61,7 @@ export const TechnologyPerformanceIngress = () => {
 			icon: "/images/technology/icon_performance_ingress2.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						<>
 							<span className="font-medium text-white">CPU Scaling</span> :
