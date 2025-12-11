@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { ROUTES } from "@/shared/config";
 import { useActionStatus } from "@/shared/lib/useActionStatus";
 import { gridTwoCol } from "@/shared/styles/snippets";
 import { TextLink } from "@/shared/ui/navigation";
@@ -334,8 +335,15 @@ export function BusinessContactForm() {
 										</FormControl>
 										<FormLabel applyErrorStyle>
 											I agree to our{" "}
-											<TextLink href={"#"} label="Terms and Conditions" /> and{" "}
-											<TextLink href={"#"} label="Privacy Policy" />
+											<TextLink
+												href={ROUTES.LEGAL_TERMS}
+												label="Terms and Conditions"
+											/>{" "}
+											and{" "}
+											<TextLink
+												href={ROUTES.LEGAL_PRIVACY}
+												label="Privacy Policy"
+											/>
 										</FormLabel>
 									</div>
 									<FormMessage />

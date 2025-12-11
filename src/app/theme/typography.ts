@@ -28,6 +28,11 @@ const typography = {
 			fontSize: "36px",
 			fontWeight: "700",
 		},
+		"32": {
+			fontFamily: "Outfit Variable",
+			fontSize: "36px",
+			fontWeight: "700",
+		},
 		"28": {
 			fontFamily: "Outfit Variable",
 			fontSize: "28px",

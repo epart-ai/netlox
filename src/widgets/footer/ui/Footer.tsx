@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ROUTES } from "@/shared/config";
+import { NAVIGATION_LIST } from "@/shared/config";
 import { logoWidth } from "@/shared/styles/snippets";
 import { TextLink } from "@/shared/ui/navigation";
 import TopButton from "@/widgets/footer/ui/TopButton";
@@ -8,53 +8,6 @@ import TopButton from "@/widgets/footer/ui/TopButton";
 import { FooterCtaBanner } from "./FooterCtaBanner";
 
 export const Footer = () => {
-	const footerSections = [
-		{
-			title: "PRODUCT",
-			links: [
-				{ label: "Enterprise", href: ROUTES.PRODUCTS_ENTERPRISE },
-				{ label: "Premium", href: ROUTES.PRODUCTS_PREMIUM },
-				{ label: "SaaS", href: ROUTES.PRODUCTS_SAAS },
-				{ label: "Open Source", href: ROUTES.PRODUCTS_OPEN_SOURCE },
-			],
-		},
-		{
-			title: "SOLUTIONS",
-			links: [
-				{ label: "AI/LLM", href: ROUTES.SOLUTIONS_AI_LLM },
-				{ label: "Kubernetes", href: ROUTES.SOLUTIONS_KUBERNETES },
-				{ label: "5G&Telco", href: ROUTES.SOLUTIONS_5G_TELCO },
-				{ label: "Edge Computing", href: ROUTES.SOLUTIONS_EDGE_COMPUTING },
-			],
-		},
-		{
-			title: "TECHNOLOGY",
-			links: [
-				{ label: "Features", href: ROUTES.TECHNOLOGY_FEATURES },
-				{ label: "Performance", href: ROUTES.TECHNOLOGY_PERFORMANCE },
-			],
-		},
-		{
-			title: "TRUST",
-			links: [{ label: "Success Story", href: ROUTES.TRUST_SUCCESS_STORY }],
-		},
-		{
-			title: "BUSINESS",
-			links: [
-				{ label: "Pricing", href: ROUTES.BUSINESS_PRICING },
-				{ label: "Contact", href: ROUTES.BUSINESS_CONTACT },
-			],
-		},
-		{
-			title: "RESOURCE",
-			links: [
-				{ label: "Documentation", href: ROUTES.RESOURCE_DOCUMENTATION },
-				{ label: "Blog", href: ROUTES.RESOURCE_BLOG },
-				{ label: "News", href: ROUTES.RESOURCE_NEWS },
-			],
-		},
-	];
-
 	return (
 		<>
 			<FooterCtaBanner />
@@ -70,27 +23,40 @@ export const Footer = () => {
 								width={180}
 								height={20}
 							/>
-							<p className="paragraph-12 px-5 text-center lg:paragraph-14 lg:px-0 lg:text-left">
-								The eBPF-powered load balancer{" "}
-								<br className="hidden lg:block" />
-								for cloud-native workloads.
-							</p>
+							<div className="paragraph-12 px-5 text-center lg:paragraph-14 lg:px-0 lg:text-left">
+								<p>
+									The eBPF-powered load balancer{" "}
+									<br className="hidden lg:block" />
+									for cloud-native workloads.
+								</p>
+
+								<div className="mt-4 lg:mt-8">
+									<strong className="title-12 uppercase lg:title-14">
+										Address
+									</strong>
+									<p className="mt-1 lg:mt-2.5">
+										Unit 1209, Hybrand, 16 Maeheon-ro,
+										<br className="hidden lg:block" />
+										Seocho-gu, Seoul, South Korea
+									</p>
+								</div>
+							</div>
 						</div>
 						<nav className="" aria-label="Footer Navigation">
 							<ul className="flex flex-col flex-wrap gap-y-6 sm:flex-row lg:gap-[3vw] lg:gap-y-10">
-								{footerSections.map((section) => (
+								{NAVIGATION_LIST.map((item) => (
 									<li
-										key={section.title}
+										key={item.label}
 										className="flex flex-col items-center gap-2 text-center sm:w-1/2 md:w-1/3 lg:w-auto lg:items-start lg:gap-4"
 									>
 										<strong className="title-14 mb-2 text-blue-60 lg:title-16">
-											{section.title}
+											{item.label}
 										</strong>
-										{section.links.map((item) => (
+										{item.children.map((child) => (
 											<TextLink
-												key={`${section.title}-${item.label}`}
-												href={item.href}
-												label={item.label}
+												key={`${item.label}-${child.label}`}
+												href={child.href}
+												label={child.label}
 												className="lg:paragraph-16"
 												colors="white75"
 											/>

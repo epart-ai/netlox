@@ -193,12 +193,16 @@ export const SignUpForm = () => {
 										<FormLabel applyErrorStyle>
 											I agree to our{" "}
 											<TextLink
-												href={"#"}
+												href={ROUTES.LEGAL_TERMS}
 												label="Terms and Conditions"
 												underline
 											/>{" "}
 											and{" "}
-											<TextLink href={"#"} label="Privacy Policy" underline />
+											<TextLink
+												href={ROUTES.LEGAL_PRIVACY}
+												label="Privacy Policy"
+												underline
+											/>
 										</FormLabel>
 									</div>
 								</FormItem>

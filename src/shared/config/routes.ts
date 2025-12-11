@@ -9,8 +9,6 @@ export const ROUTES = {
 	USER_PROFILE_PASSWORD: "/user/profile/password",
 	USER_PROFILE_WITHDRAW: "/user/profile/withdraw",
 
-	COOKIE_POLICY: "/cookie-policy",
-
 	PRODUCTS_OPEN_SOURCE: "/products/open-source",
 	PRODUCTS_ENTERPRISE: "/products/enterprise",
 	PRODUCTS_PREMIUM: "/products/premium",
@@ -33,6 +31,10 @@ export const ROUTES = {
 	RESOURCE_DOCUMENTATION: "/resource/documentation",
 	RESOURCE_BLOG: "/resource/blog",
 	RESOURCE_NEWS: "/resource/news",
+
+	LEGAL_PRIVACY: "/legal/privacy",
+	LEGAL_TERMS: "/legal/terms",
+	LEGAL_COOKIES: "/legal/cookies",
 } as const;
 
 export const DIALOGS = {

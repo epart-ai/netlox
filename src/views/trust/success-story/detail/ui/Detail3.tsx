@@ -12,6 +12,7 @@ export const Reference3 = () => {
 			icon: "/images/trust/icon_success-story_detail1.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						<>
 							The customer needed{" "}
@@ -32,6 +33,7 @@ export const Reference3 = () => {
 			icon: "/images/trust/icon_success-story_detail2.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						<>
 							<span className="text-white">Instant zone-level failover</span>{" "}
@@ -60,6 +62,7 @@ export const Reference3 = () => {
 			icon: "/images/trust/icon_success-story_detail3.svg",
 			footer: (
 				<DataList
+					variant="subtle"
 					data={[
 						<>
 							<span className="text-white">Zero service downtime,</span> even

@@ -23,13 +23,21 @@ export const NAVIGATION_LIST = [
 		label: "Solutions",
 		value: "solutions",
 		children: [
-			{ label: "5G Telco", value: "telco5g", href: ROUTES.SOLUTIONS_5G_TELCO },
+			{
+				label: "5G & Telco",
+				value: "telco5g",
+				href: ROUTES.SOLUTIONS_5G_TELCO,
+			},
 			{
 				label: "Kubernetes",
 				value: "kubernetes",
 				href: ROUTES.SOLUTIONS_KUBERNETES,
 			},
-			{ label: "AI & LLM", value: "aiLlm", href: ROUTES.SOLUTIONS_AI_LLM },
+			{
+				label: "AI/LLM Workloads",
+				value: "aiLlm",
+				href: ROUTES.SOLUTIONS_AI_LLM,
+			},
 			{
 				label: "Edge Computing",
 				value: "edgeComputing",
