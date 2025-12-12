@@ -36,6 +36,7 @@ export const TrustSuccessStoryValidationEcosystem = ({ themeColor }: Props) => {
 				</>
 			),
 			icon: "/images/trust/icon_success-story_validation3.svg",
+			disabledIconInvert: true,
 		},
 	];
 
