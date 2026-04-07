@@ -41,11 +41,7 @@ export const BusinessPricingPlanList = () => {
 			highlight: true,
 			themeColor: "blue",
 			eyebrow: "Enterprise",
-			price: (
-				<>
-					$2,999<span className="paragraph-20 font-medium">/month</span>
-				</>
-			),
+			price: "Custom",
 			description: "Fixed price with full support",
 			button: (
 				<Button variant="primary" asChild>
@@ -55,7 +51,7 @@ export const BusinessPricingPlanList = () => {
 							query: { help_options: "pricing" },
 						}}
 					>
-						Request Quote
+						Contact Sales
 					</Link>
 				</Button>
 			),
@@ -81,11 +77,7 @@ export const BusinessPricingPlanList = () => {
 		{
 			themeColor: "orange",
 			eyebrow: "SaaS",
-			price: (
-				<>
-					$2,999<span className="paragraph-20 font-medium">/month</span>
-				</>
-			),
+			price: "Custom",
 			description: "Pay-as-you-go on AWS",
 			button: (
 				<Button
