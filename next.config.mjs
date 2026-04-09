@@ -21,11 +21,11 @@ const nextConfig = {
 		}
 		const csp = [
 			"default-src 'self'",
-			"img-src 'self' https: data: blob:",
+			"img-src 'self' https: data: blob: https://www.googletagmanager.com",
 			"style-src 'self' 'unsafe-inline'",
-			`script-src ${scriptSrc.join(" ")}`,
+			`script-src ${scriptSrc.join(" ")} https://www.googletagmanager.com`,
 			"font-src 'self' data:",
-			"connect-src 'self' https:",
+			"connect-src 'self' https: https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com",
 			"frame-src 'self' https://www.google.com",
 			"frame-ancestors 'none'",
 		].join("; ");
